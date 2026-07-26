@@ -52,7 +52,7 @@ export default function remarkZitate() {
 
     const quellen = Array.isArray(frontmatter.sources) ? frontmatter.sources : [];
     const reihenfolge = new Map();
-    quellen.forEach((q, i) => {
+    quellen.forEach((q) => {
       const id = typeof q === 'string' ? q : q?.id;
       if (id && !reihenfolge.has(id)) reihenfolge.set(id, reihenfolge.size + 1);
     });

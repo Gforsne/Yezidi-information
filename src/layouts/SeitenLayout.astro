@@ -12,13 +12,14 @@ interface Props {
   /** Einleitung der Seite. Beschreibt das Werkzeug, behauptet nichts. */
   intro: string;
   /** Zusätzliche Kennzeichnung über der Überschrift. */
-  eyebrow?: string;
+  eyebrow?: string | undefined;
   /** Pfadsegmente für die Brotkrume (ohne Sprachpräfix). */
-  trail?: { label: string; slug?: string }[];
+  trail?: { label: string; slug?: string | undefined }[] | undefined;
   bereich?: SectionId | undefined;
-  jsonLd?: Record<string, unknown>[];
-  breit?: boolean;
-  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[] | undefined;
+  breit?: boolean | undefined;
+  noindex?: boolean | undefined;
+  sprachen?: readonly Locale[] | null | undefined;
 }
 
 const {
@@ -31,6 +32,7 @@ const {
   jsonLd = [],
   breit = false,
   noindex = false,
+  sprachen,
 } = Astro.props;
 
 const t = useTranslations(locale);
@@ -49,6 +51,7 @@ const crumbs = buildBreadcrumb(
   jsonLd={jsonLd}
   breit={breit}
   noindex={noindex}
+  sprachen={sprachen}
 >
   <div class="shell">
     <Breadcrumb crumbs={crumbs} locale={locale} />

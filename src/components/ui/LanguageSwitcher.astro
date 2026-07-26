@@ -1,14 +1,25 @@
 ---
 import { localeMeta, locales, type Locale } from '../../i18n/config';
-import { switchLocalePath, useTranslations } from '../../i18n/utils';
+import { path, switchLocalePath, useTranslations } from '../../i18n/utils';
 
 interface Props {
   locale: Locale;
+  /**
+   * Sprachen, in denen es die aktuelle Seite tatsächlich gibt.
+   * `null` steht für Seiten außerhalb des Sprachroutings.
+   *
+   * Alle vier Sprachen bleiben immer sichtbar – wer die Sprache wechseln
+   * will, soll das können. Fehlt die Übersetzung, führt der Link auf die
+   * Startseite der Zielsprache statt auf eine Adresse, die es nicht gibt.
+   */
+  sprachen?: readonly Locale[] | null | undefined;
 }
 
-const { locale } = Astro.props;
+const { locale, sprachen = locales } = Astro.props;
 const t = useTranslations(locale);
 const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+const vorhanden = new Set<Locale>(sprachen ?? []);
 ---
 
 {/*
@@ -23,24 +34,32 @@ const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
       locales.map((code) => {
         const meta = localeMeta[code];
         const aktiv = code === locale;
+        const uebersetzt = vorhanden.has(code);
+        const ziel = uebersetzt ? switchLocalePath(pathname, code) : path(code);
         return (
           <li>
             <a
-              href={switchLocalePath(pathname, code)}
+              href={ziel}
               lang={meta.bcp47}
               hreflang={meta.bcp47}
               dir={meta.dir}
               aria-current={aktiv ? 'true' : undefined}
               class:list={['sprache', { aktiv }]}
               data-status={meta.status}
+              data-uebersetzt={uebersetzt ? 'ja' : 'nein'}
               title={
-                meta.status === 'vollstaendig'
-                  ? meta.endonym
-                  : `${meta.endonym} – ${t('lang.fallbackNotice')}`
+                !uebersetzt
+                  ? `${meta.endonym} – ${t('lang.notTranslated')}`
+                  : meta.status === 'vollstaendig'
+                    ? meta.endonym
+                    : `${meta.endonym} – ${t('lang.fallbackNotice')}`
               }
             >
               <span class="kuerzel">{code.toUpperCase()}</span>
-              <span class="nur-screenreader">{meta.endonym}</span>
+              <span class="nur-screenreader">
+                {meta.endonym}
+                {!uebersetzt && ` – ${t('lang.notTranslated')}`}
+              </span>
             </a>
           </li>
         );
@@ -82,6 +101,15 @@ const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
   .sprache.aktiv {
     color: var(--c-text);
     box-shadow: inset 0 -2px 0 0 var(--c-accent);
+  }
+
+  /* Ohne vorliegende Übersetzung: durchgestrichenes Kürzel als zweites
+     Merkmal neben der Farbe. */
+  .sprache[data-uebersetzt='nein'] .kuerzel {
+    /* Kein Opazitätsverlust – das würde den Kontrast unter AA drücken.
+       Der Durchstrich allein trägt die Information. */
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
   }
 
   /* Sprachen mit unvollständiger Oberfläche bekommen einen dezenten Punkt. */

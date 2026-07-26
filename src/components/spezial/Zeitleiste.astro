@@ -94,6 +94,10 @@ const firmanAnzahl = sortiert.filter((e) => e.data.firman).length;
     )
   }
 
+  {/* Ohne diese Ebene spränge die Gliederung von der Seitenüberschrift
+      direkt auf die h3 der Einträge. */}
+  <h2 class="nur-screenreader">{t('timeline.entries')}</h2>
+
   <ol class="spur">
     {
       sortiert.map((e) => (

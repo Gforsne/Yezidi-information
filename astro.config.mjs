@@ -30,7 +30,10 @@ export default defineConfig({
     locales: ['de', 'en', 'ku', 'ar'],
     routing: {
       prefixDefaultLocale: true,
-      redirectToDefaultLocale: true,
+      // Astros eigene Weiterleitungsseite wird nicht erzeugt: Unter `/`
+      // steht eine echte Sprachauswahl (src/pages/index.astro), die alle
+      // vier Sprachen anbietet statt nur nach /de/ zu springen.
+      redirectToDefaultLocale: false,
     },
   },
   integrations: [

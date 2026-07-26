@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
-import { localeMeta, type Locale } from '../i18n/config';
-import { alternateLinks, path, useTranslations } from '../i18n/utils';
+import { locales, localeMeta, type Locale } from '../i18n/config';
+import { path, switchLocalePath, useTranslations } from '../i18n/utils';
 import Header from '../components/ui/Header.astro';
 import Footer from '../components/ui/Footer.astro';
 import SkipLinks from '../components/ui/SkipLinks.astro';
@@ -17,11 +17,19 @@ interface Props {
   jsonLd?: Record<string, unknown>[] | undefined;
   /** Seiten ohne Indexierung (z. B. der interne Styleguide). */
   noindex?: boolean | undefined;
-  ogType?: 'website' | 'article';
+  ogType?: 'website' | 'article' | undefined;
   /** Pfad zum OG-Bild; ohne Angabe wird das generierte Standardbild benutzt. */
   ogImage?: string | undefined;
   /** Breite Seiten (Karte, Zeitleiste) verzichten auf das Lesegitter. */
-  breit?: boolean;
+  breit?: boolean | undefined;
+  /**
+   * Sprachen, in denen es diese Seite tatsächlich gibt.
+   * `null` kennzeichnet Seiten außerhalb des Sprachroutings (404,
+   * Styleguide) – für sie wird kein hreflang ausgegeben, weil ein
+   * Verweis auf eine nicht existierende Übersetzung schlechter ist als
+   * gar kein Verweis.
+   */
+  sprachen?: readonly Locale[] | null | undefined;
 }
 
 const {
@@ -34,13 +42,21 @@ const {
   ogType = 'website',
   ogImage,
   breit = false,
+  sprachen = locales,
 } = Astro.props;
 
 const t = useTranslations(locale);
 const meta = localeMeta[locale];
 const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const canonical = new URL(pathname, Astro.site ?? 'https://ezidi-portal.example').href;
-const alternates = alternateLinks(pathname);
+const alternates =
+  sprachen === null
+    ? []
+    : sprachen.map((code) => ({
+        locale: code,
+        href: switchLocalePath(pathname, code),
+        bcp47: localeMeta[code].bcp47,
+      }));
 const seitentitel = pathname === path(locale) ? title : `${title} – ${t('site.name')}`;
 const ogBild = new URL(ogImage ?? '/og/standard.png', Astro.site ?? 'https://ezidi-portal.example')
   .href;
@@ -74,11 +90,20 @@ const organisation = {
         />
       ))
     }
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href={new URL(path('de'), Astro.site ?? 'https://ezidi-portal.example').href}
-    />
+    {
+      alternates.length > 1 && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={
+            new URL(
+              alternates.find((a) => a.locale === 'de')?.href ?? path('de'),
+              Astro.site ?? 'https://ezidi-portal.example',
+            ).href
+          }
+        />
+      )
+    }
 
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
@@ -149,7 +174,7 @@ const organisation = {
 
   <body data-bereich={bereich}>
     <SkipLinks locale={locale} />
-    <Header locale={locale} />
+    <Header locale={locale} sprachen={sprachen} />
 
     <main id="inhalt" tabindex="-1" class:list={['hauptbereich', { breit }]}>
       <slot />

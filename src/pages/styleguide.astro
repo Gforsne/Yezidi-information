@@ -1,0 +1,567 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLocale } from '../i18n/config';
+import Statusbadge from '../components/content/Statusbadge.astro';
+import Faktenbox from '../components/content/Faktenbox.astro';
+import Lead from '../components/content/Lead.astro';
+import Inhaltshinweis from '../components/content/Inhaltshinweis.astro';
+import Belegluecke from '../components/content/Belegluecke.astro';
+import Unsicher from '../components/content/Unsicher.astro';
+import KurmanciBegriff from '../components/content/KurmanciBegriff.astro';
+import Zitat from '../components/content/Zitat.astro';
+import Vergleichstabelle from '../components/content/Vergleichstabelle.astro';
+import Aufklappbox from '../components/content/Aufklappbox.astro';
+import Randglosse from '../components/content/Randglosse.astro';
+import Bildplatzhalter from '../components/content/Bildplatzhalter.astro';
+import Bildergalerie from '../components/content/Bildergalerie.astro';
+import Gliederungshinweis from '../components/content/Gliederungshinweis.astro';
+import Personenkarte from '../components/content/Personenkarte.astro';
+import Ortskarte from '../components/content/Ortskarte.astro';
+import Standdiagramm from '../components/spezial/Standdiagramm.astro';
+import Wortmarke from '../components/ui/Wortmarke.astro';
+
+const locale = defaultLocale;
+
+const farben = [
+  { name: '--c-surface', rolle: 'Grundfläche' },
+  { name: '--c-surface-raised', rolle: 'Karten, Panels' },
+  { name: '--c-surface-sunken', rolle: 'eingelassene Flächen' },
+  { name: '--c-text', rolle: 'Fließtext (AAA)' },
+  { name: '--c-text-muted', rolle: 'Sekundärtext (AAA)' },
+  { name: '--c-text-faint', rolle: 'Beiwerk (AA)' },
+  { name: '--c-accent', rolle: 'Links, Akzent (AAA)' },
+  { name: '--c-apparat', rolle: 'Quellen- und Belegapparat (AAA)' },
+  { name: '--c-warn', rolle: 'Inhaltshinweis, Umstrittenes (AAA)' },
+  { name: '--c-info', rolle: 'ruhiger Hinweis' },
+  { name: '--c-border', rolle: 'dekorative Linien' },
+  { name: '--c-border-strong', rolle: 'Bedienelement-Grenzen (≥ 3:1)' },
+  { name: '--c-focus', rolle: 'Fokusring (≥ 3:1)' },
+];
+
+const typoStufen = [
+  { token: '--t-3xl', rolle: 'Hero', beispiel: 'Êzîdî-Wissensportal' },
+  { token: '--t-2xl', rolle: 'Seitenüberschrift', beispiel: 'Tawûsî Melek und die sieben Engel' },
+  { token: '--t-xl', rolle: 'H2', beispiel: 'Die Zählung der 73 Firman' },
+  { token: '--t-lg', rolle: 'H3', beispiel: 'Rolle in der Überlieferung' },
+  { token: '--t-md', rolle: 'Lead', beispiel: 'Şêx, Pîr und Mirîd – Çarşema Sor' },
+  { token: '--t-base', rolle: 'Fließtext', beispiel: 'Der Fließtext läuft in 62–75 Zeichen Breite.' },
+  { token: '--t-sm', rolle: 'Marginalien', beispiel: 'Belegspalte, Tabellen, Navigation' },
+  { token: '--t-xs', rolle: 'Bildunterschrift', beispiel: 'Bildnachweis, Statusangaben' },
+  { token: '--t-2xs', rolle: 'Eyebrow', beispiel: 'BEREICH · QUELLEN · STAND' },
+];
+---
+
+<BaseLayout
+  title="Styleguide"
+  description="Interne Übersicht aller Design-Tokens und Komponenten des Portals."
+  locale={locale}
+  noindex
+  breit
+  sprachen={null}
+>
+  <div class="shell styleguide">
+    <header class="sg-kopf">
+      <p class="eyebrow">Intern · nicht indexiert</p>
+      <h1>Styleguide</h1>
+      <p class="intro">
+        Lebende Übersicht aller Design-Tokens und Komponenten. Diese Seite dient der Kontrolle:
+        Jede Komponente wird hier in ihren Zuständen gezeigt, damit Abweichungen auffallen. Sie ist
+        von der Indexierung ausgenommen und nicht Teil der Sitemap.
+      </p>
+      <nav class="sg-nav" aria-label="Abschnitte des Styleguides">
+        <ul>
+          <li><a href="#farben">Farben</a></li>
+          <li><a href="#typografie">Typografie</a></li>
+          <li><a href="#raum">Raum</a></li>
+          <li><a href="#marke">Marke</a></li>
+          <li><a href="#inhalt">Inhaltskomponenten</a></li>
+          <li><a href="#apparat">Belegapparat</a></li>
+          <li><a href="#karten">Karten</a></li>
+          <li><a href="#spezial">Spezialkomponenten</a></li>
+          <li><a href="#zustaende">Zustände</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="farben" class="sg-block">
+      <h2>Farben</h2>
+      <p class="sg-hinweis">
+        Sechs benannte Rohfarben, daraus abgeleitete semantische Tokens. Alle Werte sind gemessen
+        (siehe <code>tests/unit/kontrast.test.ts</code>): Fließtext erreicht in beiden Schemata AAA,
+        Bedienelement-Grenzen und Fokus mindestens 3:1.
+      </p>
+      <ul class="farbliste">
+        {
+          farben.map((f) => (
+            <li>
+              <span class="probe" style={`background: var(${f.name})`} aria-hidden="true" />
+              <code>{f.name}</code>
+              <span class="rolle">{f.rolle}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section id="typografie" class="sg-block">
+      <h2>Typografie</h2>
+      <p class="sg-hinweis">
+        Drei Familien mit klaren Rollen: <strong>Newsreader</strong> (Display),
+        <strong>Source Serif 4</strong> (Fließtext), <strong>IBM Plex Sans</strong> (Utility). Für
+        die arabische Route <strong>IBM Plex Sans Arabic</strong>. Alle lokal gehostet, alle mit
+        geprüfter Abdeckung für ê î û ş ç.
+      </p>
+      <dl class="typoliste">
+        {
+          typoStufen.map((s) => (
+            <div>
+              <dt><code>{s.token}</code> <span class="rolle">{s.rolle}</span></dt>
+              <dd style={`font-size: var(${s.token})`}>{s.beispiel}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <h3>Schriftschnitte im Vergleich</h3>
+      <div class="schriftproben">
+        <p style="font-family: var(--f-display)">Newsreader – Êzîdiyatî, Şingal, Çarşema Sor</p>
+        <p style="font-family: var(--f-text)">Source Serif 4 – Êzîdiyatî, Şingal, Çarşema Sor</p>
+        <p style="font-family: var(--f-utility)">IBM Plex Sans – Êzîdiyatî, Şingal, Çarşema Sor</p>
+        <p style="font-family: var(--f-arabic)" lang="ar" dir="rtl">
+          IBM Plex Sans Arabic – الإيزيديون
+        </p>
+      </div>
+    </section>
+
+    <section id="raum" class="sg-block">
+      <h2>Raum und Zeilenlänge</h2>
+      <p class="sg-hinweis">Abstände folgen einer festen Leiter; die Zeilenlänge liegt bei 68 Zeichen.</p>
+      <ul class="raumliste">
+        {
+          ['--s-1', '--s-2', '--s-3', '--s-4', '--s-5', '--s-6', '--s-7', '--s-8'].map((s) => (
+            <li>
+              <span class="balken" style={`inline-size: var(${s})`} aria-hidden="true" />
+              <code>{s}</code>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="measure-probe">
+        Diese Zeile zeigt die Sollbreite des Fließtextes. Sie ist auf 68 Zeichen begrenzt, damit das
+        Auge beim Zeilenwechsel den Anfang der nächsten Zeile findet.
+      </p>
+    </section>
+
+    <section id="marke" class="sg-block">
+      <h2>Marke</h2>
+      <div class="markenprobe">
+        <Wortmarke size={34} />
+        <Wortmarke size={56} />
+        <Wortmarke size={96} />
+      </div>
+      <p class="sg-hinweis">
+        Zirkumflex über drei Steinschichten. Bewusst kein religiöses Symbol und keine Anleihe an der
+        Sakralarchitektur.
+      </p>
+    </section>
+
+    <section id="inhalt" class="sg-block">
+      <h2>Inhaltskomponenten</h2>
+
+      <h3>Lead</h3>
+      <Lead
+        locale={locale}
+        text="Der Lead fasst eine Seite in drei bis fünf Sätzen zusammen. Bei Gerüsten beschreibt er, was die Seite behandeln wird, statt eine Aussage zu treffen. Er ist zugleich die Meta-Beschreibung der Seite."
+      />
+
+      <h3>Inhaltshinweis</h3>
+      <Inhaltshinweis locale={locale} />
+
+      <h3>Faktenbox</h3>
+      <Faktenbox
+        locale={locale}
+        titel="Kurzfakten (Beispiel)"
+        hinweis="Zahlen erscheinen nur mit Herkunft, Stichjahr und Erhebungsmethode."
+        eintraege={[
+          { label: 'Selbstbezeichnung', wert: 'Êzîdî', beleg: null },
+          { label: 'Bevölkerungszahl', wert: null, beleg: null },
+          {
+            label: 'Beispiel mit Beleg',
+            wert: 'Platzhalterwert',
+            stand: '2026',
+            methode: 'Schätzung',
+            beleg: 'Beispielquelle',
+          },
+        ]}
+      />
+
+      <h3>Zitat</h3>
+      <Zitat quelle="Beispielquelle" fundstelle="S. 1" uebersetzung="Beispielübersetzung">
+        Ein Zitat erscheint nie ohne Zuschreibung. Übersetzte Zitate nennen zusätzlich, wer
+        übersetzt hat.
+      </Zitat>
+
+      <h3>Kurmancî-Begriff</h3>
+      <p>
+        Im Fließtext: <KurmanciBegriff
+          original="Tawûsî Melek"
+          aussprache="ta-wu-SI me-LEK"
+          bedeutung="wörtlich etwa „Engel Pfau“ – Übersetzung noch zu belegen"
+          varianten={['Melek Taus']}
+          locale={locale}
+        />.
+      </p>
+
+      <h3>Vergleichstabelle</h3>
+      <Vergleichstabelle
+        locale={locale}
+        titel="Konkurrierende Positionen (Beispielaufbau)"
+        spalten={['Merkmal', 'Position A', 'Position B']}
+        zeilen={[
+          ['Vertreten von', null, null],
+          ['Kernargument', null, null],
+          ['Kritik daran', null, null],
+        ]}
+        fussnote="Vergleichstabellen stellen Positionen nebeneinander; sie markieren keine davon als richtig."
+      />
+
+      <h3>Aufklappbox</h3>
+      <Aufklappbox titel="Vertiefung: Forschungsstand" kennzeichnung="etisch">
+        <p>
+          Aufklappboxen nehmen Vertiefungen auf, die den Lesefluss unterbrechen würden. Sie sind
+          ohne JavaScript bedienbar und werden im Druck immer aufgeklappt.
+        </p>
+      </Aufklappbox>
+
+      <h3>Randglosse</h3>
+      <Randglosse art="sprache">
+        Randglossen tragen kurze Anmerkungen zur Schreibweise oder zum Forschungsstand.
+      </Randglosse>
+
+      <h3>Bildplatzhalter</h3>
+      <Bildplatzhalter
+        locale={locale}
+        gesucht="Aufnahme der Anlage von Laliş unter freier Lizenz, mit Urheber und Fundstelle"
+      />
+
+      <h3>Bildergalerie (ohne Bilder)</h3>
+      <Bildergalerie
+        locale={locale}
+        titel="Galerie"
+        gesucht="Bildserie mit geklärten Rechten zur Sakralarchitektur"
+      />
+    </section>
+
+    <section id="apparat" class="sg-block">
+      <h2>Belegapparat</h2>
+
+      <h3>Beleglücke (Block)</h3>
+      <Belegluecke
+        auftrag="Herkunft der Zuschreibung textlich belegen und die frühesten Belege datieren."
+        hinweis="religionswissenschaftliche Fachliteratur, möglichst mit Quellenedition"
+      />
+
+      <h3>Beleglücke (inline)</h3>
+      <p>
+        Ein Satz mit einer eingebetteten Lücke:
+        <Belegluecke auftrag="Diese Angabe ist noch zu belegen." inline />
+      </p>
+
+      <h3>Unsicher</h3>
+      <p>
+        <Unsicher grund="Die Datierung wird in der Forschung unterschiedlich angesetzt." locale={locale}>
+          Eine Aussage, über die sich die Forschung nicht einig ist,
+        </Unsicher>
+        wird im Satz markiert und verweist auf die Kontroversen-Seite.
+      </p>
+
+      <h3>Gliederungshinweis (nur bei Gerüsten)</h3>
+      <Gliederungshinweis
+        locale={locale}
+        gliederung={['Erster Abschnitt', 'Zweiter Abschnitt', 'Dritter Abschnitt']}
+        auftrag="Beispielhafter Rechercheauftrag für die gesamte Seite."
+      />
+    </section>
+
+    <section id="karten" class="sg-block">
+      <h2>Karten für Personen und Orte</h2>
+      <div class="kartenraster">
+        <Personenkarte
+          locale={locale}
+          slug="sex-adi-ibn-musafir"
+          name="Şêx Adî ibn Musafir"
+          nameUmschrift="Şêx Adî ibn Musafir"
+          nameVarianten={['Sheikh Adi']}
+          rolle="Historische Gestalt des 12. Jahrhunderts"
+          kategorie="historisch"
+          lead="Beispiel für die Personenkarte. Lebensdaten erscheinen nur, wenn sie belegt sind."
+          status="stub"
+        />
+        <Personenkarte
+          locale={locale}
+          slug="nadia-murad"
+          name="Beispiel: lebende Person"
+          nameUmschrift="Beispiel"
+          rolle="Öffentlich wirkende Person"
+          kategorie="aktivismus"
+          lebend
+          lead="Bei lebenden Personen erscheint ein Hinweis auf die gebotene Zurückhaltung."
+          status="stub"
+        />
+        <Ortskarte
+          locale={locale}
+          slug="lalis"
+          name="Laliş"
+          nameUmschrift="Laliş"
+          nameVarianten={['Lalisch']}
+          art="heiligtum"
+          land="Irak"
+          region="Gouvernement Ninawa"
+          koordinaten={[43.31, 36.77]}
+          koordinatenGenauigkeit="ungefähr"
+          zustand="unbekannt"
+          lead="Beispiel für die Ortskarte. Ungefähre Koordinaten werden ausdrücklich als solche gekennzeichnet."
+          status="stub"
+        />
+      </div>
+    </section>
+
+    <section id="spezial" class="sg-block">
+      <h2>Spezialkomponenten</h2>
+      <h3>Standdiagramm</h3>
+      <Standdiagramm />
+      <p class="sg-hinweis">
+        Zeitleiste, Karte, Jahreskalender und Glossarindex sind an ihren Seiten zu sehen:
+        <a href="/de/zeitleiste">Zeitleiste</a>, <a href="/de/karten">Karten</a>,
+        <a href="/de/kalender">Festkalender</a>, <a href="/de/glossar">Glossar</a>. Sie brauchen
+        vollständige Datensätze und werden deshalb nicht hier gedoppelt.
+      </p>
+    </section>
+
+    <section id="zustaende" class="sg-block">
+      <h2>Zustände</h2>
+
+      <h3>Statusbadges</h3>
+      <div class="badgeraster">
+        <Statusbadge status="stub" locale={locale} mitHilfe />
+        <Statusbadge status="entwurf" locale={locale} mitHilfe />
+        <Statusbadge status="belegt" locale={locale} mitHilfe />
+        <Statusbadge status="geprüft" locale={locale} mitHilfe />
+      </div>
+
+      <h3>Fokus</h3>
+      <p class="sg-hinweis">
+        Jedes Bedienelement hat einen sichtbaren Fokusring. Zum Prüfen mit der Tabulatortaste durch
+        die folgenden Elemente gehen:
+      </p>
+      <div class="fokusraster">
+        <a href="#zustaende">Link</a>
+        <button type="button">Schaltfläche</button>
+        <input type="search" aria-label="Beispiel-Suchfeld" placeholder="Eingabefeld" />
+        <details><summary>Aufklappelement</summary><p>Inhalt</p></details>
+      </div>
+
+      <h3>Farbschema</h3>
+      <p class="sg-hinweis">
+        Der Umschalter im Kopfbereich wechselt zwischen Systemeinstellung, hell und dunkel. Der
+        dunkle Modus ist eigenständig gestimmt, keine Invertierung.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .styleguide {
+    padding-block-end: var(--s-9);
+  }
+
+  .sg-kopf {
+    max-inline-size: var(--measure-wide);
+    padding-block-end: var(--s-6);
+    border-block-end: var(--border-rule) solid var(--c-border);
+  }
+
+  .sg-kopf h1 {
+    font-size: var(--t-2xl);
+    margin-block: var(--s-2) var(--s-4);
+  }
+
+  .intro {
+    max-inline-size: var(--measure);
+    font-size: var(--t-md);
+    color: var(--c-text);
+  }
+
+  .sg-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    list-style: none;
+    margin: var(--s-5) 0 0;
+    padding: 0;
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .sg-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    padding-inline: var(--s-3);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--c-text-muted);
+  }
+
+  .sg-nav a:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+  }
+
+  .sg-block {
+    padding-block: var(--s-7);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    scroll-margin-block-start: var(--s-6);
+  }
+
+  .sg-block h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-4);
+  }
+
+  .sg-block h3 {
+    font-size: var(--t-lg);
+    margin-block: var(--s-6) var(--s-3);
+    color: var(--c-text-muted);
+  }
+
+  .sg-hinweis {
+    max-inline-size: var(--measure);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-4);
+  }
+
+  .farbliste {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: var(--s-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .farbliste li {
+    display: grid;
+    grid-template-columns: 2.5rem auto;
+    gap: 0 var(--s-3);
+    align-items: center;
+    padding: var(--s-2);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .probe {
+    grid-row: 1 / span 2;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    border: var(--border-hair) solid var(--c-border-strong);
+    border-radius: var(--radius-xs);
+  }
+
+  .rolle {
+    color: var(--c-text-faint);
+    font-size: var(--t-xs);
+  }
+
+  .typoliste > div {
+    padding-block: var(--s-3);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .typoliste dt {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    color: var(--c-text-faint);
+    margin-block-end: var(--s-1);
+  }
+
+  .typoliste dd {
+    margin: 0;
+    font-family: var(--f-display);
+    line-height: 1.2;
+  }
+
+  .schriftproben p {
+    padding-block: var(--s-2);
+    font-size: var(--t-lg);
+  }
+
+  .raumliste {
+    list-style: none;
+    margin: 0 0 var(--s-5);
+    padding: 0;
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+  }
+
+  .raumliste li {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    padding-block: var(--s-1);
+  }
+
+  .balken {
+    block-size: 0.85rem;
+    background: var(--c-accent);
+    border-radius: var(--radius-xs);
+  }
+
+  .measure-probe {
+    max-inline-size: var(--measure);
+    padding: var(--s-3);
+    border-inline: var(--border-rule) solid var(--c-accent);
+  }
+
+  .markenprobe {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--s-5);
+    color: var(--c-text);
+  }
+
+  .kartenraster {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: var(--s-4);
+  }
+
+  .badgeraster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+  }
+
+  .fokusraster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-4);
+    font-family: var(--f-utility);
+  }
+
+  .fokusraster button,
+  .fokusraster input {
+    min-block-size: 2.75rem;
+    padding-inline: var(--s-3);
+    border: var(--border-hair) solid var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+    color: var(--c-text);
+  }
+</style>

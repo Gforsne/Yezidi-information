@@ -120,7 +120,7 @@ export interface Crumb {
 export function buildBreadcrumb(
   locale: Locale,
   homeLabel: string,
-  trail: { label: string; slug?: string }[],
+  trail: { label: string; slug?: string | undefined }[],
 ): Crumb[] {
   const crumbs: Crumb[] = [{ label: homeLabel, href: path(locale) }];
   let acc = '';

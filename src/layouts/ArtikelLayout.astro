@@ -40,6 +40,14 @@ interface Props {
   zitate?: number;
   belegluecken?: number;
   abschnitte?: number;
+  /**
+   * Eigenes Vorschaubild. Ohne Angabe gilt das Bereichsbild – Personen,
+   * Orte, Rezepte und Unterrichtsmaterial bekommen kein eigenes, weil
+   * ihre Seiten keinen eigenen OG-Eintrag erzeugen.
+   */
+  ogImage?: string | undefined;
+  /** Sprachen, in denen es diese Seite gibt (für hreflang). */
+  sprachen?: readonly Locale[] | undefined;
 }
 
 const {
@@ -64,6 +72,8 @@ const {
   zitate = 0,
   belegluecken = 0,
   abschnitte = 0,
+  ogImage,
+  sprachen,
 } = Astro.props;
 
 const t = useTranslations(locale);
@@ -76,6 +86,9 @@ const crumbs = buildBreadcrumb(locale, t('nav.home'), [
 ]);
 
 const seiteUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://ezidi-portal.example').href;
+
+// OG-Bilder entstehen zur Bauzeit in src/pages/og/[...slug].png.ts.
+const vorschaubild = ogImage ?? `/og/bereich-${bereich.slug}.png`;
 
 const jsonLd = [
   {
@@ -114,6 +127,8 @@ const jsonLd = [
   bereich={section}
   jsonLd={jsonLd}
   ogType="article"
+  ogImage={vorschaubild}
+  sprachen={sprachen}
 >
   <div class="shell">
     <Fortschritt locale={locale} />

@@ -98,6 +98,20 @@ a {
   color: var(--c-accent);
 }
 
+/*
+  Links innerhalb von Fließtext müssen auch ohne Farbe erkennbar sein
+  (WCAG 1.4.1). Listen- und Navigationslinks sind über ihre Position
+  eindeutig und bleiben ohne Unterstreichung.
+*/
+p a,
+dd a,
+figcaption a,
+blockquote a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
 button,
 input,
 select,

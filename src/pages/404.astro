@@ -10,7 +10,13 @@ const t = useTranslations(locale);
 const werkzeuge = getToolLinks(locale);
 ---
 
-<BaseLayout title={t('error.404.title')} description={t('error.404.text')} locale={locale} noindex>
+<BaseLayout
+  title={t('error.404.title')}
+  description={t('error.404.text')}
+  locale={locale}
+  noindex
+  sprachen={null}
+>
   <div class="shell fehlerseite">
     <p class="code" aria-hidden="true">404</p>
     <h1>{t('error.404.title')}</h1>
@@ -32,7 +38,7 @@ const werkzeuge = getToolLinks(locale);
 
     <div class="wege">
       <nav aria-labelledby="wege-bereiche">
-        <h2 id="wege-bereiche">{t('nav.sections')}</h2>
+        <h2 id="wege-bereiche">Alle Bereiche des Portals</h2>
         <ul>
           {
             sections.map((s) => (
@@ -44,7 +50,7 @@ const werkzeuge = getToolLinks(locale);
         </ul>
       </nav>
       <nav aria-labelledby="wege-werkzeuge">
-        <h2 id="wege-werkzeuge">{t('nav.tools')}</h2>
+        <h2 id="wege-werkzeuge">Alle Werkzeuge zum Nachschlagen</h2>
         <ul>
           {
             werkzeuge.map((w) => (

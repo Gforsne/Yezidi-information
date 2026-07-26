@@ -29,9 +29,20 @@ const alle = await getCollection('sources');
 const karte = new Map<string, Quelle>(alle.map((q) => [q.id, q.data]));
 const positionen = belegapparat(refs, karte);
 const Ueberschrift = `h${ebene}` as 'h2' | 'h3';
+
+/*
+  Die kompakte Fassung steht innerhalb der Belegspalte, die selbst schon
+  ein benannter Bereich ist. Ein zweiter Landmark mit demselben Namen
+  „Quellen“ wäre für Screenreader-Nutzende eine Dublette – deshalb hier
+  ein schlichtes <div> statt einer benannten <section>.
+*/
+const Huelle = kompakt ? 'div' : 'section';
 ---
 
-<section class:list={['quellenliste', { kompakt }]} aria-labelledby={`${id}-titel`}>
+<Huelle
+  class:list={['quellenliste', { kompakt }]}
+  aria-labelledby={kompakt ? undefined : `${id}-titel`}
+>
   <Ueberschrift id={`${id}-titel`} class="titel">{t('article.sources')}</Ueberschrift>
 
   {
@@ -84,7 +95,7 @@ const Ueberschrift = `h${ebene}` as 'h2' | 'h3';
   <p class="verweis">
     <a href={path(locale, 'quellen')}>{t('sources.title')} →</a>
   </p>
-</section>
+</Huelle>
 
 <style>
   .quellenliste {

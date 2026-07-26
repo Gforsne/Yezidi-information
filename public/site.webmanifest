@@ -1,0 +1,14 @@
+{
+  "name": "Êzîdî-Wissensportal",
+  "short_name": "Êzîdî-Portal",
+  "description": "Ein belegtes, frei zugängliches Wissensportal über die Êzîdî.",
+  "start_url": "/de",
+  "lang": "de-DE",
+  "display": "browser",
+  "background_color": "#f6f2ea",
+  "theme_color": "#f6f2ea",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

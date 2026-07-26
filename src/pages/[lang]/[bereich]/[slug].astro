@@ -59,6 +59,10 @@ const daten = eintrag.data as Eintrag['data'] & {
 };
 
 const bereichWarnung = sectionById[section].contentWarning ?? false;
+
+// Nur die deutsche Fassung bedient alle Sprachrouten. Ein
+// englischer Stub existiert ausschließlich unter /en/.
+const sprachen = eintrag.data.lang === 'de' ? locales : [eintrag.data.lang];
 ---
 
 <ArtikelLayout
@@ -83,6 +87,8 @@ const bereichWarnung = sectionById[section].contentWarning ?? false;
   zitate={kennzahlen._zitate ?? 0}
   belegluecken={kennzahlen._belegluecken ?? 0}
   abschnitte={kennzahlen._abschnitte ?? 0}
+  ogImage={`/og/artikel/${sectionById[section].slug}/${daten.slug}.png`}
+  sprachen={sprachen}
 >
   <Content components={mdxKomponenten} />
 </ArtikelLayout>
