@@ -1,0 +1,83 @@
+---
+/**
+ * Wurzelroute.
+ *
+ * Astro liefert bei `prefixDefaultLocale: true` keine Seite unter `/`.
+ * Statt eines reinen Server-Redirects steht hier eine echte, lesbare
+ * Seite mit Sprachauswahl: Sie funktioniert ohne JavaScript, ohne
+ * Server-Logik und auch dann, wenn eine Weiterleitung blockiert wird.
+ */
+import { localeMeta, locales } from '../i18n/config';
+import { path } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+
+const ziel = path('de');
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Êzîdî-Wissensportal</title>
+    <meta name="description" content={ui.de['site.description']} />
+    <link rel="canonical" href={ziel} />
+    <meta http-equiv="refresh" content={`0; url=${ziel}`} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 34rem;
+        margin: 4rem auto;
+        padding: 0 1.5rem;
+        line-height: 1.6;
+        color: #1f1b16;
+        background: #f6f2ea;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      a {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        border: 1px solid #7c7263;
+        border-radius: 2px;
+        color: #6b470d;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #ede7da;
+          background: #191712;
+        }
+        a {
+          color: #dfac50;
+          border-color: #6b6355;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Êzîdî-Wissensportal</h1>
+    <p>
+      Sie werden zur deutschsprachigen Fassung weitergeleitet. Falls das nicht automatisch geschieht,
+      wählen Sie bitte eine Sprache:
+    </p>
+    <nav aria-label="Sprachauswahl">
+      <ul>
+        {
+          locales.map((code) => (
+            <li>
+              <a href={path(code)} lang={localeMeta[code].bcp47} dir={localeMeta[code].dir}>
+                {localeMeta[code].endonym}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </body>
+</html>

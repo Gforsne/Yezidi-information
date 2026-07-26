@@ -1,0 +1,178 @@
+---
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import type { NavSection } from '../../lib/navigation';
+import { sections } from '../../lib/sections';
+
+interface Props {
+  locale: Locale;
+  /** Aktueller Bereich – wird ausgeklappt dargestellt. */
+  aktiverBereich: string;
+  /** Aktuelle Seite innerhalb des Bereichs. */
+  aktiveSeite?: string | undefined;
+  baum: readonly NavSection[];
+}
+
+const { locale, aktiverBereich, aktiveSeite, baum } = Astro.props;
+const t = useTranslations(locale);
+const bereich = baum.find((b) => b.id === aktiverBereich);
+const nachbarn = sections.filter((s) => s.group === bereich?.group && s.id !== aktiverBereich);
+---
+
+{
+  bereich && (
+    <nav class="bereichsnav" aria-labelledby="bereichsnav-titel">
+      <h2 class="titel" id="bereichsnav-titel">
+        {t('nav.inThisSection')}
+      </h2>
+
+      <p class="bereichsname">
+        <a href={bereich.href} aria-current={aktiveSeite ? undefined : 'page'}>
+          {bereich.title}
+        </a>
+      </p>
+
+      <ol class="seiten">
+        {bereich.pages.map((seite, i) => (
+          <li>
+            <a href={seite.href} aria-current={seite.slug === aktiveSeite ? 'page' : undefined}>
+              <span class="nummer" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="seitentitel">{seite.title}</span>
+              {seite.contentWarning && (
+                <span class="cw" title={t('cw.title')} aria-label={t('cw.title')}>
+                  !
+                </span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ol>
+
+      {nachbarn.length > 0 && (
+        <div class="nachbarn">
+          <h3>Verwandte Bereiche</h3>
+          <ul>
+            {nachbarn.map((n) => (
+              <li>
+                <a href={path(locale, n.slug)}>{n.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </nav>
+  )
+}
+
+<style>
+  .bereichsnav {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .bereichsname {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+    margin-block-end: var(--s-3);
+    padding-block-end: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .bereichsname a {
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .bereichsname a:hover {
+    color: var(--c-accent);
+  }
+
+  .seiten {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .seiten a {
+    display: grid;
+    grid-template-columns: 1.8rem minmax(0, 1fr) auto;
+    gap: var(--s-2);
+    align-items: baseline;
+    padding-block: var(--s-2);
+    color: var(--c-text-muted);
+    text-decoration: none;
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .seiten a:hover {
+    color: var(--c-accent);
+  }
+
+  .seiten a[aria-current='page'] {
+    color: var(--c-text);
+    font-weight: var(--w-medium);
+  }
+
+  .seiten a[aria-current='page'] .nummer {
+    color: var(--c-accent);
+  }
+
+  .nummer {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-size: var(--t-2xs);
+    color: var(--c-text-faint);
+  }
+
+  .cw {
+    color: var(--c-warn);
+    font-weight: var(--w-bold);
+  }
+
+  .nachbarn {
+    margin-block-start: var(--s-5);
+  }
+
+  .nachbarn h3 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .nachbarn ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nachbarn li + li {
+    margin-block-start: var(--s-1);
+  }
+
+  .nachbarn a {
+    color: var(--c-text-muted);
+    font-size: var(--t-xs);
+  }
+
+  @media print {
+    .bereichsnav {
+      display: none;
+    }
+  }
+</style>

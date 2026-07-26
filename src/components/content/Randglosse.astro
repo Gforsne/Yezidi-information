@@ -1,0 +1,83 @@
+---
+interface Props {
+  /** Kurzer Titel der Glosse, erscheint als Marke. */
+  titel?: string;
+  /** Art der Anmerkung – steuert die farbliche Zuordnung. */
+  art?: 'hinweis' | 'forschung' | 'sprache' | 'einordnung';
+}
+
+const { titel, art = 'hinweis' } = Astro.props;
+
+const marken: Record<NonNullable<Props['art']>, string> = {
+  hinweis: 'Hinweis',
+  forschung: 'Forschungsstand',
+  sprache: 'Zur Schreibweise',
+  einordnung: 'Einordnung',
+};
+---
+
+{/*
+  Randglosse: kurze Anmerkung neben dem Text. Sie steht im Quelltext an
+  der Stelle, auf die sie sich bezieht, und wird auf breiten Schirmen in
+  den Rand gesetzt – ohne absolute Positionierung, damit sie nicht mit
+  Nachbarelementen kollidiert.
+*/}
+<aside class:list={['randglosse', `art-${art}`]} role="note">
+  <p class="marke">{titel ?? marken[art]}</p>
+  <div class="text"><slot /></div>
+</aside>
+
+<style>
+  .randglosse {
+    margin-block: var(--s-4);
+    padding-inline-start: var(--s-3);
+    border-inline-start: var(--border-rule) solid var(--c-border-strong);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    max-inline-size: var(--measure-narrow);
+  }
+
+  .marke {
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    margin-block-end: var(--s-1);
+  }
+
+  .art-forschung {
+    border-inline-start-color: var(--c-apparat);
+  }
+
+  .art-forschung .marke {
+    color: var(--c-apparat);
+  }
+
+  .art-sprache {
+    border-inline-start-color: var(--c-accent);
+  }
+
+  .art-sprache .marke {
+    color: var(--c-accent);
+  }
+
+  .art-einordnung {
+    border-inline-start-color: var(--c-info);
+  }
+
+  .art-einordnung .marke {
+    color: var(--c-info);
+  }
+
+  @media (min-width: 90rem) {
+    /* Auf sehr breiten Schirmen rückt die Glosse in den freien Rand,
+       ohne den Textfluss zu verschieben. */
+    .randglosse {
+      float: inline-end;
+      inline-size: 14rem;
+      margin-inline-end: -16.5rem;
+      margin-block-start: 0;
+    }
+  }
+</style>

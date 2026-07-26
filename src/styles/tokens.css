@@ -1,0 +1,264 @@
+/*
+  =====================================================================
+  DESIGN-TOKENS – Êzîdî-Wissensportal
+  ---------------------------------------------------------------------
+  Herleitung siehe DESIGN.md. Kurzfassung:
+  Die Farbwelt ist aus der Materialität von Laliş abstrahiert –
+  Kalkstein (Fläche), Schattenraum im Inneren (Schrift), Messing- und
+  Sonnenocker (Akzent), Textilindigo (wissenschaftlicher Apparat),
+  Krapprot (Warnung), Quellwasser (ruhiger Hinweis).
+  Es sind bewusst KEINE religiösen Symbole und keine Ornamentmuster
+  in Tokens kodiert.
+
+  Alle Kontrastwerte sind gemessen (scripts/check-contrast.ts /
+  tests/unit/contrast.test.ts) und werden dort automatisch geprüft:
+  Fließtext AAA (>= 7:1), UI-Grenzen und Fokus >= 3:1.
+  =====================================================================
+*/
+
+:root {
+  /* ------------------------------------------------------------------
+     1. BENANNTE ROHFARBEN (6 Familien)
+     ------------------------------------------------------------------ */
+
+  /* Kalkstein – die Fläche, das Papier, der Stein von Laliş */
+  --p-kalk-50: #fdfbf6;
+  --p-kalk-100: #f6f2ea;
+  --p-kalk-200: #ede7db;
+  --p-kalk-300: #ded5c3;
+  --p-kalk-400: #c4b9a3;
+  --p-kalk-500: #a2977f;
+
+  /* Schiefer – der Schattenraum, warmes Beinahe-Schwarz statt #000 */
+  --p-schiefer-900: #100e0a;
+  --p-schiefer-800: #191712;
+  --p-schiefer-700: #211e18;
+  --p-schiefer-600: #2e2a22;
+  --p-schiefer-500: #3a352c;
+  --p-schiefer-400: #544b41;
+  --p-schiefer-300: #6e6355;
+  --p-schiefer-200: #7c7263;
+  --p-schiefer-100: #1f1b16; /* Textfarbe hell – bewusst als eigener Stop */
+
+  /* Ocker – Messing, Sonnenlicht auf Stein. Akzent, sparsam eingesetzt */
+  --p-ocker-700: #4e340a;
+  --p-ocker-600: #6b470d;
+  --p-ocker-500: #8a5a12;
+  --p-ocker-400: #dfac50;
+  --p-ocker-300: #efc479;
+  --p-ocker-100: #f1e7d2;
+
+  /* Indigo – Textilfarbe; trägt den Quellen- und Belegapparat */
+  --p-indigo-700: #22305a;
+  --p-indigo-600: #2e3f6e;
+  --p-indigo-400: #9fb3e0;
+  --p-indigo-300: #c3d0ee;
+  --p-indigo-100: #e6ebf7;
+
+  /* Krapp – gedecktes Rotbraun. Warnung/Inhaltshinweis, NIE Alarmrot */
+  --p-krapp-700: #5e2419;
+  --p-krapp-600: #7e3324;
+  --p-krapp-400: #e8a08a;
+  --p-krapp-200: #2a1d18;
+  --p-krapp-100: #f7e9e2;
+
+  /* Quellwasser – Kaniya Sipî. Ruhiger Hinweis, Info, „geprüft“ */
+  --p-wasser-700: #1c4a45;
+  --p-wasser-600: #26605a;
+  --p-wasser-400: #8ec5bd;
+  --p-wasser-100: #e2efec;
+
+  /* ------------------------------------------------------------------
+     2. SEMANTISCHE TOKENS – HELLES SCHEMA (Standard)
+     ------------------------------------------------------------------ */
+  --c-surface: var(--p-kalk-100);
+  --c-surface-raised: var(--p-kalk-50);
+  --c-surface-sunken: var(--p-kalk-200);
+  --c-surface-inverse: var(--p-schiefer-800);
+
+  --c-text: var(--p-schiefer-100); /* 15.33:1 – AAA */
+  --c-text-muted: var(--p-schiefer-400); /*  7.65:1 – AAA */
+  --c-text-faint: var(--p-schiefer-300); /*  5.26:1 – AA  */
+  --c-text-inverse: var(--p-kalk-100);
+
+  --c-accent: var(--p-ocker-600); /*  7.43:1 – AAA */
+  --c-accent-hover: var(--p-ocker-700); /* 10.34:1 – AAA */
+  --c-accent-tint: var(--p-ocker-100);
+
+  --c-apparat: var(--p-indigo-600); /*  9.16:1 – AAA */
+  --c-apparat-tint: var(--p-indigo-100);
+
+  --c-warn: var(--p-krapp-600); /*  7.88:1 – AAA */
+  --c-warn-surface: var(--p-krapp-100);
+
+  --c-info: var(--p-wasser-600);
+  --c-info-surface: var(--p-wasser-100);
+
+  --c-border: var(--p-kalk-300);
+  --c-border-strong: var(--p-schiefer-200); /* 4.23:1 – >= 3:1 */
+  --c-focus: #1b4d8f; /*  7.51:1 */
+  --c-selection: var(--p-ocker-100);
+
+  color-scheme: light;
+
+  /* ------------------------------------------------------------------
+     3. TYPOGRAFIE-TOKENS
+     ------------------------------------------------------------------ */
+  --f-display: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --f-text: 'Source Serif 4', 'Charter', Georgia, 'Times New Roman', serif;
+  --f-utility:
+    'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --f-arabic: 'IBM Plex Sans Arabic', 'Noto Naskh Arabic', 'Geeza Pro', 'Times New Roman', serif;
+  --f-mono: 'IBM Plex Sans', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Modulare Skala, Verhältnis ~1.22 (Quarte gedämpft), Basis 17 px */
+  --t-2xs: 0.75rem; /* 12px – Fußnotenziffern, Marginalien-Meta   */
+  --t-xs: 0.8125rem; /* 13px – Bildunterschriften, Badges          */
+  --t-sm: 0.9375rem; /* 15px – Marginalien, Tabellen              */
+  --t-base: 1.0625rem; /* 17px – Fließtext                          */
+  --t-md: 1.1875rem; /* 19px – Lead / „In Kürze“                   */
+  --t-lg: 1.375rem; /* 22px – H3                                  */
+  --t-xl: 1.6875rem; /* 27px – H2                                  */
+  --t-2xl: clamp(1.9rem, 1.5rem + 1.6vw, 2.375rem); /* H1 Artikel  */
+  --t-3xl: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem); /* Hero        */
+
+  --lh-tight: 1.15;
+  --lh-heading: 1.22;
+  --lh-snug: 1.4;
+  --lh-base: 1.68;
+  --lh-loose: 1.78;
+
+  --ls-display: -0.015em;
+  --ls-caps: 0.08em;
+
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-semibold: 600;
+  --w-bold: 700;
+
+  /* Zeilenlänge: 62–75 Zeichen (Vorgabe Abschnitt 7) */
+  --measure: 68ch;
+  --measure-narrow: 56ch;
+  --measure-wide: 82ch;
+
+  /* ------------------------------------------------------------------
+     4. RAUM, RASTER, FORM
+     ------------------------------------------------------------------ */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --s-10: 8rem;
+
+  --radius-xs: 1px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  --border-hair: 1px;
+  --border-rule: 2px;
+
+  /* Signature-Element: die mitlaufende Belegspalte (siehe DESIGN.md) */
+  --w-apparat: 17rem;
+  --gap-apparat: 2.5rem;
+  --w-shell: 84rem;
+  --pad-shell: clamp(1rem, 0.4rem + 2.4vw, 2.5rem);
+
+  --shadow-raised: 0 1px 2px color-mix(in oklab, var(--p-schiefer-800) 8%, transparent);
+  --shadow-overlay:
+    0 8px 28px color-mix(in oklab, var(--p-schiefer-800) 16%, transparent),
+    0 1px 3px color-mix(in oklab, var(--p-schiefer-800) 12%, transparent);
+
+  --dur-fast: 90ms;
+  --dur-base: 160ms;
+  --ease: cubic-bezier(0.2, 0, 0.2, 1);
+
+  --z-sticky: 20;
+  --z-header: 40;
+  --z-overlay: 60;
+  --z-skiplink: 80;
+}
+
+/* --------------------------------------------------------------------
+   5. DUNKLES SCHEMA – eigenständig gestimmt, keine Invertierung.
+      „Nachtstein“: warmes Anthrazit statt Blaugrau, Ocker angehoben,
+      Indigo zu Dämmerungsblau aufgehellt.
+   -------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='hell']) {
+    --c-surface: var(--p-schiefer-800);
+    --c-surface-raised: var(--p-schiefer-700);
+    --c-surface-sunken: var(--p-schiefer-900);
+    --c-surface-inverse: var(--p-kalk-100);
+
+    --c-text: #ede7da; /* 14.53:1 – AAA */
+    --c-text-muted: #b0a797; /*  7.52:1 – AAA */
+    --c-text-faint: #8f8778; /*  5.04:1 – AA  */
+    --c-text-inverse: var(--p-schiefer-100);
+
+    --c-accent: var(--p-ocker-400); /*  8.66:1 – AAA */
+    --c-accent-hover: var(--p-ocker-300); /* 10.95:1 – AAA */
+    --c-accent-tint: #2b2417;
+
+    --c-apparat: var(--p-indigo-400); /*  8.53:1 – AAA */
+    --c-apparat-tint: #1b2033;
+
+    --c-warn: var(--p-krapp-400); /*  8.38:1 – AAA */
+    --c-warn-surface: var(--p-krapp-200);
+
+    --c-info: var(--p-wasser-400);
+    --c-info-surface: #16241f;
+
+    --c-border: var(--p-schiefer-500);
+    --c-border-strong: #6b6355; /*  3.02:1 */
+    --c-focus: #8fc2f5; /*  9.55:1 */
+    --c-selection: #3a2f18;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dunkel'] {
+  --c-surface: var(--p-schiefer-800);
+  --c-surface-raised: var(--p-schiefer-700);
+  --c-surface-sunken: var(--p-schiefer-900);
+  --c-surface-inverse: var(--p-kalk-100);
+
+  --c-text: #ede7da;
+  --c-text-muted: #b0a797;
+  --c-text-faint: #8f8778;
+  --c-text-inverse: var(--p-schiefer-100);
+
+  --c-accent: var(--p-ocker-400);
+  --c-accent-hover: var(--p-ocker-300);
+  --c-accent-tint: #2b2417;
+
+  --c-apparat: var(--p-indigo-400);
+  --c-apparat-tint: #1b2033;
+
+  --c-warn: var(--p-krapp-400);
+  --c-warn-surface: var(--p-krapp-200);
+
+  --c-info: var(--p-wasser-400);
+  --c-info-surface: #16241f;
+
+  --c-border: var(--p-schiefer-500);
+  --c-border-strong: #6b6355;
+  --c-focus: #8fc2f5;
+  --c-selection: #3a2f18;
+
+  color-scheme: dark;
+}
+
+/* Kontrastanhebung, wenn das Betriebssystem sie verlangt */
+@media (prefers-contrast: more) {
+  :root {
+    --c-text-faint: var(--c-text-muted);
+    --c-border: var(--c-border-strong);
+  }
+}

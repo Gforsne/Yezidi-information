@@ -1,0 +1,110 @@
+---
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  /** Schreibung in der Hawar-Umschrift – die verbindliche Form (STYLEGUIDE.md). */
+  original: string;
+  /** Vereinfachte Aussprachehilfe, z. B. „ta-wu-SI me-LEK“. */
+  aussprache?: string | undefined;
+  /** Deutsche Bedeutung bzw. Übersetzung. */
+  bedeutung?: string | undefined;
+  /** Weitere im Deutschen gängige Schreibweisen – einmalig, unbewertet. */
+  varianten?: string[] | undefined;
+  /** Verweis auf den Glossareintrag. */
+  glossar?: string | undefined;
+  /** Dateiname in /public/audio; noch nicht vorhanden. */
+  audio?: string | null;
+  locale?: Locale | undefined;
+  /** Als Block statt inline setzen (für Begriffslisten). */
+  block?: boolean | undefined;
+}
+
+const {
+  original,
+  aussprache,
+  bedeutung,
+  varianten = [],
+  glossar,
+  audio = null,
+  locale = 'de',
+  block = false,
+} = Astro.props;
+
+const t = useTranslations(locale);
+---
+
+<span class:list={['kurmanci-begriff', { block }]}>
+  <span class="original" lang="ku">{original}</span>
+  {aussprache && <span class="aussprache">[{aussprache}]</span>}
+  {bedeutung && <span class="bedeutung">‚{bedeutung}‘</span>}
+  {
+    varianten.length > 0 && (
+      <span class="varianten">
+        {t('glossary.alsoWritten')}: {varianten.join(', ')}
+      </span>
+    )
+  }
+  {
+    audio ? (
+      <span class="audio-platz">Aussprache: {audio}</span>
+    ) : (
+      <span class="audio-fehlt" title={t('glossary.noAudio')}>
+        <span class="nur-screenreader">{t('glossary.noAudio')}</span>
+        <span aria-hidden="true">♪ —</span>
+      </span>
+    )
+  }
+  {
+    glossar && (
+      <a class="glossar-link" href={path(locale, 'glossar', glossar)}>
+        <span class="nur-screenreader">{t('glossary.openEntry')}: </span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    )
+  }
+</span>
+
+<style>
+  .kurmanci-begriff {
+    display: inline;
+  }
+
+  .kurmanci-begriff.block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--s-1) var(--s-2);
+    padding-block: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .original {
+    font-style: italic;
+    font-weight: var(--w-medium);
+    color: var(--c-text);
+  }
+
+  .aussprache,
+  .varianten,
+  .audio-fehlt,
+  .audio-platz {
+    font-family: var(--f-utility);
+    font-size: 0.82em;
+    color: var(--c-text-faint);
+  }
+
+  .bedeutung {
+    color: var(--c-text-muted);
+  }
+
+  .audio-fehlt {
+    /* Platzhalter für die spätere Aussprachedatei – bewusst sichtbar leer. */
+    border-block-end: 1px dashed var(--c-border-strong);
+  }
+
+  .glossar-link {
+    text-decoration: none;
+    color: var(--c-apparat);
+  }
+</style>

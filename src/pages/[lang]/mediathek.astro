@@ -1,0 +1,133 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../layouts/SeitenLayout.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const eintraege = await getCollection('media');
+
+const typen: Record<string, string> = {
+  dokumentation: 'Dokumentation',
+  podcast: 'Podcast',
+  ausstellung: 'Ausstellung',
+  archiv: 'Archiv',
+  webseite: 'Webseite',
+  buchreihe: 'Buchreihe',
+};
+---
+
+<SeitenLayout
+  locale={locale}
+  title="Mediathek"
+  eyebrow={t('nav.tools')}
+  intro="Verweise auf Dokumentationen, Podcasts, Ausstellungen und Archive. Es wird ausschließlich verlinkt – nichts Fremdes wird eingebettet, solange die Rechte nicht dokumentiert geklärt sind. Jeder Eintrag nennt Urheberschaft, Jahr und Sprache."
+  trail={[{ label: 'Mediathek', slug: 'mediathek' }]}
+>
+  <ul class="liste">
+    {
+      eintraege.map((m) => (
+        <li>
+          <p class="typ utility">
+            {typen[m.data.typ] ?? m.data.typ}
+            {m.data.contentWarning && <span class="cw">{t('cw.title')}</span>}
+          </p>
+          <h2>{m.data.title}</h2>
+          <p class="urheber utility">
+            {m.data.urheber}
+            {m.data.jahr ? `, ${m.data.jahr}` : ''} · {m.data.sprache.toUpperCase()}
+            {m.data.dauer ? ` · ${m.data.dauer}` : ''}
+          </p>
+          <p class="beschreibung">{m.data.beschreibung}</p>
+          {m.data.url ? (
+            <p class="link utility">
+              <a href={m.data.url} rel="noopener nofollow">
+                {t('media.external')} ↗
+              </a>
+              <span class="hinweis">{t('media.externalNote')}</span>
+            </p>
+          ) : (
+            <p class="ohne-link utility">Fundstelle noch nicht geprüft – kein Link.</p>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="fuss utility">
+    Einbettungen (Video, Audio) erfolgen nur, wenn die Rechte dokumentiert geklärt sind. Bis dahin
+    bleibt es beim Verweis – auch, weil eine Einbettung Daten an Dritte übertragen würde.
+  </p>
+</SeitenLayout>
+
+<style>
+  .liste {
+    list-style: none;
+    margin: 0 0 var(--s-6);
+    padding: 0;
+    max-inline-size: var(--measure-wide);
+  }
+
+  .liste li {
+    padding-block: var(--s-5);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .typ {
+    display: flex;
+    gap: var(--s-2);
+    color: var(--c-text-faint);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+    font-size: var(--t-2xs);
+  }
+
+  .cw {
+    color: var(--c-warn);
+    border: 1px solid currentColor;
+    border-radius: var(--radius-xs);
+    padding-inline: 0.4em;
+  }
+
+  .liste h2 {
+    font-size: var(--t-lg);
+    margin-block: var(--s-1);
+  }
+
+  .urheber {
+    color: var(--c-text-muted);
+  }
+
+  .beschreibung {
+    margin-block: var(--s-2);
+    font-size: var(--t-sm);
+    color: var(--c-text);
+    max-inline-size: var(--measure);
+  }
+
+  .link {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2) var(--s-3);
+    align-items: baseline;
+  }
+
+  .hinweis,
+  .ohne-link {
+    color: var(--c-text-faint);
+    font-size: var(--t-xs);
+  }
+
+  .fuss {
+    max-inline-size: var(--measure);
+    color: var(--c-text-muted);
+    padding: var(--s-3);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-radius: var(--radius-sm);
+  }
+</style>

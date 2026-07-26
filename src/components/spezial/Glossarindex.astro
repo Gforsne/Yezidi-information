@@ -1,0 +1,409 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import Statusbadge from '../content/Statusbadge.astro';
+
+interface Props {
+  eintraege: CollectionEntry<'glossary'>[];
+  locale: Locale;
+}
+
+const { eintraege, locale } = Astro.props;
+const t = useTranslations(locale);
+
+const kategorien: Record<string, string> = {
+  religion: 'Religion',
+  gesellschaft: 'Gesellschaft',
+  orte: 'Orte',
+  feste: 'Feste',
+  sprache: 'Sprache',
+  geschichte: 'Geschichte',
+  recht: 'Recht',
+};
+
+/**
+ * Sortierung mit deutscher Collation, damit Ê, Î, Ş und Ç an der
+ * erwarteten Stelle einsortiert werden und nicht ans Ende rutschen.
+ */
+const sortiert = [...eintraege].sort((a, b) =>
+  a.data.title.localeCompare(b.data.title, 'de', { sensitivity: 'base' }),
+);
+
+function anfangsbuchstabe(titel: string): string {
+  const erster = titel
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .charAt(0)
+    .toUpperCase();
+  return /[A-Z]/.test(erster) ? erster : '#';
+}
+
+const gruppen = new Map<string, CollectionEntry<'glossary'>[]>();
+for (const e of sortiert) {
+  const b = anfangsbuchstabe(e.data.title);
+  const liste = gruppen.get(b) ?? [];
+  liste.push(e);
+  gruppen.set(b, liste);
+}
+
+const buchstaben = [...gruppen.keys()];
+const vorhandeneKategorien = [...new Set(sortiert.map((e) => e.data.kategorie))].sort();
+---
+
+<div class="glossarindex" data-glossar>
+  <nav class="buchstabenleiste" aria-label={t('glossary.jumpTo')}>
+    <ul>
+      {
+        buchstaben.map((b) => (
+          <li>
+            <a href={`#buchstabe-${b === '#' ? 'sonstige' : b}`}>{b}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <form class="glossar-filter" data-glossar-filter hidden>
+    <p class="feld">
+      <label for="glossar-suche">Begriff einschränken</label>
+      <input
+        type="search"
+        id="glossar-suche"
+        name="q"
+        autocomplete="off"
+        placeholder="z. B. Qewl"
+        data-glossar-suche
+      />
+    </p>
+
+    <fieldset>
+      <legend>Kategorie</legend>
+      <div class="optionen">
+        {
+          vorhandeneKategorien.map((k) => (
+            <label>
+              <input type="checkbox" name="kategorie" value={k} checked />
+              <span>{kategorien[k] ?? k}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <output data-glossar-zaehler aria-live="polite">{sortiert.length} Einträge</output>
+  </form>
+
+  {
+    [...gruppen.entries()].map(([buchstabe, liste]) => (
+      <section
+        class="gruppe"
+        id={`buchstabe-${buchstabe === '#' ? 'sonstige' : buchstabe}`}
+        data-gruppe
+      >
+        <h2 class="buchstabe">{buchstabe}</h2>
+        <ul class="eintraege">
+          {liste.map((e) => (
+            <li
+              class="eintrag"
+              data-titel={e.data.title.toLowerCase()}
+              data-kurmanci={(e.data.kurmanci ?? '').toLowerCase()}
+              data-kategorie={e.data.kategorie}
+              data-varianten={e.data.varianten.join(' ').toLowerCase()}
+            >
+              <dl>
+                <dt>
+                  <a href={path(locale, 'glossar', e.data.slug)}>{e.data.title}</a>
+                  {e.data.kurmanci && e.data.kurmanci !== e.data.title && (
+                    <span class="kurmanci" lang="ku">
+                      {e.data.kurmanci}
+                    </span>
+                  )}
+                  {e.data.aussprache && <span class="aussprache">[{e.data.aussprache}]</span>}
+                </dt>
+                <dd class="definition">{e.data.kurzdefinition}</dd>
+                {e.data.varianten.length > 0 && (
+                  <dd class="varianten">
+                    {t('glossary.alsoWritten')}: {e.data.varianten.join(', ')}
+                  </dd>
+                )}
+              </dl>
+              <p class="meta">
+                <span class="kategorie">{kategorien[e.data.kategorie] ?? e.data.kategorie}</span>
+                <Statusbadge status={e.data.status} locale={locale} inline />
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <p class="leer" data-glossar-leer hidden>Keine Begriffe für diese Auswahl.</p>
+</div>
+
+<style>
+  .glossarindex {
+    max-inline-size: var(--measure-wide);
+  }
+
+  .buchstabenleiste ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1);
+    list-style: none;
+    margin: 0 0 var(--s-5);
+    padding: 0;
+  }
+
+  .buchstabenleiste a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 2.75rem;
+    min-block-size: 2.75rem;
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    font-weight: var(--w-medium);
+    color: var(--c-text-muted);
+    text-decoration: none;
+  }
+
+  .buchstabenleiste a:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+  }
+
+  .glossar-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--s-4);
+    margin-block-end: var(--s-6);
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+    font-family: var(--f-utility);
+  }
+
+  .feld {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  label[for] {
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+  }
+
+  input[type='search'] {
+    min-block-size: 2.75rem;
+    min-inline-size: 14rem;
+    padding-inline: var(--s-3);
+    background: var(--c-surface);
+    border: var(--border-hair) solid var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--c-text);
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-inline-size: 0;
+  }
+
+  legend {
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    padding: 0;
+  }
+
+  .optionen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-3);
+  }
+
+  .optionen label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-block-size: 2.75rem;
+    font-size: var(--t-sm);
+    cursor: pointer;
+  }
+
+  .optionen input {
+    accent-color: var(--c-accent);
+  }
+
+  output {
+    margin-inline-start: auto;
+    color: var(--c-text-muted);
+    font-size: var(--t-sm);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gruppe {
+    margin-block-end: var(--s-6);
+  }
+
+  .buchstabe {
+    font-family: var(--f-display);
+    font-size: var(--t-xl);
+    color: var(--c-accent);
+    padding-block-end: var(--s-2);
+    border-block-end: var(--border-rule) solid var(--c-border);
+    scroll-margin-block-start: var(--s-8);
+  }
+
+  .eintraege {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .eintrag {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--s-2) var(--s-4);
+    padding-block: var(--s-3);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .eintrag[hidden] {
+    display: none;
+  }
+
+  dl {
+    margin: 0;
+    flex: 1 1 20rem;
+  }
+
+  dt {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--s-2);
+  }
+
+  dt a {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  dt a:hover {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .kurmanci {
+    font-style: italic;
+    color: var(--c-text-muted);
+  }
+
+  .aussprache,
+  .varianten {
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-faint);
+  }
+
+  .definition {
+    margin: var(--s-1) 0 0;
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    max-inline-size: var(--measure);
+  }
+
+  .varianten {
+    margin: var(--s-1) 0 0;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+  }
+
+  .kategorie {
+    padding-inline: 0.5em;
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-xs);
+    color: var(--c-text-faint);
+  }
+
+  .leer {
+    padding: var(--s-5);
+    color: var(--c-text-faint);
+    font-family: var(--f-utility);
+  }
+</style>
+
+<script>
+  const wurzel = document.querySelector<HTMLElement>('[data-glossar]');
+  const formular = wurzel?.querySelector<HTMLFormElement>('[data-glossar-filter]');
+
+  if (wurzel && formular) {
+    formular.hidden = false;
+
+    const eintraege = [...wurzel.querySelectorAll<HTMLLIElement>('.eintrag')];
+    const gruppen = [...wurzel.querySelectorAll<HTMLElement>('[data-gruppe]')];
+    const suche = formular.querySelector<HTMLInputElement>('[data-glossar-suche]');
+    const zaehler = formular.querySelector<HTMLOutputElement>('[data-glossar-zaehler]');
+    const leer = wurzel.querySelector<HTMLElement>('[data-glossar-leer]');
+
+    const normalisiere = (s: string) =>
+      s
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '');
+
+    const anwenden = () => {
+      const q = normalisiere(suche?.value.trim() ?? '');
+      const kategorien = new Set(
+        [...formular.querySelectorAll<HTMLInputElement>('input[name="kategorie"]:checked')].map(
+          (i) => i.value,
+        ),
+      );
+
+      let sichtbar = 0;
+      for (const e of eintraege) {
+        const heuhaufen = normalisiere(
+          `${e.dataset.titel ?? ''} ${e.dataset.kurmanci ?? ''} ${e.dataset.varianten ?? ''}`,
+        );
+        const passt =
+          (q === '' || heuhaufen.includes(q)) && kategorien.has(e.dataset.kategorie ?? '');
+        e.hidden = !passt;
+        if (passt) sichtbar += 1;
+      }
+
+      for (const g of gruppen) {
+        g.hidden = !g.querySelector('.eintrag:not([hidden])');
+      }
+
+      if (zaehler) zaehler.textContent = `${sichtbar} Einträge`;
+      if (leer) leer.hidden = sichtbar > 0;
+    };
+
+    formular.addEventListener('input', anwenden);
+    formular.addEventListener('change', anwenden);
+    formular.addEventListener('submit', (e) => e.preventDefault());
+    anwenden();
+  }
+</script>

@@ -1,0 +1,112 @@
+# =====================================================================
+# ZEITLEISTE
+# ---------------------------------------------------------------------
+# Gerüst. Jeder Eintrag trägt `status: stub`, solange Datierung und
+# Sachverhalt nicht belegt sind. `zusammenfassung` beschreibt, was der
+# Eintrag später darstellen wird – sie behauptet noch nichts.
+#
+# `firman: true` markiert Ereignisse, die in der êzîdîschen Erinnerung
+# als Firman überliefert sind. Ob und wie sich diese Erinnerung auf
+# datierbare Ereignisse abbilden lässt, ist selbst Gegenstand der
+# Forschung (siehe /de/geschichte/die-73-firman).
+# =====================================================================
+
+- id: schaikh-adi-12-jh
+  title: 'Wirken des Şêx Adî ibn Musafir in Laliş'
+  datum: '12. Jahrhundert'
+  jahr: 1150
+  jahrBis: null
+  datierungUnsicher: true
+  epoche: mittelalter
+  thema: [religion, gesellschaft]
+  firman: false
+  zusammenfassung: >-
+    Platzhalter: Wirkungszeit des Şêx Adî und Entstehung der Adawiyya.
+    Datierung, Herkunft und die Frage, wie sich daraus die Gemeinschaft
+    herausbildete, sind zu belegen.
+  ort: 'Laliş'
+  artikel: 'geschichte/sex-adi-und-die-adawiyya'
+  sources: []
+  confidence: unklar
+  status: stub
+  contentWarning: false
+
+- id: osmanische-feldzuege-19-jh
+  title: 'Feldzüge gegen Şingal und Şêxan'
+  datum: '19. Jahrhundert'
+  jahr: 1830
+  jahrBis: 1900
+  datierungUnsicher: true
+  epoche: 19-jahrhundert
+  thema: [verfolgung, politik]
+  firman: true
+  zusammenfassung: >-
+    Platzhalter: Militärische Feldzüge des 19. Jahrhunderts gegen die
+    Siedlungsgebiete. Anzahl, Datierung und Verlauf sind einzeln zu
+    belegen; die Zuordnung zur Firman-Erinnerung ist zu prüfen.
+  ort: 'Şingal, Şêxan'
+  artikel: 'geschichte/19-jahrhundert-feldzuege'
+  sources: []
+  confidence: unklar
+  status: stub
+  contentWarning: true
+
+- id: erster-weltkrieg-flucht-kaukasus
+  title: 'Flucht in den Kaukasus'
+  datum: '1914–1918'
+  jahr: 1914
+  jahrBis: 1918
+  datierungUnsicher: false
+  epoche: weltkriege
+  thema: [verfolgung, migration]
+  firman: true
+  zusammenfassung: >-
+    Platzhalter: Fluchtbewegungen während des Ersten Weltkriegs in
+    Richtung Armenien und Georgien, im Zusammenhang mit den Verfolgungen
+    im Osmanischen Reich. Umfang und Verlauf sind zu belegen.
+  ort: 'Südkaukasus'
+  artikel: 'geschichte/erster-weltkrieg-und-flucht-in-den-kaukasus'
+  sources: []
+  confidence: unklar
+  status: stub
+  contentWarning: true
+
+- id: anschlaege-2007
+  title: 'Anschläge in Til Ezêr und Girê Zêr'
+  datum: '14. August 2007'
+  jahr: 2007
+  jahrBis: null
+  datierungUnsicher: false
+  epoche: nach-2003
+  thema: [verfolgung]
+  firman: false
+  zusammenfassung: >-
+    Platzhalter: Sprengstoffanschläge auf zwei êzîdîsche Ortschaften.
+    Opferzahlen liegen in unterschiedlichen Angaben vor und sind mit
+    Herkunft, Stichjahr und Erhebungsmethode nebeneinanderzustellen.
+  ort: 'Til Ezêr (Siba Şêx Xidir), Girê Zêr (Qahtaniyya)'
+  artikel: 'geschichte/anschlaege-2007'
+  sources: []
+  confidence: unklar
+  status: stub
+  contentWarning: true
+
+- id: singal-august-2014
+  title: 'Angriff auf Şingal'
+  datum: '3. August 2014'
+  jahr: 2014
+  jahrBis: null
+  datierungUnsicher: false
+  epoche: genozid-2014
+  thema: [verfolgung, recht]
+  firman: false
+  zusammenfassung: >-
+    Platzhalter: Beginn des Angriffs des sogenannten Islamischen Staates
+    auf die Region Şingal. Chronologie, Zahlen und völkerrechtliche
+    Einordnung werden im Bereich Genozid belegt dargestellt.
+  ort: 'Şingal (Sindschar)'
+  artikel: 'genozid/vorgeschichte-und-chronologie-august-2014'
+  sources: []
+  confidence: unklar
+  status: stub
+  contentWarning: true

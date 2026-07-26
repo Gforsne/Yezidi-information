@@ -1,0 +1,173 @@
+---
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import { getToolLinks } from '../../lib/navigation';
+import { sections } from '../../lib/sections';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const werkzeuge = getToolLinks(locale).slice(0, 8);
+const jahr = new Date().getFullYear();
+
+const rechtliches = [
+  { slug: 'impressum', title: 'Impressum' },
+  { slug: 'datenschutz', title: 'Datenschutzerklärung' },
+  { slug: 'barrierefreiheit', title: 'Barrierefreiheitserklärung' },
+  { slug: 'bildnachweise', title: 'Bildnachweise' },
+  { slug: 'kontakt', title: 'Kontakt' },
+  { slug: 'korrekturhinweis', title: 'Korrekturhinweis melden' },
+];
+
+const projekt = [
+  { slug: 'ueber-dieses-projekt', title: 'Über dieses Projekt' },
+  { slug: 'redaktionelle-grundsaetze', title: 'Redaktionelle Grundsätze' },
+  { slug: 'wie-wir-arbeiten', title: 'Wie wir arbeiten' },
+  { slug: 'mitwirken', title: 'Mitwirken und Fehler melden' },
+];
+---
+
+<footer class="fuss">
+  <div class="shell">
+    <p class="prinzip">{t('footer.sourcePrinciple')}</p>
+
+    <div class="footer-nav">
+      <nav aria-labelledby="fuss-bereiche">
+        <h2 id="fuss-bereiche">{t('nav.sections')}</h2>
+        <ul>
+          {
+            sections.map((s) => (
+              <li>
+                <a href={path(locale, s.slug)}>{s.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="fuss-werkzeuge">
+        <h2 id="fuss-werkzeuge">{t('nav.tools')}</h2>
+        <ul>
+          {
+            werkzeuge.map((w) => (
+              <li>
+                <a href={w.href}>{w.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="fuss-projekt">
+        <h2 id="fuss-projekt">{t('footer.project')}</h2>
+        <ul>
+          {
+            projekt.map((p) => (
+              <li>
+                <a href={path(locale, 'meta', p.slug)}>{p.title}</a>
+              </li>
+            ))
+          }
+          <li><a href={path(locale, 'aenderungen')}>Änderungsprotokoll</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="fuss-recht">
+        <h2 id="fuss-recht">{t('footer.legal')}</h2>
+        <ul>
+          {
+            rechtliches.map((r) => (
+              <li>
+                <a href={path(locale, 'meta', r.slug)}>{r.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <div class="fuss-zeile">
+      <p class="datenschutz">{t('footer.noTracking')}</p>
+      <p class="lizenz">
+        © {jahr} {t('site.name')}. {t('footer.license')}
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .fuss {
+    margin-block-start: var(--s-9);
+    border-block-start: var(--border-rule) solid var(--c-border);
+    background: var(--c-surface-sunken);
+    padding-block: var(--s-7) var(--s-6);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .prinzip {
+    max-inline-size: 56ch;
+    margin-block-end: var(--s-6);
+    font-family: var(--f-text);
+    font-size: var(--t-md);
+    line-height: var(--lh-snug);
+    color: var(--c-text);
+    border-inline-start: var(--border-rule) solid var(--c-accent);
+    padding-inline-start: var(--s-4);
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: var(--s-5) var(--s-6);
+  }
+
+  .footer-nav h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-3);
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-nav li + li {
+    margin-block-start: var(--s-2);
+  }
+
+  .footer-nav a {
+    color: var(--c-text-muted);
+    text-decoration: none;
+  }
+
+  .footer-nav a:hover {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .fuss-zeile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3) var(--s-6);
+    justify-content: space-between;
+    margin-block-start: var(--s-7);
+    padding-block-start: var(--s-4);
+    border-block-start: var(--border-hair) solid var(--c-border);
+    color: var(--c-text-faint);
+    font-size: var(--t-xs);
+  }
+
+  .datenschutz {
+    max-inline-size: 60ch;
+  }
+</style>

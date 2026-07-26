@@ -1,0 +1,206 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../layouts/SeitenLayout.astro';
+import Statusbadge from '../../components/content/Statusbadge.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import { sections, sectionById } from '../../lib/sections';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const alle = await getCollection('faq');
+const fragen = alle.filter((f) => f.data.lang === 'de');
+const themen = sections.filter((s) => fragen.some((f) => f.data.thema === s.id));
+
+// FAQPage-Auszeichnung nur für beantwortete Fragen – eine leere Antwort
+// als FAQ auszuzeichnen wäre irreführend.
+const beantwortet = fragen.filter((f) => f.data.antwort.trim().length > 0);
+const jsonLd =
+  beantwortet.length > 0
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: beantwortet.map((f) => ({
+            '@type': 'Question',
+            name: f.data.frage,
+            acceptedAnswer: { '@type': 'Answer', text: f.data.antwort },
+          })),
+        },
+      ]
+    : [];
+---
+
+<SeitenLayout
+  locale={locale}
+  title={t('faq.title')}
+  eyebrow={t('nav.tools')}
+  intro="Kurze Antworten auf häufig gestellte Fragen, nach Themen sortiert. Jede Antwort wird belegt und verweist auf die ausführliche Darstellung. Fragen ohne belegte Antwort bleiben sichtbar offen, statt vorläufig beantwortet zu werden."
+  trail={[{ label: t('faq.title'), slug: 'faq' }]}
+  jsonLd={jsonLd}
+>
+  <p slot="kopf" class="bilanz utility">
+    {fragen.length} Fragen · {beantwortet.length} beantwortet
+  </p>
+
+  <nav class="themenband" aria-label={t('faq.byTopic')}>
+    <ul>
+      {
+        themen.map((th) => (
+          <li>
+            <a href={`#thema-${th.id}`}>{th.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  {
+    themen.map((th) => (
+      <section class="thema" id={`thema-${th.id}`} aria-labelledby={`thema-titel-${th.id}`}>
+        <h2 id={`thema-titel-${th.id}`}>{th.title}</h2>
+        <dl>
+          {fragen
+            .filter((f) => f.data.thema === th.id)
+            .map((f) => (
+              <div class="frage" id={`frage-${f.data.id}`}>
+                <dt>{f.data.frage}</dt>
+                <dd>
+                  {f.data.antwort.trim().length > 0 ? (
+                    <p class="antwort">{f.data.antwort}</p>
+                  ) : (
+                    <p class="offen">
+                      Diese Frage ist noch nicht belegt beantwortet. Was dafür geklärt werden muss,
+                      steht unten.
+                    </p>
+                  )}
+
+                  {f.data.openQuestions.length > 0 && (
+                    <ul class="offene-fragen">
+                      {f.data.openQuestions.map((q) => (
+                        <li>{q}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <p class="meta utility">
+                    <Statusbadge status={f.data.status} locale={locale} inline />
+                    {f.data.weiterfuehrend.map((z) => {
+                      const bereich = z.split('/')[0] ?? '';
+                      return (
+                        <a href={path(locale, z)}>
+                          {sectionById[bereich as keyof typeof sectionById]?.title ?? bereich} →
+                        </a>
+                      );
+                    })}
+                  </p>
+                </dd>
+              </div>
+            ))}
+        </dl>
+      </section>
+    ))
+  }
+</SeitenLayout>
+
+<style>
+  .bilanz {
+    margin-block-start: var(--s-4);
+    color: var(--c-text-faint);
+  }
+
+  .themenband ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    list-style: none;
+    margin: 0 0 var(--s-6);
+    padding: 0;
+  }
+
+  .themenband a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    padding-inline: var(--s-3);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    text-decoration: none;
+  }
+
+  .themenband a:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+  }
+
+  .thema {
+    margin-block-end: var(--s-7);
+    scroll-margin-block-start: var(--s-8);
+  }
+
+  .thema h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-4);
+    padding-block-end: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  dl {
+    margin: 0;
+    max-inline-size: var(--measure-wide);
+  }
+
+  .frage {
+    padding-block: var(--s-4);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    scroll-margin-block-start: var(--s-8);
+  }
+
+  dt {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+    margin-block-end: var(--s-2);
+  }
+
+  dd {
+    margin: 0;
+    max-inline-size: var(--measure);
+  }
+
+  .antwort {
+    color: var(--c-text);
+  }
+
+  .offen {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    font-style: italic;
+    color: var(--c-text-faint);
+  }
+
+  .offene-fragen {
+    margin-block: var(--s-2);
+    padding-inline-start: 1.2em;
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3);
+    margin-block-start: var(--s-2);
+    font-size: var(--t-xs);
+  }
+</style>

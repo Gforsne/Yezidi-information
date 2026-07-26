@@ -1,0 +1,138 @@
+---
+import type { MarkdownHeading } from 'astro';
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  headings: readonly MarkdownHeading[];
+  locale: Locale;
+  /** Tiefste angezeigte Ebene. */
+  maxTiefe?: 2 | 3;
+}
+
+const { headings, locale, maxTiefe = 3 } = Astro.props;
+const t = useTranslations(locale);
+const eintraege = headings.filter((h) => h.depth >= 2 && h.depth <= maxTiefe);
+---
+
+{
+  eintraege.length > 1 && (
+    <nav class="toc" aria-labelledby="toc-titel" data-toc>
+      <h2 class="titel" id="toc-titel">
+        {t('nav.toc')}
+      </h2>
+      <ol>
+        {eintraege.map((h) => (
+          <li class:list={[`tiefe-${h.depth}`]}>
+            <a href={`#${h.slug}`} data-toc-link={h.slug}>
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+<style>
+  .toc {
+    margin-block-end: var(--s-6);
+    padding-inline-start: var(--s-4);
+    border-inline-start: var(--border-hair) solid var(--c-border);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: toc;
+  }
+
+  li {
+    counter-increment: toc;
+  }
+
+  .tiefe-3 {
+    padding-inline-start: var(--s-4);
+  }
+
+  a {
+    display: block;
+    padding-block: var(--s-1);
+    color: var(--c-text-muted);
+    text-decoration: none;
+    border-inline-start: var(--border-rule) solid transparent;
+    margin-inline-start: calc(var(--s-4) * -1 - 2px);
+    padding-inline-start: var(--s-4);
+  }
+
+  a:hover {
+    color: var(--c-accent);
+  }
+
+  /* Scroll-Spy: markiert den Abschnitt, der gerade gelesen wird. */
+  a[aria-current='true'] {
+    color: var(--c-text);
+    font-weight: var(--w-medium);
+    border-inline-start-color: var(--c-accent);
+  }
+
+  @media print {
+    .toc {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Scroll-Spy als fortschrittliche Verbesserung. Ohne JavaScript bleibt
+  // das Inhaltsverzeichnis eine vollständige Ankerliste.
+  const toc = document.querySelector<HTMLElement>('[data-toc]');
+  if (toc && 'IntersectionObserver' in window) {
+    const links = new Map<string, HTMLAnchorElement>();
+    toc.querySelectorAll<HTMLAnchorElement>('[data-toc-link]').forEach((a) => {
+      const slug = a.dataset.tocLink;
+      if (slug) links.set(slug, a);
+    });
+
+    const ueberschriften = [...links.keys()]
+      .map((slug) => document.getElementById(slug))
+      .filter((el): el is HTMLElement => el !== null);
+
+    let aktiv: string | null = null;
+    const setze = (slug: string | null) => {
+      if (slug === aktiv) return;
+      if (aktiv) links.get(aktiv)?.removeAttribute('aria-current');
+      if (slug) links.get(slug)?.setAttribute('aria-current', 'true');
+      aktiv = slug;
+    };
+
+    const sichtbar = new Set<string>();
+    const beobachter = new IntersectionObserver(
+      (eintraege) => {
+        for (const e of eintraege) {
+          if (e.isIntersecting) sichtbar.add(e.target.id);
+          else sichtbar.delete(e.target.id);
+        }
+        const erster = ueberschriften.find((h) => sichtbar.has(h.id));
+        if (erster) setze(erster.id);
+      },
+      { rootMargin: '-10% 0px -70% 0px', threshold: 0 },
+    );
+
+    ueberschriften.forEach((h) => beobachter.observe(h));
+  }
+</script>

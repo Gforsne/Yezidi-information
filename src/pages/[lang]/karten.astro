@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../layouts/SeitenLayout.astro';
+import Karte from '../../components/spezial/Karte.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const alle = await getCollection('places');
+const orte = alle.filter((o) => o.data.lang === 'de' && !o.data.draft);
+---
+
+<SeitenLayout
+  locale={locale}
+  title="Karten"
+  eyebrow={t('nav.tools')}
+  intro="Siedlungsgebiete, heilige Orte, Fluchtbewegungen und Diaspora – als Kartenebenen und zusätzlich als Liste mit Koordinaten. Die Karte lädt keine Kacheln von fremden Servern; sie zeigt ein Gradnetz und die Punkte aus dem Ortsverzeichnis dieses Portals."
+  trail={[{ label: 'Karten', slug: 'karten' }]}
+  breit
+>
+  <div slot="kopf" class="datenschutz">
+    <h2>Datenschutz dieser Karte</h2>
+    <p>
+      Beim Aufruf dieser Seite wird kein externer Kartendienst kontaktiert. Es werden keine
+      Standortdaten erhoben und keine Anfragen an Dritte gesendet. Eine Hintergrundkarte kann von
+      Betreibenden über eine Umgebungsvariable eingebunden werden – dann gelten deren
+      Datenschutzbedingungen, worauf hier hingewiesen werden muss.
+    </p>
+  </div>
+
+  <Karte orte={orte} locale={locale} />
+
+  <section class="ebenen-erklaerung" aria-labelledby="ebenen-titel">
+    <h2 id="ebenen-titel">Die Ebenen</h2>
+    <dl>
+      <div>
+        <dt>Siedlungsgebiete</dt>
+        <dd>Regionen und Ortschaften mit historischer oder gegenwärtiger êzîdîscher Besiedlung.</dd>
+      </div>
+      <div>
+        <dt>Heilige Orte</dt>
+        <dd>Heiligtümer und Mezar. Ausführlich behandelt im <a href={path(locale, 'heilige-orte')}>Bereich Heilige Orte</a>.</dd>
+      </div>
+      <div>
+        <dt>Fluchtbewegungen</dt>
+        <dd>
+          Noch nicht kartiert. Routen werden erst aufgenommen, wenn sie institutionell belegt sind –
+          eine gezeichnete Route ohne Quelle wäre eine Behauptung.
+        </dd>
+      </div>
+      <div>
+        <dt>Diaspora</dt>
+        <dd>Gemeindezentren, Friedhöfe und Einrichtungen außerhalb der Herkunftsregionen.</dd>
+      </div>
+      <div>
+        <dt>Gedenkorte</dt>
+        <dd>Orte des Gedenkens und der Dokumentation.</dd>
+      </div>
+    </dl>
+  </section>
+</SeitenLayout>
+
+<style>
+  .datenschutz {
+    margin-block-start: var(--s-5);
+    padding: var(--s-4);
+    border-inline-start: var(--border-rule) solid var(--c-info);
+    background: var(--c-info-surface);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .datenschutz h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-info);
+    margin-block-end: var(--s-2);
+  }
+
+  .ebenen-erklaerung {
+    margin-block-start: var(--s-7);
+    max-inline-size: var(--measure-wide);
+  }
+
+  .ebenen-erklaerung h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-4);
+  }
+
+  .ebenen-erklaerung dl {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .ebenen-erklaerung > dl > div {
+    display: grid;
+    gap: 0 var(--s-4);
+    padding-block: var(--s-3);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  @media (min-width: 40rem) {
+    .ebenen-erklaerung > dl > div {
+      grid-template-columns: 12rem minmax(0, 1fr);
+    }
+  }
+
+  .ebenen-erklaerung dt {
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+  }
+
+  .ebenen-erklaerung dd {
+    margin: 0;
+    color: var(--c-text-muted);
+  }
+</style>

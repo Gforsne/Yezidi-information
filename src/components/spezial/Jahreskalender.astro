@@ -1,0 +1,266 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import Statusbadge from '../content/Statusbadge.astro';
+
+interface Props {
+  feste: CollectionEntry<'festivals'>[];
+  locale: Locale;
+}
+
+const { feste, locale } = Astro.props;
+const t = useTranslations(locale);
+
+const monate = [
+  'Januar',
+  'Februar',
+  'März',
+  'April',
+  'Mai',
+  'Juni',
+  'Juli',
+  'August',
+  'September',
+  'Oktober',
+  'November',
+  'Dezember',
+];
+
+const systeme: Record<string, string> = {
+  'ostkirchlich-julianisch': 'ostkirchlich/julianisch',
+  gregorianisch: 'gregorianisch',
+  mondbezogen: 'mondbezogen',
+  unklar: 'noch nicht belegt',
+};
+
+const zugeordnet = feste.filter((f) => f.data.monatGregorianisch !== null);
+const ohneTermin = feste.filter((f) => f.data.monatGregorianisch === null);
+---
+
+<div class="jahreskalender">
+  {/*
+    Der Kalender ordnet Feste nur grob einem gregorianischen Monat zu.
+    Genaue Daten wären eine Scheingenauigkeit: Die Termine folgen einem
+    anderen Kalendersystem und verschieben sich. Deshalb steht bei jedem
+    Fest das Bezugssystem und die Terminregel statt eines Datums.
+  */}
+  <ol class="monatsband">
+    {
+      monate.map((monat, i) => {
+        const nummer = i + 1;
+        const dazu = zugeordnet.filter((f) => f.data.monatGregorianisch === nummer);
+        return (
+          <li class:list={['monat', { leer: dazu.length === 0 }]}>
+            <h3 class="monatsname">
+              <span class="nummer" aria-hidden="true">
+                {String(nummer).padStart(2, '0')}
+              </span>
+              {monat}
+            </h3>
+            {dazu.length === 0 ? (
+              <p class="kein-fest">—</p>
+            ) : (
+              <ul class="feste">
+                {dazu.map((f) => (
+                  <li>
+                    <a href={path(locale, 'feste', f.data.slug)} class="fest">
+                      <span class="fest-name" lang="ku">
+                        {f.data.nameKurmanci}
+                      </span>
+                      {f.data.nameDeutsch && (
+                        <span class="fest-deutsch">{f.data.nameDeutsch}</span>
+                      )}
+                    </a>
+                    <p class="fest-meta">
+                      <span class="system">
+                        {t('calendar.system')}: {systeme[f.data.kalendersystem]}
+                      </span>
+                      {f.data.beweglich && <span class="beweglich">{t('calendar.movable')}</span>}
+                    </p>
+                    {f.data.terminregel ? (
+                      <p class="terminregel">{f.data.terminregel}</p>
+                    ) : (
+                      <p class="terminregel offen">Terminregel noch nicht belegt</p>
+                    )}
+                    <Statusbadge status={f.data.status} locale={locale} inline />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+
+  {
+    ohneTermin.length > 0 && (
+      <section class="ohne-termin" aria-labelledby="ohne-termin-titel">
+        <h3 id="ohne-termin-titel">{t('calendar.noDate')}</h3>
+        <p class="erklaerung">
+          Für diese Feste ist die Lage im Jahr noch nicht belegt. Sie stehen bewusst außerhalb des
+          Monatsbandes, statt einem geschätzten Monat zugeordnet zu werden.
+        </p>
+        <ul>
+          {ohneTermin.map((f) => (
+            <li>
+              <a href={path(locale, 'feste', f.data.slug)}>
+                <span lang="ku">{f.data.nameKurmanci}</span>
+                {f.data.nameDeutsch && <span class="fest-deutsch"> – {f.data.nameDeutsch}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</div>
+
+<style>
+  .jahreskalender {
+    max-inline-size: var(--w-shell);
+  }
+
+  .monatsband {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: var(--s-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .monat {
+    padding: var(--s-3);
+    border: var(--border-hair) solid var(--c-border);
+    border-block-start: var(--border-rule) solid var(--c-accent);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+  }
+
+  .monat.leer {
+    border-block-start-color: var(--c-border);
+    background: transparent;
+  }
+
+  .monatsname {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-3);
+    padding-block-end: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .nummer {
+    font-variant-numeric: tabular-nums lining-nums;
+    color: var(--c-text-faint);
+  }
+
+  .kein-fest {
+    color: var(--c-text-faint);
+    font-family: var(--f-utility);
+  }
+
+  .feste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+
+  .fest {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .fest-name {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+  }
+
+  .fest:hover .fest-name {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .fest-deutsch {
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .fest-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-2);
+    margin-block: var(--s-1);
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    color: var(--c-text-faint);
+  }
+
+  .beweglich {
+    padding-inline: 0.4em;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-xs);
+  }
+
+  .terminregel {
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-1);
+  }
+
+  .terminregel.offen {
+    font-style: italic;
+    color: var(--c-text-faint);
+  }
+
+  .ohne-termin {
+    margin-block-start: var(--s-6);
+    padding: var(--s-4);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .ohne-termin h3 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .erklaerung {
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-3);
+  }
+
+  .ohne-termin ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ohne-termin li + li {
+    margin-block-start: var(--s-2);
+  }
+</style>

@@ -1,0 +1,139 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+import Bildplatzhalter from './Bildplatzhalter.astro';
+
+export interface GalerieBild {
+  /** Pfad unterhalb von /public/img. */
+  datei: string;
+  alt: string;
+  caption?: string;
+  urheber: string;
+  lizenz: string;
+  lizenzUrl?: string;
+  quelle: string;
+  jahr?: number;
+  breite?: number;
+  hoehe?: number;
+}
+
+interface Props {
+  titel: string;
+  bilder?: GalerieBild[];
+  /** Beschreibung dessen, was die Galerie später zeigen soll. */
+  gesucht?: string;
+  locale?: Locale;
+}
+
+const { titel, bilder = [], gesucht, locale = 'de' } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="galerie" aria-labelledby="galerie-titel">
+  <h2 class="titel" id="galerie-titel">{titel}</h2>
+
+  {
+    bilder.length === 0 ? (
+      <Bildplatzhalter
+        gesucht={gesucht ?? 'Bildmaterial mit geklärten Rechten für diesen Abschnitt'}
+        locale={locale}
+      />
+    ) : (
+      <ul>
+        {bilder.map((b) => (
+          <li>
+            <figure>
+              {/* Feste Maße verhindern Layoutsprünge; ohne Maße wird ein
+                  Standardverhältnis erzwungen. */}
+              <img
+                src={`/img/${b.datei}`}
+                alt={b.alt}
+                loading="lazy"
+                decoding="async"
+                width={b.breite ?? 1200}
+                height={b.hoehe ?? 800}
+              />
+              <figcaption>
+                {b.caption && <span class="bildtext">{b.caption}</span>}
+                <span class="nachweis">
+                  <span class="label">{t('image.credit')}:</span> {b.urheber},{' '}
+                  {b.lizenzUrl ? (
+                    <a href={b.lizenzUrl} rel="noopener nofollow">
+                      {b.lizenz}
+                    </a>
+                  ) : (
+                    b.lizenz
+                  )}
+                  , {b.quelle}
+                  {b.jahr ? `, ${b.jahr}` : ''}
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</section>
+
+<style>
+  .galerie {
+    margin-block: var(--s-6);
+    max-inline-size: var(--measure-wide);
+  }
+
+  .titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-3);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--s-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  img {
+    inline-size: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-sunken);
+  }
+
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    margin-block-start: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+  }
+
+  .bildtext {
+    color: var(--c-text);
+  }
+
+  .nachweis {
+    color: var(--c-text-faint);
+    font-size: var(--t-2xs);
+  }
+
+  .label {
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+  }
+</style>

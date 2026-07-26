@@ -1,0 +1,132 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ArtikelLayout from '../../../layouts/ArtikelLayout.astro';
+import { mdxKomponenten } from '../../../components/mdx';
+import { locales, type Locale } from '../../../i18n/config';
+import { path } from '../../../i18n/utils';
+
+export async function getStaticPaths() {
+  const orte = await getCollection('places');
+  return orte
+    .filter((o) => !o.data.draft)
+    .flatMap((eintrag) => {
+      const sprachen = eintrag.data.lang === 'de' ? locales : [eintrag.data.lang];
+      return sprachen.map((lang) => ({
+        params: { lang, slug: eintrag.data.slug },
+        props: { eintrag },
+      }));
+    });
+}
+
+const locale = Astro.params.lang as Locale;
+const { eintrag } = Astro.props as { eintrag: CollectionEntry<'places'> };
+const { Content, headings, remarkPluginFrontmatter } = await render(eintrag);
+const d = eintrag.data;
+
+const k = remarkPluginFrontmatter as {
+  _zitate?: number;
+  _belegluecken?: number;
+  _abschnitte?: number;
+};
+
+const jsonLdOrt = d.koordinaten
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Place',
+      name: d.title,
+      address: { '@type': 'PostalAddress', addressCountry: d.land },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: d.koordinaten[1],
+        longitude: d.koordinaten[0],
+      },
+    }
+  : null;
+---
+
+<ArtikelLayout
+  locale={locale}
+  section="heilige-orte"
+  slug={d.slug}
+  title={d.title}
+  lead={d.lead}
+  status={d.status}
+  confidence={d.confidence}
+  perspektive="etisch"
+  contentWarning={d.contentWarning}
+  updated={d.updated}
+  reviewedBy={d.reviewedBy}
+  openQuestions={d.openQuestions}
+  sources={d.sources}
+  tags={d.tags}
+  gliederung={[]}
+  weiterfuehrend={[]}
+  headings={headings}
+  zitate={k._zitate ?? 0}
+  belegluecken={k._belegluecken ?? 0}
+  abschnitte={k._abschnitte ?? 0}
+>
+  {jsonLdOrt && <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrt)} is:inline />}
+
+  <dl class="ortsdaten">
+    <div>
+      <dt>Art</dt>
+      <dd>{d.art}</dd>
+    </div>
+    <div>
+      <dt>Land</dt>
+      <dd>{d.land}{d.region ? `, ${d.region}` : ''}</dd>
+    </div>
+    <div>
+      <dt>Koordinaten</dt>
+      <dd>
+        {
+          d.koordinaten
+            ? `${d.koordinaten[1].toFixed(4)}, ${d.koordinaten[0].toFixed(4)} (${d.koordinatenGenauigkeit})`
+            : 'noch nicht belegt'
+        }
+      </dd>
+    </div>
+    <div>
+      <dt>Zustand</dt>
+      <dd>{d.zustand}</dd>
+    </div>
+  </dl>
+
+  <p class="verweis utility">
+    <a href={path(locale, 'karten')}>Auf der Karte ansehen</a> ·
+    <a href={path(locale, 'orte')}>Zum Ortsverzeichnis</a>
+  </p>
+
+  <Content components={mdxKomponenten} />
+</ArtikelLayout>
+
+<style>
+  .ortsdaten {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3) var(--s-6);
+    margin-block-end: var(--s-4);
+    padding-block-end: var(--s-4);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .ortsdaten dt {
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+  }
+
+  .ortsdaten dd {
+    margin: 0;
+    color: var(--c-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .verweis {
+    margin-block-end: var(--s-5);
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+import type { Locale } from '../../i18n/config';
+
+interface Props {
+  locale?: Locale;
+  /** Erläuterung unter dem Diagramm. */
+  hinweis?: string;
+}
+
+const { hinweis } = Astro.props;
+
+/*
+  Bewusste Gestaltungsentscheidung:
+  Die drei Stände werden NEBENEINANDER auf einer Linie dargestellt, in
+  gleich großen Feldern und ohne Pfeile nach oben oder unten. Eine
+  Pyramide oder ein Organigramm würde eine Rangordnung behaupten, die
+  so nicht gemeint ist – die Stände unterscheiden sich in Funktion und
+  Heiratskreis, nicht als Über- und Unterordnung.
+
+  Inhaltlich stehen hier nur die Bezeichnungen. Was die Stände jeweils
+  bedeuten, gehört belegt in den Fließtext und nicht in eine Grafik.
+*/
+const staende = [
+  { name: 'Mirîd', umschrift: 'Mirîd', slug: 'mirid' },
+  { name: 'Şêx', umschrift: 'Şêx', slug: 'sex' },
+  { name: 'Pîr', umschrift: 'Pîr', slug: 'pir' },
+];
+---
+
+<figure class="standdiagramm">
+  <svg
+    viewBox="0 0 600 210"
+    role="img"
+    aria-labelledby="sd-titel sd-beschreibung"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <title id="sd-titel">Die drei Stände der êzîdîschen Gesellschaftsordnung</title>
+    <desc id="sd-beschreibung">
+      Drei gleich große, nebeneinanderliegende Felder mit den Bezeichnungen Mirîd, Şêx und Pîr. Sie
+      sind durch waagerechte Linien verbunden. Die Darstellung ist bewusst nicht hierarchisch: Es
+      gibt keine Über- oder Unterordnung und keine Pfeilrichtung.
+    </desc>
+
+    {/* Verbindungslinie – gleiche Ebene, keine Richtung */}
+    <line x1="100" y1="95" x2="500" y2="95" class="verbindung"></line>
+
+    {
+      staende.map((stand, i) => {
+        const x = 100 + i * 200;
+        return (
+          <g class="stand">
+            <circle cx={x} cy="95" r="52" class="feld" />
+            <text x={x} y="90" class="name" text-anchor="middle">
+              {stand.name}
+            </text>
+            <text x={x} y="112" class="rolle" text-anchor="middle">
+              Stand
+            </text>
+          </g>
+        );
+      })
+    }
+
+    <text x="300" y="190" class="fussnote" text-anchor="middle">
+      gleichrangige Darstellung – keine Rangfolge
+    </text>
+  </svg>
+
+  <figcaption>
+    <p class="hinweis">
+      {hinweis ??
+        'Die Grafik zeigt ausschließlich die Bezeichnungen und ihre Gleichrangigkeit in der Darstellung. Funktion, Zugehörigkeit und Heiratsregeln der Stände sind belegt im Fließtext beschrieben.'}
+    </p>
+  </figcaption>
+</figure>
+
+<style>
+  .standdiagramm {
+    margin-block: var(--s-6);
+    max-inline-size: var(--measure);
+  }
+
+  svg {
+    inline-size: 100%;
+    block-size: auto;
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .verbindung {
+    stroke: var(--c-border-strong);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+  }
+
+  .feld {
+    fill: var(--c-surface);
+    stroke: var(--c-accent);
+    stroke-width: 2;
+  }
+
+  .name {
+    font-family: var(--f-display);
+    font-size: 25px;
+    font-weight: 600;
+    fill: var(--c-text);
+  }
+
+  .rolle {
+    font-family: var(--f-utility);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    fill: var(--c-text-faint);
+  }
+
+  .fussnote {
+    font-family: var(--f-utility);
+    font-size: 12px;
+    fill: var(--c-text-muted);
+  }
+
+  figcaption {
+    margin-block-start: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+</style>

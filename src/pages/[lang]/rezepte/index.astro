@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../../layouts/SeitenLayout.astro';
+import Statusbadge from '../../../components/content/Statusbadge.astro';
+import { locales, type Locale } from '../../../i18n/config';
+import { path } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const alle = await getCollection('recipes');
+const rezepte = alle.filter((r) => r.data.lang === 'de' && !r.data.draft);
+---
+
+<SeitenLayout
+  locale={locale}
+  title="Rezepte"
+  eyebrow="Kultur"
+  intro="Speisen mit Anlass, Region und Herkunftsangabe. Aufgenommen werden ausschließlich Rezepte aus publizierten Sammlungen, Vereinspublikationen oder dokumentierten Interviews – kein aus dem Gedächtnis rekonstruiertes Gericht."
+  trail={[{ label: 'Rezepte', slug: 'rezepte' }]}
+>
+  <ul class="liste">
+    {
+      rezepte.map((r) => (
+        <li>
+          <a href={path(locale, 'rezepte', r.data.slug)}>
+            <span class="titel">{r.data.title}</span>
+            <span class="lead">{r.data.lead}</span>
+          </a>
+          <Statusbadge status={r.data.status} locale={locale} inline />
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="hinweis utility">
+    Die Einträge sind derzeit Platzhalter für die Struktur dieses Inhaltstyps. Sie enthalten
+    bewusst kein Gericht, solange keine belegte Vorlage vorliegt.
+  </p>
+</SeitenLayout>
+
+<style>
+  .liste {
+    list-style: none;
+    margin: 0 0 var(--s-6);
+    padding: 0;
+    max-inline-size: var(--measure-wide);
+  }
+
+  .liste li {
+    padding-block: var(--s-4);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .liste a {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    text-decoration: none;
+    margin-block-end: var(--s-2);
+  }
+
+  .titel {
+    font-family: var(--f-display);
+    font-size: var(--t-lg);
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+  }
+
+  .liste a:hover .titel {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .lead {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    max-inline-size: var(--measure);
+  }
+
+  .hinweis {
+    max-inline-size: var(--measure);
+    color: var(--c-text-faint);
+  }
+</style>

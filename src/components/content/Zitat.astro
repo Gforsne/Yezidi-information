@@ -1,0 +1,89 @@
+---
+interface Props {
+  /** Wer spricht bzw. schreibt. Pflicht – kein Zitat ohne Zuschreibung. */
+  quelle: string;
+  /** Fundstelle innerhalb der Quelle. */
+  fundstelle?: string;
+  /** Sprache des Zitats, falls nicht Deutsch (setzt lang und Richtung). */
+  sprache?: 'de' | 'en' | 'ku' | 'ar';
+  /** Originalwortlaut, wenn das Zitat übersetzt wiedergegeben wird. */
+  original?: string;
+  /** Wer übersetzt hat – bei Übersetzungen Pflichtangabe. */
+  uebersetzung?: string;
+}
+
+const { quelle, fundstelle, sprache = 'de', original, uebersetzung } = Astro.props;
+const dir = sprache === 'ar' ? 'rtl' : 'ltr';
+---
+
+<figure class="zitat-block">
+  <blockquote lang={sprache} dir={dir}>
+    <slot />
+  </blockquote>
+
+  {
+    original && (
+      <p class="original" lang={sprache === 'de' ? 'ku' : sprache}>
+        {original}
+      </p>
+    )
+  }
+
+  <figcaption>
+    <span class="quelle">{quelle}</span>
+    {fundstelle && <span class="fundstelle">{fundstelle}</span>}
+    {uebersetzung && <span class="uebersetzung">Übersetzung: {uebersetzung}</span>}
+  </figcaption>
+</figure>
+
+<style>
+  .zitat-block {
+    margin-block: var(--s-5);
+    max-inline-size: var(--measure);
+  }
+
+  blockquote {
+    margin: 0;
+    padding-inline-start: var(--s-4);
+    border-inline-start: var(--border-rule) solid var(--c-accent);
+    font-size: var(--t-md);
+    line-height: var(--lh-snug);
+    color: var(--c-text);
+  }
+
+  blockquote::before {
+    content: '„';
+    color: var(--c-accent);
+  }
+
+  blockquote::after {
+    content: '“';
+    color: var(--c-accent);
+  }
+
+  .original {
+    margin-block-start: var(--s-2);
+    padding-inline-start: var(--s-4);
+    font-style: italic;
+    color: var(--c-text-muted);
+  }
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-3);
+    margin-block-start: var(--s-2);
+    padding-inline-start: var(--s-4);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .quelle {
+    font-weight: var(--w-medium);
+  }
+
+  .quelle::before {
+    content: '— ';
+  }
+</style>

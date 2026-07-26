@@ -1,0 +1,103 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  gliederung: readonly string[];
+  auftrag?: string | undefined;
+  locale?: Locale;
+}
+
+const { gliederung, auftrag, locale = 'de' } = Astro.props;
+const t = useTranslations(locale);
+---
+
+{/*
+  Erscheint nur auf Seiten mit `status: stub`.
+
+  Der Sinn: Wer hier landet, soll sofort erkennen, dass noch kein Inhalt
+  vorliegt – und trotzdem sehen, was die Seite abdecken wird und was
+  konkret zu recherchieren ist. Das ist ehrlicher als ein halbfertiger
+  Text, der wie Wissen aussieht.
+*/}
+<section class="gliederungshinweis" aria-labelledby="gh-titel">
+  <h2 class="titel" id="gh-titel">Diese Seite ist ein Gerüst</h2>
+
+  <p class="erklaerung">
+    {t('status.stub.help')} Unten stehen die vorgesehenen Abschnitte. Jeder Abschnitt trägt den
+    Rechercheauftrag, der ihn füllen soll. Es steht bewusst kein vorläufiger Text hier, der wie
+    gesichertes Wissen aussehen könnte.
+  </p>
+
+  {auftrag && (
+    <p class="auftrag"><strong>Rechercheauftrag der Seite:</strong> {auftrag}</p>
+  )}
+
+  {
+    gliederung.length > 0 && (
+      <>
+        <h3 class="untertitel">Vorgesehene Gliederung</h3>
+        <ol class="liste">
+          {gliederung.map((punkt) => (
+            <li>{punkt}</li>
+          ))}
+        </ol>
+      </>
+    )
+  }
+</section>
+
+<style>
+  .gliederungshinweis {
+    margin-block-end: var(--s-6);
+    padding: var(--s-4);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-sunken);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .erklaerung {
+    color: var(--c-text);
+    line-height: var(--lh-snug);
+  }
+
+  .auftrag {
+    margin-block-start: var(--s-3);
+    padding-inline-start: var(--s-3);
+    border-inline-start: var(--border-rule) solid var(--c-accent);
+    color: var(--c-text);
+  }
+
+  .untertitel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block: var(--s-4) var(--s-2);
+  }
+
+  .liste {
+    margin: 0;
+    padding-inline-start: 1.4em;
+    color: var(--c-text-muted);
+  }
+
+  .liste li {
+    padding-block: var(--s-1);
+  }
+</style>

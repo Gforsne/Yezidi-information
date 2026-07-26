@@ -1,0 +1,217 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import SeitenLayout from '../../../layouts/SeitenLayout.astro';
+import Quellenliste from '../../../components/content/Quellenliste.astro';
+import Statusbadge from '../../../components/content/Statusbadge.astro';
+import KurmanciBegriff from '../../../components/content/KurmanciBegriff.astro';
+import { mdxKomponenten } from '../../../components/mdx';
+import { locales, type Locale } from '../../../i18n/config';
+import { formatDate, path, useTranslations } from '../../../i18n/utils';
+
+export async function getStaticPaths() {
+  const eintraege = await getCollection('glossary');
+  return eintraege
+    .filter((e) => !e.data.draft)
+    .flatMap((eintrag) => {
+      const sprachen = eintrag.data.lang === 'de' ? locales : [eintrag.data.lang];
+      return sprachen.map((lang) => ({
+        params: { lang, slug: eintrag.data.slug },
+        props: { eintrag },
+      }));
+    });
+}
+
+const locale = Astro.params.lang as Locale;
+const { eintrag } = Astro.props as { eintrag: CollectionEntry<'glossary'> };
+const { Content } = await render(eintrag);
+const d = eintrag.data;
+const t = useTranslations(locale);
+
+const alleArtikel = await getCollection('articles');
+const verwendetAuf = alleArtikel
+  .filter((a) => a.data.lang === 'de' && a.data.relatedGlossary.includes(d.slug))
+  .map((a) => ({ title: a.data.title, href: path(locale, a.data.section, a.data.slug) }));
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: d.title,
+    description: d.kurzdefinition,
+    inDefinedTermSet: new URL(path(locale, 'glossar'), Astro.site ?? 'https://ezidi-portal.example')
+      .href,
+    url: new URL(Astro.url.pathname, Astro.site ?? 'https://ezidi-portal.example').href,
+  },
+];
+---
+
+<SeitenLayout
+  locale={locale}
+  title={d.title}
+  eyebrow={t('glossary.title')}
+  intro={d.kurzdefinition}
+  trail={[{ label: t('glossary.title'), slug: 'glossar' }, { label: d.title, slug: d.slug }]}
+  jsonLd={jsonLd}
+>
+  <div class="glossarseite">
+    <div class="haupt">
+      <dl class="daten">
+        {
+          d.kurmanci && (
+            <div>
+              <dt>{t('glossary.kurmanci')}</dt>
+              <dd>
+                <KurmanciBegriff
+                  original={d.kurmanci}
+                  aussprache={d.aussprache ?? undefined}
+                  varianten={d.varianten}
+                  audio={d.audio}
+                  locale={locale}
+                />
+              </dd>
+            </div>
+          )
+        }
+        {
+          d.arabisch && (
+            <div>
+              <dt>Arabisch</dt>
+              <dd lang="ar" dir="rtl">
+                {d.arabisch}
+              </dd>
+            </div>
+          )
+        }
+        {
+          d.varianten.length > 0 && (
+            <div>
+              <dt>{t('glossary.alsoWritten')}</dt>
+              <dd>{d.varianten.join(', ')}</dd>
+            </div>
+          )
+        }
+        <div>
+          <dt>Kategorie</dt>
+          <dd>{d.kategorie}</dd>
+        </div>
+      </dl>
+
+      <div class="prosa" data-pagefind-body>
+        <Content components={mdxKomponenten} />
+      </div>
+
+      {
+        d.openQuestions.length > 0 && (
+          <section class="fragen" aria-labelledby="glossar-fragen">
+            <h2 id="glossar-fragen">{t('article.openQuestions')}</h2>
+            <ul>
+              {d.openQuestions.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <Quellenliste refs={d.sources} locale={locale} />
+
+      {
+        verwendetAuf.length > 0 && (
+          <nav class="verwendet" aria-labelledby="verwendet-titel">
+            <h2 id="verwendet-titel">{t('glossary.usedOn')}</h2>
+            <ul>
+              {verwendetAuf.map((v) => (
+                <li>
+                  <a href={v.href}>{v.title}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+
+      <footer class="fuss">
+        <Statusbadge status={d.status} locale={locale} mitHilfe />
+        <p>
+          {t('article.updated')}:{' '}
+          <time datetime={d.updated.toISOString()}>{formatDate(d.updated, locale)}</time>
+        </p>
+        <p>
+          <a href={path(locale, 'glossar')}>← {t('glossary.title')}</a>
+        </p>
+      </footer>
+    </div>
+  </div>
+</SeitenLayout>
+
+<style>
+  .glossarseite {
+    max-inline-size: var(--measure-wide);
+  }
+
+  .daten {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3) var(--s-6);
+    margin-block-end: var(--s-6);
+    padding-block-end: var(--s-4);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .daten dt {
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+  }
+
+  .daten dd {
+    margin: 0;
+    color: var(--c-text);
+  }
+
+  .fragen,
+  .verwendet {
+    margin-block-start: var(--s-6);
+  }
+
+  .fragen h2,
+  .verwendet h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .fragen ul,
+  .verwendet ul {
+    margin: 0;
+    padding-inline-start: 1.2em;
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+  }
+
+  .fragen li,
+  .verwendet li {
+    padding-block: var(--s-1);
+  }
+
+  .fuss {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3) var(--s-5);
+    margin-block-start: var(--s-6);
+    padding-block-start: var(--s-4);
+    border-block-start: var(--border-rule) solid var(--c-border);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+</style>

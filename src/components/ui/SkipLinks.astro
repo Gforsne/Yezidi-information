@@ -1,0 +1,17 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<nav class="skip-links" aria-label={t('nav.skipToContent')}>
+  <a href="#inhalt">{t('nav.skipToContent')}</a>
+  <a href="#hauptnavigation">{t('nav.skipToNav')}</a>
+  <a href="#suchfeld">{t('nav.skipToSearch')}</a>
+</nav>

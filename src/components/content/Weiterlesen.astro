@@ -1,0 +1,139 @@
+---
+import { getCollection } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import { sectionById, type SectionId } from '../../lib/sections';
+
+interface Props {
+  /** Pfade ohne Sprachpräfix, z. B. `religion/gottesbild-und-monotheismus`. */
+  ziele: readonly string[];
+  locale: Locale;
+  titel?: string;
+}
+
+const { ziele, locale, titel } = Astro.props;
+const t = useTranslations(locale);
+
+const artikel = await getCollection('articles');
+const nachPfad = new Map(
+  artikel
+    .filter((a) => a.data.lang === 'de')
+    .map((a) => [`${a.data.section}/${a.data.slug}`, a.data]),
+);
+
+const eintraege = ziele.map((ziel) => {
+  const daten = nachPfad.get(ziel);
+  const bereich = ziel.split('/')[0] as SectionId;
+  return {
+    ziel,
+    href: path(locale, ziel),
+    title: daten?.title ?? ziel,
+    bereich: sectionById[bereich]?.title ?? bereich,
+    gefunden: daten !== undefined,
+    cw: daten?.contentWarning ?? false,
+  };
+});
+---
+
+{
+  eintraege.length > 0 && (
+    <nav class="weiterlesen" aria-labelledby="weiterlesen-titel">
+      <h2 class="titel" id="weiterlesen-titel">
+        {titel ?? t('article.related')}
+      </h2>
+      <ul>
+        {eintraege.map((e) => (
+          <li>
+            <a href={e.href} class:list={{ fehlt: !e.gefunden }}>
+              <span class="bereich">{e.bereich}</span>
+              <span class="name">
+                {e.title}
+                {e.cw && <span class="cw">{t('cw.title')}</span>}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<style>
+  .weiterlesen {
+    margin-block-start: var(--s-7);
+    padding-block-start: var(--s-4);
+    border-block-start: var(--border-rule) solid var(--c-border);
+    max-inline-size: var(--measure-wide);
+  }
+
+  .titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-3);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--s-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    block-size: 100%;
+    padding: var(--s-3);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+    text-decoration: none;
+    color: var(--c-text);
+  }
+
+  a:hover {
+    border-color: var(--c-accent);
+  }
+
+  .bereich {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+  }
+
+  .name {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+    line-height: var(--lh-heading);
+  }
+
+  .cw {
+    display: inline-block;
+    margin-inline-start: 0.4em;
+    padding-inline: 0.4em;
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-regular);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+    color: var(--c-warn);
+    border: 1px solid currentColor;
+    border-radius: var(--radius-xs);
+    vertical-align: 0.15em;
+  }
+
+  .fehlt {
+    border-style: dashed;
+    border-color: var(--c-warn);
+  }
+</style>

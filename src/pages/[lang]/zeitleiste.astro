@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../layouts/SeitenLayout.astro';
+import Zeitleiste from '../../components/spezial/Zeitleiste.astro';
+import Inhaltshinweis from '../../components/content/Inhaltshinweis.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const eintraege = await getCollection('events');
+const firman = eintraege.filter((e) => e.data.firman).length;
+---
+
+<SeitenLayout
+  locale={locale}
+  title={t('timeline.title')}
+  eyebrow={t('nav.tools')}
+  intro="Die Geschichte der Êzîdî als filterbare Zeitleiste – von der Ursprungsdebatte bis zur Gegenwart. Ereignisse, die in der êzîdîschen Erinnerung als Firman überliefert sind, tragen eine eigene Markierung. Unsichere Datierungen sind gekennzeichnet; die Zeitleiste behauptet keine Genauigkeit, die die Quellen nicht hergeben."
+  trail={[{ label: t('timeline.title'), slug: 'zeitleiste' }]}
+  breit
+>
+  <div slot="kopf">
+    <Inhaltshinweis
+      locale={locale}
+      text="Die Zeitleiste enthält Einträge zu Verfolgung und Massengewalt. Sie verzichtet auf Gewaltdetails und auf Bilder."
+    />
+    <p class="bilanz utility">
+      {eintraege.length} {t('timeline.entries')} · {firman} davon als {t('timeline.firmanMark')} markiert
+    </p>
+  </div>
+
+  <Zeitleiste eintraege={eintraege} locale={locale} />
+
+  <p class="hinweis utility">
+    Die Zeitleiste ist ein Gerüst: Datierungen, Zahlen und Zuordnungen sind noch zu belegen. Der
+    Filter arbeitet vollständig im Browser; ohne JavaScript werden alle Einträge angezeigt.
+  </p>
+</SeitenLayout>
+
+<style>
+  .bilanz {
+    margin-block-start: var(--s-3);
+    color: var(--c-text-faint);
+  }
+
+  .hinweis {
+    margin-block-start: var(--s-6);
+    padding: var(--s-3);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--c-text-muted);
+    max-inline-size: var(--measure);
+  }
+</style>

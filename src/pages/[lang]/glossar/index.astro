@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../../layouts/SeitenLayout.astro';
+import Glossarindex from '../../../components/spezial/Glossarindex.astro';
+import { locales, type Locale } from '../../../i18n/config';
+import { useTranslations } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+
+const alle = await getCollection('glossary');
+const eintraege = alle.filter((e) => e.data.lang === 'de' && !e.data.draft);
+const belegt = eintraege.filter((e) => e.data.status !== 'stub').length;
+---
+
+<SeitenLayout
+  locale={locale}
+  title={t('glossary.title')}
+  eyebrow={t('nav.tools')}
+  intro="Alle Fachbegriffe des Portals an einem Ort – mit der Schreibung in Kurmancî, gängigen deutschen Varianten und einer Kurzdefinition. Begriffe erscheinen im Fließtext gepunktet unterstrichen und führen hierher. Solange ein Eintrag den Stand „Gerüst“ trägt, steht statt einer Definition der Rechercheauftrag."
+  trail={[{ label: t('glossary.title'), slug: 'glossar' }]}
+>
+  <p slot="kopf" class="bilanz utility">
+    {eintraege.length} Begriffe · {belegt} davon belegt
+  </p>
+
+  <Glossarindex eintraege={eintraege} locale={locale} />
+</SeitenLayout>
+
+<style>
+  .bilanz {
+    margin-block-start: var(--s-4);
+    color: var(--c-text-faint);
+  }
+</style>

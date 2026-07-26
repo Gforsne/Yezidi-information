@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../layouts/SeitenLayout.astro';
+import Jahreskalender from '../../components/spezial/Jahreskalender.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const alle = await getCollection('festivals');
+const feste = alle
+  .filter((f) => f.data.lang === 'de' && !f.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<SeitenLayout
+  locale={locale}
+  title={t('calendar.title')}
+  eyebrow={t('nav.tools')}
+  intro="Das Festjahr im Überblick. Die Termine folgen nicht dem gregorianischen Kalender; sie verschieben sich deshalb von Jahr zu Jahr. Statt eines Datums nennt jeder Eintrag das Kalendersystem und – sobald belegt – die Terminregel."
+  trail={[{ label: t('calendar.title'), slug: 'kalender' }]}
+  breit
+>
+  <div slot="kopf" class="warnung">
+    <h2>Warum hier keine festen Daten stehen</h2>
+    <p>
+      Eine Tabelle mit gregorianischen Datumsangaben würde eine Genauigkeit behaupten, die die
+      Quellen nicht hergeben. Die Monatszuordnung im Band unten ist eine grobe Orientierung und
+      selbst noch zu belegen – sie ist bei jedem Fest als offene Frage vermerkt. Die Umrechnung
+      zwischen den Kalendersystemen wird auf einer
+      <a href={path(locale, 'feste', 'kalendersysteme-und-umrechnung')}>eigenen Seite</a> erklärt.
+    </p>
+  </div>
+
+  <Jahreskalender feste={feste} locale={locale} />
+</SeitenLayout>
+
+<style>
+  .warnung {
+    margin-block-start: var(--s-5);
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-warn);
+    border-radius: var(--radius-sm);
+    background: var(--c-warn-surface);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .warnung h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-warn);
+    margin-block-end: var(--s-2);
+  }
+</style>

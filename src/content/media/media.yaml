@@ -1,0 +1,36 @@
+# Mediathek – reine Verweisliste. Es wird nichts eingebettet, solange
+# die Rechte nicht dokumentiert geklärt sind (rechteGeklaert: false).
+- id: platzhalter-dokumentation
+  title: 'Platzhalter: Dokumentarfilm'
+  typ: dokumentation
+  urheber: 'noch zu ermitteln'
+  jahr: null
+  sprache: 'de'
+  url: null
+  dauer: null
+  beschreibung: >-
+    Platzhalter-Eintrag. Hier werden Dokumentarfilme aufgenommen, sobald
+    Titel, Urheberschaft, Jahr und eine dauerhaft erreichbare Fundstelle
+    geprüft sind.
+  thema: [genozid]
+  contentWarning: true
+  rechteGeklaert: false
+  status: stub
+  updated: 2026-07-26
+
+- id: platzhalter-podcast
+  title: 'Platzhalter: Podcastreihe'
+  typ: podcast
+  urheber: 'noch zu ermitteln'
+  jahr: null
+  sprache: 'de'
+  url: null
+  dauer: null
+  beschreibung: >-
+    Platzhalter-Eintrag für Podcastreihen mit êzîdîscher Beteiligung.
+    Aufnahme erst nach Prüfung von Urheberschaft und Erreichbarkeit.
+  thema: [gegenwart, kultur]
+  contentWarning: false
+  rechteGeklaert: false
+  status: stub
+  updated: 2026-07-26

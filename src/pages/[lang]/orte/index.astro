@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../../layouts/SeitenLayout.astro';
+import Ortskarte from '../../../components/content/Ortskarte.astro';
+import { locales, type Locale } from '../../../i18n/config';
+import { path } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const alle = await getCollection('places');
+const orte = alle
+  .filter((o) => o.data.lang === 'de' && !o.data.draft)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'de'));
+
+const laender = [...new Set(orte.map((o) => o.data.land))].sort();
+const ungeprueft = orte.filter((o) => o.data.koordinatenGenauigkeit !== 'exakt').length;
+---
+
+<SeitenLayout
+  locale={locale}
+  title="Ortsverzeichnis"
+  eyebrow="Nachschlagen"
+  intro="Heiligtümer, Siedlungen, Lager und Gedenkorte mit ihren Koordinaten und ihrem Erhaltungszustand. Das Verzeichnis speist die Karte; jeder Eintrag verweist auf die inhaltlichen Seiten, auf denen der Ort behandelt wird."
+  trail={[{ label: 'Ortsverzeichnis', slug: 'orte' }]}
+>
+  <p slot="kopf" class="bilanz utility">
+    {orte.length} Orte · {ungeprueft} mit noch ungeprüfter Verortung ·
+    <a href={path(locale, 'karten')}>zur Karte</a>
+  </p>
+
+  {
+    laender.map((land) => (
+      <section class="land" aria-labelledby={`land-${land}`}>
+        <h2 id={`land-${land}`}>{land}</h2>
+        <ul class="karten">
+          {orte
+            .filter((o) => o.data.land === land)
+            .map((o) => (
+              <li>
+                <Ortskarte
+                  slug={o.data.slug}
+                  name={o.data.title}
+                  nameUmschrift={o.data.nameUmschrift}
+                  nameVarianten={o.data.nameVarianten}
+                  art={o.data.art}
+                  land={o.data.land}
+                  region={o.data.region ?? undefined}
+                  koordinaten={o.data.koordinaten}
+                  koordinatenGenauigkeit={o.data.koordinatenGenauigkeit}
+                  zustand={o.data.zustand}
+                  lead={o.data.lead}
+                  status={o.data.status}
+                  locale={locale}
+                />
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <p class="hinweis utility">
+    Die Koordinaten stammen bislang aus groben Georeferenzen und sind als „ungefähr“
+    gekennzeichnet. Vor jeder weiteren Verwendung sind sie gegen einen amtlichen oder
+    wissenschaftlichen Geodatensatz zu prüfen.
+  </p>
+</SeitenLayout>
+
+<style>
+  .bilanz {
+    margin-block-start: var(--s-4);
+    color: var(--c-text-faint);
+  }
+
+  .land {
+    margin-block-end: var(--s-7);
+  }
+
+  .land h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-4);
+    padding-block-end: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .karten {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: var(--s-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hinweis {
+    max-inline-size: var(--measure);
+    color: var(--c-text-muted);
+    padding: var(--s-3);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-radius: var(--radius-sm);
+  }
+</style>

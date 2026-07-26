@@ -1,0 +1,216 @@
+---
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import Statusbadge from './Statusbadge.astro';
+
+interface Props {
+  slug: string;
+  name: string;
+  nameUmschrift: string;
+  nameVarianten?: string[];
+  art: string;
+  land: string;
+  region?: string | undefined;
+  koordinaten: readonly [number, number] | null;
+  koordinatenGenauigkeit?: 'exakt' | 'ungefähr' | 'unbekannt';
+  zustand?: 'erhalten' | 'beschädigt' | 'zerstört' | 'wiederaufgebaut' | 'unbekannt';
+  lead: string;
+  status: 'stub' | 'entwurf' | 'belegt' | 'geprüft';
+  locale: Locale;
+  kompakt?: boolean;
+}
+
+const {
+  slug,
+  name,
+  nameUmschrift,
+  nameVarianten = [],
+  art,
+  land,
+  region,
+  koordinaten,
+  koordinatenGenauigkeit = 'unbekannt',
+  zustand = 'unbekannt',
+  lead,
+  status,
+  locale,
+  kompakt = false,
+} = Astro.props;
+
+const t = useTranslations(locale);
+
+const arten: Record<string, string> = {
+  heiligtum: 'Heiligtum',
+  mezar: 'Mezar',
+  siedlung: 'Siedlung',
+  lager: 'Lager für Binnenvertriebene',
+  gedenkort: 'Gedenkort',
+  gemeindezentrum: 'Gemeindezentrum',
+  friedhof: 'Friedhof',
+  region: 'Region',
+};
+
+const zustaende: Record<string, string> = {
+  erhalten: 'erhalten',
+  beschädigt: 'beschädigt',
+  zerstört: 'zerstört',
+  wiederaufgebaut: 'wiederaufgebaut',
+  unbekannt: 'Zustand nicht belegt',
+};
+---
+
+<article class:list={['ortskarte', { kompakt }]}>
+  <p class="art">{arten[art] ?? art}</p>
+
+  <h3 class="name">
+    <a href={path(locale, 'orte', slug)}>{name}</a>
+  </h3>
+
+  {nameUmschrift !== name && <p class="umschrift" lang="ku">{nameUmschrift}</p>}
+
+  <p class="lage">
+    {region ? `${region}, ` : ''}{land}
+  </p>
+
+  {!kompakt && <p class="lead">{lead}</p>}
+
+  <dl class="daten">
+    <div>
+      <dt>{t('place.coordinates')}</dt>
+      <dd>
+        {
+          koordinaten ? (
+            <span>
+              {koordinaten[1].toFixed(4)}, {koordinaten[0].toFixed(4)}
+              <span class="genauigkeit"> ({koordinatenGenauigkeit})</span>
+            </span>
+          ) : (
+            <span class="offen">noch nicht belegt</span>
+          )
+        }
+      </dd>
+    </div>
+    <div>
+      <dt>{t('place.condition')}</dt>
+      <dd class:list={['zustand', `z-${zustand}`]}>{zustaende[zustand]}</dd>
+    </div>
+  </dl>
+
+  {
+    nameVarianten.length > 0 && (
+      <p class="varianten">
+        {t('glossary.alsoWritten')}: {nameVarianten.join(', ')}
+      </p>
+    )
+  }
+
+  <p class="fuss"><Statusbadge status={status} locale={locale} inline /></p>
+</article>
+
+<style>
+  .ortskarte {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    block-size: 100%;
+    padding: var(--s-4);
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-border);
+    border-block-start: var(--border-rule) solid var(--c-info);
+    border-radius: var(--radius-sm);
+  }
+
+  .ortskarte.kompakt {
+    padding: var(--s-3) 0;
+    background: transparent;
+    border: 0;
+    border-block-end: var(--border-hair) solid var(--c-border);
+    border-radius: 0;
+  }
+
+  .art {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+  }
+
+  .name {
+    font-size: var(--t-lg);
+  }
+
+  .name a {
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .name a:hover {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .umschrift {
+    font-style: italic;
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+  }
+
+  .lage,
+  .varianten {
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .lead {
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    flex: 1;
+    margin-block: var(--s-2);
+  }
+
+  .daten {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-4);
+    margin-block-start: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+  }
+
+  .daten dt {
+    color: var(--c-text-faint);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+  }
+
+  .daten dd {
+    margin: 0;
+    color: var(--c-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .genauigkeit,
+  .offen {
+    color: var(--c-text-faint);
+    font-style: italic;
+  }
+
+  .z-zerstört {
+    color: var(--c-warn);
+  }
+
+  .z-beschädigt {
+    color: var(--c-accent);
+  }
+
+  .z-unbekannt {
+    color: var(--c-text-faint);
+    font-style: italic;
+  }
+
+  .fuss {
+    margin-block-start: var(--s-2);
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import { getEntry } from 'astro:content';
+import { belegAnker, kurzbeleg, zitatAnker } from '../../lib/zitation';
+
+interface Props {
+  /** ID eines Eintrags der `sources`-Collection. */
+  id: string;
+  /** Fundstelle: Seite, Kapitel, Minute. */
+  loc?: string;
+  /**
+   * Belegziffer. Wird von remark-zitate zur Bauzeit gesetzt
+   * (src/lib/remark-zitate.mjs) – nicht von Hand schreiben.
+   */
+  nr?: string | number;
+}
+
+const { id, loc, nr = 0 } = Astro.props;
+const ziffer = typeof nr === 'string' ? Number.parseInt(nr, 10) : nr;
+const quelle = await getEntry('sources', id);
+
+const gueltig = ziffer > 0 && quelle !== undefined;
+const titel = quelle
+  ? kurzbeleg(quelle.data, loc)
+  : `Unbekannte Quellen-ID „${id}“ – nicht im Quellenverzeichnis`;
+---
+
+{
+  gueltig ? (
+    <a
+      class="zitat"
+      href={`#${belegAnker(id)}`}
+      id={zitatAnker(id, ziffer)}
+      data-quelle={id}
+      title={titel}
+      aria-describedby={belegAnker(id)}
+    >
+      <sup>
+        <span class="nur-screenreader">Beleg </span>
+        {ziffer}
+        {loc && <span class="nur-screenreader">, {loc}</span>}
+      </sup>
+    </a>
+  ) : (
+    <span class="zitat-fehler" role="note">
+      <sup>?</sup>
+      <span class="nur-screenreader">
+        Fehlerhafter Beleg: Die Quelle „{id}“ ist auf dieser Seite nicht im Frontmatter angemeldet.
+      </span>
+    </span>
+  )
+}
+
+<style>
+  .zitat {
+    text-decoration: none;
+    color: var(--c-apparat);
+    /* Der Klickbereich wird über padding vergrößert, ohne die Zeile zu stören. */
+    padding-inline: 0.1em;
+  }
+
+  .zitat sup {
+    font-family: var(--f-utility);
+    font-size: 0.72em;
+    font-weight: var(--w-semibold);
+    font-variant-numeric: lining-nums;
+    line-height: 0;
+    vertical-align: super;
+  }
+
+  .zitat:hover sup,
+  .zitat:focus-visible sup {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Gerade angesprungener Beleg wird kurz hervorgehoben (ohne Animation). */
+  .zitat:target sup {
+    background: var(--c-accent-tint);
+    outline: 2px solid var(--c-accent);
+  }
+
+  .zitat-fehler {
+    color: var(--c-warn);
+    font-weight: var(--w-bold);
+    background: var(--c-warn-surface);
+    padding-inline: 0.15em;
+    border-radius: var(--radius-xs);
+  }
+</style>

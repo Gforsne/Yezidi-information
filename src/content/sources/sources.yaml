@@ -1,0 +1,114 @@
+# =====================================================================
+# QUELLENVERZEICHNIS
+# ---------------------------------------------------------------------
+# Jede Quelle, die im Portal zitiert wird, steht hier – und nur hier.
+# <Cite id="…" /> verweist auf die `id` eines Eintrags; check:content
+# bricht ab, wenn eine zitierte ID hier fehlt.
+#
+# WICHTIG (Recherche-Regel 4): `verifiziert: true` darf nur setzen, wer
+# die bibliografischen Angaben am Original oder an einem verlässlichen
+# Nachweis (Bibliothekskatalog, Verlagsseite, DOI-Auflösung) geprüft hat.
+# Ungeprüfte Einträge tragen `reliability: unklar` – das erzwingt das
+# Schema in src/content.config.ts.
+#
+# ISBN, DOI, Seitenzahlen und URLs werden NIE aus dem Gedächtnis
+# ergänzt. Fehlt eine Angabe, bleibt sie null.
+# =====================================================================
+
+- id: kreyenbroek-1995
+  type: buch
+  authors:
+    - 'Kreyenbroek, Philip G.'
+  title: 'Yezidism – Its Background, Observances and Textual Tradition'
+  container: null
+  year: 1995
+  publisher: 'Edwin Mellen Press'
+  isbn: null
+  doi: null
+  url: null
+  accessed: null
+  language: en
+  reliability: unklar
+  verifiziert: false
+  note: >-
+    Wird in der Forschung als Standardwerk geführt. Bibliografische Angaben
+    (Reihe, Auflage, ISBN, Seitenzahlen) sind noch am Original zu prüfen,
+    bevor damit belegt wird.
+
+- id: allison-2001
+  type: buch
+  authors:
+    - 'Allison, Christine'
+  title: 'The Yezidi Oral Tradition in Iraqi Kurdistan'
+  container: null
+  year: 2001
+  publisher: 'Curzon Press'
+  isbn: null
+  doi: null
+  url: null
+  accessed: null
+  language: en
+  reliability: unklar
+  verifiziert: false
+  note: >-
+    Zentrale Arbeit zur mündlichen Überlieferung. Angaben vor der ersten
+    Verwendung am Original prüfen.
+
+- id: omarkhali-2017
+  type: buch
+  authors:
+    - 'Omarkhali, Khanna'
+  title: >-
+    The Yezidi Religious Textual Tradition: From Oral to Written
+  container: null
+  year: 2017
+  publisher: 'Harrassowitz'
+  isbn: null
+  doi: null
+  url: null
+  accessed: null
+  language: en
+  reliability: unklar
+  verifiziert: false
+  note: >-
+    Für die Verschriftlichungsdebatte einschlägig. Angaben noch ungeprüft.
+
+- id: acikyildiz-2010
+  type: buch
+  authors:
+    - 'Açıkyıldız, Birgül'
+  title: >-
+    The Yezidis: The History of a Community, Culture and Religion
+  container: null
+  year: 2010
+  publisher: 'I.B. Tauris'
+  isbn: null
+  doi: null
+  url: null
+  accessed: null
+  language: en
+  reliability: unklar
+  verifiziert: false
+  note: >-
+    Überblicksdarstellung mit Schwerpunkt Kunst und Architektur.
+    Auflage und Seitenzählung noch zu prüfen.
+
+- id: un-coi-2016-they-came-to-destroy
+  type: bericht
+  authors:
+    - 'Independent International Commission of Inquiry on the Syrian Arab Republic'
+  title: '„They came to destroy“: ISIS Crimes Against the Yazidis'
+  container: 'UN Human Rights Council'
+  year: 2016
+  publisher: 'Vereinte Nationen'
+  isbn: null
+  doi: null
+  url: null
+  accessed: null
+  language: en
+  reliability: unklar
+  verifiziert: false
+  note: >-
+    Dokumentnummer, Fundstelle und Datum sind vor der Verwendung
+    zu prüfen. Zentrale institutionelle Quelle für den Genozid-Bereich;
+    nach Prüfung als `institutionell` einzustufen.

@@ -1,0 +1,336 @@
+---
+import SeitenLayout from '../../layouts/SeitenLayout.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import { getToolLinks } from '../../lib/navigation';
+import { sections } from '../../lib/sections';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const werkzeuge = getToolLinks(locale);
+---
+
+<SeitenLayout
+  locale={locale}
+  title={t('search.label')}
+  eyebrow={t('nav.tools')}
+  intro="Volltextsuche über alle Inhalte des Portals. Der Suchindex liegt als statische Datei auf demselben Server; Suchbegriffe verlassen den Browser nicht und werden nirgends gespeichert."
+  trail={[{ label: t('search.label'), slug: 'suche' }]}
+  noindex
+>
+  <form class="suchformular" role="search" data-suche>
+    <label for="suchfeld-eingabe">{t('search.label')}</label>
+    <div class="zeile">
+      <input
+        type="search"
+        id="suchfeld-eingabe"
+        name="q"
+        autocomplete="off"
+        placeholder={t('search.placeholder')}
+        data-sucheingabe
+      />
+      <button type="submit">{t('search.submit')}</button>
+    </div>
+    <p class="datenschutz">{t('search.hint')}</p>
+  </form>
+
+  <div class="ergebnisse" data-ergebnisse aria-live="polite" aria-busy="false"></div>
+
+  <noscript>
+    <p class="noscript">{t('search.noJs')}</p>
+  </noscript>
+
+  <section class="ohne-suche" aria-labelledby="ohne-suche-titel">
+    <h2 id="ohne-suche-titel">Ohne Suche zum Ziel</h2>
+    <p>
+      Die Volltextsuche braucht JavaScript und einen erzeugten Index. Diese Wege funktionieren
+      immer:
+    </p>
+    <div class="spalten">
+      <nav aria-labelledby="alle-bereiche">
+        <h3 id="alle-bereiche">Alle Bereiche</h3>
+        <ul>
+          {
+            sections.map((s) => (
+              <li>
+                <a href={path(locale, s.slug)}>{s.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <nav aria-labelledby="alle-werkzeuge">
+        <h3 id="alle-werkzeuge">Nachschlagen</h3>
+        <ul>
+          {
+            werkzeuge.map((w) => (
+              <li>
+                <a href={w.href}>{w.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </section>
+</SeitenLayout>
+
+<style>
+  .suchformular {
+    max-inline-size: var(--measure);
+    margin-block-end: var(--s-6);
+  }
+
+  label {
+    display: block;
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .zeile {
+    display: flex;
+    gap: var(--s-2);
+  }
+
+  input[type='search'] {
+    flex: 1;
+    min-block-size: 3rem;
+    padding-inline: var(--s-3);
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--c-text);
+    font-size: var(--t-md);
+  }
+
+  button {
+    min-block-size: 3rem;
+    padding-inline: var(--s-4);
+    background: var(--c-accent);
+    color: var(--c-surface);
+    border: 0;
+    border-radius: var(--radius-sm);
+    font-family: var(--f-utility);
+    font-weight: var(--w-semibold);
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: var(--c-accent-hover);
+  }
+
+  .datenschutz,
+  .noscript {
+    margin-block-start: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .noscript {
+    padding: var(--s-3);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-sunken);
+  }
+
+  .ergebnisse {
+    max-inline-size: var(--measure-wide);
+  }
+
+  .ergebnisse :global(.treffer) {
+    padding-block: var(--s-4);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .ergebnisse :global(.treffer h2) {
+    font-size: var(--t-lg);
+    margin-block-end: var(--s-1);
+  }
+
+  .ergebnisse :global(.treffer a) {
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .ergebnisse :global(.treffer a:hover) {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .ergebnisse :global(.treffer p) {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    max-inline-size: var(--measure);
+  }
+
+  .ergebnisse :global(mark) {
+    background: var(--c-accent-tint);
+    color: var(--c-text);
+    padding-inline: 0.1em;
+  }
+
+  .ergebnisse :global(.hinweis) {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    padding: var(--s-3);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-radius: var(--radius-sm);
+  }
+
+  .ohne-suche {
+    margin-block-start: var(--s-7);
+    padding-block-start: var(--s-5);
+    border-block-start: var(--border-hair) solid var(--c-border);
+    max-inline-size: var(--measure-wide);
+  }
+
+  .ohne-suche h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-3);
+  }
+
+  .ohne-suche > p {
+    max-inline-size: var(--measure);
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-5);
+  }
+
+  .spalten {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--s-5);
+  }
+
+  .spalten h3 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .spalten ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .spalten li {
+    padding-block: var(--s-1);
+  }
+</style>
+
+<script>
+  /**
+   * Pagefind-Anbindung.
+   *
+   * Der Index entsteht erst beim Produktionsbau (`npm run build`), nicht
+   * im Entwicklungsserver. Fehlt er, sagt die Seite das ausdrücklich,
+   * statt eine kaputte Suche vorzutäuschen.
+   */
+  interface PagefindErgebnis {
+    data: () => Promise<{
+      url: string;
+      meta: { title?: string };
+      excerpt: string;
+    }>;
+  }
+  interface Pagefind {
+    search: (begriff: string) => Promise<{ results: PagefindErgebnis[] }>;
+    options?: (o: Record<string, unknown>) => Promise<void>;
+  }
+
+  const formular = document.querySelector<HTMLFormElement>('[data-suche]');
+  const eingabe = document.querySelector<HTMLInputElement>('[data-sucheingabe]');
+  const ziel = document.querySelector<HTMLElement>('[data-ergebnisse]');
+
+  if (formular && eingabe && ziel) {
+    let pagefind: Pagefind | null = null;
+    let ladeFehler = false;
+
+    const lade = async (): Promise<Pagefind | null> => {
+      if (pagefind || ladeFehler) return pagefind;
+      try {
+        // Der Pfad existiert erst im gebauten Verzeichnis; TypeScript kann
+        // ihn zur Bauzeit nicht auflösen. Deshalb bewusst dynamisch.
+        const pfad = '/pagefind/pagefind.js';
+        pagefind = (await import(/* @vite-ignore */ pfad)) as Pagefind;
+        return pagefind;
+      } catch {
+        ladeFehler = true;
+        ziel.innerHTML =
+          '<p class="hinweis">Der Suchindex ist in dieser Umgebung nicht vorhanden. ' +
+          'Er wird beim Produktionsbau erzeugt (<code>npm run build</code>). ' +
+          'Nutzen Sie so lange die Bereichsübersicht unten.</p>';
+        return null;
+      }
+    };
+
+    const escape = (s: string) =>
+      s.replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] ?? c,
+      );
+
+    const suche = async (begriff: string) => {
+      if (begriff.trim().length < 2) {
+        ziel.innerHTML = '';
+        return;
+      }
+      const pf = await lade();
+      if (!pf) return;
+
+      ziel.setAttribute('aria-busy', 'true');
+      const { results } = await pf.search(begriff);
+      const daten = await Promise.all(results.slice(0, 25).map((r) => r.data()));
+      ziel.setAttribute('aria-busy', 'false');
+
+      if (daten.length === 0) {
+        ziel.innerHTML = '<p class="hinweis">Keine Treffer.</p>';
+        return;
+      }
+
+      ziel.innerHTML =
+        `<p class="hinweis">${results.length} Treffer</p>` +
+        daten
+          .map(
+            (d) =>
+              `<article class="treffer"><h2><a href="${escape(d.url)}">${escape(
+                d.meta.title ?? d.url,
+              )}</a></h2><p>${d.excerpt}</p></article>`,
+          )
+          .join('');
+    };
+
+    formular.addEventListener('submit', (e) => {
+      e.preventDefault();
+      void suche(eingabe.value);
+    });
+
+    let zeitgeber: number | undefined;
+    eingabe.addEventListener('input', () => {
+      window.clearTimeout(zeitgeber);
+      zeitgeber = window.setTimeout(() => void suche(eingabe.value), 220);
+    });
+
+    // Suchbegriff aus der Adresse übernehmen (?q=…), damit Treffer teilbar sind.
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (q) {
+      eingabe.value = q;
+      void suche(q);
+    }
+  }
+</script>

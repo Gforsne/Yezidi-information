@@ -1,0 +1,326 @@
+---
+import { getCollection } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { formatDate, path, useTranslations } from '../../i18n/utils';
+import { belegquote, verlaesslichkeitLabel, verlaesslichkeitRang } from '../../lib/zitation';
+import Statusbadge from './Statusbadge.astro';
+import Quellenliste from './Quellenliste.astro';
+
+interface Props {
+  locale: Locale;
+  status: 'stub' | 'entwurf' | 'belegt' | 'geprüft';
+  confidence: 'gesichert' | 'umstritten' | 'unklar';
+  perspektive?: 'emisch' | 'etisch' | 'gemischt';
+  updated: Date;
+  reviewedBy: string | null;
+  openQuestions: readonly string[];
+  refs: readonly { id: string; loc?: string | undefined; note?: string | undefined }[];
+  /** Von remark-zitate ermittelte Kennzahlen der Seite. */
+  zitate?: number;
+  belegluecken?: number;
+  abschnitte?: number;
+  /** Betreff für den vorausgefüllten Korrekturhinweis. */
+  seitentitel: string;
+}
+
+const {
+  locale,
+  status,
+  confidence,
+  perspektive = 'gemischt',
+  updated,
+  reviewedBy,
+  openQuestions,
+  refs,
+  zitate = 0,
+  belegluecken = 0,
+  abschnitte = 0,
+  seitentitel,
+} = Astro.props;
+
+const t = useTranslations(locale);
+
+const alleQuellen = await getCollection('sources');
+const rang = new Map(alleQuellen.map((q) => [q.id, q.data.reliability]));
+const schwaechste = refs
+  .map((r) => rang.get(r.id))
+  .filter((r): r is NonNullable<typeof r> => r !== undefined)
+  .sort((a, b) => verlaesslichkeitRang[b] - verlaesslichkeitRang[a])[0];
+
+const quote = belegquote(abschnitte, zitate, belegluecken);
+const meldePfad =
+  path(locale, 'meta', 'korrekturhinweis') +
+  `?seite=${encodeURIComponent(Astro.url.pathname)}&betreff=${encodeURIComponent('Korrekturhinweis: ' + seitentitel)}`;
+---
+
+{/*
+  SIGNATURE-ELEMENT: die mitlaufende Belegspalte.
+
+  Sie macht den Beleg- und Unsicherheitszustand einer Seite dauerhaft
+  sichtbar, statt ihn ans Seitenende zu verbannen. Wer liest, sieht
+  neben dem Text, worauf er sich stützt – und woran es fehlt.
+  Auf schmalen Schirmen läuft sie unter dem Text weiter (siehe
+  .lesegitter in global.css). Sie enthält kein JavaScript.
+*/}
+<aside class="belegspalte-inhalt" aria-labelledby="belegspalte-titel">
+  <h2 class="ueberschrift" id="belegspalte-titel">{t('apparat.title')}</h2>
+  <p class="hilfe">{t('apparat.help')}</p>
+
+  <dl class="kennzahlen">
+    <div>
+      <dt>{t('status.label')}</dt>
+      <dd><Statusbadge status={status} locale={locale} /></dd>
+    </div>
+
+    <div>
+      <dt>{t('confidence.label')}</dt>
+      <dd class:list={['confidence', `c-${confidence}`]}>
+        {t(`confidence.${confidence}` as 'confidence.gesichert')}
+      </dd>
+    </div>
+
+    <div>
+      <dt>{t('article.perspective')}</dt>
+      <dd>{t(`article.perspective.${perspektive}` as 'article.perspective.emisch')}</dd>
+    </div>
+
+    <div>
+      <dt>{t('article.updated')}</dt>
+      <dd>
+        <time datetime={updated.toISOString()}>{formatDate(updated, locale)}</time>
+      </dd>
+    </div>
+
+    <div>
+      <dt>{t('article.reviewedBy')}</dt>
+      <dd>{reviewedBy ?? <span class="offen">{t('article.notReviewed')}</span>}</dd>
+    </div>
+  </dl>
+
+  {
+    abschnitte > 0 && (
+      <div class="quote">
+        <div class="quote-zeile">
+          <span class="quote-zahl">{quote}&thinsp;%</span>
+          <span class="quote-label">
+            der {abschnitte} Abschnitte tragen einen Beleg
+          </span>
+        </div>
+        <div
+          class="balken"
+          role="img"
+          aria-label={`Belegquote: ${quote} Prozent von ${abschnitte} Abschnitten`}
+        >
+          <span style={`inline-size:${quote}%`} />
+        </div>
+        <ul class="zaehler">
+          <li>{zitate} Belegstellen</li>
+          <li class:list={{ warn: belegluecken > 0 }}>{belegluecken} {t('apparat.gap')}n</li>
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    schwaechste && (
+      <p class="schwaechste">
+        Schwächste Quelle dieser Seite: <strong>{verlaesslichkeitLabel[schwaechste]}</strong>.
+      </p>
+    )
+  }
+
+  {
+    openQuestions.length > 0 && (
+      <section class="fragen" aria-labelledby="offene-fragen-titel">
+        <h3 id="offene-fragen-titel">{t('article.openQuestions')}</h3>
+        <ol>
+          {openQuestions.map((f) => (
+            <li>{f}</li>
+          ))}
+        </ol>
+        <p class="fragen-hilfe">{t('article.openQuestionsHelp')}</p>
+      </section>
+    )
+  }
+
+  <Quellenliste refs={refs} locale={locale} kompakt ebene={3} id="belegspalte-quellen" />
+
+  <p class="melden">
+    <a href={meldePfad}>{t('article.reportErrorLong')} →</a>
+  </p>
+</aside>
+
+<style>
+  .belegspalte-inhalt {
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+    border-inline-start: var(--border-rule) solid var(--c-apparat);
+    padding-inline-start: var(--s-4);
+  }
+
+  @media (max-width: 67.999rem) {
+    .belegspalte-inhalt {
+      margin-block-start: var(--s-7);
+      border-inline-start: 0;
+      border-block-start: var(--border-rule) solid var(--c-apparat);
+      padding-inline-start: 0;
+      padding-block-start: var(--s-4);
+    }
+  }
+
+  .ueberschrift {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-apparat);
+  }
+
+  .hilfe {
+    margin-block: var(--s-2) var(--s-4);
+    color: var(--c-text-faint);
+  }
+
+  .kennzahlen {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+
+  .kennzahlen dt {
+    font-size: var(--t-2xs);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+  }
+
+  .kennzahlen dd {
+    margin: 0;
+    color: var(--c-text);
+  }
+
+  .confidence::before {
+    content: '';
+    display: inline-block;
+    inline-size: 0.5em;
+    block-size: 0.5em;
+    margin-inline-end: 0.45em;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .c-gesichert {
+    color: var(--c-info);
+  }
+
+  .c-umstritten {
+    color: var(--c-warn);
+  }
+
+  .c-unklar {
+    color: var(--c-text-faint);
+  }
+
+  .offen {
+    font-style: italic;
+    color: var(--c-text-faint);
+  }
+
+  .quote {
+    margin-block: var(--s-5) var(--s-4);
+    padding-block: var(--s-4);
+    border-block: var(--border-hair) solid var(--c-border);
+  }
+
+  .quote-zeile {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s-2);
+  }
+
+  .quote-zahl {
+    font-family: var(--f-display);
+    font-size: var(--t-xl);
+    font-weight: var(--w-semibold);
+    font-variant-numeric: lining-nums;
+    color: var(--c-text);
+  }
+
+  .quote-label {
+    color: var(--c-text-muted);
+  }
+
+  .balken {
+    margin-block: var(--s-2);
+    block-size: 0.4rem;
+    background: var(--c-surface-sunken);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-xs);
+    overflow: hidden;
+  }
+
+  .balken span {
+    display: block;
+    block-size: 100%;
+    background: var(--c-apparat);
+  }
+
+  .zaehler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--t-2xs);
+    color: var(--c-text-faint);
+  }
+
+  .zaehler .warn {
+    color: var(--c-warn);
+  }
+
+  .schwaechste {
+    margin-block-end: var(--s-4);
+  }
+
+  .fragen {
+    margin-block-end: var(--s-5);
+  }
+
+  .fragen h3 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-warn);
+    margin-block-end: var(--s-2);
+  }
+
+  .fragen ol {
+    margin: 0;
+    padding-inline-start: 1.2em;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  .fragen li {
+    color: var(--c-text);
+  }
+
+  .fragen-hilfe {
+    margin-block-start: var(--s-2);
+    color: var(--c-text-faint);
+  }
+
+  .melden {
+    margin-block-start: var(--s-4);
+    padding-block-start: var(--s-3);
+    border-block-start: var(--border-hair) solid var(--c-border);
+  }
+</style>

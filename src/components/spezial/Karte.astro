@@ -1,0 +1,419 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  orte: CollectionEntry<'places'>[];
+  locale: Locale;
+  /** Voreingestellte Ebenen. */
+  ebenen?: string[];
+  hoehe?: string;
+}
+
+const { orte, locale, ebenen, hoehe = '32rem' } = Astro.props;
+const t = useTranslations(locale);
+
+const ebenenLabel: Record<string, string> = {
+  siedlungsgebiete: 'Siedlungsgebiete',
+  'heilige-orte': 'Heilige Orte',
+  fluchtrouten: 'Fluchtbewegungen',
+  diaspora: 'Diaspora',
+  gedenken: 'Gedenkorte',
+};
+
+const mitKoordinaten = orte.filter((o) => o.data.koordinaten !== null);
+const ohneKoordinaten = orte.filter((o) => o.data.koordinaten === null);
+
+const verfuegbareEbenen =
+  ebenen ?? [...new Set(mitKoordinaten.flatMap((o) => o.data.kartenebene))].sort();
+
+const geojson = {
+  type: 'FeatureCollection',
+  features: mitKoordinaten.map((o) => ({
+    type: 'Feature',
+    geometry: { type: 'Point', coordinates: o.data.koordinaten },
+    properties: {
+      id: o.data.slug,
+      name: o.data.title,
+      art: o.data.art,
+      land: o.data.land,
+      zustand: o.data.zustand,
+      genauigkeit: o.data.koordinatenGenauigkeit,
+      ebenen: o.data.kartenebene,
+      href: path(locale, 'orte', o.data.slug),
+    },
+  })),
+};
+---
+
+<section class="karte-block" aria-labelledby="karte-titel">
+  <h2 class="nur-screenreader" id="karte-titel">{t('map.title')}</h2>
+
+  <div class="karte-huelle karte-interaktiv" data-karte style={`--karte-hoehe:${hoehe}`}>
+    <div class="karte-flaeche" data-karte-flaeche role="application" aria-label={t('map.title')}>
+    </div>
+
+    <p class="karte-hinweis" data-karte-hinweis>
+      Die Karte wird geladen, sobald sie sichtbar ist. Sie kontaktiert keinen externen Dienst.
+    </p>
+
+    <fieldset class="ebenen" data-ebenen hidden>
+      <legend>{t('map.layers')}</legend>
+      {
+        verfuegbareEbenen.map((e) => (
+          <label>
+            <input type="checkbox" value={e} checked />
+            <span>{ebenenLabel[e] ?? e}</span>
+          </label>
+        ))
+      }
+    </fieldset>
+  </div>
+
+  <noscript>
+    <p class="noscript-hinweis">{t('map.noJs')}</p>
+  </noscript>
+
+  {/*
+    Die Liste ist nicht nur Notbehelf: Sie ist die zugängliche und
+    druckbare Fassung derselben Daten und steht deshalb immer da.
+  */}
+  <details class="ortsliste" open>
+    <summary>{t('map.listFallback')} ({orte.length})</summary>
+    <div class="tabellen-scroll" tabindex="0" role="region" aria-label={t('map.listFallback')}>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Ort</th>
+            <th scope="col">Art</th>
+            <th scope="col">Land</th>
+            <th scope="col">{t('place.coordinates')}</th>
+            <th scope="col">{t('place.condition')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            [...mitKoordinaten, ...ohneKoordinaten].map((o) => (
+              <tr>
+                <th scope="row">
+                  <a href={path(locale, 'orte', o.data.slug)}>{o.data.title}</a>
+                </th>
+                <td>{o.data.art}</td>
+                <td>{o.data.land}</td>
+                <td class="koordinaten">
+                  {o.data.koordinaten
+                    ? `${o.data.koordinaten[1].toFixed(4)}, ${o.data.koordinaten[0].toFixed(4)}`
+                    : '—'}
+                </td>
+                <td>{o.data.zustand}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <p class="attribution">
+    {t('map.attribution')}: Die Punktdaten stammen aus dem Ortsverzeichnis dieses Portals. Es wird
+    standardmäßig keine Hintergrundkarte von einem fremden Server geladen; die Fläche zeigt ein
+    Gradnetz. Eine Hintergrundkarte lässt sich über die Umgebungsvariable
+    <code>PUBLIC_MAP_STYLE_URL</code> einbinden – siehe README.md und DECISIONS.md (D-011).
+  </p>
+</section>
+
+<script is:inline define:vars={{ geojson }}>
+  window.__ezidiKarteDaten = geojson;
+</script>
+
+<style>
+  .karte-block {
+    max-inline-size: var(--w-shell);
+  }
+
+  .karte-huelle {
+    position: relative;
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-sunken);
+    overflow: hidden;
+  }
+
+  .karte-flaeche {
+    block-size: var(--karte-hoehe);
+    inline-size: 100%;
+  }
+
+  .karte-hinweis {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline: 0;
+    transform: translateY(-50%);
+    text-align: center;
+    padding-inline: var(--s-4);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+  }
+
+  .ebenen {
+    position: absolute;
+    inset-block-start: var(--s-3);
+    inset-inline-start: var(--s-3);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    margin: 0;
+    padding: var(--s-3);
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    box-shadow: var(--shadow-raised);
+  }
+
+  .ebenen legend {
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    padding: 0;
+  }
+
+  .ebenen label {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-block-size: 2.2rem;
+    cursor: pointer;
+  }
+
+  .ebenen input {
+    accent-color: var(--c-accent);
+  }
+
+  .noscript-hinweis,
+  .attribution {
+    margin-block-start: var(--s-3);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+    max-inline-size: var(--measure-wide);
+  }
+
+  .ortsliste {
+    margin-block-start: var(--s-5);
+  }
+
+  .ortsliste summary {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    font-weight: var(--w-semibold);
+    min-block-size: 2.75rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  th,
+  td {
+    text-align: start;
+    padding: var(--s-2) var(--s-3);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    vertical-align: top;
+  }
+
+  thead th {
+    color: var(--c-text-muted);
+    font-size: var(--t-2xs);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+  }
+
+  .koordinaten {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  @media print {
+    .karte-huelle {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import type { Map as MapLibreMap } from 'maplibre-gl';
+  import type { Feature, FeatureCollection } from 'geojson';
+
+  /**
+   * Die Karte wird erst geladen, wenn sie ins Bild kommt – MapLibre ist
+   * das mit Abstand größte Skript des Projekts und soll keine Seite
+   * belasten, auf der niemand die Karte ansieht.
+   *
+   * Standardmäßig wird KEIN fremder Kachelserver kontaktiert. Ohne
+   * konfigurierte Hintergrundkarte zeichnet die Karte ein Gradnetz und
+   * die Ortspunkte – schematisch, aber vollständig lokal.
+   */
+  const huelle = document.querySelector<HTMLElement>('[data-karte]');
+  const flaeche = huelle?.querySelector<HTMLElement>('[data-karte-flaeche]');
+
+  if (huelle && flaeche && 'IntersectionObserver' in window) {
+    const beobachter = new IntersectionObserver(
+      (eintraege, self) => {
+        if (!eintraege.some((e) => e.isIntersecting)) return;
+        self.disconnect();
+        void starte();
+      },
+      { rootMargin: '200px' },
+    );
+    beobachter.observe(huelle);
+  }
+
+  function gradnetz(): FeatureCollection {
+    const features: Feature[] = [];
+    for (let lon = -180; lon <= 180; lon += 5) {
+      features.push({
+        type: 'Feature',
+        properties: { art: 'meridian' },
+        geometry: {
+          type: 'LineString',
+          coordinates: Array.from({ length: 37 }, (_, i) => [lon, -90 + i * 5]),
+        },
+      });
+    }
+    for (let lat = -90; lat <= 90; lat += 5) {
+      features.push({
+        type: 'Feature',
+        properties: { art: 'breitenkreis' },
+        geometry: {
+          type: 'LineString',
+          coordinates: Array.from({ length: 73 }, (_, i) => [-180 + i * 5, lat]),
+        },
+      });
+    }
+    return { type: 'FeatureCollection', features };
+  }
+
+  async function starte() {
+    const daten = (window as unknown as { __ezidiKarteDaten?: FeatureCollection })
+      .__ezidiKarteDaten;
+    if (!daten || !flaeche || !huelle) return;
+
+    const hinweis = huelle.querySelector<HTMLElement>('[data-karte-hinweis]');
+    const ebenenFeld = huelle.querySelector<HTMLFieldSetElement>('[data-ebenen]');
+
+    const { Map, NavigationControl, ScaleControl, Popup } = await import('maplibre-gl');
+    await import('maplibre-gl/dist/maplibre-gl.css');
+
+    const stil = import.meta.env['PUBLIC_MAP_STYLE_URL'];
+    const lese = (name: string) =>
+      getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+    const leerStil = {
+      version: 8 as const,
+      sources: {},
+      layers: [
+        {
+          id: 'hintergrund',
+          type: 'background' as const,
+          paint: { 'background-color': lese('--c-surface-sunken') },
+        },
+      ],
+    };
+
+    const karte: MapLibreMap = new Map({
+      container: flaeche,
+      style: stil ? stil : leerStil,
+      center: [42.5, 36.5],
+      zoom: 5,
+      attributionControl: false,
+    });
+
+    karte.addControl(new NavigationControl({ visualizePitch: false }), 'top-right');
+    karte.addControl(new ScaleControl({ unit: 'metric' }), 'bottom-left');
+
+    karte.on('load', () => {
+      hinweis?.remove();
+      if (ebenenFeld) ebenenFeld.hidden = false;
+
+      if (!stil) {
+        karte.addSource('gradnetz', { type: 'geojson', data: gradnetz() });
+        karte.addLayer({
+          id: 'gradnetz-linien',
+          type: 'line',
+          source: 'gradnetz',
+          paint: {
+            'line-color': lese('--c-border'),
+            'line-width': 0.7,
+          },
+        });
+      }
+
+      karte.addSource('orte', { type: 'geojson', data: daten });
+
+      karte.addLayer({
+        id: 'orte-punkte',
+        type: 'circle',
+        source: 'orte',
+        paint: {
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 4, 10, 9],
+          'circle-color': lese('--c-accent'),
+          'circle-stroke-color': lese('--c-surface'),
+          'circle-stroke-width': 1.5,
+          'circle-opacity': 0.9,
+        },
+      });
+
+      const popup = new Popup({ closeButton: true, closeOnClick: true, maxWidth: '20rem' });
+
+      karte.on('click', 'orte-punkte', (e) => {
+        const f = e.features?.[0];
+        if (!f) return;
+        const p = f.properties as Record<string, string>;
+        popup
+          .setLngLat(e.lngLat)
+          .setHTML(
+            `<strong>${p['name']}</strong><br>${p['art']}, ${p['land']}<br>` +
+              `<a href="${p['href']}">Zur Ortsseite</a>`,
+          )
+          .addTo(karte);
+      });
+
+      karte.on('mouseenter', 'orte-punkte', () => {
+        karte.getCanvas().style.cursor = 'pointer';
+      });
+      karte.on('mouseleave', 'orte-punkte', () => {
+        karte.getCanvas().style.cursor = '';
+      });
+
+      ebenenFeld?.addEventListener('change', () => {
+        const aktiv = new Set(
+          [...ebenenFeld.querySelectorAll<HTMLInputElement>('input:checked')].map((i) => i.value),
+        );
+        const gefiltert: FeatureCollection = {
+          type: 'FeatureCollection',
+          features: daten.features.filter((f: Feature) => {
+            const ebenen = (f.properties?.['ebenen'] ?? []) as string[];
+            return ebenen.length === 0 || ebenen.some((eb) => aktiv.has(eb));
+          }),
+        };
+        const quelle = karte.getSource('orte');
+        if (quelle && 'setData' in quelle) {
+          (quelle as { setData: (d: FeatureCollection) => void }).setData(gefiltert);
+        }
+      });
+    });
+  }
+</script>

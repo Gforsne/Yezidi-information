@@ -1,0 +1,203 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../layouts/SeitenLayout.astro';
+import Statusbadge from '../../components/content/Statusbadge.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { formatDate, path, useTranslations } from '../../i18n/utils';
+import { sectionById } from '../../lib/sections';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+
+const [artikel, feste, missverstaendnisse, personen, orte, glossar] = await Promise.all([
+  getCollection('articles'),
+  getCollection('festivals'),
+  getCollection('misconceptions'),
+  getCollection('persons'),
+  getCollection('places'),
+  getCollection('glossary'),
+]);
+
+type Zeile = {
+  titel: string;
+  href: string;
+  bereich: string;
+  status: 'stub' | 'entwurf' | 'belegt' | 'geprüft';
+  updated: Date;
+};
+
+const zeilen: Zeile[] = [
+  ...artikel
+    .filter((a) => a.data.lang === 'de')
+    .map((a) => ({
+      titel: a.data.title,
+      href: path(locale, sectionById[a.data.section].slug, a.data.slug),
+      bereich: sectionById[a.data.section].title,
+      status: a.data.status,
+      updated: a.data.updated,
+    })),
+  ...feste
+    .filter((f) => f.data.lang === 'de')
+    .map((f) => ({
+      titel: f.data.title,
+      href: path(locale, 'feste', f.data.slug),
+      bereich: 'Feste, Kalender und Riten',
+      status: f.data.status,
+      updated: f.data.updated,
+    })),
+  ...missverstaendnisse
+    .filter((m) => m.data.lang === 'de')
+    .map((m) => ({
+      titel: m.data.title,
+      href: path(locale, 'missverstaendnisse', m.data.slug),
+      bereich: 'Missverständnisse und Desinformation',
+      status: m.data.status,
+      updated: m.data.updated,
+    })),
+  ...personen
+    .filter((p) => p.data.lang === 'de')
+    .map((p) => ({
+      titel: p.data.title,
+      href: path(locale, 'personen', p.data.slug),
+      bereich: 'Personen',
+      status: p.data.status,
+      updated: p.data.updated,
+    })),
+  ...orte
+    .filter((o) => o.data.lang === 'de')
+    .map((o) => ({
+      titel: o.data.title,
+      href: path(locale, 'orte', o.data.slug),
+      bereich: 'Ortsverzeichnis',
+      status: o.data.status,
+      updated: o.data.updated,
+    })),
+  ...glossar
+    .filter((g) => g.data.lang === 'de')
+    .map((g) => ({
+      titel: g.data.title,
+      href: path(locale, 'glossar', g.data.slug),
+      bereich: 'Glossar',
+      status: g.data.status,
+      updated: g.data.updated,
+    })),
+].sort((a, b) => b.updated.getTime() - a.updated.getTime());
+---
+
+<SeitenLayout
+  locale={locale}
+  title="Änderungsprotokoll"
+  eyebrow="Projekt"
+  intro="Welche Seite wurde wann zuletzt geändert und mit welchem Bearbeitungsstand. Das Protokoll wird automatisch aus den Inhalten erzeugt; inhaltliche Korrekturen werden zusätzlich in der Zusammenfassung unten festgehalten."
+  trail={[{ label: 'Änderungsprotokoll', slug: 'aenderungen' }]}
+>
+  <section class="korrekturen" aria-labelledby="korrekturen-titel">
+    <h2 id="korrekturen-titel">Inhaltliche Korrekturen</h2>
+    <p class="leer">
+      Bislang wurden keine inhaltlichen Korrekturen vorgenommen – es gibt noch keine belegten
+      Inhalte, die zu korrigieren wären. Sobald Korrekturen erfolgen, stehen sie hier mit Datum,
+      betroffener Seite und Art der Änderung.
+    </p>
+  </section>
+
+  <section class="verlauf" aria-labelledby="verlauf-titel">
+    <h2 id="verlauf-titel">Letzte Bearbeitung je Seite</h2>
+    <div class="tabellen-scroll" tabindex="0" role="region" aria-label="Letzte Bearbeitung je Seite">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Seite</th>
+            <th scope="col">Bereich</th>
+            <th scope="col">{t('status.label')}</th>
+            <th scope="col">{t('article.updated')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            zeilen.map((z) => (
+              <tr>
+                <th scope="row">
+                  <a href={z.href}>{z.titel}</a>
+                </th>
+                <td>{z.bereich}</td>
+                <td>
+                  <Statusbadge status={z.status} locale={locale} inline />
+                </td>
+                <td>
+                  <time datetime={z.updated.toISOString()}>{formatDate(z.updated, locale)}</time>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="scrollhinweis utility">{t('general.scrollTableHint')}</p>
+  </section>
+</SeitenLayout>
+
+<style>
+  .korrekturen {
+    margin-block-end: var(--s-7);
+    max-inline-size: var(--measure);
+  }
+
+  .korrekturen h2,
+  .verlauf h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-3);
+  }
+
+  .leer {
+    padding: var(--s-4);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+  }
+
+  table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  th,
+  td {
+    text-align: start;
+    padding: var(--s-2) var(--s-3);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  tbody th {
+    white-space: normal;
+    font-weight: var(--w-regular);
+  }
+
+  thead th {
+    color: var(--c-text-muted);
+    font-size: var(--t-2xs);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+  }
+
+  .scrollhinweis {
+    margin-block-start: var(--s-2);
+    color: var(--c-text-faint);
+    font-size: var(--t-2xs);
+  }
+
+  @media (min-width: 52rem) {
+    .scrollhinweis {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,130 @@
+/*
+  =====================================================================
+  DRUCK-STYLESHEET
+  ---------------------------------------------------------------------
+  Ziel: eine zitierfähige Papierfassung. Der Quellenapparat wandert aus
+  der Marginalspalte in den Lesefluss, Links bekommen ihre URL, jede
+  Seite trägt Stand und Abrufdatum.
+  =====================================================================
+*/
+
+@media print {
+  @page {
+    margin: 18mm 16mm 20mm;
+  }
+
+  :root {
+    --c-surface: #ffffff;
+    --c-surface-raised: #ffffff;
+    --c-surface-sunken: #ffffff;
+    --c-text: #000000;
+    --c-text-muted: #333333;
+    --c-text-faint: #555555;
+    --c-accent: #000000;
+    --c-apparat: #000000;
+    --c-warn: #000000;
+    --c-border: #999999;
+    --c-border-strong: #666666;
+    color-scheme: light;
+  }
+
+  html {
+    font-size: 11pt;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Interaktive und dekorative Bereiche entfallen */
+  .kein-druck,
+  nav.mega-menu,
+  .themenwechsler,
+  .suchdialog,
+  .sprachumschalter,
+  .fortschritt,
+  .skip-links,
+  .karte-interaktiv,
+  .zeitleiste-filter,
+  footer .footer-nav {
+    display: none !important;
+  }
+
+  /* Marginalspalte in den Lesefluss */
+  .lesegitter {
+    display: block;
+  }
+
+  .lesegitter > .belegspalte {
+    position: static;
+    margin-block-start: var(--s-5);
+    border-block-start: 1pt solid #999;
+    padding-block-start: 6pt;
+  }
+
+  .prosa {
+    max-inline-size: none;
+  }
+
+  /* Externe Links mit URL ausgeben, interne Anker nicht */
+  .prosa a[href^='http']::after {
+    content: ' <' attr(href) '>';
+    font-family: var(--f-utility);
+    font-size: 8pt;
+    word-break: break-all;
+    color: #333;
+  }
+
+  .prosa a[href^='#']::after,
+  .prosa a[href^='/']::after {
+    content: '';
+  }
+
+  /* Umbrüche kontrollieren */
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  figure,
+  table,
+  blockquote,
+  .faktenbox,
+  .inhaltshinweis {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-inline-size: 100% !important;
+  }
+
+  /* Der Quellenteil beginnt auf neuer Seite, wenn er nicht mehr passt */
+  .quellenliste {
+    break-before: auto;
+  }
+
+  .quellenliste li {
+    break-inside: avoid;
+  }
+
+  /* Druckvermerk */
+  .druckvermerk {
+    display: block !important;
+    margin-block-start: 12pt;
+    padding-block-start: 6pt;
+    border-block-start: 1pt solid #999;
+    font-family: var(--f-utility);
+    font-size: 8.5pt;
+    color: #333;
+  }
+}
+
+/* Der Druckvermerk ist am Bildschirm unsichtbar. */
+.druckvermerk {
+  display: none;
+}

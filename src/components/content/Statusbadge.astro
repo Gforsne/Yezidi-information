@@ -1,0 +1,91 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+type Status = 'stub' | 'entwurf' | 'belegt' | 'geprüft';
+
+interface Props {
+  status: Status;
+  locale?: Locale;
+  /** Kompakte Variante für Listen und Fließtext. */
+  inline?: boolean;
+  /** Erklärenden Zusatztext ausgeben (nur in der großen Variante). */
+  mitHilfe?: boolean;
+}
+
+const { status, locale = 'de', inline = false, mitHilfe = false } = Astro.props;
+const t = useTranslations(locale);
+
+const label = t(`status.${status}` as 'status.stub');
+const hilfe = t(`status.${status}.help` as 'status.stub.help');
+---
+
+<span class:list={['badge', `badge-${status}`, { inline }]} title={inline ? hilfe : undefined}>
+  <span class="punkt" aria-hidden="true"></span>
+  <span class="text">
+    <span class="nur-screenreader">{t('status.label')}: </span>{label}
+  </span>
+  {mitHilfe && <span class="hilfe">{hilfe}</span>}
+</span>
+
+<style>
+  .badge {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    font-weight: var(--w-medium);
+    line-height: 1.3;
+    color: var(--c-text-muted);
+  }
+
+  .badge:not(.inline) {
+    flex-wrap: wrap;
+    padding: var(--s-2) var(--s-3);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+  }
+
+  .punkt {
+    flex: none;
+    inline-size: 0.55em;
+    block-size: 0.55em;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    transform: translateY(-0.1em);
+  }
+
+  /* Der Füllgrad des Punktes zeigt den Bearbeitungsstand –
+     leer = Gerüst, voll = geprüft. */
+  .badge-stub {
+    color: var(--c-text-faint);
+  }
+
+  .badge-entwurf .punkt {
+    background: linear-gradient(to top, currentColor 33%, transparent 33%);
+  }
+
+  .badge-belegt {
+    color: var(--c-apparat);
+  }
+
+  .badge-belegt .punkt {
+    background: linear-gradient(to top, currentColor 66%, transparent 66%);
+  }
+
+  .badge-geprüft {
+    color: var(--c-info);
+  }
+
+  .badge-geprüft .punkt {
+    background: currentColor;
+  }
+
+  .hilfe {
+    flex-basis: 100%;
+    font-weight: var(--w-regular);
+    color: var(--c-text-muted);
+  }
+</style>

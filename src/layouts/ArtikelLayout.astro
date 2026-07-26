@@ -1,0 +1,336 @@
+---
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import type { Locale } from '../i18n/config';
+import { formatDate, isoDate, path, useTranslations } from '../i18n/utils';
+import { buildBreadcrumb, getNavTree } from '../lib/navigation';
+import { sectionById, type SectionId } from '../lib/sections';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import Bereichsnavigation from '../components/ui/Bereichsnavigation.astro';
+import Inhaltsverzeichnis from '../components/ui/Inhaltsverzeichnis.astro';
+import Fortschritt from '../components/ui/Fortschritt.astro';
+import Belegspalte from '../components/content/Belegspalte.astro';
+import Quellenliste from '../components/content/Quellenliste.astro';
+import Inhaltshinweis from '../components/content/Inhaltshinweis.astro';
+import Lead from '../components/content/Lead.astro';
+import Statusbadge from '../components/content/Statusbadge.astro';
+import Weiterlesen from '../components/content/Weiterlesen.astro';
+import Gliederungshinweis from '../components/content/Gliederungshinweis.astro';
+
+interface Props {
+  locale: Locale;
+  section: SectionId;
+  slug: string;
+  title: string;
+  lead: string;
+  status: 'stub' | 'entwurf' | 'belegt' | 'geprüft';
+  confidence: 'gesichert' | 'umstritten' | 'unklar';
+  perspektive?: 'emisch' | 'etisch' | 'gemischt';
+  contentWarning: boolean;
+  updated: Date;
+  reviewedBy: string | null;
+  openQuestions: readonly string[];
+  sources: readonly { id: string; loc?: string | undefined; note?: string | undefined }[];
+  tags?: readonly string[];
+  gliederung?: readonly string[];
+  rechercheauftrag?: string | undefined;
+  weiterfuehrend?: readonly string[];
+  headings: readonly MarkdownHeading[];
+  /** Kennzahlen aus remark-zitate. */
+  zitate?: number;
+  belegluecken?: number;
+  abschnitte?: number;
+}
+
+const {
+  locale,
+  section,
+  slug,
+  title,
+  lead,
+  status,
+  confidence,
+  perspektive = 'gemischt',
+  contentWarning,
+  updated,
+  reviewedBy,
+  openQuestions,
+  sources,
+  tags = [],
+  gliederung = [],
+  rechercheauftrag,
+  weiterfuehrend = [],
+  headings,
+  zitate = 0,
+  belegluecken = 0,
+  abschnitte = 0,
+} = Astro.props;
+
+const t = useTranslations(locale);
+const bereich = sectionById[section];
+const baum = await getNavTree(locale);
+
+const crumbs = buildBreadcrumb(locale, t('nav.home'), [
+  { label: bereich.title, slug: bereich.slug },
+  { label: title, slug },
+]);
+
+const seiteUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://ezidi-portal.example').href;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: lead,
+    inLanguage: locale,
+    dateModified: isoDate(updated),
+    articleSection: bereich.title,
+    keywords: tags.join(', '),
+    url: seiteUrl,
+    isAccessibleForFree: true,
+    license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    ...(reviewedBy ? { reviewedBy: { '@type': 'Person', name: reviewedBy } } : {}),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.label,
+      ...(c.href
+        ? { item: new URL(c.href, Astro.site ?? 'https://ezidi-portal.example').href }
+        : {}),
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={lead}
+  locale={locale}
+  bereich={section}
+  jsonLd={jsonLd}
+  ogType="article"
+>
+  <div class="shell">
+    <Fortschritt locale={locale} />
+    <Breadcrumb crumbs={crumbs} locale={locale} />
+
+    <div class="artikel-gitter">
+      <div class="bereich-navigation">
+        <Bereichsnavigation
+          locale={locale}
+          aktiverBereich={section}
+          aktiveSeite={slug}
+          baum={baum}
+        />
+      </div>
+
+      <header class="artikel-kopf">
+        <p class="eyebrow">
+          <a href={path(locale, bereich.slug)}>{bereich.title}</a>
+        </p>
+        <h1>{title}</h1>
+        {contentWarning && <Inhaltshinweis locale={locale} />}
+        <Lead text={lead} locale={locale} />
+      </header>
+
+      <div class="artikel-text" data-artikeltext>
+        <Inhaltsverzeichnis headings={headings} locale={locale} />
+
+        {
+          status === 'stub' && (
+            <Gliederungshinweis
+              gliederung={gliederung}
+              auftrag={rechercheauftrag}
+              locale={locale}
+            />
+          )
+        }
+
+        <article class="prosa" data-pagefind-body>
+          <slot />
+        </article>
+
+        <Quellenliste refs={sources} locale={locale} />
+
+        {weiterfuehrend.length > 0 && <Weiterlesen ziele={weiterfuehrend} locale={locale} />}
+
+        {
+          tags.length > 0 && (
+            <p class="schlagworte utility">
+              <span class="label">Schlagworte:</span>
+              {tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </p>
+          )
+        }
+
+        <footer class="artikel-fuss">
+          <Statusbadge status={status} locale={locale} mitHilfe />
+          <p class="stand">
+            {t('article.updated')}:{' '}
+            <time datetime={updated.toISOString()}>{formatDate(updated, locale)}</time>
+          </p>
+          <p class="melden">
+            <a
+              href={
+                path(locale, 'meta', 'korrekturhinweis') +
+                `?seite=${encodeURIComponent(Astro.url.pathname)}&betreff=${encodeURIComponent('Korrekturhinweis: ' + title)}`
+              }
+            >
+              {t('article.reportError')}
+            </a>
+          </p>
+        </footer>
+
+        <p class="druckvermerk">
+          {title} – {t('site.name')}. {seiteUrl}. {t('article.printNote')}{' '}
+          {formatDate(new Date(), locale)}. {t('status.label')}: {t(`status.${status}` as 'status.stub')}.
+        </p>
+      </div>
+
+      <div class="belegspalte-huelle">
+        <Belegspalte
+          locale={locale}
+          status={status}
+          confidence={confidence}
+          perspektive={perspektive}
+          updated={updated}
+          reviewedBy={reviewedBy}
+          openQuestions={openQuestions}
+          refs={sources}
+          zitate={zitate}
+          belegluecken={belegluecken}
+          abschnitte={abschnitte}
+          seitentitel={title}
+        />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .artikel-gitter {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'kopf'
+      'text'
+      'beleg'
+      'nav';
+    gap: var(--s-6) var(--gap-apparat);
+    align-items: start;
+  }
+
+  .artikel-kopf {
+    grid-area: kopf;
+  }
+
+  .artikel-text {
+    grid-area: text;
+    min-inline-size: 0;
+  }
+
+  .belegspalte-huelle {
+    grid-area: beleg;
+    min-inline-size: 0;
+  }
+
+  .bereich-navigation {
+    grid-area: nav;
+    min-inline-size: 0;
+    padding-block-start: var(--s-5);
+    border-block-start: var(--border-hair) solid var(--c-border);
+  }
+
+  /* Ab hier läuft die Belegspalte neben dem Text mit – das Signature-Element. */
+  @media (min-width: 68rem) {
+    .artikel-gitter {
+      grid-template-columns: minmax(0, var(--measure)) var(--w-apparat);
+      grid-template-areas:
+        'kopf beleg'
+        'text beleg'
+        'nav  beleg';
+    }
+
+    .belegspalte-huelle {
+      position: sticky;
+      inset-block-start: var(--s-5);
+      max-block-size: calc(100svh - var(--s-8));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+
+  @media (min-width: 88rem) {
+    .artikel-gitter {
+      grid-template-columns: 13rem minmax(0, var(--measure)) var(--w-apparat);
+      grid-template-areas:
+        'nav kopf beleg'
+        'nav text beleg';
+    }
+
+    .bereich-navigation {
+      position: sticky;
+      inset-block-start: var(--s-5);
+      padding-block-start: 0;
+      border-block-start: 0;
+    }
+  }
+
+  .artikel-kopf h1 {
+    font-size: var(--t-2xl);
+    margin-block: var(--s-2) var(--s-5);
+    max-inline-size: 24ch;
+  }
+
+  .eyebrow a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .eyebrow a:hover {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .schlagworte {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    align-items: center;
+    margin-block-start: var(--s-6);
+    color: var(--c-text-faint);
+    font-size: var(--t-xs);
+  }
+
+  .label {
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+    font-size: var(--t-2xs);
+  }
+
+  .tag {
+    padding-inline: 0.5em;
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-xs);
+  }
+
+  .artikel-fuss {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3) var(--s-5);
+    margin-block-start: var(--s-6);
+    padding-block-start: var(--s-4);
+    border-block-start: var(--border-rule) solid var(--c-border);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+</style>

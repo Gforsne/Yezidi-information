@@ -1,0 +1,232 @@
+---
+import { getCollection } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { formatDate, path, useTranslations } from '../../i18n/utils';
+import {
+  belegAnker,
+  belegapparat,
+  quellenTypLabel,
+  verlaesslichkeitLabel,
+  vollbeleg,
+  type Quelle,
+} from '../../lib/zitation';
+
+interface Props {
+  /** Die `sources` aus dem Frontmatter der Seite – Reihenfolge = Nummerierung. */
+  refs: readonly { id: string; loc?: string | undefined; note?: string | undefined }[];
+  locale?: Locale;
+  /** Kompakte Darstellung für die Randspalte. */
+  kompakt?: boolean;
+  /** Überschriftenebene, damit die Hierarchie der Seite stimmt. */
+  ebene?: 2 | 3;
+  id?: string;
+}
+
+const { refs, locale = 'de', kompakt = false, ebene = 2, id = 'quellen' } = Astro.props;
+const t = useTranslations(locale);
+
+const alle = await getCollection('sources');
+const karte = new Map<string, Quelle>(alle.map((q) => [q.id, q.data]));
+const positionen = belegapparat(refs, karte);
+const Ueberschrift = `h${ebene}` as 'h2' | 'h3';
+---
+
+<section class:list={['quellenliste', { kompakt }]} aria-labelledby={`${id}-titel`}>
+  <Ueberschrift id={`${id}-titel`} class="titel">{t('article.sources')}</Ueberschrift>
+
+  {
+    positionen.length === 0 ? (
+      <p class="leer">{t('apparat.empty')}</p>
+    ) : (
+      <ol>
+        {positionen.map((p) => (
+          <li id={belegAnker(p.id)} class="beleg">
+            <a class="rueck" href={`#zitat-${p.id}-${p.nr}`} title={t('cite.backToText')}>
+              <span aria-hidden="true">↑</span>
+              <span class="nur-screenreader">{t('cite.backToText')}</span>
+            </a>
+            {p.quelle ? (
+              <div class="angabe">
+                <span class="voll">{vollbeleg(p.quelle, locale)}</span>
+                {p.loc && <span class="fundstelle">Fundstelle: {p.loc}</span>}
+                <span class="merkmale">
+                  <span class="typ">{quellenTypLabel[p.quelle.type]}</span>
+                  <span class="sprache">{p.quelle.language.toUpperCase()}</span>
+                  <span class:list={['verlaess', `v-${p.quelle.reliability}`]}>
+                    {verlaesslichkeitLabel[p.quelle.reliability]}
+                  </span>
+                  {!p.quelle.verifiziert && <span class="ungeprueft">Angaben ungeprüft</span>}
+                </span>
+                {p.quelle.url && (
+                  <a class="url" href={p.quelle.url} rel="noopener nofollow">
+                    {p.quelle.url}
+                  </a>
+                )}
+                {p.quelle.accessed && (
+                  <span class="abruf">
+                    {t('cite.accessed')} {formatDate(p.quelle.accessed, locale)}
+                  </span>
+                )}
+                {p.quelle.note && <span class="note">{p.quelle.note}</span>}
+                {p.note && <span class="note">Zu dieser Stelle: {p.note}</span>}
+              </div>
+            ) : (
+              <div class="angabe fehlend">
+                Quellen-ID <code>{p.id}</code> ist nicht im Quellenverzeichnis eingetragen.
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+    )
+  }
+
+  <p class="verweis">
+    <a href={path(locale, 'quellen')}>{t('sources.title')} →</a>
+  </p>
+</section>
+
+<style>
+  .quellenliste {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-3);
+    padding-block-end: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: beleg;
+  }
+
+  .beleg {
+    display: grid;
+    grid-template-columns: 2.1rem auto minmax(0, 1fr);
+    gap: 0 var(--s-2);
+    padding-block: var(--s-3);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    counter-increment: beleg;
+  }
+
+  .beleg::before {
+    content: counter(beleg) '.';
+    font-variant-numeric: lining-nums tabular-nums;
+    font-weight: var(--w-semibold);
+    color: var(--c-apparat);
+  }
+
+  .beleg:target {
+    background: var(--c-apparat-tint);
+    outline: 2px solid var(--c-apparat);
+    outline-offset: 2px;
+  }
+
+  .rueck {
+    color: var(--c-text-faint);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+
+  .rueck:hover {
+    color: var(--c-accent);
+  }
+
+  .angabe {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    min-inline-size: 0;
+  }
+
+  .voll {
+    color: var(--c-text);
+    line-height: var(--lh-snug);
+  }
+
+  .fundstelle,
+  .abruf {
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .merkmale {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-2);
+    font-size: var(--t-2xs);
+  }
+
+  .merkmale > * {
+    padding-inline: 0.4em;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-xs);
+    color: var(--c-text-muted);
+  }
+
+  .v-wissenschaftlich {
+    border-color: var(--c-apparat);
+    color: var(--c-apparat);
+  }
+
+  .v-institutionell {
+    border-color: var(--c-info);
+    color: var(--c-info);
+  }
+
+  .v-unklar,
+  .ungeprueft {
+    border-color: var(--c-warn);
+    color: var(--c-warn);
+  }
+
+  .url {
+    font-size: var(--t-xs);
+    word-break: break-all;
+  }
+
+  .note {
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+    font-style: italic;
+  }
+
+  .fehlend {
+    color: var(--c-warn);
+  }
+
+  .leer {
+    color: var(--c-text-faint);
+    font-style: italic;
+  }
+
+  .verweis {
+    margin-block-start: var(--s-3);
+    font-size: var(--t-xs);
+  }
+
+  /* Randspalte: engere Zeilen, kein Rückwärtslink nötig */
+  .kompakt {
+    font-size: var(--t-xs);
+  }
+
+  .kompakt .beleg {
+    grid-template-columns: 1.6rem minmax(0, 1fr);
+    padding-block: var(--s-2);
+  }
+
+  .kompakt .rueck {
+    display: none;
+  }
+</style>

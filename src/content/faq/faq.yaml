@@ -1,0 +1,71 @@
+# Gerüst der FAQ. Antworten bleiben leer, solange sie nicht belegt sind.
+- id: wie-viele-ezidi-gibt-es
+  frage: 'Wie viele Êzîdî gibt es weltweit?'
+  antwort: ''
+  thema: ueberblick
+  lang: de
+  status: stub
+  confidence: unklar
+  sources: []
+  weiterfuehrend: ['ueberblick/verbreitung-und-bevoelkerungszahlen']
+  openQuestions:
+    - 'Welche Schätzungen liegen vor, von wem, mit welchem Stichjahr und welcher Erhebungsmethode?'
+    - 'Warum weichen die Schätzungen voneinander ab?'
+  contentWarning: false
+  updated: 2026-07-26
+
+- id: sind-ezidi-kurden
+  frage: 'Sind Êzîdî Kurdinnen und Kurden?'
+  antwort: ''
+  thema: ueberblick
+  lang: de
+  status: stub
+  confidence: unklar
+  sources: []
+  weiterfuehrend: ['ueberblick/religion-ethnie-oder-beides']
+  openQuestions:
+    - 'Welche Positionen vertreten Gemeinschaftsvertretungen, Forschung und politische Akteure jeweils?'
+  contentWarning: false
+  updated: 2026-07-26
+
+- id: warum-teufelsanbeter-falsch
+  frage: 'Warum ist die Bezeichnung „Teufelsanbeter“ falsch?'
+  antwort: ''
+  thema: missverstaendnisse
+  lang: de
+  status: stub
+  confidence: unklar
+  sources: []
+  weiterfuehrend: ['missverstaendnisse/teufelsanbetung-vorwurf']
+  openQuestions:
+    - 'Woher stammt die Zuschreibung, und in welchen Texten ist sie zuerst nachweisbar?'
+  contentWarning: false
+  updated: 2026-07-26
+
+- id: ist-2014-als-genozid-anerkannt
+  frage: 'Ist der Völkermord von 2014 offiziell anerkannt?'
+  antwort: ''
+  thema: genozid
+  lang: de
+  status: stub
+  confidence: unklar
+  sources: []
+  weiterfuehrend: ['genozid/anerkennungen-als-voelkermord']
+  openQuestions:
+    - 'Welche Parlamente und Institutionen haben wann und mit welchem Wortlaut anerkannt?'
+  contentWarning: true
+  updated: 2026-07-26
+
+- id: kann-man-ezidi-werden
+  frage: 'Kann man zum Êzîdîtum konvertieren?'
+  antwort: ''
+  thema: gesellschaft
+  lang: de
+  status: stub
+  confidence: unklar
+  sources: []
+  weiterfuehrend: ['gesellschaft/konversionsverbot-und-mischehen']
+  openQuestions:
+    - 'Wie wird die Regel innerhalb der Gemeinschaft begründet und wie wird sie gegenwärtig diskutiert?'
+  contentWarning: false
+  updated: 2026-07-26

@@ -1,0 +1,88 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ArtikelLayout from '../../../layouts/ArtikelLayout.astro';
+import { mdxKomponenten } from '../../../components/mdx';
+import { locales, type Locale } from '../../../i18n/config';
+import { sectionById, type SectionId } from '../../../lib/sections';
+
+type Eintrag =
+  | CollectionEntry<'articles'>
+  | CollectionEntry<'festivals'>
+  | CollectionEntry<'misconceptions'>;
+
+export async function getStaticPaths() {
+  const [artikel, feste, missverstaendnisse] = await Promise.all([
+    getCollection('articles'),
+    getCollection('festivals'),
+    getCollection('misconceptions'),
+  ]);
+
+  const alle: { eintrag: Eintrag; section: SectionId }[] = [
+    ...artikel.map((e) => ({ eintrag: e as Eintrag, section: e.data.section })),
+    ...feste.map((e) => ({ eintrag: e as Eintrag, section: 'feste' as SectionId })),
+    ...missverstaendnisse.map((e) => ({
+      eintrag: e as Eintrag,
+      section: 'missverstaendnisse' as SectionId,
+    })),
+  ];
+
+  return alle
+    .filter(({ eintrag }) => !eintrag.data.draft)
+    .flatMap(({ eintrag, section }) => {
+      const bereich = sectionById[section].slug;
+      // Die deutsche Fassung bedient alle Sprachrouten, solange keine
+      // Übersetzung existiert. So sind alle vier Routen vollständig
+      // begehbar, ohne Inhalte zu erfinden.
+      const sprachen = eintrag.data.lang === 'de' ? locales : [eintrag.data.lang];
+      return sprachen.map((lang) => ({
+        params: { lang, bereich, slug: eintrag.data.slug },
+        props: { eintrag, section },
+      }));
+    });
+}
+
+const locale = Astro.params.lang as Locale;
+const { eintrag, section } = Astro.props as { eintrag: Eintrag; section: SectionId };
+const { Content, headings, remarkPluginFrontmatter } = await render(eintrag);
+
+const kennzahlen = remarkPluginFrontmatter as {
+  _zitate?: number;
+  _belegluecken?: number;
+  _abschnitte?: number;
+};
+
+const daten = eintrag.data as Eintrag['data'] & {
+  gliederung?: string[];
+  rechercheauftrag?: string;
+  weiterfuehrend?: string[];
+  perspektive?: 'emisch' | 'etisch' | 'gemischt';
+};
+
+const bereichWarnung = sectionById[section].contentWarning ?? false;
+---
+
+<ArtikelLayout
+  locale={locale}
+  section={section}
+  slug={daten.slug}
+  title={daten.title}
+  lead={daten.lead}
+  status={daten.status}
+  confidence={daten.confidence}
+  perspektive={daten.perspektive ?? 'gemischt'}
+  contentWarning={daten.contentWarning || bereichWarnung}
+  updated={daten.updated}
+  reviewedBy={daten.reviewedBy}
+  openQuestions={daten.openQuestions}
+  sources={daten.sources}
+  tags={daten.tags}
+  gliederung={daten.gliederung ?? []}
+  rechercheauftrag={daten.rechercheauftrag}
+  weiterfuehrend={daten.weiterfuehrend ?? []}
+  headings={headings}
+  zitate={kennzahlen._zitate ?? 0}
+  belegluecken={kennzahlen._belegluecken ?? 0}
+  abschnitte={kennzahlen._abschnitte ?? 0}
+>
+  <Content components={mdxKomponenten} />
+</ArtikelLayout>

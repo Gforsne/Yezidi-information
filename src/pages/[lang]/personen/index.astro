@@ -1,0 +1,145 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../../layouts/SeitenLayout.astro';
+import Personenkarte from '../../../components/content/Personenkarte.astro';
+import { locales, type Locale } from '../../../i18n/config';
+import { sectionById } from '../../../lib/sections';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const bereich = sectionById['personen'];
+
+const alle = await getCollection('persons');
+const personen = alle
+  .filter((p) => p.data.lang === 'de' && !p.data.draft)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'de'));
+
+const kategorien: { id: string; titel: string }[] = [
+  { id: 'religiöses-amt', titel: 'Religiöse Ämter' },
+  { id: 'historisch', titel: 'Historische Persönlichkeiten' },
+  { id: 'aktivismus', titel: 'Aktivismus' },
+  { id: 'politik', titel: 'Politik' },
+  { id: 'wissenschaft', titel: 'Wissenschaft' },
+  { id: 'kunst', titel: 'Kunst und Kultur' },
+  { id: 'überlebende', titel: 'Überlebende' },
+];
+---
+
+<SeitenLayout
+  locale={locale}
+  title={bereich.title}
+  eyebrow="Bereich"
+  intro={bereich.intro}
+  trail={[{ label: bereich.title, slug: bereich.slug }]}
+  bereich="personen"
+>
+  <div slot="kopf" class="regel">
+    <h2>Regeln für dieses Verzeichnis</h2>
+    <ul>
+      <li>Nur belegte, öffentlich relevante Informationen.</li>
+      <li>Keine Privatdetails, keine sinngemäß rekonstruierten Zitate.</li>
+      <li>Bei lebenden Personen gilt zusätzliche Zurückhaltung; sie sind gekennzeichnet.</li>
+      <li>
+        Namen von Überlebenden sexualisierter Gewalt stehen nur bei dokumentierter öffentlicher
+        Selbstnennung.
+      </li>
+    </ul>
+  </div>
+
+  {
+    kategorien.map((k) => {
+      const gruppe = personen.filter((p) => p.data.kategorie === k.id);
+      if (gruppe.length === 0) return null;
+      return (
+        <section class="gruppe" aria-labelledby={`gruppe-${k.id}`}>
+          <h2 id={`gruppe-${k.id}`}>{k.titel}</h2>
+          <ul class="karten">
+            {gruppe.map((p) => (
+              <li>
+                <Personenkarte
+                  slug={p.data.slug}
+                  name={p.data.title}
+                  nameUmschrift={p.data.nameUmschrift}
+                  nameVarianten={p.data.nameVarianten}
+                  rolle={p.data.rolle}
+                  kategorie={p.data.kategorie}
+                  geboren={p.data.geboren}
+                  gestorben={p.data.gestorben}
+                  lebend={p.data.lebend}
+                  lead={p.data.lead}
+                  status={p.data.status}
+                  locale={locale}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })
+  }
+
+  <p class="hinweis utility">
+    Das Verzeichnis ist bewusst klein. Es wächst nur um Personen, für die belegte, öffentlich
+    relevante Angaben vorliegen – nicht um Vollständigkeit zu erreichen.
+  </p>
+</SeitenLayout>
+
+<style>
+  .regel {
+    margin-block-start: var(--s-5);
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-apparat);
+    border-radius: var(--radius-sm);
+    background: var(--c-apparat-tint);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .regel h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-apparat);
+    margin-block-end: var(--s-2);
+  }
+
+  .regel ul {
+    margin: 0;
+    padding-inline-start: 1.2em;
+  }
+
+  .regel li {
+    padding-block: var(--s-1);
+  }
+
+  .gruppe {
+    margin-block-end: var(--s-7);
+  }
+
+  .gruppe h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-4);
+    padding-block-end: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .karten {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: var(--s-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hinweis {
+    color: var(--c-text-faint);
+    max-inline-size: var(--measure);
+  }
+</style>

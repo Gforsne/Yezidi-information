@@ -1,0 +1,173 @@
+---
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import Statusbadge from './Statusbadge.astro';
+
+interface Props {
+  slug: string;
+  name: string;
+  nameUmschrift: string;
+  nameVarianten?: string[];
+  rolle: string;
+  kategorie: string;
+  geboren?: string | null;
+  gestorben?: string | null;
+  lebend?: boolean;
+  lead: string;
+  status: 'stub' | 'entwurf' | 'belegt' | 'geprüft';
+  locale: Locale;
+  /** Als Listeneintrag ohne Karte darstellen. */
+  kompakt?: boolean;
+}
+
+const {
+  slug,
+  name,
+  nameUmschrift,
+  nameVarianten = [],
+  rolle,
+  kategorie,
+  geboren = null,
+  gestorben = null,
+  lebend = false,
+  lead,
+  status,
+  locale,
+  kompakt = false,
+} = Astro.props;
+
+const t = useTranslations(locale);
+
+const kategorien: Record<string, string> = {
+  'religiöses-amt': 'Religiöses Amt',
+  historisch: 'Historische Persönlichkeit',
+  aktivismus: 'Aktivismus',
+  politik: 'Politik',
+  wissenschaft: 'Wissenschaft',
+  kunst: 'Kunst und Kultur',
+  überlebende: 'Überlebende',
+};
+---
+
+<article class:list={['personenkarte', { kompakt }]}>
+  <p class="kategorie">{kategorien[kategorie] ?? kategorie}</p>
+
+  <h3 class="name">
+    <a href={path(locale, 'personen', slug)}>{name}</a>
+  </h3>
+
+  {nameUmschrift !== name && <p class="umschrift" lang="ku">{nameUmschrift}</p>}
+
+  <p class="rolle">{rolle}</p>
+
+  <p class="lebensdaten">
+    {geboren ? `${t('person.born')} ${geboren}` : null}
+    {geboren && gestorben ? ' · ' : null}
+    {gestorben ? `${t('person.died')} ${gestorben}` : null}
+    {!geboren && !gestorben ? <span class="offen">Lebensdaten noch nicht belegt</span> : null}
+  </p>
+
+  {!kompakt && <p class="lead">{lead}</p>}
+
+  {
+    nameVarianten.length > 0 && (
+      <p class="varianten">
+        {t('glossary.alsoWritten')}: {nameVarianten.join(', ')}
+      </p>
+    )
+  }
+
+  <p class="fuss">
+    <Statusbadge status={status} locale={locale} inline />
+    {lebend && <span class="lebend">{t('person.living')}</span>}
+  </p>
+</article>
+
+<style>
+  .personenkarte {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    block-size: 100%;
+    padding: var(--s-4);
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-border);
+    border-block-start: var(--border-rule) solid var(--c-border-strong);
+    border-radius: var(--radius-sm);
+  }
+
+  .personenkarte.kompakt {
+    padding: var(--s-3) 0;
+    background: transparent;
+    border: 0;
+    border-block-end: var(--border-hair) solid var(--c-border);
+    border-radius: 0;
+  }
+
+  .kategorie {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+  }
+
+  .name {
+    font-size: var(--t-lg);
+    line-height: var(--lh-heading);
+  }
+
+  .name a {
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .name a:hover {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .umschrift {
+    font-style: italic;
+    color: var(--c-text-muted);
+    font-size: var(--t-sm);
+  }
+
+  .rolle {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text);
+  }
+
+  .lebensdaten,
+  .varianten {
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-faint);
+  }
+
+  .offen {
+    font-style: italic;
+  }
+
+  .lead {
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    flex: 1;
+    margin-block-start: var(--s-2);
+  }
+
+  .fuss {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    align-items: center;
+    margin-block-start: var(--s-2);
+  }
+
+  .lebend {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    color: var(--c-warn);
+  }
+</style>

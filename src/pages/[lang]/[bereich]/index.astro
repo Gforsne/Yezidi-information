@@ -1,0 +1,298 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/ui/Breadcrumb.astro';
+import Statusbadge from '../../../components/content/Statusbadge.astro';
+import Inhaltshinweis from '../../../components/content/Inhaltshinweis.astro';
+import Weiterlesen from '../../../components/content/Weiterlesen.astro';
+import { locales, type Locale } from '../../../i18n/config';
+import { useTranslations } from '../../../i18n/utils';
+import { buildBreadcrumb, getNavTree } from '../../../lib/navigation';
+import { sections, sectionById, type SectionId } from '../../../lib/sections';
+
+export function getStaticPaths() {
+  // `personen` hat eine eigene Sammelseite (Collection-getrieben) und
+  // wird deshalb hier ausgelassen – sonst entstünden zwei Routen mit
+  // demselben Ausgabepfad.
+  const bereiche = sections.filter((s) => s.id !== 'personen');
+  return locales.flatMap((lang) =>
+    bereiche.map((s) => ({ params: { lang, bereich: s.slug }, props: { sectionId: s.id } })),
+  );
+}
+
+const locale = Astro.params.lang as Locale;
+const { sectionId } = Astro.props as { sectionId: SectionId };
+const bereich = sectionById[sectionId];
+const t = useTranslations(locale);
+
+const baum = await getNavTree(locale);
+const eigene = baum.find((b) => b.id === sectionId);
+const seiten = eigene?.pages ?? [];
+
+const crumbs = buildBreadcrumb(locale, t('nav.home'), [
+  { label: bereich.title, slug: bereich.slug },
+]);
+
+const alleArtikel = await getCollection('articles');
+const offeneFragen = alleArtikel
+  .filter((a) => a.data.lang === 'de' && a.data.section === sectionId)
+  .flatMap((a) => a.data.openQuestions.map((f) => ({ frage: f, seite: a.data.title })));
+
+const stubs = seiten.filter((s) => s.status === 'stub').length;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: bereich.title,
+    description: bereich.intro,
+    inLanguage: locale,
+    url: new URL(Astro.url.pathname, Astro.site ?? 'https://ezidi-portal.example').href,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.label,
+      ...(c.href
+        ? { item: new URL(c.href, Astro.site ?? 'https://ezidi-portal.example').href }
+        : {}),
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={bereich.title}
+  description={bereich.kurz}
+  locale={locale}
+  bereich={sectionId}
+  jsonLd={jsonLd}
+>
+  <div class="shell">
+    <Breadcrumb crumbs={crumbs} locale={locale} />
+
+    <header class="bereich-kopf">
+      <p class="eyebrow">{t('nav.sections')}</p>
+      <h1>{bereich.title}</h1>
+      {bereich.contentWarning && <Inhaltshinweis locale={locale} />}
+      <p class="intro">{bereich.intro}</p>
+
+      <p class="bilanz utility">
+        {seiten.length}
+        {t('general.pages')} · {stubs} davon noch Gerüst · {offeneFragen.length} offene Recherchefragen
+      </p>
+    </header>
+
+    {
+      seiten.length > 0 ? (
+        <section class="seiten" aria-labelledby="seiten-titel">
+          <h2 id="seiten-titel">Seiten in diesem Bereich</h2>
+          <ol class="seiten-grid">
+            {seiten.map((seite, i) => (
+              <li>
+                <a href={seite.href} class="karte">
+                  <span class="nummer" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span class="karte-titel">{seite.title}</span>
+                  <span class="karte-kurz">{seite.kurz}</span>
+                  <span class="karte-fuss">
+                    <Statusbadge status={seite.status} locale={locale} inline />
+                    {seite.contentWarning && <span class="cw">{t('cw.title')}</span>}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : (
+        <p class="leer">
+          In diesem Bereich sind noch keine Seiten angelegt. Das ist ein Fehler im Gerüst und sollte
+          gemeldet werden.
+        </p>
+      )
+    }
+
+    {
+      offeneFragen.length > 0 && (
+        <section class="fragen" aria-labelledby="fragen-titel">
+          <h2 id="fragen-titel">{t('article.openQuestions')} in diesem Bereich</h2>
+          <p class="fragen-hilfe">
+            Diese Fragen sind noch nicht beantwortet. Sie stehen hier sichtbar, statt in den Texten
+            überspielt zu werden.
+          </p>
+          <ul>
+            {offeneFragen.slice(0, 25).map((f) => (
+              <li>
+                <span class="frage">{f.frage}</span>
+                <span class="woher utility">{f.seite}</span>
+              </li>
+            ))}
+          </ul>
+          {offeneFragen.length > 25 && (
+            <p class="utility">
+              … und {offeneFragen.length - 25} weitere. Vollständig in RESEARCH-BRIEF.md.
+            </p>
+          )}
+        </section>
+      )
+    }
+
+    <Weiterlesen
+      ziele={bereich.weiterfuehrend.map((id) => sectionById[id].slug)}
+      locale={locale}
+      titel="Weiterführende Bereiche"
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .bereich-kopf {
+    max-inline-size: var(--measure-wide);
+    padding-block-end: var(--s-6);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .bereich-kopf h1 {
+    font-size: var(--t-2xl);
+    margin-block: var(--s-2) var(--s-4);
+  }
+
+  .intro {
+    font-size: var(--t-md);
+    line-height: var(--lh-snug);
+    max-inline-size: var(--measure);
+    color: var(--c-text);
+  }
+
+  .bilanz {
+    margin-block-start: var(--s-4);
+    color: var(--c-text-faint);
+  }
+
+  .seiten,
+  .fragen {
+    padding-block: var(--s-6);
+  }
+
+  .seiten h2,
+  .fragen h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-5);
+  }
+
+  .seiten-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: var(--s-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .karte {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--s-1) var(--s-3);
+    block-size: 100%;
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+    text-decoration: none;
+    color: var(--c-text);
+  }
+
+  .karte:hover {
+    border-color: var(--c-accent);
+  }
+
+  .nummer {
+    grid-row: 1 / span 3;
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-variant-numeric: tabular-nums lining-nums;
+    color: var(--c-text-faint);
+    padding-block-start: 0.35em;
+  }
+
+  .karte-titel {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+    line-height: var(--lh-heading);
+  }
+
+  .karte:hover .karte-titel {
+    color: var(--c-accent);
+  }
+
+  .karte-kurz {
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .karte-fuss {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    align-items: center;
+    margin-block-start: var(--s-2);
+  }
+
+  .cw {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+    color: var(--c-warn);
+    border: 1px solid currentColor;
+    border-radius: var(--radius-xs);
+    padding-inline: 0.4em;
+  }
+
+  .fragen {
+    border-block-start: var(--border-hair) solid var(--c-border);
+  }
+
+  .fragen-hilfe {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-4);
+    max-inline-size: var(--measure);
+  }
+
+  .fragen ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-inline-size: var(--measure-wide);
+  }
+
+  .fragen li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--s-2) var(--s-4);
+    padding-block: var(--s-3);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .frage {
+    flex: 1 1 24rem;
+  }
+
+  .woher {
+    color: var(--c-text-faint);
+  }
+
+  .leer {
+    padding: var(--s-5);
+    color: var(--c-warn);
+  }
+</style>

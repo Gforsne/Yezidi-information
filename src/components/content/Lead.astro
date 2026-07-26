@@ -1,0 +1,48 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  text?: string;
+  locale?: Locale;
+}
+
+const { text, locale = 'de' } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="lead" aria-labelledby="lead-titel">
+  <h2 class="lead-titel" id="lead-titel">{t('article.lead')}</h2>
+  <div class="lead-text">
+    {text ? <p>{text}</p> : <slot />}
+  </div>
+</section>
+
+<style>
+  .lead {
+    margin-block-end: var(--s-6);
+    padding-inline-start: var(--s-4);
+    border-inline-start: var(--border-rule) solid var(--c-accent);
+    max-inline-size: var(--measure);
+  }
+
+  .lead-titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .lead-text {
+    font-size: var(--t-md);
+    line-height: var(--lh-snug);
+    color: var(--c-text);
+  }
+
+  .lead-text :global(p + p) {
+    margin-block-start: var(--s-3);
+  }
+</style>

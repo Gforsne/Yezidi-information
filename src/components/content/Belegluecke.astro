@@ -1,0 +1,89 @@
+---
+interface Props {
+  /**
+   * Der konkrete Rechercheauftrag für diese Stelle – keine Floskel,
+   * sondern die Frage, die beantwortet werden muss.
+   */
+  auftrag: string;
+  /** Wonach gesucht werden soll: Art der Quelle, Sprache, Institution. */
+  hinweis?: string;
+  /** Kompakte Variante für den Fließtext statt als eigener Block. */
+  inline?: boolean;
+}
+
+const { auftrag, hinweis, inline = false } = Astro.props;
+---
+
+{/*
+  Sichtbare Beleglücke. Sie ersetzt keinen Text, sondern zeigt an, dass
+  hier noch keiner steht. remark-zitate zählt die Vorkommen; der
+  Content-Report weist sie als offene Belegstellen aus.
+*/}
+{
+  inline ? (
+    <mark class="luecke-inline" title={auftrag}>
+      <span class="nur-screenreader">Beleglücke: </span>
+      {auftrag}
+    </mark>
+  ) : (
+    <aside class="luecke" data-belegluecke role="note">
+      <p class="titel">
+        <span class="zeichen" aria-hidden="true">
+          ⌇
+        </span>
+        Beleglücke – hier fehlt noch der Inhalt
+      </p>
+      <p class="auftrag">{auftrag}</p>
+      {hinweis && <p class="hinweis">Gesucht wird: {hinweis}</p>}
+    </aside>
+  )
+}
+
+<style>
+  .luecke {
+    margin-block: var(--s-4);
+    padding: var(--s-3) var(--s-4);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-inline-start: var(--border-rule) solid var(--c-text-faint);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-sunken);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .titel {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .zeichen {
+    font-size: 1.2em;
+    line-height: 1;
+  }
+
+  .auftrag {
+    color: var(--c-text);
+  }
+
+  .hinweis {
+    margin-block-start: var(--s-2);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+
+  .luecke-inline {
+    background: var(--c-surface-sunken);
+    color: var(--c-text-muted);
+    border-block-end: 1px dashed var(--c-border-strong);
+    padding-inline: 0.2em;
+    font-style: italic;
+  }
+</style>

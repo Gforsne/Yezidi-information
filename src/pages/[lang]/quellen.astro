@@ -1,0 +1,372 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../layouts/SeitenLayout.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { formatDate, path, useTranslations } from '../../i18n/utils';
+import { quellenTypLabel, verlaesslichkeitLabel, vollbeleg } from '../../lib/zitation';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+
+const alle = await getCollection('sources');
+const quellen = [...alle].sort((a, b) => {
+  const an = a.data.authors[0] ?? a.data.title;
+  const bn = b.data.authors[0] ?? b.data.title;
+  return an.localeCompare(bn, 'de');
+});
+
+// Welche Quelle wird wo zitiert? Rückwärtsindex aus allen Collections.
+const [artikel, personen, orte, feste, missverstaendnisse, glossar] = await Promise.all([
+  getCollection('articles'),
+  getCollection('persons'),
+  getCollection('places'),
+  getCollection('festivals'),
+  getCollection('misconceptions'),
+  getCollection('glossary'),
+]);
+
+const verwendung = new Map<string, number>();
+for (const sammlung of [artikel, personen, orte, feste, missverstaendnisse, glossar]) {
+  for (const e of sammlung) {
+    for (const ref of e.data.sources) {
+      verwendung.set(ref.id, (verwendung.get(ref.id) ?? 0) + 1);
+    }
+  }
+}
+
+const typen = [...new Set(quellen.map((q) => q.data.type))].sort();
+const sprachen = [...new Set(quellen.map((q) => q.data.language))].sort();
+const verlaesslichkeiten = [...new Set(quellen.map((q) => q.data.reliability))].sort();
+const ungeprueft = quellen.filter((q) => !q.data.verifiziert).length;
+---
+
+<SeitenLayout
+  locale={locale}
+  title={t('sources.title')}
+  eyebrow={t('nav.tools')}
+  intro="Alle Quellen, auf die sich dieses Portal stützt – filterbar nach Art, Sprache und Verlässlichkeit. Jede Zitierung im Text verweist auf einen Eintrag dieser Liste. Einträge, deren bibliografische Angaben noch nicht am Original geprüft wurden, sind ausdrücklich als ungeprüft markiert."
+  trail={[{ label: t('sources.title'), slug: 'quellen' }]}
+>
+  <div slot="kopf" class="prinzip">
+    <h2>{t('sources.principle')}</h2>
+    <ol>
+      <li>Wissenschaftliche Fachliteratur und Peer-Review</li>
+      <li>Institutionelle Berichte (UN, staatliche Stellen, etablierte Nichtregierungsorganisationen)</li>
+      <li>Seriöser Journalismus</li>
+      <li>Selbstdarstellungen der Gemeinschaft – wertvoll für die emische Perspektive, als solche gekennzeichnet</li>
+    </ol>
+    <p>
+      Wikipedia ist keine zitierfähige Quelle. Sie wird allenfalls benutzt, um Primär- und
+      Sekundärquellen zu finden; zitiert werden dann diese.
+    </p>
+  </div>
+
+  <p class="bilanz utility">
+    {quellen.length} {t('sources.count')} · {ungeprueft} davon mit ungeprüften Angaben
+  </p>
+
+  <form class="filter" data-quellenfilter hidden>
+    <fieldset>
+      <legend>{t('sources.filterType')}</legend>
+      <div class="optionen">
+        {
+          typen.map((typ) => (
+            <label>
+              <input type="checkbox" name="typ" value={typ} checked />
+              <span>{quellenTypLabel[typ]}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>{t('sources.filterLanguage')}</legend>
+      <div class="optionen">
+        {
+          sprachen.map((s) => (
+            <label>
+              <input type="checkbox" name="sprache" value={s} checked />
+              <span>{s.toUpperCase()}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>{t('sources.filterReliability')}</legend>
+      <div class="optionen">
+        {
+          verlaesslichkeiten.map((v) => (
+            <label>
+              <input type="checkbox" name="verlaesslichkeit" value={v} checked />
+              <span>{verlaesslichkeitLabel[v]}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <output data-quellenzaehler aria-live="polite">{quellen.length} {t('sources.count')}</output>
+  </form>
+
+  <ol class="quellenverzeichnis">
+    {
+      quellen.map((q) => (
+        <li
+          id={`beleg-${q.data.id}`}
+          class="quelle"
+          data-typ={q.data.type}
+          data-sprache={q.data.language}
+          data-verlaesslichkeit={q.data.reliability}
+        >
+          <p class="voll">{vollbeleg(q.data, locale)}</p>
+          <p class="merkmale utility">
+            <span>{quellenTypLabel[q.data.type]}</span>
+            <span>{q.data.language.toUpperCase()}</span>
+            <span class:list={['v', `v-${q.data.reliability}`]}>
+              {verlaesslichkeitLabel[q.data.reliability]}
+            </span>
+            {!q.data.verifiziert && <span class="ungeprueft">Angaben ungeprüft</span>}
+            <span class="id">
+              <code>{q.data.id}</code>
+            </span>
+            <span class="zitiert">
+              {verwendung.get(q.data.id) ?? 0}× zitiert
+            </span>
+          </p>
+          {q.data.url && (
+            <p class="url utility">
+              <a href={q.data.url} rel="noopener nofollow">
+                {q.data.url}
+              </a>
+              {q.data.accessed && <span> ({t('cite.accessed')} {formatDate(q.data.accessed, locale)})</span>}
+            </p>
+          )}
+          {q.data.note && <p class="note">{q.data.note}</p>}
+        </li>
+      ))
+    }
+  </ol>
+
+  <p class="leer" data-quellenleer hidden>Keine Quellen für diese Auswahl.</p>
+
+  <p class="hinweis utility">
+    Ergänzungen und Korrekturen an diesem Verzeichnis sind besonders willkommen –
+    <a href={path(locale, 'meta', 'korrekturhinweis')}>Korrekturhinweis melden</a>.
+  </p>
+</SeitenLayout>
+
+<style>
+  .prinzip {
+    margin-block-start: var(--s-5);
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-apparat);
+    border-radius: var(--radius-sm);
+    background: var(--c-apparat-tint);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .prinzip h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-apparat);
+    margin-block-end: var(--s-2);
+  }
+
+  .prinzip ol {
+    margin: 0 0 var(--s-3);
+    padding-inline-start: 1.4em;
+  }
+
+  .prinzip li {
+    padding-block: var(--s-1);
+  }
+
+  .bilanz {
+    margin-block-end: var(--s-4);
+    color: var(--c-text-faint);
+  }
+
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-4) var(--s-6);
+    margin-block-end: var(--s-6);
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+    font-family: var(--f-utility);
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-inline-size: 0;
+  }
+
+  legend {
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    padding: 0;
+  }
+
+  .optionen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-3);
+  }
+
+  .optionen label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-block-size: 2.75rem;
+    font-size: var(--t-sm);
+    cursor: pointer;
+  }
+
+  .optionen input {
+    accent-color: var(--c-accent);
+  }
+
+  output {
+    margin-inline-start: auto;
+    color: var(--c-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .quellenverzeichnis {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-inline-size: var(--measure-wide);
+    counter-reset: q;
+  }
+
+  .quelle {
+    padding-block: var(--s-4);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    counter-increment: q;
+  }
+
+  .quelle[hidden] {
+    display: none;
+  }
+
+  .quelle:target {
+    background: var(--c-apparat-tint);
+    outline: 2px solid var(--c-apparat);
+    outline-offset: 4px;
+  }
+
+  .voll {
+    font-size: var(--t-base);
+    color: var(--c-text);
+    max-inline-size: var(--measure);
+  }
+
+  .merkmale {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    margin-block-start: var(--s-2);
+    font-size: var(--t-2xs);
+  }
+
+  .merkmale > span {
+    padding-inline: 0.5em;
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-xs);
+    color: var(--c-text-muted);
+  }
+
+  .v-wissenschaftlich {
+    border-color: var(--c-apparat);
+    color: var(--c-apparat);
+  }
+
+  .v-institutionell {
+    border-color: var(--c-info);
+    color: var(--c-info);
+  }
+
+  .v-unklar,
+  .ungeprueft {
+    border-color: var(--c-warn);
+    color: var(--c-warn);
+  }
+
+  .url {
+    margin-block-start: var(--s-1);
+    word-break: break-all;
+  }
+
+  .note {
+    margin-block-start: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    font-style: italic;
+    color: var(--c-text-muted);
+    max-inline-size: var(--measure);
+  }
+
+  .leer,
+  .hinweis {
+    margin-block-start: var(--s-5);
+    font-family: var(--f-utility);
+    color: var(--c-text-muted);
+  }
+</style>
+
+<script>
+  const formular = document.querySelector<HTMLFormElement>('[data-quellenfilter]');
+  if (formular) {
+    formular.hidden = false;
+    const quellen = [...document.querySelectorAll<HTMLLIElement>('.quelle')];
+    const zaehler = formular.querySelector<HTMLOutputElement>('[data-quellenzaehler]');
+    const leer = document.querySelector<HTMLElement>('[data-quellenleer]');
+    const einheit = zaehler?.textContent?.trim().split(/\s+/).slice(1).join(' ') ?? 'Einträge';
+
+    const werte = (name: string) =>
+      new Set(
+        [...formular.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)].map(
+          (i) => i.value,
+        ),
+      );
+
+    const anwenden = () => {
+      const typen = werte('typ');
+      const sprachen = werte('sprache');
+      const verl = werte('verlaesslichkeit');
+      let sichtbar = 0;
+      for (const q of quellen) {
+        const passt =
+          typen.has(q.dataset.typ ?? '') &&
+          sprachen.has(q.dataset.sprache ?? '') &&
+          verl.has(q.dataset.verlaesslichkeit ?? '');
+        q.hidden = !passt;
+        if (passt) sichtbar += 1;
+      }
+      if (zaehler) zaehler.textContent = `${sichtbar} ${einheit}`;
+      if (leer) leer.hidden = sichtbar > 0;
+    };
+
+    formular.addEventListener('change', anwenden);
+    formular.addEventListener('submit', (e) => e.preventDefault());
+    anwenden();
+  }
+</script>

@@ -1,0 +1,108 @@
+---
+import { getEntry } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { path } from '../../i18n/utils';
+
+interface Props {
+  /** Slug eines Eintrags der `glossary`-Collection. */
+  id: string;
+  locale?: Locale;
+}
+
+const { id, locale = 'de' } = Astro.props;
+const eintrag = await getEntry('glossary', `de/${id}`);
+const daten = eintrag?.data;
+const ziel = path(locale, 'glossar', id);
+---
+
+{/*
+  Glossarverweis im Fließtext.
+
+  Umsetzung ohne JavaScript: ein Link mit nativem `title` und einem
+  zusätzlich per CSS eingeblendeten Kurztext. Screenreader bekommen die
+  Definition über aria-describedby, Tastaturnutzende sehen sie beim
+  Fokus. Fehlt der Glossareintrag, wird das sichtbar gemacht, statt
+  stillschweigend einen toten Link zu erzeugen – check:content bricht
+  in dem Fall ohnehin ab.
+*/}
+{
+  daten ? (
+    <span class="begriff-huelle">
+      <a class="begriff" href={ziel} aria-describedby={`glossar-${id}`}>
+        <slot />
+      </a>
+      <span class="erklaerung" id={`glossar-${id}`} role="tooltip">
+        <strong>{daten.title}</strong>
+        {daten.kurmanci && <span class="kurmanci"> · {daten.kurmanci}</span>}
+        <span class="definition">{daten.kurzdefinition}</span>
+      </span>
+    </span>
+  ) : (
+    <span class="begriff-fehlt" title={`Glossareintrag „${id}“ fehlt`}>
+      <slot />
+    </span>
+  )
+}
+
+<style>
+  .begriff-huelle {
+    position: relative;
+  }
+
+  .begriff {
+    color: inherit;
+    text-decoration: underline dotted var(--c-apparat);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    cursor: help;
+  }
+
+  .begriff:hover {
+    color: var(--c-apparat);
+  }
+
+  .erklaerung {
+    position: absolute;
+    inset-block-end: calc(100% + 0.4rem);
+    inset-inline-start: 0;
+    z-index: var(--z-sticky);
+    display: none;
+    inline-size: max-content;
+    max-inline-size: 22rem;
+    padding: var(--s-3);
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-apparat);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-overlay);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    line-height: var(--lh-snug);
+    color: var(--c-text);
+  }
+
+  .begriff-huelle:hover .erklaerung,
+  .begriff:focus-visible + .erklaerung {
+    display: block;
+  }
+
+  .kurmanci {
+    color: var(--c-text-muted);
+    font-style: italic;
+  }
+
+  .definition {
+    display: block;
+    margin-block-start: var(--s-1);
+    color: var(--c-text-muted);
+  }
+
+  .begriff-fehlt {
+    text-decoration: underline wavy var(--c-warn);
+  }
+
+  @media print {
+    .erklaerung {
+      display: none !important;
+    }
+  }
+</style>

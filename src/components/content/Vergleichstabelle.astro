@@ -1,0 +1,121 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  titel: string;
+  /** Spaltenköpfe. Die erste Spalte ist die Merkmalsspalte. */
+  spalten: string[];
+  /** Zeilen; `null` in einer Zelle wird als „noch offen“ gesetzt. */
+  zeilen: (string | null)[][];
+  /** Erläuterung unter der Tabelle, z. B. zur Herkunft der Angaben. */
+  fussnote?: string;
+  locale?: Locale;
+}
+
+const { titel, spalten, zeilen, fussnote, locale = 'de' } = Astro.props;
+const t = useTranslations(locale);
+---
+
+{/*
+  Vergleichstabellen dienen hier vor allem dazu, konkurrierende Positionen
+  nebeneinanderzustellen (Leitplanke 10.3) – nicht dazu, eine Position als
+  richtig zu markieren. Deshalb keine Häkchen-Spalten und keine Wertung.
+*/}
+<figure class="vergleich">
+  <figcaption class="titel">{titel}</figcaption>
+  <div class="tabellen-scroll" tabindex="0" role="region" aria-label={titel}>
+    <table>
+      <thead>
+        <tr>
+          {spalten.map((s, i) => <th scope="col" class:list={{ merkmal: i === 0 }}>{s}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          zeilen.map((zeile) => (
+            <tr>
+              {zeile.map((zelle, i) =>
+                i === 0 ? (
+                  <th scope="row">{zelle}</th>
+                ) : (
+                  <td>{zelle ?? <span class="offen">noch offen</span>}</td>
+                ),
+              )}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <p class="scrollhinweis utility">{t('general.scrollTableHint')}</p>
+  {fussnote && <p class="fussnote">{fussnote}</p>}
+</figure>
+
+<style>
+  .vergleich {
+    margin-block: var(--s-5);
+    max-inline-size: var(--measure-wide);
+  }
+
+  .titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  th,
+  td {
+    text-align: start;
+    vertical-align: top;
+    padding: var(--s-2) var(--s-3);
+    border: var(--border-hair) solid var(--c-border);
+  }
+
+  thead th {
+    background: var(--c-surface-sunken);
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+  }
+
+  tbody th {
+    background: var(--c-surface-raised);
+    font-weight: var(--w-medium);
+    inline-size: 12rem;
+  }
+
+  .offen {
+    color: var(--c-text-faint);
+    font-style: italic;
+  }
+
+  .scrollhinweis {
+    margin-block-start: var(--s-1);
+    font-size: var(--t-2xs);
+    color: var(--c-text-faint);
+  }
+
+  @media (min-width: 48rem) {
+    .scrollhinweis {
+      display: none;
+    }
+  }
+
+  .fussnote {
+    margin-block-start: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+  }
+</style>

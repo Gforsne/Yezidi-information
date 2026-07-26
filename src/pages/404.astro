@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLocale } from '../i18n/config';
+import { path, useTranslations } from '../i18n/utils';
+import { sections } from '../lib/sections';
+import { getToolLinks } from '../lib/navigation';
+
+const locale = defaultLocale;
+const t = useTranslations(locale);
+const werkzeuge = getToolLinks(locale);
+---
+
+<BaseLayout title={t('error.404.title')} description={t('error.404.text')} locale={locale} noindex>
+  <div class="shell fehlerseite">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>{t('error.404.title')}</h1>
+    <p class="text">{t('error.404.text')}</p>
+
+    <form class="suche" role="search" action={path(locale, 'suche')} method="get">
+      <label for="fehler-suche">{t('search.label')}</label>
+      <div class="zeile">
+        <input
+          type="search"
+          id="fehler-suche"
+          name="q"
+          placeholder={t('search.placeholder')}
+          autocomplete="off"
+        />
+        <button type="submit">{t('search.submit')}</button>
+      </div>
+    </form>
+
+    <div class="wege">
+      <nav aria-labelledby="wege-bereiche">
+        <h2 id="wege-bereiche">{t('nav.sections')}</h2>
+        <ul>
+          {
+            sections.map((s) => (
+              <li>
+                <a href={path(locale, s.slug)}>{s.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <nav aria-labelledby="wege-werkzeuge">
+        <h2 id="wege-werkzeuge">{t('nav.tools')}</h2>
+        <ul>
+          {
+            werkzeuge.map((w) => (
+              <li>
+                <a href={w.href}>{w.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <p class="zurueck">
+      <a href={path(locale)}>← {t('error.404.toStart')}</a>
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .fehlerseite {
+    padding-block: var(--s-7);
+  }
+
+  .code {
+    font-family: var(--f-display);
+    font-size: var(--t-3xl);
+    color: var(--c-text-faint);
+    line-height: 1;
+  }
+
+  h1 {
+    font-size: var(--t-2xl);
+    margin-block: var(--s-2) var(--s-4);
+  }
+
+  .text {
+    max-inline-size: var(--measure);
+    font-size: var(--t-md);
+    color: var(--c-text-muted);
+  }
+
+  .suche {
+    margin-block: var(--s-6);
+    max-inline-size: var(--measure);
+  }
+
+  label {
+    display: block;
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .zeile {
+    display: flex;
+    gap: var(--s-2);
+  }
+
+  input {
+    flex: 1;
+    min-block-size: 3rem;
+    padding-inline: var(--s-3);
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--c-text);
+  }
+
+  button {
+    min-block-size: 3rem;
+    padding-inline: var(--s-4);
+    background: var(--c-accent);
+    color: var(--c-surface);
+    border: 0;
+    border-radius: var(--radius-sm);
+    font-family: var(--f-utility);
+    font-weight: var(--w-semibold);
+    cursor: pointer;
+  }
+
+  .wege {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--s-5);
+    padding-block: var(--s-5);
+    border-block: var(--border-hair) solid var(--c-border);
+    max-inline-size: var(--measure-wide);
+  }
+
+  .wege h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .wege ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .wege li {
+    padding-block: var(--s-1);
+  }
+
+  .zurueck {
+    margin-block-start: var(--s-5);
+    font-family: var(--f-utility);
+  }
+</style>

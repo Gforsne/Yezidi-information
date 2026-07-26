@@ -1,0 +1,111 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+{/*
+  Der Umschalter ist ein echtes <button> mit aria-pressed-freier,
+  dreiwertiger Logik (System → hell → dunkel). Ohne JavaScript wird er
+  ausgeblendet, weil er dann nichts bewirken könnte; die Systemeinstellung
+  greift trotzdem.
+*/}
+<button type="button" class="themenwechsler" data-themenwechsler hidden aria-live="polite">
+  <span class="symbol" aria-hidden="true"></span>
+  <span class="label" data-label>{t('theme.system')}</span>
+  <span class="nur-screenreader">{t('theme.toggle')}</span>
+</button>
+
+<style>
+  .themenwechsler {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-block-size: 2.75rem;
+    padding-inline: var(--s-3);
+    background: transparent;
+    border: var(--border-hair) solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--c-text-muted);
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-medium);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .themenwechsler:hover {
+    color: var(--c-text);
+    background: var(--c-surface-sunken);
+  }
+
+  .symbol {
+    inline-size: 0.85rem;
+    block-size: 0.85rem;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    /* Halbmond-Andeutung: der gefüllte Anteil zeigt das aktive Schema. */
+    background: linear-gradient(to right, currentColor 50%, transparent 50%);
+  }
+
+  :global([data-theme='hell']) .symbol {
+    background: transparent;
+  }
+
+  :global([data-theme='dunkel']) .symbol {
+    background: currentColor;
+  }
+</style>
+
+<script>
+  const SCHLUESSEL = 'ezidi-farbschema';
+  type Schema = 'system' | 'hell' | 'dunkel';
+  const reihenfolge: Schema[] = ['system', 'hell', 'dunkel'];
+
+  const beschriftungen: Record<Schema, string> = {
+    system: document.documentElement.lang.startsWith('de') ? 'System' : 'System',
+    hell: document.documentElement.lang.startsWith('de') ? 'Hell' : 'Light',
+    dunkel: document.documentElement.lang.startsWith('de') ? 'Dunkel' : 'Dark',
+  };
+
+  function lies(): Schema {
+    try {
+      const wert = localStorage.getItem(SCHLUESSEL);
+      return wert === 'hell' || wert === 'dunkel' ? wert : 'system';
+    } catch {
+      return 'system';
+    }
+  }
+
+  function schreibe(schema: Schema) {
+    try {
+      if (schema === 'system') localStorage.removeItem(SCHLUESSEL);
+      else localStorage.setItem(SCHLUESSEL, schema);
+    } catch {
+      /* Kein Speicher verfügbar – die Wahl gilt dann nur für diese Seite. */
+    }
+    if (schema === 'system') delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = schema;
+  }
+
+  for (const knopf of document.querySelectorAll<HTMLButtonElement>('[data-themenwechsler]')) {
+    knopf.hidden = false;
+    const label = knopf.querySelector<HTMLElement>('[data-label]');
+    const zeige = (schema: Schema) => {
+      if (label) label.textContent = beschriftungen[schema];
+    };
+    zeige(lies());
+    knopf.addEventListener('click', () => {
+      const naechstes = reihenfolge[(reihenfolge.indexOf(lies()) + 1) % reihenfolge.length]!;
+      schreibe(naechstes);
+      zeige(naechstes);
+    });
+  }
+</script>

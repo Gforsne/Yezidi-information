@@ -1,0 +1,90 @@
+---
+interface Props {
+  titel: string;
+  /** Standardmäßig geöffnet – z. B. für Inhalte, die nicht versteckt gehören. */
+  offen?: boolean;
+  /** Kurze Einordnung neben dem Titel, etwa „Forschungsstand“. */
+  kennzeichnung?: string;
+}
+
+const { titel, offen = false, kennzeichnung } = Astro.props;
+---
+
+{/* <details> statt eigenem Widget: ohne JavaScript bedienbar, korrekt
+    angekündigt, druckbar. */}
+<details class="aufklappbox" open={offen}>
+  <summary>
+    <span class="titel">{titel}</span>
+    {kennzeichnung && <span class="kennzeichnung">{kennzeichnung}</span>}
+    <span class="zeichen" aria-hidden="true"></span>
+  </summary>
+  <div class="inhalt">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .aufklappbox {
+    margin-block: var(--s-4);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+    max-inline-size: var(--measure);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    padding: var(--s-3) var(--s-4);
+    min-block-size: 2.75rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--f-utility);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .titel {
+    flex: 1;
+    font-size: var(--t-sm);
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+  }
+
+  .kennzeichnung {
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    padding-inline: 0.5em;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-xs);
+  }
+
+  .zeichen {
+    flex: none;
+    inline-size: 0.7rem;
+    block-size: 0.7rem;
+    border-inline-end: 2px solid var(--c-accent);
+    border-block-end: 2px solid var(--c-accent);
+    transform: rotate(45deg) translate(-0.1rem, -0.1rem);
+  }
+
+  .aufklappbox[open] .zeichen {
+    transform: rotate(225deg) translate(-0.1rem, -0.1rem);
+  }
+
+  .inhalt {
+    padding: 0 var(--s-4) var(--s-4);
+    font-size: var(--t-base);
+  }
+
+  @media print {
+    .aufklappbox .inhalt {
+      display: block !important;
+    }
+  }
+</style>

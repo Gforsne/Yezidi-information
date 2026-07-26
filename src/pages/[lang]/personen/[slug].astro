@@ -1,0 +1,147 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ArtikelLayout from '../../../layouts/ArtikelLayout.astro';
+import { mdxKomponenten } from '../../../components/mdx';
+import { locales, type Locale } from '../../../i18n/config';
+
+export async function getStaticPaths() {
+  const personen = await getCollection('persons');
+  return personen
+    .filter((p) => !p.data.draft)
+    .flatMap((eintrag) => {
+      const sprachen = eintrag.data.lang === 'de' ? locales : [eintrag.data.lang];
+      return sprachen.map((lang) => ({
+        params: { lang, slug: eintrag.data.slug },
+        props: { eintrag },
+      }));
+    });
+}
+
+const locale = Astro.params.lang as Locale;
+const { eintrag } = Astro.props as { eintrag: CollectionEntry<'persons'> };
+const { Content, headings, remarkPluginFrontmatter } = await render(eintrag);
+const d = eintrag.data;
+
+const k = remarkPluginFrontmatter as {
+  _zitate?: number;
+  _belegluecken?: number;
+  _abschnitte?: number;
+};
+
+/*
+  Bei lebenden Personen wird die Zurückhaltung sichtbar gemacht: Der
+  Hinweis steht als offene Frage im Apparat, damit er nicht übersehen
+  werden kann.
+*/
+const offeneFragen = d.lebend
+  ? [
+      'Lebende Person: Vor jeder Ergänzung prüfen, ob die Angabe öffentlich relevant und von der Person selbst oder von einer Institution dokumentiert ist.',
+      ...d.openQuestions,
+    ]
+  : d.openQuestions;
+---
+
+<ArtikelLayout
+  locale={locale}
+  section="personen"
+  slug={d.slug}
+  title={d.title}
+  lead={d.lead}
+  status={d.status}
+  confidence={d.confidence}
+  perspektive="etisch"
+  contentWarning={d.contentWarning}
+  updated={d.updated}
+  reviewedBy={d.reviewedBy}
+  openQuestions={offeneFragen}
+  sources={d.sources}
+  tags={d.tags}
+  gliederung={[]}
+  weiterfuehrend={[]}
+  headings={headings}
+  zitate={k._zitate ?? 0}
+  belegluecken={k._belegluecken ?? 0}
+  abschnitte={k._abschnitte ?? 0}
+>
+  <dl class="personendaten">
+    <div>
+      <dt>Ansetzungsform</dt>
+      <dd>{d.nameUmschrift}</dd>
+    </div>
+    {
+      d.nameVarianten.length > 0 && (
+        <div>
+          <dt>Weitere Schreibweisen</dt>
+          <dd>{d.nameVarianten.join(', ')}</dd>
+        </div>
+      )
+    }
+    <div>
+      <dt>Funktion</dt>
+      <dd>{d.rolle}</dd>
+    </div>
+    <div>
+      <dt>Lebensdaten</dt>
+      <dd>
+        {
+          d.geboren || d.gestorben ? (
+            `${d.geboren ?? '?'} – ${d.gestorben ?? (d.lebend ? '' : '?')}`
+          ) : (
+            <span class="offen">noch nicht belegt</span>
+          )
+        }
+      </dd>
+    </div>
+  </dl>
+
+  {
+    d.lebend && (
+      <p class="lebend-hinweis">
+        Lebende Person. Die Darstellung beschränkt sich auf öffentlich relevante, dokumentierte
+        Angaben.
+      </p>
+    )
+  }
+
+  <Content components={mdxKomponenten} />
+</ArtikelLayout>
+
+<style>
+  .personendaten {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3) var(--s-6);
+    margin-block-end: var(--s-5);
+    padding-block-end: var(--s-4);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .personendaten dt {
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+  }
+
+  .personendaten dd {
+    margin: 0;
+    color: var(--c-text);
+  }
+
+  .offen {
+    font-style: italic;
+    color: var(--c-text-faint);
+  }
+
+  .lebend-hinweis {
+    margin-block-end: var(--s-5);
+    padding: var(--s-3);
+    border-inline-start: var(--border-rule) solid var(--c-warn);
+    background: var(--c-warn-surface);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text);
+  }
+</style>

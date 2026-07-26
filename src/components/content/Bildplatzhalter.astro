@@ -1,0 +1,104 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  /** Was an dieser Stelle stehen soll – konkret, als Rechercheauftrag. */
+  gesucht: string;
+  /** Seitenverhältnis, damit kein Layoutsprung entsteht. */
+  verhaeltnis?: '16/9' | '4/3' | '3/2' | '1/1';
+  /** Rechtliche Anforderung an das gesuchte Bild. */
+  lizenzbedarf?: string;
+  locale?: Locale;
+}
+
+const {
+  gesucht,
+  verhaeltnis = '3/2',
+  lizenzbedarf = 'Public Domain, CC-Lizenz oder ausdrückliche Freigabe – mit Urheber, Lizenz und Fundstelle',
+  locale = 'de',
+} = Astro.props;
+
+const t = useTranslations(locale);
+---
+
+{/*
+  Gestaltete Leerfläche statt eines beliebigen oder KI-erzeugten Bildes
+  (Leitplanke 10.7). Das feste Seitenverhältnis verhindert Layoutsprünge,
+  sobald später ein echtes Bild eingesetzt wird.
+*/}
+<figure class="bildplatzhalter" style={`--verhaeltnis:${verhaeltnis}`}>
+  <div class="flaeche" role="img" aria-label={`${t('image.missing')} ${gesucht}`}>
+    <svg viewBox="0 0 120 80" aria-hidden="true" focusable="false" preserveAspectRatio="none">
+      <line x1="0" y1="0" x2="120" y2="80"></line>
+      <line x1="120" y1="0" x2="0" y2="80"></line>
+    </svg>
+    <span class="marke">ohne Bild</span>
+  </div>
+  <figcaption>
+    <p class="hinweis">{t('image.missing')}</p>
+    <p class="gesucht"><strong>Gesucht:</strong> {gesucht}</p>
+    <p class="lizenz"><strong>Bedingung:</strong> {lizenzbedarf}</p>
+    <p class="begruendung">{t('image.missingHelp')}</p>
+  </figcaption>
+</figure>
+
+<style>
+  .bildplatzhalter {
+    margin-block: var(--s-5);
+    max-inline-size: var(--measure);
+  }
+
+  .flaeche {
+    position: relative;
+    aspect-ratio: var(--verhaeltnis);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--c-surface-sunken);
+    border: var(--border-hair) dashed var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  svg {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  svg line {
+    stroke: var(--c-border);
+    stroke-width: 0.5;
+  }
+
+  .marke {
+    position: relative;
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+    background: var(--c-surface-sunken);
+    padding-inline: var(--s-2);
+  }
+
+  figcaption {
+    margin-block-start: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  .hinweis {
+    color: var(--c-text);
+  }
+
+  .begruendung {
+    color: var(--c-text-faint);
+  }
+</style>

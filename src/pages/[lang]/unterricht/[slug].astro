@@ -1,0 +1,95 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ArtikelLayout from '../../../layouts/ArtikelLayout.astro';
+import { mdxKomponenten } from '../../../components/mdx';
+import { locales, type Locale } from '../../../i18n/config';
+
+export async function getStaticPaths() {
+  const material = await getCollection('teaching');
+  return material
+    .filter((m) => !m.data.draft)
+    .flatMap((eintrag) => {
+      const sprachen = eintrag.data.lang === 'de' ? locales : [eintrag.data.lang];
+      return sprachen.map((lang) => ({
+        params: { lang, slug: eintrag.data.slug },
+        props: { eintrag },
+      }));
+    });
+}
+
+const locale = Astro.params.lang as Locale;
+const { eintrag } = Astro.props as { eintrag: CollectionEntry<'teaching'> };
+const { Content, headings, remarkPluginFrontmatter } = await render(eintrag);
+const d = eintrag.data;
+const k = remarkPluginFrontmatter as { _zitate?: number; _belegluecken?: number; _abschnitte?: number };
+---
+
+<ArtikelLayout
+  locale={locale}
+  section="vermittlung"
+  slug={d.slug}
+  title={d.title}
+  lead={d.lead}
+  status={d.status}
+  confidence={d.confidence}
+  perspektive="etisch"
+  contentWarning={d.contentWarning}
+  updated={d.updated}
+  reviewedBy={d.reviewedBy}
+  openQuestions={d.openQuestions}
+  sources={d.sources}
+  tags={d.tags}
+  gliederung={d.gliederung}
+  rechercheauftrag={d.rechercheauftrag ?? undefined}
+  weiterfuehrend={d.bezug}
+  headings={headings}
+  zitate={k._zitate ?? 0}
+  belegluecken={k._belegluecken ?? 0}
+  abschnitte={k._abschnitte ?? 0}
+>
+  {
+    d.lernziele.length > 0 && (
+      <section class="lernziele" aria-labelledby="lernziele-titel">
+        <h2 id="lernziele-titel">Lernziele</h2>
+        <ul>
+          {d.lernziele.map((z) => (
+            <li>{z}</li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <Content components={mdxKomponenten} />
+</ArtikelLayout>
+
+<style>
+  .lernziele {
+    margin-block-end: var(--s-5);
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .lernziele h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .lernziele ul {
+    margin: 0;
+    padding-inline-start: 1.2em;
+  }
+
+  .lernziele li {
+    padding-block: var(--s-1);
+  }
+</style>

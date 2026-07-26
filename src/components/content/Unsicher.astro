@@ -1,0 +1,75 @@
+---
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  /** Worum genau die Auseinandersetzung geht. Erscheint als Erläuterung. */
+  grund: string;
+  /** Anker auf der Kontroversen-Seite, falls es dort einen Eintrag gibt. */
+  kontroverse?: string;
+  locale?: Locale;
+}
+
+const { grund, kontroverse, locale = 'de' } = Astro.props;
+const t = useTranslations(locale);
+const ziel =
+  path(locale, 'wissenschaft', 'offene-fragen-und-kontroversen') +
+  (kontroverse ? `#${kontroverse}` : '');
+---
+
+{/*
+  Markiert eine strittige Aussage direkt im Satz. Die Markierung ist
+  nicht nur farbig, sondern auch durch die Wellenlinie und den
+  vorangestellten Marker erkennbar – Farbe allein wäre kein zulässiges
+  Unterscheidungsmerkmal.
+*/}
+<span class="unsicher">
+  <span class="marker" aria-hidden="true">±</span><span class="inhalt"><slot /></span><a
+    class="verweis"
+    href={ziel}
+    title={grund}
+  >
+    <span class="nur-screenreader">{t('apparat.uncertain')}: {grund}. {t('apparat.toControversies')}</span>
+    <span aria-hidden="true">{t('apparat.uncertain')}</span>
+  </a>
+</span>
+
+<style>
+  .unsicher {
+    /* Kein eigener Blockkontext: die Auszeichnung muss im Satz mitlaufen. */
+    box-decoration-break: clone;
+  }
+
+  .inhalt {
+    text-decoration: underline wavy var(--c-warn);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  .marker {
+    font-family: var(--f-utility);
+    font-weight: var(--w-bold);
+    color: var(--c-warn);
+    margin-inline-end: 0.1em;
+  }
+
+  .verweis {
+    font-family: var(--f-utility);
+    font-size: 0.68em;
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-warn);
+    text-decoration: none;
+    margin-inline-start: 0.3em;
+    padding-inline: 0.3em;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-xs);
+    white-space: nowrap;
+    vertical-align: 0.1em;
+  }
+
+  .verweis:hover {
+    background: var(--c-warn-surface);
+  }
+</style>

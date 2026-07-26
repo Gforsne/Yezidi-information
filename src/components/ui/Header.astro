@@ -1,0 +1,415 @@
+---
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import { getNavTree, getToolLinks } from '../../lib/navigation';
+import { navGroups } from '../../lib/sections';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import Wortmarke from './Wortmarke.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const baum = await getNavTree(locale);
+const werkzeuge = getToolLinks(locale);
+const aktuell = Astro.url.pathname;
+
+const gruppen = navGroups.map((g) => ({
+  ...g,
+  bereiche: baum.filter((s) => s.group === g.id),
+}));
+
+function istAktiv(href: string): boolean {
+  return aktuell === href || aktuell.startsWith(href + '/');
+}
+---
+
+<header class="kopf">
+  <div class="shell kopf-zeile">
+    <a href={path(locale)} class="marke" aria-label={`${t('site.name')} – ${t('nav.home')}`}>
+      <Wortmarke />
+      <span class="marke-text">
+        <span class="marke-name">{t('site.name')}</span>
+        <span class="marke-claim">{t('site.tagline')}</span>
+      </span>
+    </a>
+
+    <div class="kopf-werkzeuge">
+      <a href={path(locale, 'suche')} class="suchknopf" id="suchfeld">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false" width="16" height="16">
+          <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"
+          ></circle>
+          <line
+            x1="12.8"
+            y1="12.8"
+            x2="17"
+            y2="17"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"></line>
+        </svg>
+        <span>{t('search.label')}</span>
+      </a>
+      <ThemeToggle locale={locale} />
+      <LanguageSwitcher locale={locale} />
+    </div>
+  </div>
+
+  <nav id="hauptnavigation" class="mega-menu" aria-label={t('nav.main')}>
+    <div class="shell">
+      <ul class="ebene-1">
+        {
+          gruppen.map((gruppe) => (
+            <li>
+              <details name="hauptmenue" class="menuepunkt">
+                <summary>
+                  <span>{gruppe.title}</span>
+                  <svg
+                    class="chevron"
+                    viewBox="0 0 12 8"
+                    aria-hidden="true"
+                    focusable="false"
+                    width="11"
+                    height="7"
+                  >
+                    <path
+                      d="M1 1.5 6 6.5 11 1.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </summary>
+
+                <div class="panel">
+                  <div class="panel-inhalt shell">
+                    {gruppe.bereiche.map((bereich) => (
+                      <section class="panel-spalte" aria-label={bereich.title}>
+                        {/* Bewusst kein <h2>: Die Navigation steht vor der <h1>
+                            der Seite; eine Überschrift hier würde die
+                            Dokumentgliederung mit einer Ebene beginnen, die
+                            über der Seitenüberschrift liegt. Die Bereiche sind
+                            stattdessen als benannte Abschnitte ausgezeichnet. */}
+                        <p class="panel-titel">
+                          <a href={bereich.href} aria-current={istAktiv(bereich.href) ? 'page' : undefined}>
+                            {bereich.title}
+                          </a>
+                        </p>
+                        <p class="panel-kurz">{bereich.kurz}</p>
+                        {bereich.pages.length > 0 && (
+                          <ul class="panel-liste">
+                            {bereich.pages.slice(0, 10).map((seite) => (
+                              <li>
+                                <a
+                                  href={seite.href}
+                                  aria-current={aktuell === seite.href ? 'page' : undefined}
+                                >
+                                  {seite.title}
+                                  {seite.contentWarning && (
+                                    <span class="cw-punkt" title={t('cw.title')} aria-hidden="true" />
+                                  )}
+                                </a>
+                              </li>
+                            ))}
+                            {bereich.pages.length > 10 && (
+                              <li>
+                                <a href={bereich.href} class="mehr">
+                                  {t('general.all')} {bereich.pages.length} {t('general.pages')} →
+                                </a>
+                              </li>
+                            )}
+                          </ul>
+                        )}
+                      </section>
+                    ))}
+
+                    {gruppe.id === 'nachschlagen' && (
+                      <section class="panel-spalte" aria-label={t('nav.tools')}>
+                        <p class="panel-titel">{t('nav.tools')}</p>
+                        <ul class="panel-liste">
+                          {werkzeuge.map((w) => (
+                            <li>
+                              <a href={w.href} aria-current={aktuell === w.href ? 'page' : undefined}>
+                                {w.title}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    )}
+                  </div>
+                </div>
+              </details>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .kopf {
+    position: relative;
+    z-index: var(--z-header);
+    background: var(--c-surface);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .kopf-zeile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+    padding-block: var(--s-3);
+  }
+
+  .marke {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    text-decoration: none;
+    color: var(--c-text);
+    min-block-size: 2.75rem;
+  }
+
+  .marke-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .marke-name {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-display);
+  }
+
+  .marke-claim {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    color: var(--c-text-muted);
+  }
+
+  @media (max-width: 40rem) {
+    .marke-claim {
+      display: none;
+    }
+  }
+
+  .kopf-werkzeuge {
+    display: flex;
+    align-items: center;
+    gap: var(--s-1);
+  }
+
+  .suchknopf {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-block-size: 2.75rem;
+    padding-inline: var(--s-3);
+    border: var(--border-hair) solid var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--c-text-muted);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    text-decoration: none;
+  }
+
+  .suchknopf:hover {
+    color: var(--c-text);
+    border-color: var(--c-accent);
+  }
+
+  @media (max-width: 30rem) {
+    .suchknopf span {
+      display: none;
+    }
+    .suchknopf {
+      padding-inline: var(--s-2);
+    }
+  }
+
+  /* ---------------- Mega-Menü ---------------- */
+
+  .ebene-1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menuepunkt > summary {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-block-size: 2.75rem;
+    padding-inline: var(--s-3);
+    padding-block: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    font-weight: var(--w-medium);
+    color: var(--c-text);
+    cursor: pointer;
+    list-style: none;
+    border-block-end: var(--border-rule) solid transparent;
+  }
+
+  .menuepunkt > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menuepunkt > summary:hover {
+    color: var(--c-accent);
+  }
+
+  .menuepunkt[open] > summary {
+    border-block-end-color: var(--c-accent);
+  }
+
+  .chevron {
+    transition: transform var(--dur-fast) var(--ease);
+  }
+
+  .menuepunkt[open] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .panel {
+    position: absolute;
+    inset-inline: 0;
+    background: var(--c-surface-raised);
+    border-block: var(--border-hair) solid var(--c-border);
+    box-shadow: var(--shadow-overlay);
+  }
+
+  .panel-inhalt {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--s-5) var(--s-6);
+    padding-block: var(--s-5) var(--s-6);
+  }
+
+  .panel-titel {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+    margin-block-end: var(--s-1);
+  }
+
+  .panel-titel a {
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .panel-titel a:hover {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .panel-kurz {
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-3);
+    max-inline-size: 30ch;
+  }
+
+  .panel-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block-start: var(--border-hair) solid var(--c-border);
+  }
+
+  .panel-liste li {
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .panel-liste a {
+    display: block;
+    padding-block: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    text-decoration: none;
+  }
+
+  .panel-liste a:hover,
+  .panel-liste a[aria-current] {
+    color: var(--c-accent);
+  }
+
+  .panel-liste .mehr {
+    color: var(--c-text-faint);
+    font-size: var(--t-xs);
+  }
+
+  .cw-punkt {
+    display: inline-block;
+    inline-size: 0.4em;
+    block-size: 0.4em;
+    margin-inline-start: 0.4em;
+    vertical-align: 0.1em;
+    border-radius: 50%;
+    background: var(--c-warn);
+  }
+
+  /* Auf schmalen Schirmen klappt das Panel in den Fluss statt zu überlagern. */
+  @media (max-width: 52rem) {
+    .ebene-1 {
+      flex-direction: column;
+    }
+
+    .panel {
+      position: static;
+      box-shadow: none;
+      border-inline: 0;
+    }
+
+    .panel-inhalt {
+      padding-inline: 0;
+      padding-block: var(--s-4);
+    }
+  }
+</style>
+
+<script>
+  // Fortschrittliche Verbesserung: Menü mit Escape schließen und beim Klick
+  // außerhalb. Ohne JavaScript bleiben die <details> voll bedienbar.
+  const menue = document.getElementById('hauptnavigation');
+  if (menue) {
+    const alle = () => menue.querySelectorAll<HTMLDetailsElement>('details[open]');
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const offen = alle();
+      if (offen.length === 0) return;
+      offen.forEach((d) => {
+        d.open = false;
+        d.querySelector('summary')?.focus();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      const ziel = e.target as Node;
+      if (menue.contains(ziel)) return;
+      alle().forEach((d) => (d.open = false));
+    });
+
+    menue.addEventListener('focusout', (e) => {
+      const naechstes = e.relatedTarget as Node | null;
+      if (naechstes && menue.contains(naechstes)) return;
+      alle().forEach((d) => (d.open = false));
+    });
+  }
+</script>

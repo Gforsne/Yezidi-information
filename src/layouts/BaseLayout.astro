@@ -1,0 +1,171 @@
+---
+import '../styles/global.css';
+import { localeMeta, type Locale } from '../i18n/config';
+import { alternateLinks, path, useTranslations } from '../i18n/utils';
+import Header from '../components/ui/Header.astro';
+import Footer from '../components/ui/Footer.astro';
+import SkipLinks from '../components/ui/SkipLinks.astro';
+import type { SectionId } from '../lib/sections';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  /** Bereich der Seite – steuert u. a. die Bewegungssperre im Genozid-Bereich. */
+  bereich?: SectionId | undefined;
+  /** Zusätzliche JSON-LD-Objekte für diese Seite. */
+  jsonLd?: Record<string, unknown>[] | undefined;
+  /** Seiten ohne Indexierung (z. B. der interne Styleguide). */
+  noindex?: boolean | undefined;
+  ogType?: 'website' | 'article';
+  /** Pfad zum OG-Bild; ohne Angabe wird das generierte Standardbild benutzt. */
+  ogImage?: string | undefined;
+  /** Breite Seiten (Karte, Zeitleiste) verzichten auf das Lesegitter. */
+  breit?: boolean;
+}
+
+const {
+  title,
+  description,
+  locale,
+  bereich,
+  jsonLd = [],
+  noindex = false,
+  ogType = 'website',
+  ogImage,
+  breit = false,
+} = Astro.props;
+
+const t = useTranslations(locale);
+const meta = localeMeta[locale];
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = new URL(pathname, Astro.site ?? 'https://ezidi-portal.example').href;
+const alternates = alternateLinks(pathname);
+const seitentitel = pathname === path(locale) ? title : `${title} – ${t('site.name')}`;
+const ogBild = new URL(ogImage ?? '/og/standard.png', Astro.site ?? 'https://ezidi-portal.example')
+  .href;
+
+const organisation = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: t('site.name'),
+  description: t('site.description'),
+  url: Astro.site?.href ?? 'https://ezidi-portal.example/',
+  inLanguage: meta.bcp47,
+};
+---
+
+<!doctype html>
+<html lang={meta.bcp47} dir={meta.dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seitentitel}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    {
+      alternates.map((alt) => (
+        <link
+          rel="alternate"
+          hreflang={alt.bcp47}
+          href={new URL(alt.href, Astro.site ?? 'https://ezidi-portal.example').href}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(path('de'), Astro.site ?? 'https://ezidi-portal.example').href}
+    />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={t('site.name')} />
+    <meta property="og:locale" content={meta.bcp47.replace('-', '_')} />
+    <meta property="og:image" content={ogBild} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogBild} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#f6f2ea" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#191712" media="(prefers-color-scheme: dark)" />
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${t('site.name')} – ${t('general.updated')}`}
+      href="/rss.xml"
+    />
+
+    {/* Nur die beiden Schnitte vorladen, die im ersten Viewport sicher gebraucht werden. */}
+    <link
+      rel="preload"
+      href="/fonts/source-serif-4-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/newsreader-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <script is:inline>
+      // Farbschema vor dem ersten Anstrich setzen, damit es nicht flackert.
+      (() => {
+        try {
+          const gespeichert = localStorage.getItem('ezidi-farbschema');
+          if (gespeichert === 'hell' || gespeichert === 'dunkel') {
+            document.documentElement.dataset.theme = gespeichert;
+          }
+        } catch {
+          /* localStorage kann blockiert sein – dann gilt die Systemeinstellung. */
+        }
+      })();
+    </script>
+
+    <script type="application/ld+json" set:html={JSON.stringify(organisation)} is:inline />
+    {
+      jsonLd.map((block) => (
+        <script type="application/ld+json" set:html={JSON.stringify(block)} is:inline />
+      ))
+    }
+
+    <slot name="head" />
+  </head>
+
+  <body data-bereich={bereich}>
+    <SkipLinks locale={locale} />
+    <Header locale={locale} />
+
+    <main id="inhalt" tabindex="-1" class:list={['hauptbereich', { breit }]}>
+      <slot />
+    </main>
+
+    <Footer locale={locale} />
+
+    <style>
+      .hauptbereich {
+        flex: 1;
+        padding-block: var(--s-6) var(--s-9);
+      }
+
+      .hauptbereich:focus {
+        outline: none;
+      }
+    </style>
+  </body>
+</html>

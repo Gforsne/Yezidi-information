@@ -1,0 +1,159 @@
+---
+import type { Locale } from '../../i18n/config';
+import { useTranslations } from '../../i18n/utils';
+
+export interface Faktum {
+  label: string;
+  /** `null` heißt: noch nicht belegt – wird sichtbar als Lücke ausgewiesen. */
+  wert: string | null;
+  /** Kurzbeleg oder Quellen-ID; `null` markiert die Angabe als unbelegt. */
+  beleg?: string | null;
+  /** Stichjahr bzw. Stand der Angabe – bei Zahlen Pflicht. */
+  stand?: string | null;
+  /** Erhebungsmethode – bei Schätzungen Pflicht. */
+  methode?: string | null;
+}
+
+interface Props {
+  titel?: string;
+  eintraege: Faktum[];
+  hinweis?: string;
+  locale?: Locale;
+}
+
+const { titel, eintraege, hinweis, locale = 'de' } = Astro.props;
+const t = useTranslations(locale);
+const ueberschrift = titel ?? t('facts.title');
+const offen = eintraege.filter((e) => e.wert === null).length;
+---
+
+<aside class="faktenbox" aria-labelledby="faktenbox-titel">
+  <h2 class="faktenbox-titel" id="faktenbox-titel">{ueberschrift}</h2>
+
+  <dl>
+    {
+      eintraege.map((e) => (
+        <div class:list={['zeile', { leer: e.wert === null }]}>
+          <dt>{e.label}</dt>
+          <dd>
+            {e.wert === null ? (
+              <span class="offen">noch nicht belegt</span>
+            ) : (
+              <span class="wert">{e.wert}</span>
+            )}
+            {(e.stand || e.methode || e.beleg) && (
+              <span class="meta">
+                {e.stand && (
+                  <span>
+                    {t('facts.asOf')}: {e.stand}
+                  </span>
+                )}
+                {e.methode && (
+                  <span>
+                    {t('facts.method')}: {e.methode}
+                  </span>
+                )}
+                {e.beleg && <span>{e.beleg}</span>}
+              </span>
+            )}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  {hinweis && <p class="hinweis">{hinweis}</p>}
+  {
+    offen > 0 && (
+      <p class="zaehler">
+        {offen} von {eintraege.length} Angaben sind noch offen.
+      </p>
+    )
+  }
+</aside>
+
+<style>
+  .faktenbox {
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-border);
+    border-block-start: var(--border-rule) solid var(--c-accent);
+    border-radius: var(--radius-md);
+    padding: var(--s-4);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .faktenbox-titel {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-3);
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  .zeile {
+    display: grid;
+    gap: 0 var(--s-3);
+    padding-block: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  @media (min-width: 26rem) {
+    .zeile {
+      grid-template-columns: minmax(7rem, 40%) minmax(0, 1fr);
+    }
+  }
+
+  .zeile:last-of-type {
+    border-block-end: 0;
+  }
+
+  dt {
+    color: var(--c-text-muted);
+  }
+
+  dd {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  .wert {
+    color: var(--c-text);
+    font-weight: var(--w-medium);
+  }
+
+  .offen {
+    color: var(--c-text-faint);
+    font-style: italic;
+    /* gestrichelte Unterlegung: sichtbare Leerstelle statt stiller Auslassung */
+    border-block-end: 1px dashed var(--c-border-strong);
+    align-self: start;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-3);
+    font-size: var(--t-2xs);
+    color: var(--c-text-faint);
+  }
+
+  .hinweis,
+  .zaehler {
+    margin-block-start: var(--s-3);
+    font-size: var(--t-2xs);
+    color: var(--c-text-muted);
+  }
+
+  .zaehler {
+    color: var(--c-text-faint);
+  }
+</style>

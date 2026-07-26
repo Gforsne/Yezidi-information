@@ -1,0 +1,86 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import type { Locale } from '../i18n/config';
+import { useTranslations } from '../i18n/utils';
+import { buildBreadcrumb } from '../lib/navigation';
+import type { SectionId } from '../lib/sections';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  /** Einleitung der Seite. Beschreibt das Werkzeug, behauptet nichts. */
+  intro: string;
+  /** Zusätzliche Kennzeichnung über der Überschrift. */
+  eyebrow?: string;
+  /** Pfadsegmente für die Brotkrume (ohne Sprachpräfix). */
+  trail?: { label: string; slug?: string }[];
+  bereich?: SectionId | undefined;
+  jsonLd?: Record<string, unknown>[];
+  breit?: boolean;
+  noindex?: boolean;
+}
+
+const {
+  locale,
+  title,
+  intro,
+  eyebrow,
+  trail = [],
+  bereich,
+  jsonLd = [],
+  breit = false,
+  noindex = false,
+} = Astro.props;
+
+const t = useTranslations(locale);
+const crumbs = buildBreadcrumb(
+  locale,
+  t('nav.home'),
+  trail.length > 0 ? trail : [{ label: title }],
+);
+---
+
+<BaseLayout
+  title={title}
+  description={intro}
+  locale={locale}
+  bereich={bereich}
+  jsonLd={jsonLd}
+  breit={breit}
+  noindex={noindex}
+>
+  <div class="shell">
+    <Breadcrumb crumbs={crumbs} locale={locale} />
+
+    <header class="seiten-kopf">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1>{title}</h1>
+      <p class="intro">{intro}</p>
+      <slot name="kopf" />
+    </header>
+
+    <slot />
+  </div>
+</BaseLayout>
+
+<style>
+  .seiten-kopf {
+    max-inline-size: var(--measure-wide);
+    margin-block-end: var(--s-7);
+    padding-block-end: var(--s-5);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .seiten-kopf h1 {
+    font-size: var(--t-2xl);
+    margin-block: var(--s-2) var(--s-4);
+  }
+
+  .intro {
+    font-size: var(--t-md);
+    line-height: var(--lh-snug);
+    max-inline-size: var(--measure);
+    color: var(--c-text);
+  }
+</style>

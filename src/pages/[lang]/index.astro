@@ -1,0 +1,343 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { formatDate, path, useTranslations } from '../../i18n/utils';
+import { getNavTree } from '../../lib/navigation';
+import Statusbadge from '../../components/content/Statusbadge.astro';
+import Faktenbox from '../../components/content/Faktenbox.astro';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const baum = await getNavTree(locale);
+
+const alleArtikel = await getCollection('articles');
+const zuletzt = alleArtikel
+  .filter((a) => a.data.lang === 'de' && !a.data.draft)
+  .sort((a, b) => b.data.updated.getTime() - a.data.updated.getTime())
+  .slice(0, 6);
+
+const einstiege = [
+  {
+    titel: 'Für Neugierige',
+    text: 'Ein verständlicher Einstieg ohne Fachbegriffe – wer die Êzîdî sind, wie sie sich selbst bezeichnen und wo sie leben.',
+    href: path(locale, 'ueberblick', 'wer-sind-die-ezidi'),
+    linktext: 'Zum Überblick',
+  },
+  {
+    titel: 'Für Schule und Studium',
+    text: 'Zitierfähige Seiten mit Quellenapparat, Zeitleiste, Glossar und Material für den Unterricht.',
+    href: path(locale, 'unterricht'),
+    linktext: 'Zu den Materialien',
+  },
+  {
+    titel: 'Für Êzîdî',
+    text: 'Originalbegriffe in Kurmancî, Selbstbezeichnungen zuerst, offengelegte Quellen – und ein Weg, Fehler zu melden.',
+    href: path(locale, 'meta', 'redaktionelle-grundsaetze'),
+    linktext: 'Zu den Grundsätzen',
+  },
+  {
+    titel: 'Für Recherche und Behörden',
+    text: 'Belegte Fakten, Primärquellen, Berichte und die vollständige Bibliografie an einem Ort.',
+    href: path(locale, 'quellen'),
+    linktext: 'Zum Quellenverzeichnis',
+  },
+];
+---
+
+<BaseLayout
+  title={t('site.name')}
+  description={t('site.description')}
+  locale={locale}
+  ogType="website"
+>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">{t('site.tagline')}</p>
+      <h1>
+        Ein Wissensportal, das offenlegt, worauf es sich stützt – und wo es nichts weiß.
+      </h1>
+      <p class="hero-lead">
+        Dieses Portal stellt Religion, Geschichte, Gesellschaftsordnung, Sprache, Verfolgungs&shy;geschichte
+        und Gegenwart der Êzîdî dar. Es trennt sichtbar zwischen der Selbstdarstellung der
+        Gemeinschaft und dem Forschungsstand, stellt umstrittene Fragen als umstritten dar und
+        markiert jede Stelle, an der ein Beleg fehlt.
+      </p>
+      <p class="hero-hinweis">
+        <strong>Stand des Aufbaus:</strong> Die Struktur steht vollständig, die inhaltliche Recherche
+        beginnt erst. Seiten mit dem Vermerk <Statusbadge status="stub" locale={locale} inline /> zeigen
+        ihre geplante Gliederung und den konkreten Rechercheauftrag – aber noch keine Inhalte.
+      </p>
+    </section>
+
+    <section class="einstiege" aria-labelledby="einstiege-titel">
+      <h2 id="einstiege-titel">Vier Einstiegspfade</h2>
+      <ul class="einstieg-grid">
+        {
+          einstiege.map((e) => (
+            <li class="einstieg">
+              <h3>{e.titel}</h3>
+              <p>{e.text}</p>
+              <a href={e.href}>{e.linktext} →</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <div class="zwei-spalten">
+      <section aria-labelledby="bereiche-titel">
+        <h2 id="bereiche-titel">Alle Bereiche</h2>
+        <ul class="bereich-liste">
+          {
+            baum.map((b) => (
+              <li>
+                <a href={b.href}>
+                  <span class="bereich-titel">{b.title}</span>
+                  <span class="bereich-kurz">{b.kurz}</span>
+                  <span class="bereich-zahl utility">
+                    {b.pages.length} {t('general.pages')}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <div class="seitenspalte">
+        <Faktenbox
+          titel="Kurzfakten"
+          locale={locale}
+          hinweis="Zahlen und Kurzangaben werden erst eingetragen, wenn Herkunft, Stichjahr und Erhebungsmethode belegt sind."
+          eintraege={[
+            { label: 'Selbstbezeichnung', wert: 'Êzîdî (Sg. Êzîdî, Pl. Êzîdî)', beleg: null },
+            { label: 'Religionsbezeichnung', wert: 'Êzîdiyatî', beleg: null },
+            { label: 'Bevölkerungszahl weltweit', wert: null, beleg: null },
+            { label: 'Hauptheiligtum', wert: 'Laliş', beleg: null },
+            { label: 'Sprache der Überlieferung', wert: 'Kurmancî', beleg: null },
+          ]}
+        />
+
+        <section class="neu" aria-labelledby="neu-titel">
+          <h2 id="neu-titel">{t('general.updated')}</h2>
+          <ul>
+            {
+              zuletzt.map((a) => (
+                <li>
+                  <a href={path(locale, a.data.section, a.data.slug)}>{a.data.title}</a>
+                  <span class="utility datum">
+                    <Statusbadge status={a.data.status} locale={locale} inline />
+                    <time datetime={a.data.updated.toISOString()}>
+                      {formatDate(a.data.updated, locale)}
+                    </time>
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mehr utility">
+            <a href={path(locale, 'aenderungen')}>Änderungsprotokoll ansehen →</a>
+          </p>
+        </section>
+
+        <section class="prinzip-box" aria-labelledby="prinzip-titel">
+          <h2 id="prinzip-titel">{t('sources.principle')}</h2>
+          <p>
+            Kein Satz steht hier als Tatsache, ohne dass eine Quelle daneben liegt. Wo eine Quelle
+            fehlt, steht das sichtbar im Text. Wo sich Quellen widersprechen, stehen beide
+            Positionen nebeneinander.
+          </p>
+          <p class="utility">
+            <a href={path(locale, 'meta', 'redaktionelle-grundsaetze')}>Redaktionelle Grundsätze →</a>
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    max-inline-size: 46rem;
+    padding-block: var(--s-6) var(--s-8);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .hero h1 {
+    font-size: var(--t-3xl);
+    margin-block: var(--s-3) var(--s-5);
+    max-inline-size: 22ch;
+  }
+
+  .hero-lead {
+    font-size: var(--t-md);
+    line-height: var(--lh-snug);
+    max-inline-size: var(--measure);
+    color: var(--c-text);
+  }
+
+  .hero-hinweis {
+    margin-block-start: var(--s-5);
+    padding: var(--s-4);
+    background: var(--c-surface-sunken);
+    border-inline-start: var(--border-rule) solid var(--c-accent);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .einstiege {
+    padding-block: var(--s-7);
+  }
+
+  .einstiege h2,
+  .zwei-spalten h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--s-5);
+  }
+
+  .einstieg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--s-5);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .einstieg {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    padding: var(--s-4);
+    background: var(--c-surface-raised);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-md);
+  }
+
+  .einstieg h3 {
+    font-size: var(--t-lg);
+  }
+
+  .einstieg p {
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    flex: 1;
+  }
+
+  .einstieg a {
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    font-weight: var(--w-medium);
+  }
+
+  .zwei-spalten {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-7);
+    padding-block: var(--s-6);
+    border-block-start: var(--border-hair) solid var(--c-border);
+  }
+
+  @media (min-width: 62rem) {
+    .zwei-spalten {
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: var(--s-8);
+    }
+  }
+
+  .bereich-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block-start: var(--border-hair) solid var(--c-border);
+  }
+
+  .bereich-liste li {
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .bereich-liste a {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0 var(--s-4);
+    padding-block: var(--s-3);
+    text-decoration: none;
+    color: var(--c-text);
+  }
+
+  .bereich-titel {
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    font-weight: var(--w-semibold);
+  }
+
+  .bereich-kurz {
+    grid-column: 1;
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+  }
+
+  .bereich-zahl {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    align-self: center;
+    color: var(--c-text-faint);
+    white-space: nowrap;
+  }
+
+  .bereich-liste a:hover .bereich-titel {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .seitenspalte {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+  }
+
+  .neu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .neu li {
+    padding-block: var(--s-2);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+  }
+
+  .datum {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    color: var(--c-text-faint);
+    font-size: var(--t-xs);
+  }
+
+  .prinzip-box {
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-apparat);
+    border-radius: var(--radius-md);
+    background: var(--c-apparat-tint);
+  }
+
+  .prinzip-box h2 {
+    font-size: var(--t-lg);
+    margin-block-end: var(--s-2);
+  }
+
+  .prinzip-box p {
+    font-size: var(--t-sm);
+    margin-block-end: var(--s-2);
+  }
+</style>

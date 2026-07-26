@@ -1,0 +1,57 @@
+---
+/**
+ * Bildmarke des Portals.
+ *
+ * Bewusst KEIN religiöses Symbol und keine Anleihe an der Sakral-
+ * architektur: Das Zeichen besteht aus dem Zirkumflex, dem
+ * charakteristischen diakritischen Zeichen der Kurmancî-Orthografie
+ * (ê î û), über drei Steinschichten unterschiedlicher Länge.
+ * Es kodiert damit Sprache und Archiv – nicht Glauben.
+ */
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 34, class: klasse } = Astro.props;
+---
+
+<svg
+  class={klasse}
+  width={size}
+  height={size}
+  viewBox="0 0 34 34"
+  role="img"
+  aria-hidden="true"
+  focusable="false"
+>
+  <rect x="0.75" y="0.75" width="32.5" height="32.5" rx="2" class="rahmen"></rect>
+  <path d="M10 13.4 17 8l7 5.4" class="zirkumflex"></path>
+  <g class="schichten">
+    <line x1="8" y1="19" x2="26" y2="19"></line>
+    <line x1="8" y1="22.6" x2="22.5" y2="22.6"></line>
+    <line x1="8" y1="26.2" x2="18" y2="26.2"></line>
+  </g>
+
+  <style>
+    .rahmen {
+      fill: none;
+      stroke: var(--c-border-strong);
+      stroke-width: 1.5;
+    }
+
+    .zirkumflex {
+      fill: none;
+      stroke: var(--c-accent);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .schichten line {
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+    }
+  </style>
+</svg>

@@ -1,0 +1,430 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { path, useTranslations } from '../../i18n/utils';
+import Statusbadge from '../content/Statusbadge.astro';
+
+interface Props {
+  eintraege: CollectionEntry<'events'>[];
+  locale: Locale;
+  /** Nur eine Auswahl zeigen (z. B. auf einer Bereichsseite). */
+  kompakt?: boolean;
+}
+
+const { eintraege, locale, kompakt = false } = Astro.props;
+const t = useTranslations(locale);
+
+const epochen: Record<string, string> = {
+  vorgeschichte: 'Vorgeschichte',
+  mittelalter: 'Mittelalter',
+  'fruehe-neuzeit': 'Frühe Neuzeit',
+  osmanisch: 'Osmanische Zeit',
+  '19-jahrhundert': '19. Jahrhundert',
+  weltkriege: 'Weltkriege',
+  'mandat-koenigreich': 'Mandat und Königreich',
+  baath: 'Baath-Zeit',
+  'nach-2003': 'Nach 2003',
+  'genozid-2014': 'Genozid 2014',
+  gegenwart: 'Gegenwart',
+};
+
+const themen: Record<string, string> = {
+  religion: 'Religion',
+  verfolgung: 'Verfolgung',
+  politik: 'Politik',
+  migration: 'Migration',
+  recht: 'Recht',
+  kultur: 'Kultur',
+  gesellschaft: 'Gesellschaft',
+};
+
+const sortiert = [...eintraege].sort((a, b) => a.data.jahr - b.data.jahr);
+const vorhandeneEpochen = [...new Set(sortiert.map((e) => e.data.epoche))];
+const vorhandeneThemen = [...new Set(sortiert.flatMap((e) => e.data.thema))];
+const firmanAnzahl = sortiert.filter((e) => e.data.firman).length;
+---
+
+<div class="zeitleiste" data-zeitleiste>
+  {
+    !kompakt && (
+      <form class="zeitleiste-filter" data-filter hidden>
+        <fieldset>
+          <legend>{t('timeline.filterEpoch')}</legend>
+          <div class="optionen">
+            {vorhandeneEpochen.map((e) => (
+              <label>
+                <input type="checkbox" name="epoche" value={e} checked />
+                <span>{epochen[e] ?? e}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>{t('timeline.filterTopic')}</legend>
+          <div class="optionen">
+            {vorhandeneThemen.map((th) => (
+              <label>
+                <input type="checkbox" name="thema" value={th} checked />
+                <span>{themen[th] ?? th}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>{t('timeline.firmanMark')}</legend>
+          <div class="optionen">
+            <label>
+              <input type="checkbox" name="nurFirman" value="1" />
+              <span>nur Firman-Einträge ({firmanAnzahl})</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <p class="filter-fuss">
+          <button type="reset" class="zuruecksetzen">
+            {t('timeline.filterReset')}
+          </button>
+          <output data-zaehler aria-live="polite">
+            {sortiert.length} {t('timeline.entries')}
+          </output>
+        </p>
+      </form>
+    )
+  }
+
+  <ol class="spur">
+    {
+      sortiert.map((e) => (
+        <li
+          class:list={['eintrag', { firman: e.data.firman, cw: e.data.contentWarning }]}
+          data-epoche={e.data.epoche}
+          data-thema={e.data.thema.join(' ')}
+          data-firman={e.data.firman ? '1' : '0'}
+          id={`ereignis-${e.id}`}
+        >
+          <div class="marke" aria-hidden="true" />
+
+          <div class="inhalt">
+            <p class="datum">
+              <time>{e.data.datum}</time>
+              {e.data.datierungUnsicher && (
+                <span class="unsicher" title={t('timeline.dateUncertain')}>
+                  ±
+                </span>
+              )}
+              <span class="epoche">{epochen[e.data.epoche] ?? e.data.epoche}</span>
+            </p>
+
+            <h3 class="titel">
+              {e.data.artikel ? (
+                <a href={path(locale, e.data.artikel)}>{e.data.title}</a>
+              ) : (
+                e.data.title
+              )}
+            </h3>
+
+            <p class="zusammenfassung">{e.data.zusammenfassung}</p>
+
+            <p class="meta">
+              {e.data.firman && (
+                <span class="firman-marke">{t('timeline.firmanMark')}</span>
+              )}
+              {e.data.thema.map((th) => (
+                <span class="thema">{themen[th] ?? th}</span>
+              ))}
+              {e.data.ort && <span class="ort">{e.data.ort}</span>}
+              <Statusbadge status={e.data.status} locale={locale} inline />
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <p class="leer" data-leer hidden>{t('timeline.noEntries')}</p>
+</div>
+
+<style>
+  .zeitleiste {
+    max-inline-size: var(--measure-wide);
+  }
+
+  /* ---------- Filter ---------- */
+
+  .zeitleiste-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-4) var(--s-6);
+    margin-block-end: var(--s-6);
+    padding: var(--s-4);
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-raised);
+    font-family: var(--f-utility);
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-inline-size: 0;
+  }
+
+  legend {
+    font-size: var(--t-2xs);
+    font-weight: var(--w-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+    padding: 0;
+  }
+
+  .optionen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-3);
+  }
+
+  .optionen label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-block-size: 2.75rem;
+    font-size: var(--t-sm);
+    color: var(--c-text);
+    cursor: pointer;
+  }
+
+  .optionen input {
+    inline-size: 1.05rem;
+    block-size: 1.05rem;
+    accent-color: var(--c-accent);
+  }
+
+  .filter-fuss {
+    display: flex;
+    align-items: center;
+    gap: var(--s-4);
+    flex-basis: 100%;
+    padding-block-start: var(--s-3);
+    border-block-start: var(--border-hair) solid var(--c-border);
+    font-size: var(--t-sm);
+  }
+
+  .zuruecksetzen {
+    min-block-size: 2.75rem;
+    padding-inline: var(--s-3);
+    background: transparent;
+    border: var(--border-hair) solid var(--c-border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--c-text);
+    cursor: pointer;
+  }
+
+  .zuruecksetzen:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+  }
+
+  output {
+    color: var(--c-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Spur ---------- */
+
+  .spur {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .eintrag {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.6rem minmax(0, 1fr);
+    gap: var(--s-4);
+    padding-block: var(--s-4);
+  }
+
+  /*
+    Die Spur ist als feine Rippenstruktur gezeichnet – eine abstrahierte
+    Anlehnung an die gerippte Kegelform der Heiligtümer, hier ausschließlich
+    als Zeitachse und nie als Ornament (siehe DESIGN.md).
+  */
+  .eintrag::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0.75rem;
+    inline-size: 2px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--c-border) 0 6px,
+      transparent 6px 10px
+    );
+  }
+
+  .eintrag:first-child::before {
+    inset-block-start: var(--s-4);
+  }
+
+  .eintrag:last-child::before {
+    inset-block-end: calc(100% - var(--s-4) - 0.75rem);
+  }
+
+  .marke {
+    position: relative;
+    z-index: 1;
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+    margin-block-start: 0.45rem;
+    margin-inline-start: 0.28rem;
+    border-radius: 50%;
+    border: 2px solid var(--c-border-strong);
+    background: var(--c-surface);
+  }
+
+  .eintrag.firman .marke {
+    /* Firman-Einträge tragen die Erinnerung an Verfolgungen – sie werden
+       durch Form UND Farbe unterschieden, nicht durch Farbe allein. */
+    border-color: var(--c-warn);
+    border-radius: 2px;
+    transform: rotate(45deg);
+  }
+
+  .datum {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+    color: var(--c-text-muted);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .datum time {
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+  }
+
+  .unsicher {
+    color: var(--c-warn);
+    font-weight: var(--w-bold);
+  }
+
+  .epoche {
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+    font-size: var(--t-2xs);
+    color: var(--c-text-faint);
+  }
+
+  .titel {
+    font-size: var(--t-lg);
+    margin-block: var(--s-1);
+  }
+
+  .titel a {
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .titel a:hover {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .zusammenfassung {
+    max-inline-size: var(--measure);
+    color: var(--c-text-muted);
+    font-size: var(--t-sm);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-2);
+    margin-block-start: var(--s-2);
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+  }
+
+  .meta > span {
+    padding-inline: 0.5em;
+    border: var(--border-hair) solid var(--c-border);
+    border-radius: var(--radius-xs);
+    color: var(--c-text-faint);
+  }
+
+  .firman-marke {
+    border-color: var(--c-warn) !important;
+    color: var(--c-warn) !important;
+  }
+
+  .eintrag[hidden] {
+    display: none;
+  }
+
+  .leer {
+    padding: var(--s-5);
+    text-align: center;
+    color: var(--c-text-faint);
+    font-family: var(--f-utility);
+  }
+</style>
+
+<script>
+  // Filter als fortschrittliche Verbesserung. Ohne JavaScript bleibt das
+  // Formular verborgen und die Zeitleiste zeigt alle Einträge.
+  const wurzel = document.querySelector<HTMLElement>('[data-zeitleiste]');
+  const formular = wurzel?.querySelector<HTMLFormElement>('[data-filter]');
+  if (wurzel && formular) {
+    formular.hidden = false;
+
+    const eintraege = [...wurzel.querySelectorAll<HTMLLIElement>('.eintrag')];
+    const zaehler = formular.querySelector<HTMLOutputElement>('[data-zaehler]');
+    const leer = wurzel.querySelector<HTMLElement>('[data-leer]');
+    const einheit = zaehler?.textContent?.trim().split(/\s+/).slice(1).join(' ') ?? 'Einträge';
+
+    const werte = (name: string) =>
+      new Set(
+        [...formular.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)].map(
+          (i) => i.value,
+        ),
+      );
+
+    const anwenden = () => {
+      const epochen = werte('epoche');
+      const themen = werte('thema');
+      const nurFirman =
+        formular.querySelector<HTMLInputElement>('input[name="nurFirman"]')?.checked ?? false;
+
+      let sichtbar = 0;
+      for (const e of eintraege) {
+        const epoche = e.dataset.epoche ?? '';
+        const eigeneThemen = (e.dataset.thema ?? '').split(' ').filter(Boolean);
+        const passt =
+          epochen.has(epoche) &&
+          eigeneThemen.some((th) => themen.has(th)) &&
+          (!nurFirman || e.dataset.firman === '1');
+        e.hidden = !passt;
+        if (passt) sichtbar += 1;
+      }
+
+      if (zaehler) zaehler.textContent = `${sichtbar} ${einheit}`;
+      if (leer) leer.hidden = sichtbar > 0;
+    };
+
+    formular.addEventListener('change', anwenden);
+    formular.addEventListener('reset', () => window.setTimeout(anwenden, 0));
+    formular.addEventListener('submit', (e) => e.preventDefault());
+    anwenden();
+  }
+</script>

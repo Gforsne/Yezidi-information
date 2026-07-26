@@ -1,0 +1,171 @@
+---
+import { getCollection } from 'astro:content';
+import SeitenLayout from '../../../layouts/SeitenLayout.astro';
+import Statusbadge from '../../../components/content/Statusbadge.astro';
+import { locales, type Locale } from '../../../i18n/config';
+import { path } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const alle = await getCollection('teaching');
+const material = alle
+  .filter((m) => m.data.lang === 'de' && !m.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const typen: Record<string, string> = {
+  arbeitsblatt: 'Arbeitsblatt',
+  quellenauszug: 'Quellenauszug',
+  unterrichtsvorschlag: 'Unterrichtsvorschlag',
+  kurzfassung: 'Altersgerechte Kurzfassung',
+};
+
+const stufen: Record<string, string> = {
+  grundschule: 'Grundschule',
+  'sek-1': 'Sekundarstufe I',
+  'sek-2': 'Sekundarstufe II',
+  erwachsenenbildung: 'Erwachsenenbildung',
+};
+---
+
+<SeitenLayout
+  locale={locale}
+  title="Material für Schule und Unterricht"
+  eyebrow="Vermittlung"
+  intro="Arbeitsblätter, Quellenauszüge, Unterrichtsvorschläge und altersgerechte Kurzfassungen. Jedes Material nennt Altersstufe, Fach, Umfang und Lernziele und verweist auf die belegten Seiten des Portals. Materialien zu Verfolgung und Genozid tragen einen Inhaltshinweis."
+  trail={[{ label: 'Schule und Unterricht', slug: 'unterricht' }]}
+>
+  <div slot="kopf" class="regel">
+    <h2>Grundsatz</h2>
+    <p>
+      Material wird erst veröffentlicht, wenn die zugrunde liegenden Artikel den Status „belegt“
+      erreicht haben. Bis dahin zeigen die Einträge nur ihre geplante Struktur und die Lernziele.
+    </p>
+  </div>
+
+  <ul class="liste">
+    {
+      material.map((m) => (
+        <li>
+          <p class="typ utility">
+            {typen[m.data.materialtyp] ?? m.data.materialtyp}
+            {m.data.contentWarning && <span class="cw">Inhaltshinweis</span>}
+          </p>
+          <h2>
+            <a href={path(locale, 'unterricht', m.data.slug)}>{m.data.title}</a>
+          </h2>
+          <p class="lead">{m.data.lead}</p>
+          <dl class="meta">
+            <div>
+              <dt>Altersstufe</dt>
+              <dd>{m.data.stufe.map((s) => stufen[s] ?? s).join(', ') || '—'}</dd>
+            </div>
+            <div>
+              <dt>Fach</dt>
+              <dd>{m.data.fach.join(', ') || '—'}</dd>
+            </div>
+            <div>
+              <dt>Umfang</dt>
+              <dd>{m.data.umfang ?? '—'}</dd>
+            </div>
+          </dl>
+          <Statusbadge status={m.data.status} locale={locale} inline />
+        </li>
+      ))
+    }
+  </ul>
+</SeitenLayout>
+
+<style>
+  .regel {
+    margin-block-start: var(--s-5);
+    padding: var(--s-4);
+    border-inline-start: var(--border-rule) solid var(--c-accent);
+    background: var(--c-surface-sunken);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .regel h2 {
+    font-family: var(--f-utility);
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    margin-block-end: var(--s-2);
+  }
+
+  .liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-inline-size: var(--measure-wide);
+  }
+
+  .liste li {
+    padding-block: var(--s-5);
+    border-block-end: var(--border-hair) solid var(--c-border);
+  }
+
+  .typ {
+    display: flex;
+    gap: var(--s-2);
+    color: var(--c-text-faint);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+    font-size: var(--t-2xs);
+  }
+
+  .cw {
+    color: var(--c-warn);
+    border: 1px solid currentColor;
+    border-radius: var(--radius-xs);
+    padding-inline: 0.4em;
+  }
+
+  .liste h2 {
+    font-size: var(--t-lg);
+    margin-block: var(--s-1) var(--s-2);
+  }
+
+  .liste h2 a {
+    color: var(--c-text);
+    text-decoration: none;
+  }
+
+  .liste h2 a:hover {
+    color: var(--c-accent);
+    text-decoration: underline;
+  }
+
+  .lead {
+    font-size: var(--t-sm);
+    color: var(--c-text-muted);
+    max-inline-size: var(--measure);
+    margin-block-end: var(--s-3);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2) var(--s-5);
+    margin-block-end: var(--s-3);
+    font-family: var(--f-utility);
+    font-size: var(--t-xs);
+  }
+
+  .meta dt {
+    font-size: var(--t-2xs);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-caps);
+    color: var(--c-text-faint);
+  }
+
+  .meta dd {
+    margin: 0;
+    color: var(--c-text);
+  }
+</style>

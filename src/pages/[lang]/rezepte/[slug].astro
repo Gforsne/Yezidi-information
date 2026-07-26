@@ -1,0 +1,115 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ArtikelLayout from '../../../layouts/ArtikelLayout.astro';
+import { mdxKomponenten } from '../../../components/mdx';
+import { locales, type Locale } from '../../../i18n/config';
+
+export async function getStaticPaths() {
+  const rezepte = await getCollection('recipes');
+  return rezepte
+    .filter((r) => !r.data.draft)
+    .flatMap((eintrag) => {
+      const sprachen = eintrag.data.lang === 'de' ? locales : [eintrag.data.lang];
+      return sprachen.map((lang) => ({
+        params: { lang, slug: eintrag.data.slug },
+        props: { eintrag },
+      }));
+    });
+}
+
+const locale = Astro.params.lang as Locale;
+const { eintrag } = Astro.props as { eintrag: CollectionEntry<'recipes'> };
+const { Content, headings, remarkPluginFrontmatter } = await render(eintrag);
+const d = eintrag.data;
+const k = remarkPluginFrontmatter as { _zitate?: number; _belegluecken?: number; _abschnitte?: number };
+---
+
+<ArtikelLayout
+  locale={locale}
+  section="kultur"
+  slug={d.slug}
+  title={d.title}
+  lead={d.lead}
+  status={d.status}
+  confidence={d.confidence}
+  perspektive="emisch"
+  contentWarning={d.contentWarning}
+  updated={d.updated}
+  reviewedBy={d.reviewedBy}
+  openQuestions={d.openQuestions}
+  sources={d.sources}
+  tags={d.tags}
+  gliederung={[]}
+  weiterfuehrend={['kultur/kueche-und-speisen']}
+  headings={headings}
+  zitate={k._zitate ?? 0}
+  belegluecken={k._belegluecken ?? 0}
+  abschnitte={k._abschnitte ?? 0}
+>
+  <dl class="rezeptdaten">
+    <div>
+      <dt>Anlass</dt>
+      <dd>{d.anlass.length > 0 ? d.anlass.join(', ') : 'noch nicht belegt'}</dd>
+    </div>
+    <div>
+      <dt>Region</dt>
+      <dd>{d.region.length > 0 ? d.region.join(', ') : 'noch nicht belegt'}</dd>
+    </div>
+    <div>
+      <dt>Herkunft des Rezepts</dt>
+      <dd>{d.herkunftDesRezepts ?? 'noch nicht belegt'}</dd>
+    </div>
+  </dl>
+
+  {
+    d.zutaten.length > 0 && (
+      <section aria-labelledby="zutaten-titel">
+        <h2 id="zutaten-titel">Zutaten</h2>
+        <ul>
+          {d.zutaten.map((z) => (
+            <li>{[z.menge, z.zutat].filter(Boolean).join(' ')}</li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    d.schritte.length > 0 && (
+      <section aria-labelledby="schritte-titel">
+        <h2 id="schritte-titel">Zubereitung</h2>
+        <ol>
+          {d.schritte.map((s) => (
+            <li>{s}</li>
+          ))}
+        </ol>
+      </section>
+    )
+  }
+
+  <Content components={mdxKomponenten} />
+</ArtikelLayout>
+
+<style>
+  .rezeptdaten {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3) var(--s-6);
+    margin-block-end: var(--s-5);
+    padding-block-end: var(--s-4);
+    border-block-end: var(--border-hair) solid var(--c-border);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+  }
+
+  .rezeptdaten dt {
+    font-size: var(--t-2xs);
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--c-text-faint);
+  }
+
+  .rezeptdaten dd {
+    margin: 0;
+  }
+</style>
