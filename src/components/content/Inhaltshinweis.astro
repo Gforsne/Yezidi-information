@@ -11,6 +11,14 @@ interface Props {
 const { text, locale = 'de' } = Astro.props;
 const t = useTranslations(locale);
 const hinweis = text ?? t('cw.genocide');
+
+/*
+  Eine Seite kann zwei Hinweise tragen: den bereichsweiten aus dem
+  Frontmatter und einen seitenspezifischen im Fließtext. Feste IDs würden
+  sich dabei doppeln – und eine doppelte ID zerstört die Zuordnung von
+  aria-labelledby. Deshalb bekommt jeder Hinweis eine eigene.
+*/
+const titelId = `cw-titel-${[...hinweis].reduce((h, z) => (h * 31 + z.codePointAt(0)!) >>> 0, 7).toString(36)}`;
 ---
 
 {
@@ -20,8 +28,8 @@ const hinweis = text ?? t('cw.genocide');
   die Information. Der Hinweis rahmt sie, statt sie zu inszenieren.
 */
 }
-<aside class="inhaltshinweis" role="note" aria-labelledby="cw-titel">
-  <p class="titel" id="cw-titel">
+<aside class="inhaltshinweis" role="note" aria-labelledby={titelId}>
+  <p class="titel" id={titelId}>
     <span class="zeichen" aria-hidden="true">!</span>
     {t('cw.title')}
   </p>

@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **351 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **387 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -15,25 +15,39 @@ Persönlichkeitsrechte berühren oder Falschinformation erzeugen würde. Sie sin
 anderen zu beantworten – notfalls durch Rückfrage bei Fachleuten oder bei
 Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
-- **Welche Beratungsstellen sind bundesweit und in den Schwerpunktländern zuständig?**
+- **Zwingend zu klären: Welche Beratungsstellen sind bundesweit und in den Schwerpunktländern zuständig, und sind sie aktuell erreichbar? Ohne geprüfte Angaben verweist diese Seite auf nichts.**
   - Seite: Asyl und Aufenthalt: Grundinformationen (`src/content/articles/de/gegenwart/asyl-und-aufenthalt.mdx`)
-- **Welche Stelle veröffentlicht regelmäßig aktualisierte Zahlen zu Binnenvertriebenen?**
+- **Zu Bildung, Erwerbstätigkeit und rechtlichem Status liegen keine belegten Angaben vor.**
+  - Seite: Diaspora in Deutschland (`src/content/articles/de/gegenwart/diaspora-in-deutschland.mdx`)
+- **Zwingend zu klären: Welche Stelle veröffentlicht regelmäßig aktualisierte Zahlen zu Binnenvertriebenen, mit welcher Methode und welchem Stand?**
   - Seite: Lage im Irak (`src/content/articles/de/gegenwart/lage-im-irak.mdx`)
-- **Welche Parlamente haben wann beschlossen – und liegt jeweils der Beschlusstext vor?**
+- **Welchen rechtlichen Status hat die Gemeinschaft in Deutschland derzeit? Ist sie als Religionsgemeinschaft anerkannt, in welchen Ländern, und mit welchen Folgen?**
+  - Seite: Rechtlicher Status in Deutschland (`src/content/articles/de/gegenwart/rechtlicher-status-in-deutschland.mdx`)
+- **Wie ist der Stand der angestrebten Anerkennung als Religionsgesellschaft?**
+  - Seite: Rechtlicher Status in Deutschland (`src/content/articles/de/gegenwart/rechtlicher-status-in-deutschland.mdx`)
+- **Der aufenthaltsrechtliche Status der Aufgenommenen ist nicht belegt.**
+  - Seite: Sonderaufnahmeprogramme (`src/content/articles/de/gegenwart/sonderaufnahmeprogramme.mdx`)
+- **Zwingend zu klären: Welche Parlamente haben wann beschlossen – und liegt jeweils der Beschlusstext vor? Ohne Beschlusstext nimmt diese Seite keine Anerkennung auf.**
   - Seite: Anerkennungen als Völkermord (`src/content/articles/de/genozid/anerkennungen-als-voelkermord.mdx`)
-- **Welche Anerkennungen werden in Medien genannt, ohne dass eine Fundstelle auffindbar ist?**
+- **Zwingend zu klären: Welche Anerkennungen werden in Medien genannt, ohne dass eine Fundstelle auffindbar ist? Diese Fälle sind ausdrücklich zu benennen.**
   - Seite: Anerkennungen als Völkermord (`src/content/articles/de/genozid/anerkennungen-als-voelkermord.mdx`)
-- **Welche Schätzungen zur Zahl der Eingeschlossenen liegen vor, von wem?**
+- **Zwingend zu klären: Welche Schätzungen zur Zahl der Eingeschlossenen liegen vor, und von wem? Die geprüften Quellen nennen keine.**
   - Seite: Flucht auf den Berg Şingal (`src/content/articles/de/genozid/flucht-auf-den-berg-singal.mdx`)
-- **Welche Zahlen zu verschleppten Kindern sind belegt, und wie werden sie erhoben?**
+- **Zwingend zu klären: Welche Zahlen zu verschleppten Kindern sind belegt, und wie werden sie erhoben? Der Redaktion liegt keine belastbare Zahl vor.**
   - Seite: Kinderraub und Zwangsrekrutierung von Jungen (`src/content/articles/de/genozid/kinderraub-und-zwangsrekrutierung.mdx`)
-- **Welche Erklärungen des Geistlichen Rats liegen im Wortlaut vor, aus welchen Jahren?**
+- **Diese Seite darf keine Namen von Opfern nennen, solange keine dokumentierte Selbstnennung von Angehörigen vorliegt.**
+  - Seite: Massentötungen, Massengräber und Vermisste (`src/content/articles/de/genozid/massentoetungen-massengraeber-vermisste.mdx`)
+- **Zwingend zu klären: Welche Stelle veröffentlicht regelmäßig aktualisierte Zahlen zu Binnenvertriebenen, und mit welcher Methode?**
+  - Seite: Rückkehr, Wiederaufbau und Sicherheitslage (`src/content/articles/de/genozid/rueckkehr-und-wiederaufbau.mdx`)
+- **Zwingend zu klären: Welche Erklärungen des Geistlichen Rats liegen im Wortlaut vor, aus welchen Jahren? Der Redaktion liegt keine im Original vor – nur Berichte darüber.**
   - Seite: Umgang mit Überlebenden (`src/content/articles/de/genozid/umgang-mit-ueberlebenden.mdx`)
-- **Welche Positionen werden zur Frage der Kinder aus Zwangsehen vertreten, und von wem?**
+- **Zwingend zu klären: Welche Positionen werden zur Frage der Kinder aus Zwangsehen vertreten, und von wem?**
   - Seite: Umgang mit Überlebenden (`src/content/articles/de/genozid/umgang-mit-ueberlebenden.mdx`)
-- **Welche Zahlen zu Befreiten und weiterhin Vermissten sind institutionell belegt, mit welchem Stand?**
+- **Zwingend zu klären: Welche Zahlen zu Befreiten und weiterhin Vermissten sind institutionell belegt, mit welchem Stand?**
   - Seite: Versklavung und sexualisierte Gewalt (`src/content/articles/de/genozid/versklavung-und-sexualisierte-gewalt.mdx`)
-- **Welche Beratungsstellen in Deutschland sind für Betroffene zuständig und aktuell erreichbar?**
+- **Zwingend zu klären: Welche Beratungsstellen in Deutschland sind für Betroffene zuständig und aktuell erreichbar? Diese Seite darf keine Therapie- oder Rechtsberatung geben, muss aber verweisen können.**
+  - Seite: Versklavung und sexualisierte Gewalt (`src/content/articles/de/genozid/versklavung-und-sexualisierte-gewalt.mdx`)
+- **Die Zahlen zu Verschleppten gehen zwischen den Quellen auseinander (siehe die Seite zu Massentötungen).**
   - Seite: Versklavung und sexualisierte Gewalt (`src/content/articles/de/genozid/versklavung-und-sexualisierte-gewalt.mdx`)
 - **Die Opferzahlen stammen sämtlich aus zeitgenössischen Berichten europäischer Reisender, Konsuln und Militärs. Wie sie erhoben wurden, ist nicht bekannt; eine kritische Prüfung dieser Zahlen ist der Redaktion nicht bekannt.**
   - Seite: 19. Jahrhundert: Feldzüge gegen Şingal und Şêxan (`src/content/articles/de/geschichte/19-jahrhundert-feldzuege.mdx`)
@@ -420,80 +434,116 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Genozid 2014 und Verfolgung
 
-20 Fragen auf 11 Seiten.
+36 Fragen auf 11 Seiten.
 
 **Anerkennungen als Völkermord**
-- Welche Parlamente haben wann beschlossen – und liegt jeweils der Beschlusstext vor?
-- Welche Anerkennungen werden in Medien genannt, ohne dass eine Fundstelle auffindbar ist?
+- Zwingend zu klären: Welche Parlamente haben wann beschlossen – und liegt jeweils der Beschlusstext vor? Ohne Beschlusstext nimmt diese Seite keine Anerkennung auf.
+- Zwingend zu klären: Welche Anerkennungen werden in Medien genannt, ohne dass eine Fundstelle auffindbar ist? Diese Fälle sind ausdrücklich zu benennen.
+- Das genaue Beschlussdatum des Deutschen Bundestages ist der Redaktion nicht am Plenarprotokoll geprüft; belegt ist das Datum des Antrags.
 
 **Aufarbeitung, Beweissicherung und Erinnerung**
-- Welche Gedenktage sind wo offiziell festgelegt?
-- Welche Dokumentationsprojekte sind öffentlich zugänglich?
+- Zur Arbeit von UNITAD liegen der Redaktion keine Originalquellen vor – nur der Verweis des Bundestages darauf.
+- Zu nationalen Strafverfahren, insbesondere in Deutschland, liegen keine belegten Angaben vor.
+- Zur Erinnerungsarbeit der Gemeinschaft – Gedenktage, Denkmäler, Dokumentationsstellen – fehlen belegte Angaben fast vollständig.
+- Diese Seite berührt die Erinnerung an einen Völkermord. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Flucht auf den Berg Şingal**
-- Welche Schätzungen zur Zahl der Eingeschlossenen liegen vor, von wem?
-- Welche Darstellungen der Fluchtkorridore sind institutionell belegt, welche politisch umstritten?
+- Zwingend zu klären: Welche Schätzungen zur Zahl der Eingeschlossenen liegen vor, und von wem? Die geprüften Quellen nennen keine.
+- Wie viele Menschen auf dem Berg starben und woran, ist nicht belegt.
+- Der Fluchtkorridor durch Syrien und die daran beteiligten Akteure sind nur andeutungsweise belegt. Hier ist besondere Sorgfalt geboten: Das Portal bewertet die Rolle bewaffneter Gruppen nicht.
 
 **Kinderraub und Zwangsrekrutierung von Jungen**
-- Welche Zahlen zu verschleppten Kindern sind belegt, und wie werden sie erhoben?
+- Zwingend zu klären: Welche Zahlen zu verschleppten Kindern sind belegt, und wie werden sie erhoben? Der Redaktion liegt keine belastbare Zahl vor.
+- Wie viele der verschleppten Jungen zurückgekehrt sind und wie ihre Wiedereingliederung verläuft, ist nicht belegt.
+- Diese Seite berührt Rechte von Kindern und Persönlichkeitsrechte. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Massentötungen, Massengräber und Vermisste**
-- Welche Stelle führt das Verzeichnis der Vermissten, und wie oft wird es aktualisiert?
-- Wie viele Massengräber sind bestätigt, wie viele exhumiert – jeweils mit Stand?
+- Die Angaben zu Getöteten gehen zwischen den Quellen um mehr als 2.000 Personen auseinander. Keine der Quellen legt ihre Erhebungsmethode offen.
+- Zwingend zu klären: Welche Stelle führt ein Verzeichnis der Vermissten, nach welchen Kriterien, und mit welchem Stand?
+- Zu Massengräbern – Zahl, Lage, Exhumierungsstand – liegen der Redaktion keine belegten Angaben vor.
+- Diese Seite darf keine Namen von Opfern nennen, solange keine dokumentierte Selbstnennung von Angehörigen vorliegt.
 
 **Rückkehr, Wiederaufbau und Sicherheitslage**
-- Wie viele Menschen sind zurückgekehrt, wie viele leben weiterhin in Lagern – mit welchem Stand?
-- Was steht im Şingal-Abkommen, und welche Teile sind umgesetzt?
+- Zwingend zu klären: Welche Stelle veröffentlicht regelmäßig aktualisierte Zahlen zu Binnenvertriebenen, und mit welcher Methode?
+- Die Angaben zu Binnenvertriebenen unterscheiden sich zwischen den Quellen um rund ein Drittel (über 200.000 gegenüber etwa 300.000).
+- Zum Stand des Wiederaufbaus – Wohnraum, Strom, Wasser, Schulen, Minenräumung – liegen der Redaktion keine belegten Angaben vor.
+- Die Sicherheitslage wird von verschiedenen Akteuren unterschiedlich dargestellt. Das Portal gibt Positionen wieder und bewertet sie nicht.
 
 **Umgang mit Überlebenden**
-- Welche Erklärungen des Geistlichen Rats liegen im Wortlaut vor, aus welchen Jahren?
-- Welche Positionen werden zur Frage der Kinder aus Zwangsehen vertreten, und von wem?
+- Zwingend zu klären: Welche Erklärungen des Geistlichen Rats liegen im Wortlaut vor, aus welchen Jahren? Der Redaktion liegt keine im Original vor – nur Berichte darüber.
+- Zwingend zu klären: Welche Positionen werden zur Frage der Kinder aus Zwangsehen vertreten, und von wem?
+- Wie die Erklärung in der Gemeinschaft aufgenommen wurde und ob sie sich in der Praxis durchgesetzt hat, ist nicht belegt.
+- Diese Seite berührt unmittelbar Persönlichkeitsrechte. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Versklavung und sexualisierte Gewalt**
-- Welche Zahlen zu Befreiten und weiterhin Vermissten sind institutionell belegt, mit welchem Stand?
-- Welche Beratungsstellen in Deutschland sind für Betroffene zuständig und aktuell erreichbar?
+- Zwingend zu klären: Welche Zahlen zu Befreiten und weiterhin Vermissten sind institutionell belegt, mit welchem Stand?
+- Zwingend zu klären: Welche Beratungsstellen in Deutschland sind für Betroffene zuständig und aktuell erreichbar? Diese Seite darf keine Therapie- oder Rechtsberatung geben, muss aber verweisen können.
+- Die Zahlen zu Verschleppten gehen zwischen den Quellen auseinander (siehe die Seite zu Massentötungen).
+- Diese Seite berührt unmittelbar Persönlichkeitsrechte. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, bevor sie den Status „geprüft“ erhalten kann.
 
 **Völkerrechtliche Einordnung**
-- Welche Untersuchungsmechanismen haben Feststellungen getroffen, wann und mit welchem Wortlaut?
-- Welche deutschen Verfahren sind abgeschlossen, mit welchem Ergebnis und welcher Begründung?
+- Wie sich die Bewertung von UNITAD zu der der Untersuchungskommission verhält, ist der Redaktion nicht im Original bekannt. Der Bundestag verweist auf UNITAD, die Kommission ist ein anderes Gremium.
+- Ob und wie sich die Lage bei der internationalen Strafverfolgung seit 2016 verändert hat, ist nicht belegt. Die vorliegende Feststellung ist fast zehn Jahre alt.
+- Zu nationalen Strafverfahren – etwa in Deutschland – liegen der Redaktion keine belegten Angaben vor.
 
 **Vorgeschichte und Chronologie des August 2014**
-- Welche institutionellen Berichte enthalten eine belastbare Chronologie?
-- Welche Angaben zu Sicherheitsvorkehrungen und Rückzug bewaffneter Kräfte sind dokumentiert – und welche sind umstritten?
+- Wie die Lage in Şingal unmittelbar vor dem 3. August 2014 war und welche Schutzzusagen bestanden, ist der Redaktion nicht belegt bekannt.
+- Der Abzug der Peschmerga-Einheiten wird in einer Quelle erwähnt, ist aber nicht unabhängig belegt und wird deshalb hier nur als Angabe dieser Quelle wiedergegeben.
+- Eine Tag-für-Tag-Chronologie liegt nicht vor. Die Darstellung nennt nur Daten, die die geprüften Quellen ausdrücklich angeben.
 
 **FAQ: Ist der Völkermord von 2014 offiziell anerkannt?**
 - Welche Parlamente und Institutionen haben wann und mit welchem Wortlaut anerkannt?
 
 ### Gegenwart und Diaspora
 
-11 Fragen auf 8 Seiten.
+31 Fragen auf 8 Seiten.
 
 **Asyl und Aufenthalt: Grundinformationen**
-- Welche Beratungsstellen sind bundesweit und in den Schwerpunktländern zuständig?
+- Zwingend zu klären: Welche Beratungsstellen sind bundesweit und in den Schwerpunktländern zuständig, und sind sie aktuell erreichbar? Ohne geprüfte Angaben verweist diese Seite auf nichts.
+- Auf welche Zeiträume und welche Antragsarten sich die genannte Ablehnungsquote bezieht, ist der Quelle nicht zu entnehmen.
+- Wie die aktuelle Entscheidungspraxis des Bundesamts für Migration und Flüchtlinge aussieht, ist unbelegt.
+- Rechtsstände veralten schnell. Diese Seite braucht eine feste Aktualisierungsroutine und einen sichtbaren Stand.
 
 **Diaspora in Deutschland**
-- Welche amtlichen Statistiken erlauben Aussagen über die Zahl der Êzîdî in Deutschland?
-- Welche Dachverbände bestehen, seit wann, und wie beschreiben sie ihre Aufgabe?
-- Welche wissenschaftlichen Arbeiten behandeln die Zuwanderungsgeschichte?
+- Drei Quellen nennen drei Zahlen für Deutschland, keine legt ihre Methode offen. Ob es sich um Wachstum durch Fluchtmigration oder um unterschiedliche Zählweisen handelt, ist ungeklärt.
+- Zu Vereinen, Dachverbänden und Gemeinden in Deutschland liegen der Redaktion keine belegten Angaben vor – ein auffälliger Mangel für die größte Diasporagemeinschaft.
+- Zu Bildung, Erwerbstätigkeit und rechtlichem Status liegen keine belegten Angaben vor.
+- Emische Quellen fehlen vollständig.
 
 **Diaspora weltweit**
-- Welche Länder veröffentlichen belastbare Zahlen?
+- Für Nordamerika, Australien und die übrigen Aufnahmeländer liegen der Redaktion keine belegten Zahlen vor.
+- Die Sammelposition „restliche Welt“ von 50.000 bis 100.000 in der Quelle ist nicht aufgeschlüsselt.
+- Zu Organisationen und Vertretungen in diesen Ländern liegen keine Angaben vor.
 
 **Generationenwandel, Identität und Debatten**
-- Welche qualitativen Studien zur zweiten und dritten Generation in Deutschland liegen vor?
+- Zur zweiten und dritten Generation in Deutschland – Sprachgebrauch, religiöse Praxis, Selbstverständnis – liegen der Redaktion keine belegten Angaben vor.
+- Kreyenbroek 2009 („Yezidism in Europe“) untersucht genau diese Frage anhand von Generationen und lag nicht im Volltext vor.
+- Emische Stimmen fehlen vollständig: Diese Seite referiert, was Forschende über die Debatte schreiben, nicht die Debatte selbst.
+- Diese Seite berührt innergemeinschaftliche Konflikte. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Lage im Irak**
-- Welche Stelle veröffentlicht regelmäßig aktualisierte Zahlen zu Binnenvertriebenen?
+- Zwingend zu klären: Welche Stelle veröffentlicht regelmäßig aktualisierte Zahlen zu Binnenvertriebenen, mit welcher Methode und welchem Stand?
+- Die jüngste geprüfte Angabe stammt von Juli 2024. Für eine Seite über die Gegenwart ist das zu alt; sie braucht eine feste Aktualisierungsroutine.
+- Zur wirtschaftlichen Lage, zur Gesundheitsversorgung und zur Schulbildung in den betroffenen Regionen liegen keine belegten Angaben vor.
+- Die Sicherheitslage wird von verschiedenen Akteuren unterschiedlich dargestellt. Das Portal gibt Positionen wieder und bewertet sie nicht.
 
 **Rechtlicher Status in Deutschland**
-- In welchen Bundesländern gibt es jesidischen Religionsunterricht, seit wann, auf welcher Rechtsgrundlage?
-- Welche Friedhofsregelungen bestehen, und wo sind sie dokumentiert?
+- Welchen rechtlichen Status hat die Gemeinschaft in Deutschland derzeit? Ist sie als Religionsgemeinschaft anerkannt, in welchen Ländern, und mit welchen Folgen?
+- Welche Entscheidungen deutscher Gerichte zur Gruppenverfolgung gibt es, mit welchen Aktenzeichen und aus welchen Jahren?
+- Wie ist der Stand der angestrebten Anerkennung als Religionsgesellschaft?
+- Diese Seite berührt Rechtsfragen. Sie gibt keine Rechtsberatung und darf ohne belastbare Quellen nichts behaupten.
 
 **Sonderaufnahmeprogramme**
-- Welche Evaluationen der Programme liegen vor, von wem, aus welchem Jahr?
+- Zur tatsächlichen Umsetzung des Programms – wie viele Menschen kamen, wie lange lief es, mit welchem Ergebnis – liegen der Redaktion keine Angaben vor.
+- Ob weitere Bundesländer oder der Bund vergleichbare Programme aufgelegt haben, ist unbelegt.
+- Der aufenthaltsrechtliche Status der Aufgenommenen ist nicht belegt.
+- Diese Seite berührt Persönlichkeitsrechte besonders belasteter Personen. Sie nennt keine Namen und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Syrien, Türkei, Armenien, Georgien und Russland**
-- Welche Länder führen Êzîdî als eigene Kategorie im Zensus, und mit welchen Ergebnissen?
+- Alle Angaben stammen aus 2016 oder früher. Für Syrien ist das nach mehr als einem Jahrzehnt Krieg praktisch wertlos; die Quelle sagt das selbst.
+- Zur Lage in der Türkei nach 2016 liegen keine Angaben vor – auch nicht zu Rückkehrbewegungen, die es gegeben haben soll.
+- Zur Lage in Armenien, Georgien und Russland nach 2016 liegen keine Angaben vor.
+- Ob und wie sich der Krieg in Syrien seit 2011 und die Lage nach 2014 auf die dortige Gemeinschaft ausgewirkt hat, ist unbelegt.
 
 ### Missverständnisse und Desinformation
 

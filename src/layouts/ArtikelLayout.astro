@@ -27,6 +27,7 @@ interface Props {
   confidence: 'gesichert' | 'umstritten' | 'unklar';
   perspektive?: 'emisch' | 'etisch' | 'gemischt';
   contentWarning: boolean;
+  contentWarningText?: string | null | undefined;
   updated: Date;
   reviewedBy: string | null;
   openQuestions: readonly string[];
@@ -60,6 +61,7 @@ const {
   confidence,
   perspektive = 'gemischt',
   contentWarning,
+  contentWarningText,
   updated,
   reviewedBy,
   openQuestions,
@@ -149,7 +151,14 @@ const jsonLd = [
           <a href={path(locale, bereich.slug)}>{bereich.title}</a>
         </p>
         <h1>{title}</h1>
-        {contentWarning && <Inhaltshinweis locale={locale} />}
+        {
+          contentWarning && (
+            <Inhaltshinweis
+              locale={locale}
+              {...(contentWarningText ? { text: contentWarningText } : {})}
+            />
+          )
+        }
         <Lead text={lead} locale={locale} />
       </header>
 

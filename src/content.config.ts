@@ -66,6 +66,12 @@ const redaktionelleBasis = {
   status: statusEnum.default('stub'),
   confidence: confidenceEnum.default('unklar'),
   contentWarning: z.boolean().default(false),
+  /**
+   * Seitengenauer Text des Inhaltshinweises. Ohne Angabe gilt der
+   * bereichsweite Standardtext. Zwei Hinweise auf einer Seite wären eine
+   * Dopplung – deshalb steht der besondere Text hier und nicht im Rumpf.
+   */
+  contentWarningText: z.string().nullable().optional(),
   sources: z.array(sourceRef).default([]),
   relatedGlossary: z.array(z.string()).default([]),
   updated: z.coerce.date(),

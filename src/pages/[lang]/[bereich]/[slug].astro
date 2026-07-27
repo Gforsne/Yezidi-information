@@ -73,6 +73,7 @@ const sprachen = eintrag.data.lang === 'de' ? locales : [eintrag.data.lang];
   confidence={daten.confidence}
   perspektive={daten.perspektive ?? 'gemischt'}
   contentWarning={daten.contentWarning || bereichWarnung}
+  contentWarningText={daten.contentWarningText ?? null}
   updated={daten.updated}
   reviewedBy={daten.reviewedBy}
   openQuestions={daten.openQuestions}

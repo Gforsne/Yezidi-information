@@ -113,6 +113,12 @@ const summe = (f: (z: Zeile) => number) => zeilen.reduce((a, z) => a + f(z), 0);
 const gesamtAbschnitte = summe((z) => z.abschnitte);
 const gesamtZitate = summe((z) => z.zitate);
 const gesamtLuecken = summe((z) => z.belegluecken);
+/*
+  Die Belegquote misst, wie viele Abschnitte gedeckt sind – nicht, wie oft
+  belegt wird. Sonst ergäbe eine Seite mit vielen Belegen in einem Abschnitt
+  eine Quote über 100 Prozent.
+*/
+const gesamtBelegteAbschnitte = summe((z) => Math.min(z.abschnitte, z.zitate));
 
 const nachStatus = (s: string) => zeilen.filter((z) => z.status === s).length;
 
@@ -168,7 +174,8 @@ const report = `# Content-Report
 
 ## Kurzfassung
 
-${gesamtZitate} von ${gesamtAbschnitte} Abschnitten tragen einen Beleg – **Belegquote ${quote(gesamtAbschnitte, gesamtZitate)} %**.
+${gesamtBelegteAbschnitte} von ${gesamtAbschnitte} Abschnitten tragen mindestens einen Beleg – **Belegquote ${quote(gesamtAbschnitte, gesamtBelegteAbschnitte)} %**.
+Insgesamt stehen ${gesamtZitate} Belegstellen im Text.
 ${gesamtLuecken} Stellen sind ausdrücklich als Beleglücke markiert.
 
 ${einordnung()}

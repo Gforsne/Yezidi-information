@@ -5,10 +5,11 @@
 
 ## Kurzfassung
 
-455 von 468 Abschnitten tragen einen Beleg – **Belegquote 97 %**.
-403 Stellen sind ausdrücklich als Beleglücke markiert.
+228 von 458 Abschnitten tragen mindestens einen Beleg – **Belegquote 50 %**.
+Insgesamt stehen 576 Belegstellen im Text.
+347 Stellen sind ausdrücklich als Beleglücke markiert.
 
-Die Recherche läuft: 70 von 162 Seiten (43 %) haben den Gerüst-Status verlassen.
+Die Recherche läuft: 88 von 162 Seiten (54 %) haben den Gerüst-Status verlassen.
 Eine niedrige Gesamtquote bedeutet **nicht**, dass unbelegte Behauptungen im Text stehen –
 an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, was fertig ist.
 
@@ -16,9 +17,9 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 
 | Status | Bedeutung | Seiten |
 |---|---|---:|
-| `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 92 |
-| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 9 |
-| `belegt` | Alle Aussagen mit Quellen belegt | 61 |
+| `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 74 |
+| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 17 |
+| `belegt` | Alle Aussagen mit Quellen belegt | 71 |
 | `geprüft` | Belegt und zusätzlich gegengelesen | 0 |
 | **Summe** | | **162** |
 
@@ -33,8 +34,8 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Feste, Kalender und Riten | 9 | 0 | 37 | 0 | 41 | 14 | 0 % |
 | Sprache und Namen | 5 | 0 | 19 | 0 | 22 | 10 | 0 % |
 | Geschichte | 11 | 11 | 44 | 92 | 8 | 40 | 100 % |
-| Genozid 2014 und Verfolgung | 10 | 0 | 41 | 0 | 50 | 19 | 0 % |
-| Gegenwart und Diaspora | 8 | 0 | 33 | 0 | 39 | 11 | 0 % |
+| Genozid 2014 und Verfolgung | 10 | 10 | 38 | 73 | 18 | 35 | 100 % |
+| Gegenwart und Diaspora | 8 | 8 | 26 | 48 | 15 | 31 | 100 % |
 | Missverständnisse und Desinformation | 3 | 0 | 13 | 0 | 15 | 4 | 0 % |
 | Kultur | 10 | 0 | 32 | 0 | 38 | 12 | 0 % |
 | Personen | 3 | 0 | 9 | 0 | 9 | 5 | 0 % |
@@ -55,11 +56,11 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 
 ## Seiten mit Inhaltshinweis
 
-24 Seiten tragen einen Inhaltshinweis. Für sie gelten die
+29 Seiten tragen einen Inhaltshinweis. Für sie gelten die
 Redaktionsregeln aus Abschnitt 10 der Projektvorgabe: keine Gewaltdetails, keine identifizierbaren
 Opferfotos, keine Täterpropaganda, keine Namen Überlebender ohne dokumentierte Selbstnennung.
 
 ## Seiten ohne einen einzigen Beleg
 
-92 von 162 Seiten enthalten noch keine Belegstelle.
+74 von 162 Seiten enthalten noch keine Belegstelle.
 Alle tragen `status: stub` und zeigen das im Belegapparat sichtbar an.
