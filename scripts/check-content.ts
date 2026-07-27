@@ -14,6 +14,7 @@
  *   9. Quellen mit URL ohne Abrufdatum
  *  10. ungeprüften Quellen, die nicht als `unklar` markiert sind
  *  11. <Cite> auf Quellen, deren Volltext nicht geprüft ist
+ *  12. Inline-Komponenten am Zeilenanfang (zerrissene Absätze)
  *
  * Aufruf: npm run check:content
  */
@@ -185,6 +186,21 @@ for (const d of dokumente) {
       fehle(d.pfad, `sources enthält die unbekannte Quellen-ID "${id}".`);
     } else if (status !== 'stub' && !kennzahlen.zitate.includes(id)) {
       warne(d.pfad, `Quelle "${id}" steht im Frontmatter, wird im Text aber nirgends zitiert.`);
+    }
+  }
+
+  /*
+    Inline-Komponenten dürfen nie am Zeilenanfang stehen. MDX behandelt ein
+    JSX-Element in dieser Stellung als Block; Prettier setzt dann eine
+    Leerzeile davor, und aus einem Absatz werden drei. Sichtbar wird das erst
+    im gebauten HTML – deshalb prüft der Build es hier.
+  */
+  for (const [nr, zeile] of d.rumpf.split('\n').entries()) {
+    if (/^<(Cite|Begriff|KurmanciBegriff)\b/.test(zeile)) {
+      fehle(
+        d.pfad,
+        `Zeile ${nr + 1}: <${zeile.slice(1).split(/[\s/>]/)[0]}> steht am Zeilenanfang. Inline-Komponenten an die vorige Zeile anhängen, sonst zerreißt der Absatz.`,
+      );
     }
   }
 

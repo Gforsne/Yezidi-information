@@ -112,12 +112,19 @@ test.describe('Sprachrouten', () => {
 test.describe('Artikelseite', () => {
   const pfad = '/de/religion/tawusi-melek-und-die-sieben-engel';
 
-  test('zeigt Lead, Gliederungshinweis und Belegspalte', async ({ page }) => {
+  test('zeigt Lead, Belegspalte und nummerierte Belege', async ({ page }) => {
     await page.goto(pfad);
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.getByText('In Kürze')).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Diese Seite ist ein Gerüst' })).toBeVisible();
     await expect(page.getByRole('complementary', { name: 'Belegspalte' })).toBeVisible();
+    // Belegte Seite: Die Belegziffern im Text verweisen auf das Quellenverzeichnis.
+    await expect(page.locator('a.zitat').first()).toBeVisible();
+  });
+
+  test('weist Gerüstseiten als solche aus', async ({ page }) => {
+    // Bewusst eine Seite, die noch nicht recherchiert ist.
+    await page.goto('/de/kultur/musik');
+    await expect(page.getByRole('heading', { name: 'Diese Seite ist ein Gerüst' })).toBeVisible();
   });
 
   test('macht Beleglücken sichtbar, statt sie zu verschweigen', async ({ page }) => {

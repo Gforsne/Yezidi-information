@@ -52,7 +52,16 @@ const titel = quelle
 
 <style>
   .zitat {
-    text-decoration: none;
+    /*
+      Die Belegziffer darf sich nicht allein durch ihre Farbe vom Fließtext
+      unterscheiden (WCAG 1.4.1). Die hochgestellte Stellung allein zählt
+      dafür nicht: Sie ist auch die übliche Auszeichnung für Fußnoten ohne
+      Verweis. Die Unterstreichung steht am Link selbst, nicht am <sup> –
+      Prüfwerkzeuge lesen die Auszeichnung des Linkelements.
+    */
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 0.18em;
     color: var(--c-apparat);
     /* Der Klickbereich wird über padding vergrößert, ohne die Zeile zu stören. */
     padding-inline: 0.1em;
@@ -67,10 +76,9 @@ const titel = quelle
     vertical-align: super;
   }
 
-  .zitat:hover sup,
-  .zitat:focus-visible sup {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
+  .zitat:hover,
+  .zitat:focus-visible {
+    text-decoration-thickness: 1.5px;
   }
 
   /* Gerade angesprungener Beleg wird kurz hervorgehoben (ohne Animation). */

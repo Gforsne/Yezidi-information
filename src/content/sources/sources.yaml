@@ -57,6 +57,7 @@
   type: aufsatz
   authors:
     - 'Kreyenbroek, Philip G.'
+    - 'Omarkhali, Khanna'
   title: 'Yezidi Spirits? On the question of Yezidi beliefs: A review article'
   container: 'Kurdish Studies 4 (2016), Heft 2, S. 197–207'
   year: 2016
@@ -71,7 +72,39 @@
   volltextGeprueft: true
   note: >-
     Rezensionsaufsatz zur Frage, was „Glaubensinhalte“ in einer mündlich
-    überlieferten Religion überhaupt bedeuten. Open Access.
+    überlieferten Religion überhaupt bedeuten – zugleich eine methodische
+    Kritik an essentialistischen Darstellungen des Êzîdîtums. Open Access.
+    Die Titelseite nennt beide Autoren, das Inhaltsverzeichnis der
+    Zeitschrift nur Kreyenbroek; maßgeblich ist der Aufsatz selbst.
+
+- id: omarkhali-2017-einleitung
+  type: buch
+  authors:
+    - 'Omarkhali, Khanna'
+  title: >-
+    The Yezidi Religious Textual Tradition: From Oral to Written. Categories,
+    Transmission, Scripturalisation and Canonisation of the Yezidi Oral
+    Religious Texts – Titelei und Einleitung
+  container: 'Studies in Oriental Religions'
+  year: 2017
+  publisher: 'Harrassowitz, Wiesbaden'
+  isbn: '978-3-447-10856-0'
+  doi: null
+  url: 'https://www.uni-goettingen.de/de/document/download/7aa23de7edf74949749e706f404d2d4e.pdf/Omarkhali_Yezidi_Religious_Textual_Tradition_2017.pdf'
+  accessed: 2026-07-27
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Von der Universität Göttingen bereitgestellte Leseprobe des Bandes:
+    Inhaltsverzeichnis und die vollständige Einleitung (S. 13–29), 24 Seiten.
+    Nicht der ganze Band – Belege beziehen sich ausschließlich auf diese
+    Seiten. Die Autorin verbindet die Fachperspektive der Iranistik mit dem
+    Status einer êzîdîschen Pîr; die Darstellung ist damit ausdrücklich emisch
+    und etisch zugleich. Sie hält fest, dass Wissen, dessen
+    Nichtveröffentlichung ihre Gesprächspartner erbaten, nicht in das Buch
+    aufgenommen wurde.
 
 - id: spat-2016-persecution-ritual
   type: aufsatz

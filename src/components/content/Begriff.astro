@@ -13,6 +13,14 @@ const { id, locale = 'de' } = Astro.props;
 const eintrag = await getEntry('glossary', `de/${id}`);
 const daten = eintrag?.data;
 const ziel = path(locale, 'glossar', id);
+
+/*
+  `<Begriff id="qewl" />` ohne Kindtext ist die häufigste Schreibweise im
+  Fließtext. Ohne Rückfall bliebe der Link leer – für Screenreader ein Link
+  ohne Namen, für Sehende ein unsichtbarer Klickbereich. Deshalb steht dann
+  der Titel des Glossareintrags im Link.
+*/
+const hatText = Astro.slots.has('default');
 ---
 
 {
@@ -31,7 +39,7 @@ const ziel = path(locale, 'glossar', id);
   daten ? (
     <span class="begriff-huelle">
       <a class="begriff" href={ziel} aria-describedby={`glossar-${id}`}>
-        <slot />
+        {hatText ? <slot /> : daten.title}
       </a>
       <span class="erklaerung" id={`glossar-${id}`} role="tooltip">
         <strong>{daten.title}</strong>
@@ -41,7 +49,7 @@ const ziel = path(locale, 'glossar', id);
     </span>
   ) : (
     <span class="begriff-fehlt" title={`Glossareintrag „${id}“ fehlt`}>
-      <slot />
+      {hatText ? <slot /> : id}
     </span>
   )
 }

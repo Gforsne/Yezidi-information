@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **295 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **328 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -37,19 +37,27 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Versklavung und sexualisierte Gewalt (`src/content/articles/de/genozid/versklavung-und-sexualisierte-gewalt.mdx`)
 - **Welche Opferzahlen nennen UN-Stellen, irakische Behörden und Menschenrechtsorganisationen jeweils?**
   - Seite: Die Anschläge von 2007 (`src/content/articles/de/geschichte/anschlaege-2007.mdx`)
-- **Welche Entscheidungen des Geistlichen Rats sind dokumentiert, und wie wurden sie begründet?**
+- **Welche Erklärungen des Geistlichen Rats zu Heiratsregeln liegen im Wortlaut vor, aus welchen Jahren? Der Redaktion liegt keine vor.**
+  - Seite: Endogamie: Regeln, Begründungen, Debatten (`src/content/articles/de/gesellschaft/endogamie.mdx`)
+- **Zwingend zu klären: Welche Erklärungen des Geistlichen Rats liegen im Wortlaut vor, aus welchen Jahren? Der Redaktion liegt keine einzige im Original vor.**
+  - Seite: Geistlicher Rat (Meclisa Ruhanî) (`src/content/articles/de/gesellschaft/geistlicher-rat-meclisa-ruhani.mdx`)
+- **Zwingend zu klären: Welche Entscheidungen des Geistlichen Rats sind dokumentiert, wie wurden sie begründet, und aus welchen Jahren stammen sie? Der Redaktion liegt kein Wortlaut vor.**
   - Seite: Konversionsverbot, Mischehen und Nachkommen (`src/content/articles/de/gesellschaft/konversionsverbot-und-mischehen.mdx`)
+- **Welche Positionen werden zur Frage der Kinder aus Zwangsehen vertreten, und von wem? Diese Seite gibt bislang nur die Position des Deutschen Bundestages wieder.**
+  - Seite: Konversionsverbot, Mischehen und Nachkommen (`src/content/articles/de/gesellschaft/konversionsverbot-und-mischehen.mdx`)
+- **Diese Seite berührt Geschlechterrollen in einer lebenden Gemeinschaft und die Folgen sexualisierter Gewalt. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, insbesondere durch Frauen.**
+  - Seite: Rolle von Frauen (`src/content/articles/de/gesellschaft/rolle-von-frauen.mdx`)
 - **Welche frei lizenzierten Fotografien existieren, und ist ihre Veröffentlichung angemessen?**
   - Seite: Laliş (`src/content/articles/de/heilige-orte/lalis.mdx`)
 - **Wer ist Anbieter im Rechtssinne, und wer trägt die inhaltliche Verantwortung?**
   - Seite: Impressum (`src/content/articles/de/meta/impressum.mdx`)
 - **Wer übernimmt die redaktionelle Verantwortung im Sinne des Presserechts?**
   - Seite: Über dieses Projekt (`src/content/articles/de/meta/ueber-dieses-projekt.mdx`)
-- **Welche Positionen gibt es innerhalb der Gemeinschaft zur Veröffentlichung religiöser Texte?**
+- **Zwingend zu klären: Welche Positionen gibt es innerhalb der Gemeinschaft zur Veröffentlichung religiöser Texte? Diese Seite zitiert deshalb bewusst keine Textstellen.**
   - Seite: Mündliche Überlieferung: Qewl, Beyt, Şehbêrî, Duʿa (`src/content/articles/de/religion/muendliche-ueberlieferung-qewl-und-beyt.mdx`)
 - **Welche Aufnahmen sind rechtlich frei zugänglich und dürfen verlinkt werden?**
   - Seite: Mündliche Überlieferung: Qewl, Beyt, Şehbêrî, Duʿa (`src/content/articles/de/religion/muendliche-ueberlieferung-qewl-und-beyt.mdx`)
-- **Welche Abbildungen stehen unter freier Lizenz zur Verfügung – und ist ihre Veröffentlichung aus Sicht der Gemeinschaft angemessen?**
+- **Zur Ikonografie und zur Verwendung des Sancak liegen nur Kurzdefinitionen vor. Ob eine Abbildung überhaupt angemessen wäre, ist mit der Gemeinschaft zu klären.**
   - Seite: Tawûsî Melek und die sieben Engel (`src/content/articles/de/religion/tawusi-melek-und-die-sieben-engel.mdx`)
 - **Wer könnte Aufnahmen sprechen, und wie wird die Einwilligung dokumentiert?**
   - Seite: Aussprache (`src/content/articles/de/sprache/aussprache.mdx`)
@@ -115,86 +123,116 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Religion und Glaube
 
-23 Fragen auf 10 Seiten.
+37 Fragen auf 10 Seiten.
 
 **Gottesbild und Monotheismus**
-- Welche veröffentlichten Qewl-Übersetzungen sind wissenschaftlich anerkannt?
-- Wie unterscheiden sich Darstellungen êzîdîscher Geistlicher von religionswissenschaftlichen Beschreibungen?
+- Die Belege stammen aus der Einleitung von Omarkhali 2017 und einem Rezensionsaufsatz. Die einschlägigen Kapitel (Omarkhali 2017, Kap. III; Kreyenbroek 1995, Kap. 2) lagen der Redaktion nicht vor.
+- Für die Übersetzung der Glaubensbekenntnis-Formel stützt sich diese Seite auf eine Wiedergabe bei Kreyenbroek/Omarkhali, nicht auf die Textausgabe selbst.
+- Wie das Verhältnis von Xwedê zu Tawûsî Melek in der heutigen Selbstdarstellung der Gemeinschaft beschrieben wird, ist nicht belegt. Emische Quellen fehlen.
+- Diese Seite berührt religiöse Kernfragen und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Mishefa Reş und Kitêba Cilwe**
-- Welche Editionen und Übersetzungen gelten als maßgeblich?
-- Welche Argumente führt die Forschung für eine Entstehung im 19./20. Jahrhundert an?
-- Wie positionieren sich êzîdîsche Geistliche und Verbände zu den Texten?
+- Wer die Texte wann und mit welchen Argumenten als Fälschungen erwiesen hat, ist der Redaktion nicht im Original belegt. Der Nachweis steht laut Kreyenbroek/Omarkhali in Kreyenbroek 1995, S. 10–16.
+- Welche Rolle die Texte innerhalb der Gemeinschaft heute spielen, ist ungeklärt und muss getrennt von der Echtheitsfrage behandelt werden.
+- Die deutschsprachige Quelle formuliert deutlich vorsichtiger („nicht allesamt authentisch“) als die Fachliteratur („unecht“). Der Unterschied ist hier stehen gelassen, nicht aufgelöst.
 
 **Mündliche Überlieferung: Qewl, Beyt, Şehbêrî, Duʿa**
-- Welche Sammlungen sind publiziert, in welcher Sprache und mit welcher editorischen Qualität?
-- Welche Positionen gibt es innerhalb der Gemeinschaft zur Veröffentlichung religiöser Texte?
+- Die Gattung Şehbêrî ist in den vorliegenden Quellen nicht belegt. Omarkhali führt Qewl, Beyt, Qesîde, Duʿa/Diroz(g)e und Pişt Perde; Şehbêrî erscheint dort nicht. Ob es sich um eine regionale Bezeichnung oder um eine weitere Gattung handelt, ist zu klären.
+- Zur Melodik, zur Ausbildung der Qewwal und zur heutigen Aufführungspraxis liegen nur Andeutungen vor. Die einschlägigen Kapitel von Omarkhali 2017 fehlen der Redaktion.
+- Zwingend zu klären: Welche Positionen gibt es innerhalb der Gemeinschaft zur Veröffentlichung religiöser Texte? Diese Seite zitiert deshalb bewusst keine Textstellen.
 - Welche Aufnahmen sind rechtlich frei zugänglich und dürfen verlinkt werden?
 
 **Religiöse Praxis im Alltag**
-- Welche ethnografischen Arbeiten beschreiben die Alltagspraxis in den Herkunftsregionen?
-- Welche Studien gibt es zur religiösen Praxis in der deutschen Diaspora?
+- Ethnografische Arbeiten zur Alltagspraxis in den Herkunftsregionen liegen der Redaktion überwiegend nicht vor. Spät 2016 beschreibt die Lage nach 2014, nicht den Normalfall davor.
+- Zu Gebetszeiten, Gebetstexten und Reinheitsvorstellungen fehlen belastbare Angaben. Die vorliegende Beschreibung stützt sich auf eine Handreichung ohne Einzelnachweise.
+- Zur Praxis in der Diaspora liegt nur ein Literaturhinweis vor (Kreyenbroek 2009), nicht der Text.
+- Diese Seite berührt religiöse Praxis und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Schöpfungsvorstellung und Kosmologie**
-- Welche Qewl-Editionen enthalten Schöpfungserzählungen in überprüfbarer Übersetzung?
-- Wie erklärt die Forschung die Varianten – regional, ständisch, überlieferungsbedingt?
+- Die Schöpfungserzählung ist hier nur in der knappen Fassung von Tagay/Ortaç belegt. Die Textgrundlage – Qewl-Editionen mit überprüfbarer Übersetzung – lag der Redaktion nicht vor.
+- Omarkhali kündigt in ihrem Inhaltsverzeichnis Kapitel zu Kosmogonie, Weltachse und Anthropogonie an. Diese Kapitel selbst fehlen der Redaktion; nur die Einleitung liegt vor.
+- Zu Zeitvorstellungen liegt nur ein Literaturhinweis vor (Omarkhali/Rezania 2009), nicht der Text.
+- Diese Seite berührt religiöse Kernfragen und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Seelenlehre, Jenseits und Reinkarnationsvorstellungen**
-- Welche Begriffe verwenden die Quellen für Seele und Wiedergeburt, und wie werden sie übersetzt?
-- Gibt es dokumentierte regionale Unterschiede in den Vorstellungen?
+- Die ausführliche Beschreibung von Seelenwanderung und Bestattung stammt aus einer Handreichung ohne Einzelnachweise. Sie braucht eine religionswissenschaftliche Bestätigung.
+- Ob und wie sich die Vorstellungen regional unterscheiden, ist nicht belegt. Omarkhali weist darauf hin, dass sich die Überlieferung zwischen den Gemeinschaften unterscheidet.
+- Die Begriffe, die die Quellen für Seele und Wiedergeburt verwenden, sind hier nur in deutscher Übersetzung belegt, nicht im Original.
+- Diese Seite berührt Bestattungspraxis und Vorstellungen vom Tod und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Speise- und Verhaltensregeln**
-- Welche Regeln sind in der Literatur übereinstimmend belegt, welche nur in Einzelquellen?
-- Wie beschreiben êzîdîsche Institutionen selbst die Verbindlichkeit dieser Regeln?
+- Welche Speise- und Verhaltensregeln sind in der Fachliteratur übereinstimmend belegt? Die Redaktion hat dazu keine belastbare Darstellung gefunden.
+- Wie beschreiben êzîdîsche Institutionen selbst die Verbindlichkeit solcher Regeln? Emische Quellen fehlen vollständig.
+- Verbreitete Angaben – etwa zu bestimmten Speisen oder Farben – sind in den geprüften Quellen nicht belegt und stehen deshalb hier nicht.
 
 **Tawûsî Melek und die sieben Engel**
-- Welche Fachliteratur beschreibt die Ikonografie belastbar und mit Abbildungsnachweisen?
-- Welche Abbildungen stehen unter freier Lizenz zur Verfügung – und ist ihre Veröffentlichung aus Sicht der Gemeinschaft angemessen?
-- Wie gehen êzîdîsche Institutionen mit der Veröffentlichung von Sancak-Abbildungen um?
+- Die Zahl und die Namen der sieben Engel sind hier nicht vollständig genannt: Die vorliegenden Quellen führen sie nicht geschlossen auf, und eine Rekonstruktion aus Einzelnennungen wäre eine Erfindung.
+- Zur Ikonografie und zur Verwendung des Sancak liegen nur Kurzdefinitionen vor. Ob eine Abbildung überhaupt angemessen wäre, ist mit der Gemeinschaft zu klären.
+- Diese Seite berührt religiöse Kernfragen. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, bevor sie den Status „geprüft“ erhalten kann.
 
 **Religionswissenschaftliche Hypothesen zu den Ursprüngen**
-- Welche Forschungsüberblicke fassen die Debatte zusammen, ohne selbst Position zu beziehen?
-- Welche archäologischen oder textlichen Belege werden jeweils angeführt?
+- Die einschlägigen Einzeluntersuchungen – Kreyenbroek 1995 zur Hintergrundfrage, Spät 2010 zu spätantiken Motiven, Açıkyıldız 2010 – lagen der Redaktion nicht im Volltext vor. Diese Seite kann die Positionen deshalb nur benennen, nicht darstellen.
+- Welche archäologischen oder textlichen Belege werden für die jeweiligen Positionen angeführt? Ungeklärt.
+- Positionen aus der Gemeinschaft sind bislang nur mittelbar belegt, über zwei Überblicksdarstellungen.
+- Diese Seite berührt eine Frage, die politisch für Identitätsansprüche in Anspruch genommen wird. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Verhältnis zu anderen Religionen**
-- Welche rechtshistorische Literatur beschreibt die Stellung der Êzîdî unter osmanischem Recht?
-- Welche Arbeiten untersuchen Nachbarschaftsbeziehungen empirisch statt normativ?
+- Welche rechtshistorische Literatur beschreibt die Stellung der Êzîdî unter osmanischem Recht im Einzelnen? Der Redaktion liegt nur die zusammenfassende Darstellung von Tagay/Ortaç vor.
+- Welche Arbeiten untersuchen Nachbarschaftsbeziehungen empirisch statt normativ? Bislang stützt sich diese Seite auf eine einzige Quelle.
+- Zum Verhältnis zu christlichen Gemeinschaften der Region liegen keine belegten Angaben vor.
+- Die Darstellung des Verhältnisses zum Islam ist politisch und emotional aufgeladen. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 ### Gesellschaftsordnung
 
-17 Fragen auf 9 Seiten.
+33 Fragen auf 9 Seiten.
 
 **Ämter und Institutionen**
-- Welche Übersicht der Ämter ist wissenschaftlich anerkannt und aktuell?
-- Wie werden Ämter besetzt, und gibt es dokumentierte Veränderungen seit 2014?
+- Zu fast allen Ämtern liegen nur Kurzdefinitionen vor. Wie sie besetzt werden, welche Befugnisse sie haben und wie sie sich zueinander verhalten, ist nicht belegt.
+- Die Redaktion nennt bewusst keine gegenwärtigen Amtsinhaber: Angaben zu lebenden Personen brauchen eine aktuelle, geprüfte Quelle und erhöhte Zurückhaltung.
+- Ob und wie die Ämter in der Diaspora vertreten sind, ist nicht belegt.
+- Diese Seite beschreibt die Institutionen einer lebenden Gemeinschaft und braucht eine Prüfung durch deren Angehörige.
 
 **Die drei Stände: Mirîd, Şêx und Pîr**
-- Wie beschreibt die Fachliteratur die Untergliederungen der Şêx- und Pîr-Linien?
-- Welche empirischen Studien liegen zur gegenwärtigen Praxis in Deutschland vor?
+- Die Anteile der Gruppen werden widersprüchlich angegeben: 80/15/5 Prozent bei Tagay/Ortaç, 93–94 Prozent Mirîd gegenüber 6–7 Prozent Priesterschaft bei Omarkhali. Keine der Quellen nennt eine Erhebungsgrundlage.
+- Die Funktionen von hosta und merebî sind nach Omarkhali heute weniger klar bestimmt. Worin sie bestanden, ist der Redaktion nicht belegt.
+- Wie sich die Ordnung in der Diaspora praktisch auswirkt, ist nur andeutungsweise belegt.
+- Diese Seite beschreibt die Sozialordnung einer lebenden Gemeinschaft und braucht eine Prüfung durch deren Angehörige.
 
 **Endogamie: Regeln, Begründungen, Debatten**
-- Welche schriftlichen Stellungnahmen religiöser Institutionen liegen vor, und aus welchen Jahren?
-- Welche qualitativen Studien untersuchen die Debatte in der zweiten und dritten Generation?
+- Welche Erklärungen des Geistlichen Rats zu Heiratsregeln liegen im Wortlaut vor, aus welchen Jahren? Der Redaktion liegt keine vor.
+- Wie verbreitet Ehen entgegen der Regel in der Diaspora sind und welche Folgen sie haben, ist nicht belegt.
+- Die Begründungen aus der Gemeinschaft sind bislang nur mittelbar belegt, über Überblicksdarstellungen.
+- Diese Seite berührt Persönlichkeitsrechte und innergemeinschaftliche Konflikte. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Geistlicher Rat (Meclisa Ruhanî)**
-- Welche Entscheidungen des Rats sind schriftlich dokumentiert und wo?
-- Wie verhält sich der Rat zu weltlichen Vertretungsstrukturen?
+- Zwingend zu klären: Welche Erklärungen des Geistlichen Rats liegen im Wortlaut vor, aus welchen Jahren? Der Redaktion liegt keine einzige im Original vor.
+- Zusammensetzung, Beschlussverfahren und tatsächliche Bindungswirkung sind nicht belegt.
+- Ob der Rat auch für die Diaspora entscheidet und wie seine Beschlüsse dort aufgenommen werden, ist offen.
+- Diese Seite betrifft eine bestehende Institution und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Birayê und Xwişka Axretê (Jenseitsgeschwister)**
-- Welche ethnografischen Arbeiten beschreiben die Institution ausführlich?
-- Gibt es Untersuchungen zur Praxis in der Diaspora?
+- Die Beschreibung der Rolle stammt aus einer Handreichung ohne Einzelnachweise und braucht eine religionswissenschaftliche Bestätigung.
+- Wie das Jenseitsgeschwister ausgewählt wird und ob die Wahl vererbt oder neu getroffen wird, ist nicht belegt.
+- Ob die Beziehung in der Diaspora fortgeführt wird, ist nicht belegt.
+- Diese Seite berührt religiöse Praxis und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Kirîv/Kreve und soziale Bündnisse**
-- Wie verbreitet ist die Institution heute – gibt es empirische Angaben?
-- Welche Rolle spielt Kirîv im Verhältnis zu Nachbargemeinschaften?
+- Die Seitenangabe für die ausführliche Beschreibung ist aus der PDF-Fassung erschlossen und am gedruckten Exemplar zu prüfen.
+- Ob und wie die Kirîv-Beziehung in der Diaspora fortgeführt wird, ist nicht belegt.
+- Ob es eine entsprechende Institution für Mädchen gibt, ist nicht belegt.
+- Diese Seite beschreibt eine Praxis, die Beschneidung einschließt, und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Konversionsverbot, Mischehen und Nachkommen**
-- Welche Entscheidungen des Geistlichen Rats sind dokumentiert, und wie wurden sie begründet?
-- Welche wissenschaftlichen Arbeiten behandeln die Folgen für Nachkommen?
+- Zwingend zu klären: Welche Entscheidungen des Geistlichen Rats sind dokumentiert, wie wurden sie begründet, und aus welchen Jahren stammen sie? Der Redaktion liegt kein Wortlaut vor.
+- Welche Positionen werden zur Frage der Kinder aus Zwangsehen vertreten, und von wem? Diese Seite gibt bislang nur die Position des Deutschen Bundestages wieder.
+- Wie die betroffenen Familien selbst mit der Frage umgehen, ist nicht belegt – und darf ohne dokumentierte Selbstäußerung nicht dargestellt werden.
+- Diese Seite berührt unmittelbar Persönlichkeitsrechte und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Rolle von Frauen**
-- Welche Studien untersuchen Bildungs- und Erwerbsbeteiligung in der Diaspora?
-- Welche êzîdîschen Frauenorganisationen sind aktiv, und was ist dokumentiert?
+- Diese Seite beruht auf wenigen verstreuten Angaben. Eine Untersuchung zur Stellung von Frauen im Êzîdîtum liegt der Redaktion nicht vor.
+- Zum Frauenorden „Fahra“ in Laliş liegt nur eine Kurzdefinition vor.
+- Wie sich die Rolle in der Diaspora verändert, ist nicht belegt.
+- Diese Seite berührt Geschlechterrollen in einer lebenden Gemeinschaft und die Folgen sexualisierter Gewalt. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, insbesondere durch Frauen.
 
 **FAQ: Kann man zum Êzîdîtum konvertieren?**
 - Wie wird die Regel innerhalb der Gemeinschaft begründet und wie wird sie gegenwärtig diskutiert?
@@ -515,7 +553,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Wissen und Vermittlung
 
-101 Fragen auf 56 Seiten.
+104 Fragen auf 56 Seiten.
 
 **Hilfe und Anlaufstellen**
 - Welche Angebote arbeiten in Kurmancî und Arabisch?
@@ -639,6 +677,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Die Erblichkeit des Amtes und seine Geschichte sind noch zu recherchieren.
 
 **Mirîd**
+- Die Anteilsangaben widersprechen sich zwischen den Quellen (etwa 80 Prozent bei Tagay/Ortaç, 93–94 Prozent bei Omarkhali).
 - Die Prozentangabe stammt aus einer einzigen Quelle und ohne Erhebungsangabe.
 
 **Mishefa Reş**
@@ -657,6 +696,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Aufgaben und Verhältnis zu den anderen Ämtern sind nicht belegt.
 
 **Pîr**
+- Die Anteilsangaben widersprechen sich zwischen den Quellen (5 Prozent bei Tagay/Ortaç, 6–7 Prozent für Şêx und Pîr zusammen bei Omarkhali).
 - Die Prozentangaben stammen aus einer einzigen Quelle und ohne Erhebungsangabe.
 - Welche Aufgaben die Pîr gegenüber den Mirîd konkret wahrnehmen, ist hier nicht belegt.
 
@@ -688,6 +728,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Die Frage, wie sich Şêx Adî zur islamischen Gelehrsamkeit seiner Zeit verhielt, ist umstritten und wird hier nur referiert, nicht entschieden.
 
 **Şêx**
+- Die Anteilsangaben widersprechen sich zwischen den Quellen (15 Prozent bei Tagay/Ortaç, 6–7 Prozent für Şêx und Pîr zusammen bei Omarkhali).
 - Die Prozentangaben stammen aus einer einzigen Quelle und ohne Erhebungsangabe. Sie sind als Größenordnung zu lesen, nicht als Statistik.
 
 **Şêxan**
@@ -962,7 +1003,7 @@ Der Auftrag beschreibt, wie eine Seite zu belegen ist – nicht, was sie behaupt
 - **Museen, Dokumentationszentren und Gedenkinitiativen** (`src/content/articles/de/wissenschaft/museen-und-dokumentationszentren.mdx`)
   - Einrichtungen mit Trägerschaft, Ort und Gründungsjahr belegen; Stand-Datum setzen.
 - **Offene Fragen und Kontroversen** (`src/content/articles/de/wissenschaft/offene-fragen-und-kontroversen.mdx`)
-  - Kontroversen einzeln mit stabilen Ankern anlegen, damit die Komponente <Unsicher> gezielt darauf verweisen kann. Je Kontroverse mindestens zwei Positionen mit Beleg.
+  - Kontroversen einzeln mit stabilen Ankern anlegen, damit die Unsicherheitsmarkierung gezielt darauf verweisen kann. Je Kontroverse mindestens zwei Positionen mit Beleg.
 - **Primärquellen und Archive** (`src/content/articles/de/wissenschaft/primaerquellen-und-archive.mdx`)
   - Bestände mit Trägerschaft und Zugänglichkeit erfassen. Reiseberichte quellenkritisch einordnen.
 
