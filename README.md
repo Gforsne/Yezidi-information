@@ -3,10 +3,13 @@
 Ein deutschsprachiges Wissensportal über die Êzîdî – Religion, Geschichte,
 Gesellschaftsordnung, Sprache, Verfolgungsgeschichte und Gegenwart.
 
-**Stand: Das Gerüst steht, die inhaltliche Recherche hat noch nicht
-begonnen.** Alle 162 Seiten existieren als Route mit vollständigem Layout,
-Gliederung, Rechercheauftrag und offenen Fragen. Es steht bewusst kein
-vorläufiger Text darin, der wie gesichertes Wissen aussehen könnte.
+**Stand: Das Gerüst steht, die Recherche läuft.** Alle 162 Seiten
+existieren als Route mit vollständigem Layout, Gliederung,
+Rechercheauftrag und offenen Fragen. Der Bereich Überblick und die
+Glossarbegriffe, die die geprüften Quellen abdecken, sind belegt; die
+übrigen Seiten tragen `status: stub`. Es steht bewusst kein vorläufiger
+Text darin, der wie gesichertes Wissen aussehen könnte. Den jeweils
+aktuellen Stand nennt `content-report.md`.
 
 ---
 
@@ -47,11 +50,18 @@ unter anderem: Pflichtfelder, Belegpflicht ab `status != 'stub'`,
 zitierte Quellen-IDs, Glossarbezüge, interne Verweise, Bildnachweise,
 Abrufdaten bei Webquellen und ungeprüfte bibliografische Angaben.
 
+**Belegen darf nur, wer den Volltext hatte.** Quellen tragen zwei
+getrennte Prüfstufen: `verifiziert` für die bibliografischen Angaben,
+`volltextGeprueft` dafür, dass der Text tatsächlich vorlag. Ein `<Cite>`
+auf eine Quelle ohne `volltextGeprueft: true` lässt den Build scheitern.
+Standardwerke, die noch niemand beschafft hat, stehen deshalb als
+Literaturhinweis im Verzeichnis – aber unter keiner Belegziffer.
+
 **Keine Tracker, keine Cookies, keine Drittdienste.** Schriften, Suchindex
 und Kartendaten liegen lokal. Deshalb gibt es kein Cookie-Banner – und die
 Datenschutzerklärung kann das ohne Einschränkung sagen.
 
-**Barrierefreiheit ist geprüft, nicht behauptet.** 160 Playwright-Tests
+**Barrierefreiheit ist geprüft, nicht behauptet.** 162 Playwright-Tests
 auf Desktop und Mobil, darunter axe-Prüfungen auf 17 Routen in beiden
 Farbschemata. Kontrastwerte werden gegen die Token-Datei nachgerechnet,
 Glyphenabdeckung für ê î û ş ç und Arabisch gegen die Schriftdateien.
@@ -60,19 +70,20 @@ Glyphenabdeckung für ê î û ş ç und Arabisch gegen die Schriftdateien.
 
 ## Befehle
 
-| Befehl                            | Wirkung                                                          |
-| --------------------------------- | ---------------------------------------------------------------- |
-| `npm run dev`                     | Entwicklungsserver                                               |
-| `npm run build`                   | Bau + Pagefind-Index + `content-report.md` + `RESEARCH-BRIEF.md` |
-| `npm run preview`                 | gebautes Verzeichnis lokal ausliefern                            |
-| `npm run check`                   | `astro check` (Typen)                                            |
-| `npm run check:content`           | Inhalte prüfen – **das Build-Gate**                              |
-| `npm run check:links`             | alle internen Links und Sprungmarken im Bau                      |
-| `npm run report:content`          | Berichte neu erzeugen, ohne zu bauen                             |
-| `npm test`                        | Unit-Tests (Kontrast, Schriften, i18n, Zitation)                 |
-| `npm run test:e2e`                | Playwright: Rauchtests und Barrierefreiheit                      |
-| `npm run lint` / `npm run format` | ESLint / Prettier                                                |
-| `npm run verify`                  | Inhalte + Typen + Lint + Tests + Bau                             |
+| Befehl                               | Wirkung                                                          |
+| ------------------------------------ | ---------------------------------------------------------------- |
+| `npm run dev`                        | Entwicklungsserver                                               |
+| `npm run build`                      | Bau + Pagefind-Index + `content-report.md` + `RESEARCH-BRIEF.md` |
+| `npm run preview`                    | gebautes Verzeichnis lokal ausliefern                            |
+| `npm run check`                      | `astro check` (Typen)                                            |
+| `npm run check:content`              | Inhalte prüfen – **das Build-Gate**                              |
+| `npm run check:links`                | alle internen Links und Sprungmarken im Bau                      |
+| `npm run report:content`             | Berichte neu erzeugen, ohne zu bauen                             |
+| `npm run quelle:lesen -- <id> <url>` | Quellen-PDF laden und als Text ablegen (`quellen/`, ungetrackt)  |
+| `npm test`                           | Unit-Tests (Kontrast, Schriften, i18n, Zitation)                 |
+| `npm run test:e2e`                   | Playwright: Rauchtests und Barrierefreiheit                      |
+| `npm run lint` / `npm run format`    | ESLint / Prettier                                                |
+| `npm run verify`                     | Inhalte + Typen + Lint + Tests + Bau                             |
 
 ---
 

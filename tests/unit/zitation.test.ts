@@ -26,6 +26,7 @@ const buch: Quelle = {
   reliability: 'wissenschaftlich',
   note: null,
   verifiziert: true,
+  volltextGeprueft: true,
 };
 
 describe('Kurzbeleg', () => {

@@ -38,3 +38,7 @@ public/vendor/
 
 # Generierte Berichte (werden bewusst mitversioniert – siehe DECISIONS.md, D-018)
 # content-report.md ist NICHT ignoriert.
+
+# Heruntergeladene Quellen-PDFs (scripts/quelle-lesen.mjs) – fremdes
+# Material mit eigenen Lizenzbedingungen, gehoert nicht ins Repository.
+quellen/

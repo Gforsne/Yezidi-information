@@ -5,15 +5,294 @@
 # <Cite id="…" /> verweist auf die `id` eines Eintrags; check:content
 # bricht ab, wenn eine zitierte ID hier fehlt.
 #
-# WICHTIG (Recherche-Regel 4): `verifiziert: true` darf nur setzen, wer
-# die bibliografischen Angaben am Original oder an einem verlässlichen
-# Nachweis (Bibliothekskatalog, Verlagsseite, DOI-Auflösung) geprüft hat.
-# Ungeprüfte Einträge tragen `reliability: unklar` – das erzwingt das
-# Schema in src/content.config.ts.
+# ZWEI GETRENNTE PRÜFSTUFEN (Recherche-Regel 4):
+#
+#   verifiziert: true
+#     Die bibliografischen Angaben wurden am Original oder an einem
+#     verlässlichen Nachweis geprüft (Verlags- oder Herausgeberseite,
+#     Bibliothekskatalog, DOI-Auflösung). Ungeprüfte Einträge tragen
+#     reliability: unklar – das erzwingt das Schema.
+#
+#   volltextGeprueft: true
+#     Der Redaktion lag der Volltext tatsächlich vor. NUR solche Quellen
+#     dürfen mit <Cite> belegen; check:content bricht sonst ab. Titel,
+#     die bloß aus einem Katalog bekannt sind, stehen hier als
+#     Literaturhinweis, tragen aber nie eine Belegziffer.
 #
 # ISBN, DOI, Seitenzahlen und URLs werden NIE aus dem Gedächtnis
 # ergänzt. Fehlt eine Angabe, bleibt sie null.
 # =====================================================================
+
+# ---------------------------------------------------------------------
+# Wissenschaftliche Literatur – Volltext geprüft
+# ---------------------------------------------------------------------
+
+- id: kreyenbroek-omarkhali-2016-einfuehrung
+  type: aufsatz
+  authors:
+    - 'Kreyenbroek, Philip G.'
+    - 'Omarkhali, Khanna'
+  title: >-
+    Introduction to the special issue: Yezidism and Yezidi Studies in the
+    early 21st century
+  container: 'Kurdish Studies 4 (2016), Heft 2, S. 122–130'
+  year: 2016
+  publisher: 'Transnational Press London'
+  isbn: null
+  doi: null
+  url: 'https://kurdishstudies.net/menu-script/index.php/KS/article/view/132'
+  accessed: 2026-07-27
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Einleitung zum Themenheft „Yezidism and Yezidi Studies in the early 21st
+    century“, herausgegeben von Omarkhali und Kreyenbroek (Institut für
+    Iranistik, Universität Göttingen). Open Access, ISSN 2051-4883,
+    e-ISSN 2051-4891. Enthält einen Forschungsüberblick, eine Darstellung
+    der Identitätsdebatte und eine Auswahlbibliografie 2000–2016.
+
+- id: kreyenbroek-2016-yezidi-spirits
+  type: aufsatz
+  authors:
+    - 'Kreyenbroek, Philip G.'
+  title: 'Yezidi Spirits? On the question of Yezidi beliefs: A review article'
+  container: 'Kurdish Studies 4 (2016), Heft 2, S. 197–207'
+  year: 2016
+  publisher: 'Transnational Press London'
+  isbn: null
+  doi: null
+  url: 'https://kurdishstudies.net/menu-script/index.php/KS/article/view/144'
+  accessed: 2026-07-27
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Rezensionsaufsatz zur Frage, was „Glaubensinhalte“ in einer mündlich
+    überlieferten Religion überhaupt bedeuten. Open Access.
+
+- id: spat-2016-persecution-ritual
+  type: aufsatz
+  authors:
+    - 'Spät, Eszter'
+  title: >-
+    Hola Hola Tawusi Melek, Hola Hola Şehidêt Şingalê: Persecution and the
+    Development of Yezidi Ritual Life
+  container: 'Kurdish Studies 4 (2016), Heft 2, S. 155–175'
+  year: 2016
+  publisher: 'Transnational Press London'
+  isbn: null
+  doi: null
+  url: 'https://kurdishstudies.net/menu-script/index.php/KS/article/view/139'
+  accessed: 2026-07-27
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Feldforschungsbasierte Untersuchung zu Veränderungen des Ritenlebens
+    nach 2014. Open Access.
+
+- id: dulz-2016-vertreibung
+  type: aufsatz
+  authors:
+    - 'Dulz, Irene'
+  title: 'The displacement of the Yezidis after the rise of ISIS in Northern Iraq'
+  container: 'Kurdish Studies 4 (2016), Heft 2, S. 131–147'
+  year: 2016
+  publisher: 'Transnational Press London'
+  isbn: null
+  doi: null
+  url: 'https://kurdishstudies.net/menu-script/index.php/KS/article/view/135'
+  accessed: 2026-07-27
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Zur Vertreibung aus Shingal und zur Lage in den Lagern der Region
+    Kurdistan-Irak. Open Access.
+
+- id: buffon-allison-2016-victimhood
+  type: aufsatz
+  authors:
+    - 'Buffon, Veronica'
+    - 'Allison, Christine'
+  title: 'The gendering of victimhood: Western media and the Sinjar genocide'
+  container: 'Kurdish Studies 4 (2016), Heft 2, S. 176–196'
+  year: 2016
+  publisher: 'Transnational Press London'
+  isbn: null
+  doi: null
+  url: 'https://kurdishstudies.net/menu-script/index.php/KS/article/view/142'
+  accessed: 2026-07-27
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Diskursanalyse der westlichen Medienberichterstattung über den Genozid.
+    Für den Bereich Missverständnisse und für die Bildsprache einschlägig.
+    Open Access.
+
+- id: omarkhali-kizilhan-2016-interview
+  type: interview
+  authors:
+    - 'Omarkhali, Khanna'
+    - 'Kizilhan, Jan Ilhan'
+  title: >-
+    Transformations in the Yezidi tradition after the ISIS attacks.
+    An interview with Ilhan Kizilhan
+  container: 'Kurdish Studies 4 (2016), Heft 2, S. 148–154'
+  year: 2016
+  publisher: 'Transnational Press London'
+  isbn: null
+  doi: null
+  url: 'https://kurdishstudies.net/menu-script/index.php/KS/article/view/150'
+  accessed: 2026-07-27
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Interview mit dem Psychologen Jan Ilhan Kizilhan zum Sonderkontingent
+    Baden-Württembergs. Open Access. Enthält Aussagen über Überlebende
+    sexualisierter Gewalt – bei der Verwendung gilt Leitplanke 10.6.
+
+# ---------------------------------------------------------------------
+# Institutionelle Quellen – Volltext geprüft
+# ---------------------------------------------------------------------
+
+- id: tagay-ortac-2016
+  type: buch
+  authors:
+    - 'Tagay, Şefik'
+    - 'Ortaç, Serhat'
+  title: >-
+    Die Eziden und das Ezidentum. Geschichte und Gegenwart einer vom
+    Untergang bedrohten Religion
+  container: null
+  year: 2016
+  publisher: 'Landeszentrale für politische Bildung Hamburg'
+  isbn: '978-3-946246-03-9'
+  doi: null
+  url: 'https://www.hamburg.de/resource/blob/147982/c104d91902168667c2e10cb9c4f02a57/eziden-und-ezidentum-data.pdf'
+  accessed: 2026-07-27
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    112 Seiten, kostenfrei als PDF. Ausführlichste deutschsprachige
+    Gesamtdarstellung aus institutioneller Hand; die Autoren schreiben aus
+    ezidischer Perspektive, die Darstellung ist also über weite Strecken
+    emisch und als solche zu kennzeichnen. Bevölkerungszahlen werden mit
+    Herkunftsnachweis nebeneinandergestellt. Stand 2016 – für Angaben zur
+    Gegenwart nur mit Stichjahr verwendbar.
+
+- id: raa-brandenburg-2018
+  type: bericht
+  authors:
+    - 'Yaldiz, Yunus'
+    - 'Schliephack, Caspar'
+  title: 'Ezidinnen und Eziden – Eine kurze Übersicht'
+  container: 'Fachstelle Islam im Land Brandenburg'
+  year: 2018
+  publisher: 'RAA Brandenburg, Demokratie und Integration Brandenburg e. V., Potsdam'
+  isbn: null
+  doi: null
+  url: 'https://raa-brandenburg.de/Portals/4/media/UserDocs/Dokumente_2019/RAA_Fachstelle-Islam_Handreichung-Eziden.pdf'
+  accessed: 2026-07-27
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Handreichung für Multiplikatorinnen und Multiplikatoren, Stand
+    Dezember 2018, 9 Seiten. Knapper Überblick über Religion, Gesellschaft
+    und Feste. Ohne Einzelnachweise im Fließtext – Aussagen daraus sind
+    nicht auf Primärliteratur zurückverfolgbar und werden deshalb nur
+    zusammen mit einer zweiten Quelle verwendet.
+
+- id: un-coi-2016-they-came-to-destroy
+  type: bericht
+  authors:
+    - 'Independent International Commission of Inquiry on the Syrian Arab Republic'
+  title: '„They came to destroy“: ISIS Crimes Against the Yazidis'
+  container: 'UN-Menschenrechtsrat, 32. Sitzung, Dok. A/HRC/32/CRP.2'
+  year: 2016
+  publisher: 'Vereinte Nationen'
+  isbn: null
+  doi: null
+  url: 'https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/CoISyria/A_HRC_32_CRP.2_en.pdf'
+  accessed: 2026-07-27
+  language: en
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    41 Seiten, veröffentlicht am 15. Juni 2016, gestützt auf 45 Interviews.
+    Stellt die Verbrechen des IS an den Êzîdî als Völkermord fest. Der
+    Bericht behandelt ausdrücklich die in Syrien begangenen Verletzungen.
+    Enthält Schilderungen sexualisierter Gewalt – bei der Verwendung gilt
+    Leitplanke 10.6.
+
+- id: bundestag-2023-anerkennung
+  type: primärquelle
+  authors:
+    - 'Deutscher Bundestag'
+  title: >-
+    Anerkennung und Gedenken an den Völkermord an den Êzîdinnen und
+    Êzîden 2014. Antrag der Fraktionen SPD, CDU/CSU, BÜNDNIS 90/DIE GRÜNEN
+    und FDP
+  container: 'Drucksache 20/5228, 20. Wahlperiode'
+  year: 2023
+  publisher: 'Deutscher Bundestag'
+  isbn: null
+  doi: null
+  url: 'https://dserver.bundestag.de/btd/20/052/2005228.pdf'
+  accessed: 2026-07-27
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Antragstext vom 18. Januar 2023, am 19. Januar 2023 beschlossen.
+    Politisches Dokument, keine Fachdarstellung: die Zahlen sind als
+    Position des Parlaments wiederzugeben, nicht als Forschungsstand.
+    Verwendet durchgängig die Selbstbezeichnung „Êzîdinnen und Êzîden“ und
+    begründet das in einer Fußnote.
+
+- id: bpb-2024-voelkermord
+  type: webseite
+  authors:
+    - 'Bundeszentrale für politische Bildung'
+  title: '2014: Völkermord an Jesidinnen und Jesiden'
+  container: 'Hintergrund aktuell'
+  year: 2024
+  publisher: 'Bundeszentrale für politische Bildung'
+  isbn: null
+  doi: null
+  url: 'https://www.bpb.de/kurz-knapp/hintergrund-aktuell/550977/2014-voelkermord-an-jesidinnen-und-jesiden/'
+  accessed: 2026-07-27
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Redaktionsbeitrag vom 31. Juli 2024. Nennt Zahlen jeweils mit
+    Zuschreibung (UN-Menschenrechtsrat, Pro Asyl). Kein Fachaufsatz,
+    sondern Bildungsjournalismus einer Bundesbehörde.
+
+# ---------------------------------------------------------------------
+# Literaturhinweise: bibliografisch geprüft, Volltext lag NICHT vor.
+# Diese Titel dürfen nicht mit <Cite> belegen (check:content bricht ab).
+# Sie stehen hier, weil das Portal offenlegt, welche Standardliteratur
+# einzuarbeiten ist – und weil die Angaben belastbar sein müssen, sobald
+# jemand sie beschafft.
+# ---------------------------------------------------------------------
 
 - id: kreyenbroek-1995
   type: buch
@@ -22,18 +301,21 @@
   title: 'Yezidism – Its Background, Observances and Textual Tradition'
   container: null
   year: 1995
-  publisher: 'Edwin Mellen Press'
-  isbn: null
+  publisher: 'Edwin Mellen Press, Lewiston (NY)'
+  isbn: '978-0-7734-9004-8'
   doi: null
   url: null
   accessed: null
   language: en
-  reliability: unklar
-  verifiziert: false
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: false
   note: >-
-    Wird in der Forschung als Standardwerk geführt. Bibliografische Angaben
-    (Reihe, Auflage, ISBN, Seitenzahlen) sind noch am Original zu prüfen,
-    bevor damit belegt wird.
+    Standardwerk; 349 Seiten. Bibliografische Angaben am Katalognachweis
+    geprüft (Open Library, aus Bibliotheksdaten zusammengeführt). Der
+    Volltext lag der Redaktion nicht vor. Seitenangaben, die im Portal
+    vorkommen, stammen bislang ausschließlich aus Zitaten anderer Autoren
+    und werden entsprechend gekennzeichnet.
 
 - id: allison-2001
   type: buch
@@ -42,73 +324,120 @@
   title: 'The Yezidi Oral Tradition in Iraqi Kurdistan'
   container: null
   year: 2001
-  publisher: 'Curzon Press'
-  isbn: null
+  publisher: 'Curzon Press, Richmond'
+  isbn: '978-0-7007-1397-4'
   doi: null
   url: null
   accessed: null
   language: en
-  reliability: unklar
-  verifiziert: false
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: false
   note: >-
-    Zentrale Arbeit zur mündlichen Überlieferung. Angaben vor der ersten
-    Verwendung am Original prüfen.
+    Zentrale Arbeit zur mündlichen Überlieferung. Angaben am
+    Katalognachweis geprüft, Volltext noch zu beschaffen.
 
 - id: omarkhali-2017
   type: buch
   authors:
     - 'Omarkhali, Khanna'
-  title: >-
-    The Yezidi Religious Textual Tradition: From Oral to Written
-  container: null
+  title: 'The Yezidi Religious Textual Tradition: From Oral to Written'
+  container: >-
+    Studies in Oriental Religions
   year: 2017
-  publisher: 'Harrassowitz'
-  isbn: null
+  publisher: 'Harrassowitz, Wiesbaden'
+  isbn: '978-3-447-10856-0'
   doi: null
   url: null
   accessed: null
   language: en
-  reliability: unklar
-  verifiziert: false
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: false
   note: >-
-    Für die Verschriftlichungsdebatte einschlägig. Angaben noch ungeprüft.
+    625 Seiten; für die Verschriftlichungsdebatte einschlägig. Angaben am
+    Katalognachweis geprüft, Volltext noch zu beschaffen. Die Reihenangabe
+    ist noch am Titelblatt zu kontrollieren.
 
 - id: acikyildiz-2010
   type: buch
   authors:
     - 'Açıkyıldız, Birgül'
-  title: >-
-    The Yezidis: The History of a Community, Culture and Religion
+  title: 'The Yezidis: The History of a Community, Culture and Religion'
   container: null
   year: 2010
-  publisher: 'I.B. Tauris'
-  isbn: null
+  publisher: 'I. B. Tauris, London/New York'
+  isbn: '978-1-84885-274-7'
   doi: null
   url: null
   accessed: null
   language: en
-  reliability: unklar
-  verifiziert: false
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: false
   note: >-
-    Überblicksdarstellung mit Schwerpunkt Kunst und Architektur.
-    Auflage und Seitenzählung noch zu prüfen.
+    302 Seiten; zweite Auflage 2014. Überblicksdarstellung mit Schwerpunkt
+    Kunst und Architektur. Wird in diesem Portal bislang nur mittelbar
+    verwendet, weil der Volltext fehlt.
 
-- id: un-coi-2016-they-came-to-destroy
-  type: bericht
+- id: spat-2010
+  type: buch
   authors:
-    - 'Independent International Commission of Inquiry on the Syrian Arab Republic'
-  title: '„They came to destroy“: ISIS Crimes Against the Yazidis'
-  container: 'UN Human Rights Council'
-  year: 2016
-  publisher: 'Vereinte Nationen'
-  isbn: null
+    - 'Spät, Eszter'
+  title: 'Late Antique Motifs in Yezidi Oral Tradition'
+  container: null
+  year: 2010
+  publisher: 'Gorgias Press, Piscataway (NJ)'
+  isbn: '978-1-60724-998-6'
   doi: null
   url: null
   accessed: null
   language: en
-  reliability: unklar
-  verifiziert: false
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: false
   note: >-
-    Dokumentnummer, Fundstelle und Datum sind vor der Verwendung
-    zu prüfen. Zentrale institutionelle Quelle für den Genozid-Bereich;
-    nach Prüfung als `institutionell` einzustufen.
+    549 Seiten. Wird bei Tagay/Ortaç für die Kritik an der Yazid-I.-These
+    herangezogen. Volltext noch zu beschaffen.
+
+- id: guest-1993
+  type: buch
+  authors:
+    - 'Guest, John S.'
+  title: 'Survival Among the Kurds. A History of the Yezidis'
+  container: null
+  year: 1993
+  publisher: 'Kegan Paul International, London/New York'
+  isbn: '978-0-7103-0456-8'
+  doi: null
+  url: null
+  accessed: null
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: false
+  note: >-
+    324 Seiten. Der Untertitel ist noch am Titelblatt zu kontrollieren; der
+    Katalognachweis führt den Haupttitel „Survival among the Kurds“.
+    Liefert die niedrigste der kursierenden Bevölkerungsschätzungen.
+
+- id: kreyenbroek-2009-europa
+  type: buch
+  authors:
+    - 'Kreyenbroek, Philip G.'
+  title: 'Yezidism in Europe: Different Generations Speak about their Religion'
+  container: 'Göttinger Orientforschungen, III. Reihe: Iranica, Band 5'
+  year: 2009
+  publisher: 'Harrassowitz, Wiesbaden'
+  isbn: '978-3-447-06060-8'
+  doi: null
+  url: null
+  accessed: null
+  language: en
+  reliability: wissenschaftlich
+  verifiziert: true
+  volltextGeprueft: false
+  note: >-
+    246 Seiten, unter Mitarbeit von Z. Kartal, Kh. Omarkhali und
+    Kh. Jindy Rashow. Für den Diaspora-Bereich die einschlägige Studie.
+    Volltext noch zu beschaffen.

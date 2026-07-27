@@ -13,6 +13,7 @@
  *   8. Bildern ohne Alt-Text, Urheber, Lizenz oder Quelle
  *   9. Quellen mit URL ohne Abrufdatum
  *  10. ungeprüften Quellen, die nicht als `unklar` markiert sind
+ *  11. <Cite> auf Quellen, deren Volltext nicht geprüft ist
  *
  * Aufruf: npm run check:content
  */
@@ -56,6 +57,15 @@ const faq = await leseDatensammlung('faq', 'faq.yaml');
 const medien = await leseDatensammlung('media', 'media.yaml');
 
 const quellenIds = new Set(quellen.eintraege.map((q) => String(q['id'])));
+
+/**
+ * Quellen, deren Volltext der Redaktion nachweislich vorlag. Nur sie
+ * dürfen belegen. Titel, die bloß aus einem Katalog bekannt sind, stehen
+ * im Verzeichnis als Literaturhinweis – aber nie unter einer Belegziffer.
+ */
+const volltextIds = new Set(
+  quellen.eintraege.filter((q) => q['volltextGeprueft'] === true).map((q) => String(q['id'])),
+);
 const glossarSlugs = new Set(
   dokumente.filter((d) => d.collection === 'glossary').map((d) => String(d.frontmatter['slug'])),
 );
@@ -163,6 +173,11 @@ for (const d of dokumente) {
         d.pfad,
         `<Cite id="${id}"> ist nicht im Frontmatter unter "sources" angemeldet – ohne Anmeldung bekommt der Beleg keine Ziffer.`,
       );
+    } else if (!volltextIds.has(id)) {
+      fehle(
+        d.pfad,
+        `<Cite id="${id}"> belegt mit einer Quelle, deren Volltext nicht geprüft ist (volltextGeprueft: false). Erst lesen, dann belegen.`,
+      );
     }
   }
   for (const id of refs) {
@@ -257,6 +272,12 @@ for (const q of quellen.eintraege) {
     fehle(
       quellen.pfad,
       `Quelle "${id}": nicht am Original geprüft, muss deshalb reliability: "unklar" tragen.`,
+    );
+  }
+  if (q['volltextGeprueft'] === true && q['verifiziert'] !== true) {
+    fehle(
+      quellen.pfad,
+      `Quelle "${id}": volltextGeprueft ohne verifiziert ist widersprüchlich – wer den Volltext hatte, kennt auch die bibliografischen Angaben.`,
     );
   }
 }

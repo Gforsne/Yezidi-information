@@ -5,20 +5,20 @@
 
 ## Kurzfassung
 
-0 von 461 Abschnitten tragen einen Beleg – **Belegquote 0 %**.
-634 Stellen sind ausdrücklich als Beleglücke markiert.
+187 von 466 Abschnitten tragen einen Beleg – **Belegquote 40 %**.
+543 Stellen sind ausdrücklich als Beleglücke markiert.
 
-Das ist der erwartete Stand: Das Gerüst steht, die Recherche hat noch nicht begonnen.
-Eine Belegquote nahe null bedeutet hier **nicht**, dass unbelegte Behauptungen im Text stehen –
-sondern dass an ihrer Stelle Rechercheaufträge stehen.
+Die Recherche läuft: 41 von 162 Seiten (25 %) haben den Gerüst-Status verlassen.
+Eine niedrige Gesamtquote bedeutet **nicht**, dass unbelegte Behauptungen im Text stehen –
+an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, was fertig ist.
 
 ## Bearbeitungsstand
 
 | Status | Bedeutung | Seiten |
 |---|---|---:|
-| `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 162 |
-| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 0 |
-| `belegt` | Alle Aussagen mit Quellen belegt | 0 |
+| `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 121 |
+| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 1 |
+| `belegt` | Alle Aussagen mit Quellen belegt | 40 |
 | `geprüft` | Belegt und zusätzlich gegengelesen | 0 |
 | **Summe** | | **162** |
 
@@ -26,7 +26,7 @@ sondern dass an ihrer Stelle Rechercheaufträge stehen.
 
 | Bereich | Seiten | belegt | Abschnitte | Belegstellen | Beleglücken | offene Fragen | Quote |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Überblick | 4 | 0 | 24 | 0 | 60 | 12 | 0 % |
+| Überblick | 4 | 4 | 27 | 109 | 8 | 20 | 100 % |
 | Religion und Glaube | 10 | 0 | 46 | 0 | 79 | 23 | 0 % |
 | Gesellschaftsordnung | 8 | 0 | 41 | 0 | 45 | 16 | 0 % |
 | Heilige Orte | 11 | 0 | 40 | 0 | 48 | 23 | 0 % |
@@ -38,15 +38,15 @@ sondern dass an ihrer Stelle Rechercheaufträge stehen.
 | Missverständnisse und Desinformation | 3 | 0 | 13 | 0 | 15 | 4 | 0 % |
 | Kultur | 10 | 0 | 32 | 0 | 38 | 12 | 0 % |
 | Personen | 3 | 0 | 9 | 0 | 9 | 5 | 0 % |
-| Wissenschaft und Quellen | 4 | 0 | 18 | 0 | 20 | 5 | 0 % |
-| Wissen und Vermittlung | 56 | 0 | 21 | 0 | 71 | 151 | 0 % |
+| Wissenschaft und Quellen | 4 | 1 | 20 | 18 | 17 | 7 | 90 % |
+| Wissen und Vermittlung | 56 | 36 | 21 | 60 | 35 | 101 | 100 % |
 | Über dieses Projekt | 10 | 0 | 45 | 0 | 45 | 7 | 0 % |
 
 ## Weitere Sammlungen
 
 | Sammlung | Einträge | Anmerkung |
 |---|---:|---|
-| Quellen | 5 | 5 davon mit ungeprüften bibliografischen Angaben |
+| Quellen | 18 | 11 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
 | Zeitleiste | 5 | 2 als Firman-Erinnerung markiert |
 | Häufige Fragen | 5 | 0 beantwortet |
 | Glossar | 50 | Begriffe |
@@ -61,5 +61,5 @@ Opferfotos, keine Täterpropaganda, keine Namen Überlebender ohne dokumentierte
 
 ## Seiten ohne einen einzigen Beleg
 
-162 von 162 Seiten enthalten noch keine Belegstelle.
+121 von 162 Seiten enthalten noch keine Belegstelle.
 Alle tragen `status: stub` und zeigen das im Belegapparat sichtbar an.

@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **335 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **295 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -53,14 +53,16 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Tawûsî Melek und die sieben Engel (`src/content/articles/de/religion/tawusi-melek-und-die-sieben-engel.mdx`)
 - **Wer könnte Aufnahmen sprechen, und wie wird die Einwilligung dokumentiert?**
   - Seite: Aussprache (`src/content/articles/de/sprache/aussprache.mdx`)
-- **Welche rechtliche Einordnung nehmen deutsche Behörden vor und auf welcher Grundlage?**
+- **Welche rechtliche Einordnung nehmen deutsche Behörden vor und auf welcher Grundlage? Für Asylverfahren und Minderheitenschutz ist das entscheidend, der Redaktion liegt aber keine Quelle vor.**
   - Seite: Religion, Ethnie oder beides? (`src/content/articles/de/ueberblick/religion-ethnie-oder-beides.mdx`)
-- **Wie äußern sich êzîdîsche Dachverbände in Deutschland zur bevorzugten Schreibweise, und seit wann?**
-  - Seite: Selbstbezeichnung und Fremdbezeichnungen (`src/content/articles/de/ueberblick/selbstbezeichnung-und-fremdbezeichnungen.mdx`)
+- **Keine der hier genannten Schätzungen legt ihre Erhebungsmethode offen. Ohne Methodenangabe lässt sich nicht beurteilen, warum sie um den Faktor fünf auseinanderliegen.**
+  - Seite: Verbreitung und Bevölkerungszahlen (`src/content/articles/de/ueberblick/verbreitung-und-bevoelkerungszahlen.mdx`)
 - **Welche Angebote sind dauerhaft erreichbar und nicht nur zeitlich befristet abrufbar?**
   - Seite: Mediathek (`src/content/articles/de/vermittlung/mediathek.mdx`)
 - **Welche Beschreibungen des Ablaufs sind veröffentlicht und autorisiert?**
   - Seite: Cejna Cemaiyê (`src/content/festivals/de/cejna-cemaiye.mdx`)
+- **Dieser Eintrag berührt religiöse Gegenstände. Vor einer Bebilderung ist zu klären, ob und wie eine Abbildung angemessen ist.**
+  - Seite: Sancak (`src/content/glossary/de/sancak.mdx`)
 - **Welcher Quellenauszug ist rechtlich frei verwendbar und didaktisch geeignet?**
   - Seite: Quellenauszug: Die Firman-Erinnerung (`src/content/teaching/de/quellenauszug-firman-erinnerung.mdx`)
 - **Welche Schätzungen liegen vor, von wem, mit welchem Stichjahr und welcher Erhebungsmethode?**
@@ -74,27 +76,35 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Überblick
 
-15 Fragen auf 6 Seiten.
+23 Fragen auf 6 Seiten.
 
 **Religion, Ethnie oder beides?**
-- Welche Positionspapiere êzîdîscher Organisationen liegen schriftlich und datierbar vor?
-- Wie hat sich die Position in der Forschung seit den 1990er Jahren verschoben?
-- Welche rechtliche Einordnung nehmen deutsche Behörden vor und auf welcher Grundlage?
+- Die Quellen widersprechen sich darin, welche Position die Mehrheit vertritt. Ohne Umfragedaten lässt sich die Frage nicht entscheiden – der Redaktion ist keine repräsentative Erhebung bekannt.
+- Welche Positionspapiere êzîdîscher Organisationen liegen schriftlich und datierbar vor? Emische Belege fehlen bislang vollständig; die Seite referiert nur, was Dritte über die Gemeinschaft schreiben.
+- Welche rechtliche Einordnung nehmen deutsche Behörden vor und auf welcher Grundlage? Für Asylverfahren und Minderheitenschutz ist das entscheidend, der Redaktion liegt aber keine Quelle vor.
+- Die politische Dimension ist bislang nur behauptet, nicht belegt: Rolle der Identitätsfrage in der Autonomiedebatte um Şingal, im Verhältnis zur Kurdischen Regionalregierung und in der irakischen Minderheitengesetzgebung.
+- Diese Seite berührt eine politisch aufgeladene Frage. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, bevor sie den Status „geprüft“ erhalten kann.
 
 **Selbstbezeichnung und Fremdbezeichnungen**
-- Welche sprachwissenschaftliche Arbeit stellt die Etymologie-Debatte am gründlichsten dar?
-- Wie äußern sich êzîdîsche Dachverbände in Deutschland zur bevorzugten Schreibweise, und seit wann?
-- Gibt es einen dokumentierten Wandel im Behördendeutsch (z. B. BAMF, Statistisches Bundesamt)?
+- Es fehlt eine sprachwissenschaftliche Einzeluntersuchung zur Etymologie. Alle hier referierten Herleitungen stammen aus Überblicksdarstellungen, die ihrerseits ältere Literatur referieren.
+- Wann genau und mit welcher Begründung haben die deutschen Dachverbände die Schreibung „Eziden“ bzw. „Êzîden“ eingeführt? Datierbare Satzungen oder Beschlüsse liegen der Redaktion nicht vor.
+- Gibt es eine dokumentierte Umstellung im Behördendeutsch (BAMF, Statistisches Bundesamt, Landesbehörden)? Bisher ist nur der Bundestagsbeschluss von 2023 belegt.
+- Die Herleitung aus „Ez“ + „da“ steht nur in der RAA-Handreichung, die keine Einzelnachweise führt. Sie braucht eine sprachwissenschaftliche Bestätigung oder Widerlegung.
+- Ob die êzîdîsche Seite den deutschen Begriff „Ezidentum“ als treffend empfindet, ist der Redaktion nicht belegt bekannt. Community-Prüfung nötig.
 
 **Verbreitung und Bevölkerungszahlen**
-- Welche Zahlen nennen UN-Stellen, und auf welche Primärerhebung stützen sie sich?
-- Gibt es eine wissenschaftliche Arbeit, die die Schätzverfahren methodisch vergleicht?
-- Welche Zahlen nennen êzîdîsche Dachverbände, und wie kommen sie zustande?
+- Keine der hier genannten Schätzungen legt ihre Erhebungsmethode offen. Ohne Methodenangabe lässt sich nicht beurteilen, warum sie um den Faktor fünf auseinanderliegen.
+- Es fehlt eine wissenschaftliche Arbeit, die die Schätzverfahren methodisch vergleicht. Die Redaktion hat keine gefunden.
+- Für Deutschland stehen 100.000 (Tagay/Ortaç 2016), über 200.000 (RAA 2018) und bis zu 250.000 (bpb 2024) nebeneinander. Ob es sich um Wachstum durch Fluchtmigration oder um unterschiedliche Zählweisen handelt, ist ungeklärt.
+- Welche Zahlen nennen êzîdîsche Dachverbände selbst, und wie kommen sie zustande? Emische Angaben fehlen bislang vollständig.
+- Für Nordamerika, Australien und die übrigen Aufnahmeländer liegen der Redaktion keine belegten Zahlen vor.
+- Die Zahlen für Syrien widersprechen sich innerhalb derselben Quelle (Fließtext 15.000, Tabelle 10.000).
 
 **Wer sind die Êzîdî?**
-- Welche deutschsprachige Überblicksdarstellung eignet sich als Leitquelle, ohne veraltet zu sein?
-- Welche Selbstdarstellungen êzîdîscher Organisationen sind als emische Quelle zitierfähig und wie werden sie gekennzeichnet?
-- Welche Formulierung für „Religion und/oder ethnische Gruppe“ ist neutral, ohne eine der Positionen zu bevorzugen?
+- Diese Seite fasst zusammen, was in vier Überblicksdarstellungen steht. Für mehrere Aussagen – besonders zur Religion – fehlt die religionswissenschaftliche Primärliteratur; Kreyenbroek 1995 und Omarkhali 2017 lagen der Redaktion nicht im Volltext vor.
+- Emische Quellen fehlen bislang vollständig. Keine der verwendeten Quellen ist eine Selbstdarstellung einer êzîdîschen Organisation.
+- Wie sich die Gemeinschaft ethnisch verortet, geben die Quellen widersprüchlich an (siehe „Religion, Ethnie oder beides?“). Diese Seite trifft dazu bewusst keine Aussage.
+- Der Abschnitt zur Religion streift Themen, zu denen es innerhalb der Gemeinschaft nichtöffentliche Wissensbestände gibt. Er braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **FAQ: Wie viele Êzîdî gibt es weltweit?**
 - Welche Schätzungen liegen vor, von wem, mit welchem Stichjahr und welcher Erhebungsmethode?
@@ -486,7 +496,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Wissenschaft und Quellen
 
-5 Fragen auf 4 Seiten.
+7 Fragen auf 4 Seiten.
 
 **Forschungsüberblick**
 - Welche Forschungsüberblicke sind aktuell und deutschsprachig verfügbar?
@@ -496,14 +506,16 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Welche Einrichtungen bestehen in Deutschland, welche im Irak?
 
 **Offene Fragen und Kontroversen**
-- Welche weiteren Kontroversen müssen aufgenommen werden, die im Gerüst noch fehlen?
+- Die Ursprungsfrage ist noch nicht bearbeitet – sie gehört in den Bereich Geschichte und wird dort recherchiert.
+- Für die Echtheitsdebatte um die zugeschriebenen Schriften fehlt die Primärliteratur (Allison 2004, Kreyenbroek 1995, S. 10–16).
+- Welche weiteren Kontroversen müssen aufgenommen werden, die hier noch fehlen?
 
 **Primärquellen und Archive**
 - Welche Archive erlauben Online-Zugang, und welche verlangen einen Antrag?
 
 ### Wissen und Vermittlung
 
-151 Fragen auf 56 Seiten.
+101 Fragen auf 56 Seiten.
 
 **Hilfe und Anlaufstellen**
 - Welche Angebote arbeiten in Kurmancî und Arabisch?
@@ -517,36 +529,27 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Wer kann die didaktischen Hinweise fachlich prüfen?
 
 **Baba Şêx**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Wie das Amt besetzt wird, welche Befugnisse es hat und wie es sich zum Mîr und zum Meclîsa Ruhanî verhält, ist nicht belegt.
+- Wer das Amt derzeit innehat, ist hier bewusst nicht genannt: Angaben zu lebenden Personen brauchen eine aktuelle, geprüfte Quelle.
 
 **Beyt**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
+- Wie sich Beyt formal von Qewl und Qeşîde unterscheiden, ist nicht belegt.
 
 **Birayê/Xwişka Axretê**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Beschreibung der Rolle stammt aus einer Handreichung ohne Einzelnachweise und braucht eine religionswissenschaftliche Bestätigung.
 
 **Bisk**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
+- Warum gerade diese Monate genannt werden und ob es einen entsprechenden Ritus für Mädchen gibt, ist nicht belegt.
 
 **Def**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zu Bauweise, Spielweise und den Anlässen, bei denen der Def gespielt wird, fehlen belegte Angaben.
 
 **Diaspora**
 - Definition mit Fachquelle belegen.
 - Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
 
 **Duʿa**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zu Anlässen, Gebetszeiten und Gebetsrichtung liegen keine belegten Angaben vor.
 
 **Eşîret**
 - Definition mit Fachquelle belegen.
@@ -554,14 +557,12 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
 
 **Ezdikî**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Seit wann und auf welcher Rechtsgrundlage Ezdiki anerkannt ist, ist nicht belegt.
+- Wie sich Ezdiki sprachwissenschaftlich zum Kurmancî verhält, ist eine eigene und politisch aufgeladene Frage, die hier nicht beantwortet wird.
 
 **Êzîdî**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Übersetzung „der, der mich erschaffen hat“ ist eine von mehreren konkurrierenden Herleitungen, nicht die gesicherte Etymologie.
+- Aussprachehilfe und Tonaufnahme fehlen noch.
 
 **Êzîdiyatî**
 - Definition mit Fachquelle belegen.
@@ -569,14 +570,10 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
 
 **Feqir**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Ob es sich um ein Amt, einen Stand oder eine Lebensform handelt, geht aus der Definition nicht hervor.
 
 **Firman**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Welche der 72 Firman sich historisch einzeln nachweisen lassen, ist offen. Die Quelle behauptet eine Faktengrundlage, führt sie an dieser Stelle aber nicht aus.
 
 **Genozid**
 - Definition mit Fachquelle belegen.
@@ -594,9 +591,8 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
 
 **Hawar-Alphabet**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Der Name „Hawar“ geht auf die gleichnamige Zeitschrift zurück; das ist in den vorliegenden Quellen nicht belegt und noch nachzuweisen.
+- Ob und wie stark die im Portal verwendete Schreibung von der Vorlage abweicht, ist bisher nicht systematisch geprüft.
 
 **Heft Sirr**
 - Definition mit Fachquelle belegen.
@@ -604,39 +600,29 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
 
 **Kaniya Sipî**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Welche Rolle die Quelle in Ritualen darüber hinaus spielt, ist nicht belegt.
 
 **Kirîv**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Seitenangabe S. 84 ist aus dem Textfluss der PDF-Fassung erschlossen und am gedruckten Exemplar zu prüfen.
+- Ob die Kirîv-Beziehung in der Diaspora fortgeführt wird, ist nicht belegt.
 
 **Kitêba Cilwe**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die beiden Quellen bewerten die Echtheit unterschiedlich streng. Der Nachweis der Fälschung steht laut Kreyenbroek/Omarkhali in Kreyenbroek 1995, S. 10–16 – dieser Band lag der Redaktion nicht vor.
+- Welchen Stellenwert die Texte innerhalb der Gemeinschaft heute haben, ist eine andere Frage als die nach ihrer Echtheit und hier nicht beantwortet.
 
 **Koçek**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- In welchen Zusammenhängen Koçek in Erscheinung treten und welche Rolle sie heute spielen, ist nicht belegt.
 
 **Kurmancî**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Angabe „65 Prozent aller Kurden“ ist ohne Erhebungsjahr und ohne Methode wiedergegeben.
+- Ob Kurmancî als Sprache oder als Dialekt zu führen ist, wird unterschiedlich gehandhabt – dieselbe Quelle nennt es an einer Stelle „Sprache“, an anderer „Dialekt“.
 
 **Laliş**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zur Anlage selbst – Bauteile, Nutzung, Zugangsregeln – liegen der Redaktion keine belegten Angaben vor. Açıkyıldız 2009 zur Baugeschichte ist noch zu beschaffen.
 
 **Meclisa Ruhanî**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zusammensetzung, Beschlussverfahren und tatsächliche Bindungswirkung sind nicht belegt.
+- Ob der Rat auch für die Diaspora entscheidet, ist offen.
 
 **Mezar**
 - Definition mit Fachquelle belegen.
@@ -649,23 +635,18 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
 
 **Mîr**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Wie sich die Zuständigkeiten von Mîr und Baba Şêx voneinander abgrenzen, ist nicht belegt.
+- Die Erblichkeit des Amtes und seine Geschichte sind noch zu recherchieren.
 
 **Mirîd**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Prozentangabe stammt aus einer einzigen Quelle und ohne Erhebungsangabe.
 
 **Mishefa Reş**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Wie bei der Kitêba Cilwe fehlt der Redaktion der Nachweis der Fälschung im Original (Kreyenbroek 1995, S. 10–16).
+- Die verbreitete Praxis, aus diesen Texten die êzîdîsche Lehre abzuleiten, ist damit hinfällig – das gehört ausdrücklich auf die Seite zu den Missverständnissen.
 
 **Mor kirin**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
+- Ablauf, Ort und Zeitpunkt der Zeremonie sind nicht belegt. Der Vergleich mit der Taufe stammt aus der Quelle und ist eine Verständnishilfe, keine Gleichsetzung.
 
 **Mujammaʿat**
 - Definition mit Fachquelle belegen.
@@ -673,32 +654,25 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
 
 **Peşîmam**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
+- Aufgaben und Verhältnis zu den anderen Ämtern sind nicht belegt.
 
 **Pîr**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Prozentangaben stammen aus einer einzigen Quelle und ohne Erhebungsangabe.
+- Welche Aufgaben die Pîr gegenüber den Mirîd konkret wahrnehmen, ist hier nicht belegt.
 
 **Qewl**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zur Zahl der überlieferten Qewls, ihrer Verschriftlichung und den vorliegenden Editionen fehlt die Primärliteratur (Kreyenbroek/Rashow 2005, Omarkhali 2017).
 
 **Qewwal**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Ausbildung der Qewwal, ihre Zugehörigkeit zu bestimmten Familien und die heutige Praxis sind nicht belegt.
 
 **Roj**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
+- Die Angaben stammen aus einer Handreichung ohne Einzelnachweise und brauchen eine religionswissenschaftliche Bestätigung.
+- Ob und wie die Sonne selbst Gegenstand der Verehrung ist, wird hier bewusst nicht ausgedeutet – das berührt eine häufige Fehldarstellung.
 
 **Sancak**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zahl, Aufbewahrung und heutige Verwendung der Sancak sind nicht belegt.
+- Dieser Eintrag berührt religiöse Gegenstände. Vor einer Bebilderung ist zu klären, ob und wie eine Abbildung angemessen ist.
 
 **Şehbêrî**
 - Definition mit Fachquelle belegen.
@@ -710,34 +684,24 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
 
 **Şêx Adî ibn Musafir**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die beiden Quellen nennen unterschiedliche Geburtsjahre (1074 bzw. „um 1075“). Für eine belastbare Datierung fehlt geschichtswissenschaftliche Literatur.
+- Die Frage, wie sich Şêx Adî zur islamischen Gelehrsamkeit seiner Zeit verhielt, ist umstritten und wird hier nur referiert, nicht entschieden.
 
 **Şêx**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Prozentangaben stammen aus einer einzigen Quelle und ohne Erhebungsangabe. Sie sind als Größenordnung zu lesen, nicht als Statistik.
 
 **Şêxan**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die Zahl bezieht sich auf den Stand 2016 und schließt Geflüchtete aus Şingal nicht ein.
 
 **Şibab**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zu Bauweise, Stimmung und Spielpraxis fehlen belegte Angaben.
 
 **Şingal**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die beiden Angaben zur Größe (400.000–450.000 bzw. 400.000) stammen aus unterschiedlichen Quellen ohne gemeinsame Erhebungsgrundlage.
 
 **Tawûsî Melek**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Dieser Eintrag berührt einen Bereich, zu dem es innerhalb der Gemeinschaft nichtöffentliche Wissensbestände gibt. Er braucht eine Prüfung durch Angehörige der Gemeinschaft.
+- Die religionswissenschaftliche Primärliteratur (Kreyenbroek 1995) lag der Redaktion nicht vor.
 
 **Til Ezêr**
 - Definition mit Fachquelle belegen.
@@ -750,13 +714,11 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
 
 **Xwedê**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
+- Die dort ebenfalls angeführte etymologische Zerlegung von „Xude“ ist ohne Einzelnachweis wiedergegeben und braucht eine sprachwissenschaftliche Prüfung.
 
 **Zimzim**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Das Verhältnis zur gleichnamigen Quelle in Mekka ist ungeklärt und wird hier bewusst nicht gedeutet.
+- Zur rituellen Verwendung des Wassers fehlen belegte Angaben.
 
 **Kurzfassung: Wer sind die Êzîdî?**
 - Welche Bildungspläne sehen das Thema in Sek. I vor?

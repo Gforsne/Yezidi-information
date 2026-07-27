@@ -314,10 +314,19 @@ const sources = defineCollection({
       reliability: reliabilityEnum,
       note: z.string().nullable().default(null),
       /**
-       * `false` markiert Quellen, deren Angaben noch nicht am Original
-       * geprüft wurden (Recherche-Regel 4).
+       * `false` markiert Quellen, deren bibliografische Angaben noch nicht
+       * am Original oder an einem verlässlichen Nachweis geprüft wurden
+       * (Recherche-Regel 4).
        */
       verifiziert: z.boolean().default(false),
+      /**
+       * `true` nur, wenn der Redaktion der Volltext tatsächlich vorlag.
+       * Ohne dieses Flag darf die Quelle nicht mit <Cite> belegt werden –
+       * check:content bricht sonst ab. Damit ist ausgeschlossen, dass eine
+       * Aussage auf einen Titel gestützt wird, der nur aus einem Katalog
+       * bekannt ist (Recherche-Regel 1 und 4).
+       */
+      volltextGeprueft: z.boolean().default(false),
     })
     .superRefine((v, ctx) => {
       if (v.url && !v.accessed) {

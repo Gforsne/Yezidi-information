@@ -120,17 +120,37 @@ entsteht, wird er zur inhaltlichen Kurzfassung umgeschrieben.
   accessed: null # bei Webquellen Pflicht
   language: en
   reliability: unklar # siehe unten
-  verifiziert: false
+  verifiziert: false # bibliografische Angaben geprüft?
+  volltextGeprueft: false # Volltext lag tatsächlich vor?
   note: >-
     Einordnung: Standardwerk, parteiisch, ältere Auflage …
 ```
 
-**Zwei Regeln erzwingt der Build:**
+### Die zwei Prüfstufen auseinanderhalten
+
+Die beiden Flags beantworten zwei verschiedene Fragen. Sie werden oft
+verwechselt, und die Verwechslung ist genau die Stelle, an der sich
+Falschangaben einschleichen.
+
+| Flag               | Frage                                | Belegt am                                       |
+| ------------------ | ------------------------------------ | ----------------------------------------------- |
+| `verifiziert`      | Stimmen Titel, Jahr, Verlag, ISBN?   | Original, Verlagsseite, Bibliothekskatalog, DOI |
+| `volltextGeprueft` | Hatte ich den Text wirklich vor mir? | nur: gelesen                                    |
+
+**Drei Regeln erzwingt der Build:**
 
 - Eine Webquelle (`url`) **muss** ein `accessed`-Datum tragen.
 - Solange `verifiziert: false`, **muss** `reliability: unklar` gesetzt
   sein. `verifiziert: true` darf nur setzen, wer die Angaben am Original
   oder an einem verlässlichen Nachweis geprüft hat.
+- `<Cite>` darf **nur** auf Quellen mit `volltextGeprueft: true` zeigen.
+  Ein Titel, den man bloß aus einem Katalog kennt, steht im Verzeichnis
+  als Literaturhinweis – aber nie unter einer Belegziffer.
+
+Wenn eine Quelle etwas aus einer zweiten Quelle referiert, wird die
+gelesene Quelle zitiert und die Weitergabe im Text benannt: „… so
+Kreyenbroek 1995, referiert bei Tagay/Ortaç“. Niemals die nicht gelesene
+Quelle direkt zitieren.
 
 **Niemals erfinden:** Titel, ISBN, DOI, Seitenzahlen, URLs, Dokument-
 nummern, Zitate.
@@ -256,16 +276,17 @@ npm run test:e2e         # Rauchtests und axe (nach dem Bau)
 
 **Woran `check:content` scheitert:**
 
-| Meldung                                                       | Ursache                                          |
-| ------------------------------------------------------------- | ------------------------------------------------ |
-| `status: 'belegt' ohne Quelle`                                | `sources` ist leer                               |
-| `<Cite id="…"> verweist auf eine Quelle, die es nicht gibt`   | ID fehlt in `sources.yaml`                       |
-| `<Cite id="…"> ist nicht im Frontmatter angemeldet`           | ID fehlt im Frontmatter der Seite                |
-| `Glossarbegriff "…" hat keinen Eintrag`                       | Datei unter `glossary/de/` fehlt                 |
-| `weiterfuehrend: "…" zeigt auf eine Seite, die es nicht gibt` | Tippfehler oder fehlende Seite                   |
-| `Quelle "…": nicht am Original geprüft`                       | `verifiziert: false` mit `reliability != unklar` |
-| `Webquelle ohne Abrufdatum`                                   | `url` ohne `accessed`                            |
-| `Bereich "…" hat keine einzige Seite`                         | Bereich ohne Inhalt                              |
+| Meldung                                                                   | Ursache                                              |
+| ------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `status: 'belegt' ohne Quelle`                                            | `sources` ist leer                                   |
+| `<Cite id="…"> verweist auf eine Quelle, die es nicht gibt`               | ID fehlt in `sources.yaml`                           |
+| `<Cite id="…"> ist nicht im Frontmatter angemeldet`                       | ID fehlt im Frontmatter der Seite                    |
+| `Glossarbegriff "…" hat keinen Eintrag`                                   | Datei unter `glossary/de/` fehlt                     |
+| `weiterfuehrend: "…" zeigt auf eine Seite, die es nicht gibt`             | Tippfehler oder fehlende Seite                       |
+| `Quelle "…": nicht am Original geprüft`                                   | `verifiziert: false` mit `reliability != unklar`     |
+| `<Cite id="…"> belegt mit einer Quelle, deren Volltext nicht geprüft ist` | `volltextGeprueft: false` – erst lesen, dann belegen |
+| `Webquelle ohne Abrufdatum`                                               | `url` ohne `accessed`                                |
+| `Bereich "…" hat keine einzige Seite`                                     | Bereich ohne Inhalt                                  |
 
 ---
 

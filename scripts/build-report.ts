@@ -126,6 +126,28 @@ function quote(abschnitte: number, zitate: number): number {
 /* content-report.md                                                   */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Der Einordnungssatz unter der Kurzfassung muss mitwachsen. Solange
+ * nichts belegt ist, wäre eine Belegquote nahe null der Sollzustand –
+ * sobald Bereiche fertig sind, wäre derselbe Satz eine Beschönigung.
+ */
+function einordnung(): string {
+  const belegteSeiten = zeilen.filter((z) => z.status !== 'stub').length;
+  const anteil = zeilen.length === 0 ? 0 : Math.round((belegteSeiten / zeilen.length) * 100);
+  if (belegteSeiten === 0) {
+    return [
+      'Das ist der erwartete Stand: Das Gerüst steht, die Recherche hat noch nicht begonnen.',
+      'Eine Belegquote nahe null bedeutet hier **nicht**, dass unbelegte Behauptungen im Text stehen –',
+      'sondern dass an ihrer Stelle Rechercheaufträge stehen.',
+    ].join('\n');
+  }
+  return [
+    `Die Recherche läuft: ${belegteSeiten} von ${zeilen.length} Seiten (${anteil} %) haben den Gerüst-Status verlassen.`,
+    'Eine niedrige Gesamtquote bedeutet **nicht**, dass unbelegte Behauptungen im Text stehen –',
+    'an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, was fertig ist.',
+  ].join('\n');
+}
+
 const bereichszeilen = sections.map((s) => {
   const eigene = zeilen.filter((z) => z.bereich === s.id);
   return {
@@ -149,9 +171,7 @@ const report = `# Content-Report
 ${gesamtZitate} von ${gesamtAbschnitte} Abschnitten tragen einen Beleg – **Belegquote ${quote(gesamtAbschnitte, gesamtZitate)} %**.
 ${gesamtLuecken} Stellen sind ausdrücklich als Beleglücke markiert.
 
-Das ist der erwartete Stand: Das Gerüst steht, die Recherche hat noch nicht begonnen.
-Eine Belegquote nahe null bedeutet hier **nicht**, dass unbelegte Behauptungen im Text stehen –
-sondern dass an ihrer Stelle Rechercheaufträge stehen.
+${einordnung()}
 
 ## Bearbeitungsstand
 
@@ -178,7 +198,7 @@ ${bereichszeilen
 
 | Sammlung | Einträge | Anmerkung |
 |---|---:|---|
-| Quellen | ${quellen.eintraege.length} | ${quellen.eintraege.filter((q) => q['verifiziert'] !== true).length} davon mit ungeprüften bibliografischen Angaben |
+| Quellen | ${quellen.eintraege.length} | ${quellen.eintraege.filter((q) => q['volltextGeprueft'] === true).length} im Volltext geprüft und damit belegfähig; ${quellen.eintraege.filter((q) => q['verifiziert'] !== true).length} mit ungeprüften bibliografischen Angaben |
 | Zeitleiste | ${ereignisse.eintraege.length} | ${ereignisse.eintraege.filter((e) => e['firman'] === true).length} als Firman-Erinnerung markiert |
 | Häufige Fragen | ${faq.eintraege.length} | ${faq.eintraege.filter((f) => String(f['antwort'] ?? '').trim()).length} beantwortet |
 | Glossar | ${zeilen.filter((z) => z.collection === 'glossary').length} | Begriffe |

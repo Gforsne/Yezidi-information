@@ -327,6 +327,41 @@ Die kopierten Fremddateien lösten Hinweise in `astro check` aus. `public/`
 enthält ausschließlich statische Auslieferung und wird deshalb aus
 `tsconfig.json` ausgeschlossen.
 
+### D-030 — Belegen darf nur, wer den Volltext hatte
+
+_2026-07-27_
+
+Beim Aufbau der Quellenbasis wurde ein Unterschied sichtbar, den das
+Schema bis dahin nicht abbilden konnte: Bibliografische Angaben lassen
+sich an einem Katalognachweis prüfen, ohne dass man das Buch je gesehen
+hat. Genau daraus entsteht der häufigste Recherchefehler – ein Titel
+wirkt geprüft, und eine Aussage wird ihm zugeschrieben, obwohl niemand
+nachgelesen hat, ob sie dort steht.
+
+Die Quellen tragen deshalb zwei getrennte Flags:
+
+- `verifiziert` — Titel, Jahr, Verlag, ISBN sind an einem verlässlichen
+  Nachweis geprüft.
+- `volltextGeprueft` — der Text lag der Redaktion tatsächlich vor.
+
+`check:content` bricht ab, sobald ein `<Cite>` auf eine Quelle ohne
+`volltextGeprueft: true` zeigt. Standardwerke wie Kreyenbroek 1995 stehen
+damit weiterhin im Quellenverzeichnis – als Literaturhinweis mit
+geprüften Angaben, aber ohne Belegziffer, bis jemand sie beschafft.
+
+Wo eine gelesene Quelle eine ungelesene referiert, wird die gelesene
+zitiert und die Weitergabe im Text benannt („referiert bei …“). Das ist
+umständlicher als ein direkter Verweis und dafür wahr.
+
+### D-031 — Der Content-Report beschreibt den jeweils aktuellen Stand
+
+_2026-07-27_
+
+Die Kurzfassung des Reports erklärte eine Belegquote nahe null als
+Sollzustand. Das stimmte, solange nichts recherchiert war; sobald erste
+Bereiche fertig sind, wäre derselbe Satz eine Beschönigung. Der
+Einordnungssatz wird jetzt aus dem Bearbeitungsstand erzeugt.
+
 ---
 
 ## Offene Punkte, die keine Gestaltungsfrage sind
