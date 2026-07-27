@@ -465,6 +465,35 @@ sich nicht wegrecherchieren.
 
 ---
 
+### D-038 — Übersetzungen treten an die Stelle der deutschen Fassung
+
+_2026-07-27_
+
+Bisher bediente jede deutsche Seite alle vier Sprachrouten, und
+Übersetzungen hätten mit ihr um dieselbe Adresse gestritten. Die Route
+gruppiert Einträge jetzt nach Bereich und Slug: Ausgeliefert wird die
+Fassung in der angeforderten Sprache, sonst die deutsche. Damit kann eine
+Übersetzung ohne weitere Änderung an ihre Stelle treten.
+
+Wird die deutsche Fassung ausgeliefert, obwohl eine andere Sprache
+angefordert war, steht das jetzt sichtbar über dem Text – in der
+angeforderten Sprache. Ein stiller Rückfall wäre eine Zumutung: Wer
+`/ar/…` aufruft und Deutsch bekommt, soll erfahren, warum.
+
+Übersetzt ist bislang die zentrale Einstiegsseite ins Englische. Die
+Regel bleibt: Übersetzt wird erst, was auf Deutsch belegt ist. Für
+Kurmancî und Arabisch kommt eine zweite Bedingung hinzu, die die
+Redaktion nicht selbst erfüllen kann – die Prüfung der religiösen
+Terminologie durch Sprecherinnen und Sprecher aus der Gemeinschaft. Eine
+selbst angefertigte kurmancî Fassung religiöser Begriffe wäre genau die
+Art von Fehler, gegen die dieses Portal ansonsten anschreibt.
+
+Die drei englischen Platzhalterseiten mit dem erfundenen Slug „overview“
+sind entfallen. Ihre Aufgabe – den Übersetzungsstand sichtbar zu machen –
+erfüllt jetzt der Sprachhinweis auf jeder betroffenen Seite.
+
+---
+
 ## Offene Punkte, die keine Gestaltungsfrage sind
 
 Diese Punkte lassen sich nicht durch eine Entscheidung schließen; sie
@@ -477,3 +506,5 @@ brauchen eine Antwort von außen und stehen in `RESEARCH-BRIEF.md` unter
   welche religiösen Inhalte veröffentlicht werden dürfen
 - Prüfung der Rechtsseiten (Impressum, Datenschutz, Barrierefreiheit)
 - Wer den dokumentierten Screenreader-Durchgang durchführt
+- Wer die kurmancî und arabischen Übersetzungen anfertigt und die
+  religiöse Terminologie darin prüft

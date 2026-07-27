@@ -38,6 +38,8 @@ export const ui = {
     'lang.notTranslated': 'Diese Seite liegt noch nicht in dieser Sprache vor.',
     'lang.fallbackNotice':
       'Die Oberfläche dieser Sprache ist erst teilweise übersetzt. Nicht übersetzte Elemente erscheinen auf Deutsch.',
+    'lang.fallbackBody':
+      'Gezeigt wird die deutsche Fassung. Übersetzt wird erst, was auf Deutsch belegt ist.',
 
     'theme.toggle': 'Farbschema wechseln',
     'theme.light': 'Helles Schema',
@@ -261,6 +263,8 @@ export const ui = {
     'lang.notTranslated': 'This page is not available in this language yet.',
     'lang.fallbackNotice':
       'The interface for this language is only partly translated. Untranslated elements appear in German.',
+    'lang.fallbackBody':
+      'You are reading the German version. Translation begins once the German page is fully sourced.',
 
     'theme.toggle': 'Change colour scheme',
     'theme.light': 'Light scheme',
@@ -338,6 +342,8 @@ export const ui = {
     'map.title': 'Nexşe',
     'article.sources': 'Çavkanî',
     'general.toTop': 'Bo jor',
+    'lang.notTranslated': 'Ev rûpel hêj bi vî zimanî tune ye.',
+    'lang.fallbackBody': 'Guhertoya almanî tê nîşandan.',
   },
 
   ar: {
@@ -353,6 +359,8 @@ export const ui = {
     'map.title': 'خريطة',
     'article.sources': 'المصادر',
     'general.toTop': 'إلى الأعلى',
+    'lang.notTranslated': 'هذه الصفحة غير متوفرة بهذه اللغة بعد.',
+    'lang.fallbackBody': 'يتم عرض النسخة الألمانية.',
   },
 } as const satisfies Record<Locale, Partial<Record<string, string>>>;
 

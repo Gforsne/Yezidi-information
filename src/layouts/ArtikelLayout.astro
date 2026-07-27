@@ -12,6 +12,7 @@ import Fortschritt from '../components/ui/Fortschritt.astro';
 import Belegspalte from '../components/content/Belegspalte.astro';
 import Quellenliste from '../components/content/Quellenliste.astro';
 import Inhaltshinweis from '../components/content/Inhaltshinweis.astro';
+import Sprachhinweis from '../components/content/Sprachhinweis.astro';
 import Lead from '../components/content/Lead.astro';
 import Statusbadge from '../components/content/Statusbadge.astro';
 import Weiterlesen from '../components/content/Weiterlesen.astro';
@@ -49,6 +50,11 @@ interface Props {
   ogImage?: string | undefined;
   /** Sprachen, in denen es diese Seite gibt (für hreflang). */
   sprachen?: readonly Locale[] | undefined;
+  /**
+   * Sprache, in der der Inhalt tatsächlich vorliegt. Weicht sie von
+   * `locale` ab, wird die Seite als Rückfall gekennzeichnet.
+   */
+  inhaltssprache?: Locale | undefined;
 }
 
 const {
@@ -76,6 +82,7 @@ const {
   abschnitte = 0,
   ogImage,
   sprachen,
+  inhaltssprache,
 } = Astro.props;
 
 const t = useTranslations(locale);
@@ -147,6 +154,11 @@ const jsonLd = [
       </div>
 
       <header class="artikel-kopf">
+        {
+          inhaltssprache && inhaltssprache !== locale && (
+            <Sprachhinweis locale={locale} inhaltssprache={inhaltssprache} />
+          )
+        }
         <p class="eyebrow">
           <a href={path(locale, bereich.slug)}>{bereich.title}</a>
         </p>

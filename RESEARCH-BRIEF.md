@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **488 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **490 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -155,7 +155,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Religion und Glaube
 
-37 Fragen auf 10 Seiten.
+39 Fragen auf 10 Seiten.
 
 **Gottesbild und Monotheismus**
 - Die Belege stammen aus der Einleitung von Omarkhali 2017 und einem Rezensionsaufsatz. Die einschlägigen Kapitel (Omarkhali 2017, Kap. III; Kreyenbroek 1995, Kap. 2) lagen der Redaktion nicht vor.
@@ -193,9 +193,11 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Diese Seite berührt Bestattungspraxis und Vorstellungen vom Tod und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Speise- und Verhaltensregeln**
-- Welche Speise- und Verhaltensregeln sind in der Fachliteratur übereinstimmend belegt? Die Redaktion hat dazu keine belastbare Darstellung gefunden.
-- Wie beschreiben êzîdîsche Institutionen selbst die Verbindlichkeit solcher Regeln? Emische Quellen fehlen vollständig.
-- Verbreitete Angaben – etwa zu bestimmten Speisen oder Farben – sind in den geprüften Quellen nicht belegt und stehen deshalb hier nicht.
+- Die Aufstellung der Gebote stammt aus einer einzigen Quelle, die sie selbst als unterschiedlich verbindlich beschreibt. Wie verbindlich sie jeweils sind und wer das entscheidet, geht daraus nicht hervor.
+- Zwingend zu klären: Verlautbarungen êzîdîscher Institutionen zur Verbindlichkeit der Regeln. Sie wären als Selbstdarstellung zu kennzeichnen und würden diese Seite erheblich verbessern.
+- Zur Herkunft einzelner Regeln – etwa dem Verzicht auf Schweinefleisch – widerspricht sich die Literatur; die Quelle bezweifelt selbst, ob es sich um ein religiöses Gebot handelt.
+- Zu den in populären Darstellungen häufig genannten Regeln, die hier nicht stehen, konnte die Redaktion keine belastbare Quelle finden. Ihr Fehlen ist Absicht.
+- Diese Seite berührt religiöse Praxis. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Tawûsî Melek und die sieben Engel**
 - Die Zahl und die Namen der sieben Engel sind hier nicht vollständig genannt: Die vorliegenden Quellen führen sie nicht geschlossen auf, und eine Rekonstruktion aus Einzelnennungen wäre eine Erfindung.

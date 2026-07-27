@@ -5,9 +5,9 @@
 
 ## Kurzfassung
 
-403 von 422 Abschnitten tragen mindestens einen Beleg – **Belegquote 95 %**.
-Insgesamt stehen 886 Belegstellen im Text.
-144 Stellen sind ausdrücklich als Beleglücke markiert.
+409 von 428 Abschnitten tragen mindestens einen Beleg – **Belegquote 96 %**.
+Insgesamt stehen 901 Belegstellen im Text.
+143 Stellen sind ausdrücklich als Beleglücke markiert.
 
 Die Recherche läuft: 151 von 162 Seiten (93 %) haben den Gerüst-Status verlassen.
 Eine niedrige Gesamtquote bedeutet **nicht**, dass unbelegte Behauptungen im Text stehen –
@@ -18,8 +18,8 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Status | Bedeutung | Seiten |
 |---|---|---:|
 | `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 11 |
-| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 25 |
-| `belegt` | Alle Aussagen mit Quellen belegt | 126 |
+| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 23 |
+| `belegt` | Alle Aussagen mit Quellen belegt | 128 |
 | `geprüft` | Belegt und zusätzlich gegengelesen | 0 |
 | **Summe** | | **162** |
 
@@ -28,8 +28,8 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Bereich | Seiten | belegt | Abschnitte | Belegstellen | Beleglücken | offene Fragen | Quote |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Überblick | 4 | 4 | 27 | 109 | 8 | 20 | 100 % |
-| Religion und Glaube | 10 | 10 | 48 | 100 | 16 | 37 | 100 % |
-| Gesellschaftsordnung | 8 | 8 | 38 | 69 | 12 | 32 | 100 % |
+| Religion und Glaube | 10 | 10 | 52 | 109 | 15 | 39 | 100 % |
+| Gesellschaftsordnung | 8 | 8 | 40 | 75 | 12 | 32 | 100 % |
 | Heilige Orte | 11 | 10 | 39 | 50 | 16 | 35 | 100 % |
 | Feste, Kalender und Riten | 9 | 9 | 39 | 75 | 5 | 32 | 100 % |
 | Sprache und Namen | 5 | 4 | 18 | 27 | 6 | 18 | 100 % |

@@ -1,0 +1,62 @@
+---
+/**
+ * Hinweis auf einer Seite, die in einer anderen Sprache ausgeliefert wird
+ * als der angeforderten.
+ *
+ * Die deutsche Fassung bedient alle vier Sprachrouten, solange keine
+ * Übersetzung vorliegt – so ist jede Route begehbar, ohne dass Inhalte
+ * erfunden werden. Das darf aber nicht stillschweigend geschehen: Wer
+ * `/ar/…` aufruft und Deutsch bekommt, soll erfahren, warum.
+ */
+import { useTranslations } from '../../i18n/utils';
+import { localeMeta, type Locale } from '../../i18n/config';
+
+interface Props {
+  /** Angeforderte Sprache – in ihr ist der Hinweis formuliert. */
+  locale: Locale;
+  /** Sprache, in der der Inhalt tatsächlich vorliegt. */
+  inhaltssprache: Locale;
+}
+
+const { locale, inhaltssprache } = Astro.props;
+const t = useTranslations(locale);
+const quelle = localeMeta[inhaltssprache];
+---
+
+<aside class="sprachhinweis" lang={localeMeta[locale].bcp47}>
+  <p class="titel">{t('lang.notTranslated')}</p>
+  <p class="text">
+    {t('lang.fallbackBody')}
+    <span lang={quelle.bcp47} dir={quelle.dir}>({quelle.endonym})</span>
+  </p>
+</aside>
+
+<style>
+  /*
+    Bewusst zurückhaltend: Der Hinweis ist eine Auskunft, keine Warnung.
+    Er verwendet dieselbe Randmarkierung wie die übrigen Apparat-Elemente,
+    damit er als Redaktionsangabe und nicht als Inhalt gelesen wird.
+  */
+  .sprachhinweis {
+    margin-block: var(--s-4);
+    padding: var(--s-3) var(--s-4);
+    border-inline-start: var(--border-rule) solid var(--c-apparat);
+    border-radius: var(--radius-sm);
+    background: var(--c-surface-sunken);
+    font-family: var(--f-utility);
+    font-size: var(--t-sm);
+    max-inline-size: var(--measure);
+  }
+
+  .titel {
+    margin: 0;
+    font-weight: var(--w-semibold);
+    color: var(--c-text);
+  }
+
+  .text {
+    margin-block-start: var(--s-1);
+    margin-block-end: 0;
+    color: var(--c-text-muted);
+  }
+</style>
