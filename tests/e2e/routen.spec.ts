@@ -190,6 +190,31 @@ test.describe('Werkzeuge mit Daten', () => {
     await expect(page.locator('.ortsliste table tbody tr').first()).toBeVisible();
   });
 
+  test('Karte zeichnet Gradnetz und Ortspunkte', async ({ page }) => {
+    /*
+      Dieser Test prüft nicht nur, dass ein Canvas entsteht, sondern dass
+      MapLibre tatsächlich Geometrie zeichnet. Grund: Der Web Worker von
+      MapLibre wurde nach dem Bündeln unter einer Adresse gesucht, die es
+      nicht gab. Die Karte blieb dabei leer, ohne einen Fehler zu melden –
+      Canvas, Bedienelemente und Maßstab sahen normal aus.
+    */
+    const fehlgeschlagen: string[] = [];
+    page.on('response', (r) => {
+      if (r.status() >= 400) fehlgeschlagen.push(`${r.status()} ${r.url()}`);
+    });
+
+    await page.goto('/de/karten');
+    await page.locator('[data-karte]').scrollIntoViewIfNeeded();
+
+    await expect(page.locator('[data-karte-flaeche] canvas')).toBeVisible();
+    await expect(page.locator('[data-ebenen]')).toBeVisible();
+
+    // Der Worker muss laufen – ohne ihn wird keine Geometrie geparst.
+    await expect.poll(() => page.workers().length, { timeout: 15_000 }).toBeGreaterThan(0);
+
+    expect(fehlgeschlagen).toEqual([]);
+  });
+
   test('Quellenverzeichnis listet und filtert', async ({ page }) => {
     await page.goto('/de/quellen');
     await expect(page.locator('.quelle').first()).toBeVisible();

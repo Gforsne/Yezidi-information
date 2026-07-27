@@ -28,6 +28,9 @@ Thumbs.db
 !.vscode/extensions.json
 !.vscode/settings.json
 
+# Aus node_modules kopierte Fremddateien (scripts/copy-map-worker.mjs)
+public/vendor/
+
 # Lokale Umgebung
 .env
 .env.local

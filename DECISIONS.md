@@ -299,6 +299,34 @@ Datenschutzerklärung kann ohne Einschränkung sagen, dass nichts erhoben
 wird. Wird es später gebraucht, ist es eine bewusste Ergänzung mit eigener
 Prüfung.
 
+### D-028 — MapLibre-Worker wird lokal ausgeliefert
+
+_2026-07-27_
+
+MapLibre bestimmt die Adresse seines Web Workers zur Laufzeit als
+Nachbardatei des eigenen Moduls. Nach dem Bündeln liegt dort nichts: Der
+Worker wurde mit 404 quittiert, und die Karte zeichnete weder Gradnetz
+noch Punkte — **ohne einen Fehler zu melden**. Canvas, Bedienelemente und
+Maßstab sahen dabei normal aus, der ursprüngliche Rauchtest lief grün.
+
+`scripts/copy-map-worker.mjs` kopiert `maplibre-gl-worker.mjs` samt der
+benötigten Nachbardatei `maplibre-gl-shared.mjs` bei jedem `dev` und
+`build` nach `public/vendor/maplibre/`; `setWorkerUrl()` bekommt die
+Adresse ausdrücklich gesagt. Die Kopien sind aus der Versionierung
+ausgenommen, damit sie nicht von der installierten Version abweichen.
+
+Der Rauchtest prüft jetzt, dass der Worker läuft und keine Anfrage mit
+einem Fehlercode beantwortet wird — nicht mehr nur, dass ein Canvas
+entsteht.
+
+### D-029 — `public/` gehört nicht in die Typprüfung
+
+_2026-07-27_
+
+Die kopierten Fremddateien lösten Hinweise in `astro check` aus. `public/`
+enthält ausschließlich statische Auslieferung und wird deshalb aus
+`tsconfig.json` ausgeschlossen.
+
 ---
 
 ## Offene Punkte, die keine Gestaltungsfrage sind

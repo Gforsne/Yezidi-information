@@ -316,8 +316,22 @@ const geojson = {
     const hinweis = huelle.querySelector<HTMLElement>('[data-karte-hinweis]');
     const ebenenFeld = huelle.querySelector<HTMLFieldSetElement>('[data-ebenen]');
 
-    const { Map, NavigationControl, ScaleControl, Popup } = await import('maplibre-gl');
+    const { Map, NavigationControl, ScaleControl, Popup, setWorkerUrl } =
+      await import('maplibre-gl');
     await import('maplibre-gl/dist/maplibre-gl.css');
+
+    /*
+      MapLibre bestimmt die Adresse seines Web Workers zur Laufzeit als
+      Nachbardatei des eigenen Moduls. Nach dem Bündeln liegt dort nichts –
+      der Worker wird mit 404 quittiert, und die Karte zeichnet weder
+      Gradnetz noch Punkte, ohne einen Fehler zu melden.
+
+      Deshalb liegt der Worker samt seiner Nachbardatei unter
+      `public/vendor/maplibre/` (kopiert von scripts/copy-map-worker.mjs)
+      und MapLibre bekommt die Adresse ausdrücklich gesagt. Ohne diese
+      Zeile bleibt die Karte leer.
+    */
+    setWorkerUrl('/vendor/maplibre/maplibre-gl-worker.mjs');
 
     const stil = import.meta.env['PUBLIC_MAP_STYLE_URL'];
     const lese = (name: string) =>
