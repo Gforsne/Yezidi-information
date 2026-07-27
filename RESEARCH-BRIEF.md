@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **387 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **412 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -69,8 +69,8 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Konversionsverbot, Mischehen und Nachkommen (`src/content/articles/de/gesellschaft/konversionsverbot-und-mischehen.mdx`)
 - **Diese Seite berührt Geschlechterrollen in einer lebenden Gemeinschaft und die Folgen sexualisierter Gewalt. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, insbesondere durch Frauen.**
   - Seite: Rolle von Frauen (`src/content/articles/de/gesellschaft/rolle-von-frauen.mdx`)
-- **Welche frei lizenzierten Fotografien existieren, und ist ihre Veröffentlichung angemessen?**
-  - Seite: Laliş (`src/content/articles/de/heilige-orte/lalis.mdx`)
+- **Diese Seite braucht eine Prüfung durch Angehörige der Gemeinschaft, auch zur Frage, welche Abbildungen angemessen sind.**
+  - Seite: Zerstörte und beschädigte Stätten seit 2014 (`src/content/articles/de/heilige-orte/zerstoerte-staetten-seit-2014.mdx`)
 - **Wer ist Anbieter im Rechtssinne, und wer trägt die inhaltliche Verantwortung?**
   - Seite: Impressum (`src/content/articles/de/meta/impressum.mdx`)
 - **Wer übernimmt die redaktionelle Verantwortung im Sinne des Presserechts?**
@@ -81,18 +81,20 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Mündliche Überlieferung: Qewl, Beyt, Şehbêrî, Duʿa (`src/content/articles/de/religion/muendliche-ueberlieferung-qewl-und-beyt.mdx`)
 - **Zur Ikonografie und zur Verwendung des Sancak liegen nur Kurzdefinitionen vor. Ob eine Abbildung überhaupt angemessen wäre, ist mit der Gemeinschaft zu klären.**
   - Seite: Tawûsî Melek und die sieben Engel (`src/content/articles/de/religion/tawusi-melek-und-die-sieben-engel.mdx`)
-- **Wer könnte Aufnahmen sprechen, und wie wird die Einwilligung dokumentiert?**
-  - Seite: Aussprache (`src/content/articles/de/sprache/aussprache.mdx`)
 - **Welche rechtliche Einordnung nehmen deutsche Behörden vor und auf welcher Grundlage? Für Asylverfahren und Minderheitenschutz ist das entscheidend, der Redaktion liegt aber keine Quelle vor.**
   - Seite: Religion, Ethnie oder beides? (`src/content/articles/de/ueberblick/religion-ethnie-oder-beides.mdx`)
 - **Keine der hier genannten Schätzungen legt ihre Erhebungsmethode offen. Ohne Methodenangabe lässt sich nicht beurteilen, warum sie um den Faktor fünf auseinanderliegen.**
   - Seite: Verbreitung und Bevölkerungszahlen (`src/content/articles/de/ueberblick/verbreitung-und-bevoelkerungszahlen.mdx`)
 - **Welche Angebote sind dauerhaft erreichbar und nicht nur zeitlich befristet abrufbar?**
   - Seite: Mediathek (`src/content/articles/de/vermittlung/mediathek.mdx`)
-- **Welche Beschreibungen des Ablaufs sind veröffentlicht und autorisiert?**
-  - Seite: Cejna Cemaiyê (`src/content/festivals/de/cejna-cemaiye.mdx`)
+- **Zur Zahl der in der Diaspora lebenden Êzîdî liegen der Redaktion nur Schätzungen ohne dokumentierte Erhebungsmethode vor.**
+  - Seite: Diaspora (`src/content/glossary/de/diaspora.mdx`)
 - **Dieser Eintrag berührt religiöse Gegenstände. Vor einer Bebilderung ist zu klären, ob und wie eine Abbildung angemessen ist.**
   - Seite: Sancak (`src/content/glossary/de/sancak.mdx`)
+- **Zwingend zu klären: Definition, Aufgaben und Verhältnis zu Mîr, Baba Şêx und Meclisa Ruhanî. Der Redaktion liegt dazu keine geprüfte Quelle vor.**
+  - Seite: Şehbêrî (`src/content/glossary/de/sehberi.mdx`)
+- **Ob die Bundesrepublik Deutschland aus der Anerkennung konkrete Pflichten ableitet, ist eine Rechtsfrage, die dieses Portal nicht beantwortet.**
+  - Seite: Völkermordkonvention (`src/content/glossary/de/voelkermordkonvention.mdx`)
 - **Welcher Quellenauszug ist rechtlich frei verwendbar und didaktisch geeignet?**
   - Seite: Quellenauszug: Die Firman-Erinnerung (`src/content/teaching/de/quellenauszug-firman-erinnerung.mdx`)
 - **Welche Schätzungen liegen vor, von wem, mit welchem Stichjahr und welcher Erhebungsmethode?**
@@ -261,110 +263,146 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Heilige Orte
 
-23 Fragen auf 10 Seiten.
+33 Fragen auf 10 Seiten.
 
 **Heilige Orte in Armenien, Georgien und der Diaspora**
-- Welche Einrichtungen in Deutschland sind als religiöse Stätten anerkannt?
-- Welche Neubauten im Kaukasus sind dokumentiert, mit Baujahr und Trägerschaft?
+- Zwingend zu klären: Welche Neubauten in Armenien und Georgien sind mit Baujahr, Trägerschaft und Funktion dokumentiert? Der Redaktion liegt dazu keine geprüfte Quelle vor.
+- Der 2019 in Aknalich eröffnete Tempelbau wird in Medienberichten als größtes êzîdîsches Heiligtum bezeichnet. Der Redaktion lag keine Quelle vor, die den Beleghierarchien dieses Portals genügt; die Angabe steht deshalb nicht auf dieser Seite.
+- Welche Einrichtungen in Deutschland sind religiöse Stätten im engeren Sinn, welche Gemeindezentren? Dazu liegen keine belegten Angaben vor.
+- Für Nordamerika und Australien liegen der Redaktion keine belegten Angaben vor.
 
 **Heiligtümer in Şingal, Şêxan und Baʿşîqe/Behzanê**
-- Welche Bestandsaufnahme von Heiligtümern ist am vollständigsten und wie aktuell ist sie?
-- Welche Koordinaten sind aus verlässlichen Quellen belegbar?
+- Eine vollständige, geprüfte Bestandsaufnahme der Heiligtümer liegt der Redaktion nicht vor. Die auf dieser Seite genannten Einzelorte sind Beispiele aus der Feldforschung, keine Liste.
+- Für Baʿşîqe und Behzanê liegen der Redaktion keine belegten Angaben zu einzelnen Heiligtümern vor.
+- Koordinaten der Einzelorte sind nicht gegen einen amtlichen Geodatensatz geprüft.
+- Diese Seite berührt religiöse Praxis. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Laliş**
-- Welche bauhistorische Untersuchung von Laliş liegt vor?
-- Welche Verhaltenshinweise veröffentlichen die Verwaltung des Heiligtums bzw. êzîdîsche Institutionen?
-- Welche frei lizenzierten Fotografien existieren, und ist ihre Veröffentlichung angemessen?
-- Koordinaten gegen einen amtlichen oder wissenschaftlichen Geodatensatz prüfen und die Genauigkeit anpassen.
-- Erhaltungszustand mit Stand-Datum belegen.
+- Zur Baugeschichte des Heiligtums liegt der Redaktion keine kunsthistorische Untersuchung im Volltext vor. Açıkyıldız 2010, S. 131–146 wird in der Literatur als ausführlichste Darstellung genannt, konnte aber nicht eingesehen werden.
+- Verhaltenshinweise für Besuchende sollten aus einer Veröffentlichung der Heiligtumsverwaltung oder einer êzîdîschen Institution stammen. Eine solche Quelle lag nicht vor; die Seite gibt deshalb nur wieder, was die Fachliteratur beschreibt.
+- Der Erhaltungszustand nach 2014 ist hier nicht mit Stand-Datum belegt.
+- Zwingend zu klären: Welche Abbildungen des Heiligtums dürfen gezeigt werden, und welche Bereiche möchte die Gemeinschaft nicht abgebildet sehen?
+- Die Koordinaten sind ungefähr und nicht gegen einen amtlichen Geodatensatz geprüft.
+- Der Erhaltungszustand ist nicht mit Stand-Datum belegt.
 
 **Sakralarchitektur: Kegeldächer, Symbolik, Bauweise**
-- Welche kunsthistorischen Arbeiten behandeln die Bauform systematisch?
-- Welche Restaurierungsprojekte sind dokumentiert, und wer trägt sie?
+- Zwingend zu klären: Eine kunsthistorische Darstellung der Bauform im Volltext. Açıkyıldız 2010, S. 131–146 gilt in der Literatur als ausführlichste Untersuchung, lag der Redaktion aber nicht vor.
+- Zu Material und Bauverfahren liegen keine belegten Angaben vor.
+- Deutungen der Kegelform – etwa als Sonnenstrahl – sind der Redaktion nur als Behauptung ohne prüfbare Quelle begegnet. Sie werden hier deshalb nicht wiedergegeben.
+- Zu Restaurierungsprojekten und deren Trägerschaft liegen keine belegten Angaben vor.
 
 **Zerstörte und beschädigte Stätten seit 2014**
-- Welche Organisationen haben Schäden systematisch erfasst, und sind die Daten zugänglich?
-- Welche Wiederaufbauprojekte sind abgeschlossen, welche laufen?
+- Zwingend zu klären: Welche Organisation hat die Schäden an religiösen Stätten systematisch erfasst, mit welcher Methode, und sind die Daten zugänglich? Ohne eine solche Erhebung bleibt diese Seite unvollständig.
+- Der Redaktion liegt keine geprüfte Liste zerstörter Einzelorte vor. Kursierende Zahlen konnten nicht auf eine Erhebung mit nachvollziehbarer Methode zurückgeführt werden.
+- Zum Stand einzelner Wiederaufbauprojekte liegen keine belegten Angaben vor.
+- Diese Seite braucht eine Prüfung durch Angehörige der Gemeinschaft, auch zur Frage, welche Abbildungen angemessen sind.
 
 **Aknalich**
-- Koordinaten gegen einen amtlichen oder wissenschaftlichen Geodatensatz prüfen und die Genauigkeit anpassen.
-- Erhaltungszustand mit Stand-Datum belegen.
+- Zwingend zu klären: Baujahr, Trägerschaft, Bauherr und Funktion des Tempelbaus in Aknalich. Medienberichte allein genügen für die zentralen Angaben nicht.
+- Wie groß ist die êzîdîsche Bevölkerung Armeniens, nach welcher Erhebung und mit welchem Stand?
+- Die Koordinaten sind ungefähr und nicht gegen einen amtlichen Geodatensatz geprüft.
 
 **Baʿşîqe und Behzanê**
-- Koordinaten gegen einen amtlichen oder wissenschaftlichen Geodatensatz prüfen und die Genauigkeit anpassen.
-- Erhaltungszustand mit Stand-Datum belegen.
+- Die Koordinaten sind ungefähr und nicht gegen einen amtlichen Geodatensatz geprüft.
+- Zur Bevölkerungszusammensetzung, zur Zerstörung 2014 und zum Wiederaufbau liegen der Redaktion keine geprüften Angaben vor.
 
 **Celle**
-- Koordinaten gegen einen amtlichen oder wissenschaftlichen Geodatensatz prüfen und die Genauigkeit anpassen.
-- Erhaltungszustand mit Stand-Datum belegen.
+- Zwingend zu klären: Welche êzîdîschen Einrichtungen bestehen in Celle, seit wann, in welcher Trägerschaft? Ohne belegbare Angabe bleibt dieser Eintrag leer.
+- Ist Celle als Beispielort überhaupt sinnvoll gewählt, oder sollte stattdessen ein Ort mit dokumentierter Einrichtung aufgenommen werden?
 
 **Şêxan**
-- Koordinaten gegen einen amtlichen oder wissenschaftlichen Geodatensatz prüfen und die Genauigkeit anpassen.
-- Erhaltungszustand mit Stand-Datum belegen.
+- Die Koordinaten bezeichnen die Region ungefähr und sind nicht gegen einen amtlichen Geodatensatz geprüft.
+- Zur heutigen Bevölkerungszahl der Region liegen der Redaktion keine belegten Angaben vor.
 
 **Şingal**
-- Koordinaten gegen einen amtlichen oder wissenschaftlichen Geodatensatz prüfen und die Genauigkeit anpassen.
-- Erhaltungszustand mit Stand-Datum belegen.
+- Die Koordinaten bezeichnen die Region ungefähr und sind nicht gegen einen amtlichen Geodatensatz geprüft.
+- Zur heutigen Bevölkerungszahl liegen der Redaktion keine belegten Angaben mit dokumentierter Erhebungsmethode vor.
 
 ### Feste, Kalender und Riten
 
-14 Fragen auf 9 Seiten.
+32 Fragen auf 9 Seiten.
 
 **Kalendersysteme und Umrechnung**
-- Welche Fachliteratur beschreibt den êzîdîschen Festkalender systematisch?
-- Wie werden Termine heute innerhalb der Gemeinschaft bekannt gegeben?
+- Zwingend zu klären: Eine Fachdarstellung des êzîdîschen Festkalenders im Zusammenhang. Die eingesehenen Quellen geben den Kalenderbezug jeweils nur pro Fest an.
+- Für mehrere Feste – Cimaʽiya Şêxʽadi, Batizmî, Belindê, Tawûsgeran – ist der Kalenderbezug in den eingesehenen Quellen nicht angegeben.
+- Wie die Termine innerhalb der Gemeinschaft heute bekannt gegeben werden, ist der Redaktion nicht belegt bekannt.
+- Ob und wie die Termine in der Diaspora angepasst werden, ist nicht belegt.
 
 **Riten des Lebenszyklus**
-- Welche ethnografischen Arbeiten beschreiben die Riten am ausführlichsten?
-- Welche Anpassungen sind für die Diaspora dokumentiert, insbesondere bei Bestattungen?
+- Die Darstellung folgt weitgehend einer einzigen Quelle. Für regionale Unterschiede – besonders zwischen Irak, Türkei und Kaukasus – wäre eine zweite ethnografische Quelle nötig.
+- Zur Begründung der unterschiedlichen Grabtiefe bei Frauen und Männern gibt die Quelle eine Erzählung wieder, ohne sie einzuordnen. Ob diese Erklärung in der Gemeinschaft allgemein geteilt wird, ist der Redaktion nicht bekannt.
+- Die Angaben zum Mindestalter bei der Eheschließung stammen aus einem Beschluss von 1929, wiedergegeben nach Maisel 2005. Die geltende Praxis heute ist damit nicht beschrieben.
+- Diese Seite berührt religiöse Praxis in einem sehr persönlichen Bereich. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Batizmî**
-- Welche Quellen beschreiben Batizmî?
+- Nach welchem Kalender der Termin bestimmt wird, geht aus der Quelle nicht hervor. Sie nennt nur „Ende des Jahres oder in den ersten Januarwochen“.
+- Ob das Fest in der Diaspora fortgeführt wird und in welcher Form, ist hier nicht belegt.
+- Das Verhältnis zu Belindê ist ungeklärt – siehe die Seite zu Belindê.
 
 **Belindê**
-- In welcher Fachliteratur wird Belindê beschrieben?
-- In welchen Regionen wird das Fest begangen?
+- Zwingend zu klären: Ist Belindê dasselbe Fest wie Batizmî beziehungsweise Belinda Pîra? Die beiden eingesehenen Quellen lassen beide Lesarten zu.
+- Zur Terminregel liegen der Redaktion keine Angaben vor – belegt ist nur „im Januar“.
+- Zur Bedeutung und zum vollständigen Ablauf des Festes liegen keine belegten Angaben vor.
+- Diese Seite braucht eine Prüfung durch Angehörige der Gemeinschaft, besonders zur Frage der Namensgleichheit.
 
 **Cejna Cemaiyê**
-- Welche Beschreibungen des Ablaufs sind veröffentlicht und autorisiert?
+- Die beiden Quellen geben die Dauer unterschiedlich an: Tagay und Ortaç nennen den 6. bis 13. Oktober, Spät spricht von einem einwöchigen Fest Anfang Oktober. Die Redaktion löst das nicht auf.
+- Ob die Datumsangabe 6. bis 13. Oktober julianisch oder gregorianisch zu lesen ist, geht aus der Quelle nicht hervor.
+- Ob und in welcher Form das Fest seit 2014 stattfindet, ist hier nicht belegt.
+- Diese Seite beschreibt religiöse Praxis einschließlich eines Tieropfers. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Rojiyên Êzî und Cejna Êzî**
-- Für wen ist das Fasten verbindlich, und wie wird das begründet?
+- Die Fastenregel wird in den beiden Quellen unterschiedlich beschrieben. Tagay und Ortaç nennen drei Wochen mit je drei Fastentagen von Dienstag bis Donnerstag; Spät beschreibt ein dreitägiges Fasten für Êzîd und daneben individuell gewählte Ein-Tages-Fasten. Möglicherweise handelt es sich um regionale Unterschiede. Die Redaktion löst das nicht auf.
+- Die Herleitung des Festes aus dem Mithraismus geben Tagay und Ortaç mit Verweis auf Issa 2007 wieder. Diese Arbeit lag der Redaktion nicht vor; die Herleitung wird deshalb als Vermutung gekennzeichnet.
+- Zur Praxis in der Diaspora liegen der Redaktion keine geprüften Angaben vor.
 
 **Sere Sal / Çarşema Sor**
-- Wie lautet die Terminregel genau, und welche Quelle beschreibt sie?
-- Welche Bräuche sind für welche Region belegt?
-- Ist die Monatszuordnung (April) in der Fachliteratur bestätigt?
+- Die Bräuche unterscheiden sich regional. Die hier genannten stammen aus zwei Quellen, die den Irak beschreiben; für die Türkei, Syrien und den Kaukasus liegen der Redaktion keine geprüften Angaben vor.
+- Ob die genannten Bräuche in der Diaspora fortgeführt werden und in welcher Form, ist hier nicht belegt.
+- Tagay und Ortaç geben die Deutung des Festes als Herabstieg von Tawûsî Melek ohne Quellenangabe wieder. Sie ist als Überlieferung der Gemeinschaft dargestellt, nicht als historische Aussage.
 
 **Tawûsgeran**
-- Wird die Prozession heute noch durchgeführt, wo und in welcher Form?
+- Zwingend zu klären: Findet die Tawûsgeran gegenwärtig statt? Beide Quellen stammen aus der Zeit vor beziehungsweise um 2016.
+- Wie viele Sancak es gibt und welche Route jeder von ihnen nimmt, ist der Redaktion nicht belegt bekannt.
+- Zur Terminregel liegen keine Angaben vor. Die Quellen beschreiben Rundreisen über das Jahr, nennen aber keinen festen Zeitraum.
+- Diese Seite berührt Gegenstände des Kults. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, auch zur Frage der Abbildung.
 
 **Xidir Nebî / Xidir Eylas**
-- Welche Bräuche sind belegt, und für welche Regionen?
+- Zwingend zu klären: Wie verhalten sich die Namensformen „Xidir Nebî“, „Xidir Eylas“ und „Xidir Ilyas“ zueinander? Bezeichnen sie dasselbe Fest oder unterscheiden sie zwei Feiertage? Die eingesehene Quelle nennt nur „Îda Xidir Ilyas“.
+- Zum Ablauf des Festes liegen der Redaktion nur sehr knappe Angaben vor: besondere Speisen, Rezitationen, gemeinsamer Tanz. Mehr ist hier nicht belegt.
+- Zu Bräuchen, die in der Literatur mit diesem Fest verbunden werden – etwa dem Deuten von Spuren in Mehl oder Asche –, liegt der Redaktion keine geprüfte Quelle vor.
 
 ### Sprache und Namen
 
-10 Fragen auf 5 Seiten.
+18 Fragen auf 5 Seiten.
 
 **Aussprache**
-- Wer könnte Aufnahmen sprechen, und wie wird die Einwilligung dokumentiert?
-- Welche Lautschriftkonvention ist für ein Laienpublikum am verständlichsten?
+- Zwingend zu klären: Eine sprachwissenschaftliche Beschreibung der Aussprache des Kurmancî mit Lautwerten in IPA. Ohne eine solche Quelle bleibt diese Seite ein Gerüst.
+- Für Audiobeispiele wären Aufnahmen nötig, deren Rechte geklärt sind und deren Sprecherinnen und Sprecher zugestimmt haben. Beides liegt nicht vor.
+- Ob die Aussprache regional erheblich abweicht, ist der Redaktion nicht belegt bekannt.
 
 **Grundwortschatz und Redewendungen**
-- Welches Kurmancî-Wörterbuch ist als Referenz geeignet und zugänglich?
-- Welche Formeln sind zur Weitergabe an Außenstehende geeignet – und wer entscheidet das?
+- Zwingend zu klären: Eine didaktisch aufbereitete Quelle für einen alltagstauglichen Grundwortschatz mit Redewendungen. Ohne sie bleibt diese Seite ein Begriffsverzeichnis, kein Sprachangebot.
+- Die Aussprache der Begriffe ist nicht angegeben – siehe die Seite Aussprache.
+- Regionale Varianten der Begriffe sind nicht erfasst.
 
 **Kurmancî und Ezdikî**
-- Welche sprachwissenschaftlichen Arbeiten behandeln die religiöse Sprachschicht?
-- Wie ist der Sprachgebrauch in der zweiten und dritten Generation in Deutschland untersucht?
+- Zwingend zu klären: Wie verhält sich Ezdikî sprachwissenschaftlich zu Kurmancî? Diese Frage ist politisch aufgeladen; die Redaktion beantwortet sie nicht und sucht dafür eine linguistische Fachquelle.
+- Die Angabe „25 bis 30 Millionen Kurden weltweit“ steht in der Quelle ohne Erhebungsjahr und ohne Methode. Sie wird hier nur mit diesem Vorbehalt wiedergegeben.
+- Zur Sprachkompetenz in der Diaspora – wie viele Angehörige der zweiten und dritten Generation Kurmancî sprechen – liegen der Redaktion keine belegten Angaben vor.
+- Diese Seite berührt die Identitätsfrage. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft aus verschiedenen Herkunftsregionen.
 
 **Namenkunde und Eşîret**
-- Welche Arbeiten behandeln êzîdîsche Namenkunde?
-- Sind Namensänderungen im Zuge der Arabisierungspolitik dokumentiert?
+- Zwingend zu klären: Wie werden Personennamen gebildet, welche Namen sind gebräuchlich, und welche Rolle spielt die Zugehörigkeit zu Linie oder Stamm dabei? Der Redaktion liegt dazu keine Quelle vor.
+- Eine Liste der Stämme mit ihren Siedlungsgebieten fehlt. Omarkhali gibt an, ihre Textausgabe enthalte eine Liste êzîdîscher Linien; diese lag der Redaktion nicht im Volltext vor.
+- Ob und wie sich Namensgebung in der Diaspora verändert hat, ist nicht belegt.
+- Diese Seite berührt die Zugehörigkeit einzelner Familien. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Schriftsysteme und Transkription**
-- Welche sprachwissenschaftliche Referenz eignet sich für die Zeichentabelle?
-- Welche Umschrift verwenden deutschsprachige Fachpublikationen überwiegend?
+- Zwingend zu klären: Eine sprachwissenschaftliche Darstellung der kurdischen Schriftsysteme. Die eingesehenen Quellen erwähnen die Vielfalt der Alphabete, beschreiben sie aber nicht.
+- In welcher Schrift die Zeitung Riya Teze 1930 erschien, geht aus der eingesehenen Quelle nicht hervor.
+- Ob und in welchem Umfang das Hawar-Alphabet im Irak gebräuchlich ist, ist der Redaktion nicht belegt bekannt.
+- Eine vollständige Zeichentabelle mit Lautwerten fehlt – siehe die Seite Aussprache.
 
 ### Geschichte
 
@@ -547,17 +585,22 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Missverständnisse und Desinformation
 
-5 Fragen auf 4 Seiten.
+10 Fragen auf 4 Seiten.
 
 **Hassrede und Verschwörungserzählungen online**
-- Welche Monitoring-Berichte erfassen Hassrede gegen Êzîdî eigenständig?
+- Zwingend zu klären: Gibt es Erhebungen zu Hassrede gegen Êzîdî im deutschsprachigen Raum? Der Redaktion ist keine bekannt.
+- Zu Verschwörungserzählungen, die in der Gemeinschaft selbst kursieren, liegen keine geprüften Angaben vor. Auch dieser Teil des Themas fehlt.
+- Die Seite gibt keine Wortlaute aus Täterpropaganda wieder. Das ist eine bewusste Entscheidung, die die Darstellung unvollständig lässt.
 
 **Der Vorwurf der „Teufelsanbetung“**
-- In welchen Texten ist die Zuschreibung zuerst nachweisbar?
-- Welche Untersuchungen behandeln ihre Wirkungsgeschichte?
+- In welchen Texten die Zuschreibung zuerst nachweisbar ist, konnte die Redaktion nicht belegen. Die eingesehenen Quellen benennen die Fehldeutung, aber nicht ihren ersten Beleg.
+- Zur Wirkungsgeschichte in europäischen Reiseberichten des 19. Jahrhunderts liegen der Redaktion keine geprüften Quellen vor.
+- Zur gegenwärtigen Verbreitung der Zuschreibung im deutschsprachigen Raum liegen keine Erhebungen vor.
 
 **Weitere verbreitete Falschbehauptungen**
-- Welche Falschbehauptungen sind in deutschsprachigen Medien und im Netz nachweisbar verbreitet?
+- Die Richtigstellungen stützen sich weitgehend auf eine einzige Quelle, die von êzîdîschen Autoren verfasst ist. Für die Abgrenzung emisch/etisch wäre eine zweite, religionswissenschaftliche Quelle wünschenswert.
+- Zu weiteren kursierenden Behauptungen – etwa über Ernährungsregeln oder Heiratsregeln – liegen der Redaktion keine geprüften Richtigstellungen vor.
+- Wie verbreitet die hier behandelten Behauptungen sind, ist nicht erhoben.
 
 **FAQ: Warum ist die Bezeichnung „Teufelsanbeter“ falsch?**
 - Woher stammt die Zuschreibung, und in welchen Texten ist sie zuerst nachweisbar?
@@ -634,7 +677,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Wissen und Vermittlung
 
-104 Fragen auf 56 Seiten.
+88 Fragen auf 56 Seiten.
 
 **Hilfe und Anlaufstellen**
 - Welche Angebote arbeiten in Kurmancî und Arabisch?
@@ -664,16 +707,14 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Zu Bauweise, Spielweise und den Anlässen, bei denen der Def gespielt wird, fehlen belegte Angaben.
 
 **Diaspora**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
+- Zur Zahl der in der Diaspora lebenden Êzîdî liegen der Redaktion nur Schätzungen ohne dokumentierte Erhebungsmethode vor.
 
 **Duʿa**
 - Zu Anlässen, Gebetszeiten und Gebetsrichtung liegen keine belegten Angaben vor.
 
 **Eşîret**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zwingend zu klären: Eine Definition des Begriffs aus einer ethnologischen Fachquelle. Die eingesehene Quelle verwendet „Stamm“, ohne den kurmancî Begriff zu definieren.
+- Welche Stämme heute bestehen und welche Rolle sie spielen, ist der Redaktion nicht belegt bekannt.
 
 **Ezdikî**
 - Seit wann und auf welcher Rechtsgrundlage Ezdiki anerkannt ist, ist nicht belegt.
@@ -684,9 +725,8 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Aussprachehilfe und Tonaufnahme fehlen noch.
 
 **Êzîdiyatî**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Wie sich die beiden Formen êzdiyatî und êzdîtî zueinander verhalten und ob eine regional vorherrscht, ist der Redaktion nicht belegt bekannt.
+- Die Umschrift folgt der Quelle. Ob die Gemeinschaft eine andere Schreibung bevorzugt, ist zu klären.
 
 **Feqir**
 - Ob es sich um ein Amt, einen Stand oder eine Lebensform handelt, geht aus der Definition nicht hervor.
@@ -695,28 +735,22 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Welche der 72 Firman sich historisch einzeln nachweisen lassen, ist offen. Die Quelle behauptet eine Faktengrundlage, führt sie an dieser Stelle aber nicht aus.
 
 **Genozid**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Der Begriff wird auf dieser Seite juristisch verwendet. Zum Verhältnis zwischen dem juristischen Begriff und der êzîdîschen Zählweise der Firman siehe den Glossareintrag Firman.
 
 **Girê Zêr**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zwingend zu klären: Wofür steht dieser Begriff genau, und in welchem Zusammenhang wird er verwendet? Der Redaktion liegt dazu keine Quelle vor, die den Beleghierarchien dieses Portals genügt.
+- Zu prüfen, ob der Eintrag im Glossar überhaupt am richtigen Platz ist oder in die Ortssammlung gehört.
 
 **Govend**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zwingend zu klären: Eine Definition des Begriffs Govend aus einer Fachquelle. Die eingesehenen Quellen beschreiben den Tanz, ohne den Begriff zu verwenden.
+- Zu Schrittfolgen, Formationen und regionalen Unterschieden liegen der Redaktion keine belegten Angaben vor.
 
 **Hawar-Alphabet**
 - Der Name „Hawar“ geht auf die gleichnamige Zeitschrift zurück; das ist in den vorliegenden Quellen nicht belegt und noch nachzuweisen.
 - Ob und wie stark die im Portal verwendete Schreibung von der Vorlage abweicht, ist bisher nicht systematisch geprüft.
 
 **Heft Sirr**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Eine vollständige, belegte Aufzählung der sieben Engel liegt der Redaktion nicht vor. Eine Zusammenstellung aus Einzelnennungen wäre eine Konstruktion und unterbleibt.
 
 **Kaniya Sipî**
 - Welche Rolle die Quelle in Ritualen darüber hinaus spielt, ist nicht belegt.
@@ -744,14 +778,12 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Ob der Rat auch für die Diaspora entscheidet, ist offen.
 
 **Mezar**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zwingend zu klären: Wie verhalten sich die Begriffe mezar und ziyaret zueinander? Die eingesehenen Quellen verwenden ziyaret; mezar wird dort nicht definiert.
+- Ob mezar im êzîdîschen Sprachgebrauch das Grab, den Schrein oder beides bezeichnet, ist nicht belegt.
 
 **Mijêwir**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zwingend zu klären: Definition, Aufgaben und Stellung des Mijêwir. Der Redaktion liegt dazu keine Quelle vor, die den Beleghierarchien dieses Portals genügt.
+- Ob das Amt an eine Kaste oder an eine bestimmte Linie gebunden ist, ist nicht belegt.
 
 **Mîr**
 - Wie sich die Zuständigkeiten von Mîr und Baba Şêx voneinander abgrenzen, ist nicht belegt.
@@ -769,9 +801,8 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Ablauf, Ort und Zeitpunkt der Zeremonie sind nicht belegt. Der Vergleich mit der Taufe stammt aus der Quelle und ist eine Verständnishilfe, keine Gleichsetzung.
 
 **Mujammaʿat**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die genaue arabische Form und ihre Umschrift sind der Redaktion nicht aus einer sprachwissenschaftlichen Quelle belegt.
+- Wie viele Menschen betroffen waren, ist nicht belegt – belegt ist die Zahl der Dörfer.
 
 **Peşîmam**
 - Aufgaben und Verhältnis zu den anderen Ämtern sind nicht belegt.
@@ -796,13 +827,11 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Dieser Eintrag berührt religiöse Gegenstände. Vor einer Bebilderung ist zu klären, ob und wie eine Abbildung angemessen ist.
 
 **Şehbêrî**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
+- Zwingend zu klären: Definition, Aufgaben und Verhältnis zu Mîr, Baba Şêx und Meclisa Ruhanî. Der Redaktion liegt dazu keine geprüfte Quelle vor.
+- Zu prüfen, ob die Ansetzungsform „Şehberî“ korrekt ist.
 
 **Sere Sal**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Die eingesehenen Quellen verwenden die Bezeichnung Çarşema Sor. Ob „Serê Salê“ daneben gebräuchlich ist und in welchen Regionen, ist der Redaktion nicht belegt bekannt.
 
 **Şêx Adî ibn Musafir**
 - Die beiden Quellen nennen unterschiedliche Geburtsjahre (1074 bzw. „um 1075“). Für eine belastbare Datierung fehlt geschichtswissenschaftliche Literatur.
@@ -826,14 +855,12 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Die religionswissenschaftliche Primärliteratur (Kreyenbroek 1995) lag der Redaktion nicht vor.
 
 **Til Ezêr**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Zwingend zu klären: Die Gleichsetzung von Til Ezêr und Qehtaniyye ist der Redaktion aus der eingesehenen Quelle nicht ausdrücklich belegt. Sie ist verbreitet, aber hier nicht nachgewiesen.
+- Der heutige Zustand des Ortes ist nicht belegt.
 
 **Völkermordkonvention**
-- Definition mit Fachquelle belegen.
-- Aussprachehilfe in der Portal-Umschrift ergänzen und prüfen lassen.
-- Prüfen, in welchen Zusammenhängen die genannten Varianten üblich sind.
+- Der Wortlaut der Konvention wird hier nicht zitiert; er ist über die Vereinten Nationen zugänglich.
+- Ob die Bundesrepublik Deutschland aus der Anerkennung konkrete Pflichten ableitet, ist eine Rechtsfrage, die dieses Portal nicht beantwortet.
 
 **Xwedê**
 - Die dort ebenfalls angeführte etymologische Zerlegung von „Xude“ ist ohne Einzelnachweis wiedergegeben und braucht eine sprachwissenschaftliche Prüfung.

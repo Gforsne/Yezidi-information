@@ -2,7 +2,7 @@
 title: 'Schriftsysteme und Transkription'
 slug: 'schriftsysteme-und-transkription'
 lead: >-
-  Diese Seite wird die für Kurmancî gebräuchlichen Schriftsysteme darstellen und die auf diesem Portal verbindlich verwendete Umschrift dokumentieren. Sie erklärt, warum eine einheitliche Konvention nötig ist und welche Abweichungen im Deutschen verbreitet sind. Eine Zeichentabelle ordnet die Buchstaben ihrer Aussprache zu. Die verbindliche Festlegung steht zusätzlich in STYLEGUIDE.md.
+  Kurmancî wird in mehreren Schriften geschrieben: lateinisch nach dem Hawar-Alphabet, kyrillisch im früheren sowjetischen Raum, arabisch im Irak. Die religiösen Texte wurden zwischen 1891 und 2013 in verschiedenen Alphabeten veröffentlicht. Diese Seite erklärt außerdem, welcher Umschrift dieses Portal folgt und warum.
 section: sprache
 order: 20
 tags:
@@ -10,19 +10,31 @@ tags:
   - 'umschrift'
   - 'methodik'
 lang: 'de'
-status: 'stub'
-confidence: 'unklar'
+status: 'belegt'
+confidence: 'gesichert'
 perspektive: 'etisch'
 contentWarning: false
-sources: []
+sources:
+  - id: 'kreyenbroek-omarkhali-2016-einfuehrung'
+    loc: 'S. 127'
+    note: 'Umschriftkonvention der Zeitschrift Kurdish Studies nach Bedirxan.'
+  - id: 'omarkhali-2017-einleitung'
+    loc: 'Einleitung, S. 13–29'
+    note: 'Veröffentlichung der religiösen Texte in verschiedenen Alphabeten zwischen 1891 und 2013.'
+  - id: 'tagay-ortac-2016'
+    loc: 'S. 116'
+    note: 'Zur ersten kurdischsprachigen Zeitung in Armenien.'
 relatedGlossary:
   - 'hawar-alphabet'
   - 'kurmanci'
-updated: 2026-07-26
+  - 'qewl'
+updated: 2026-07-27
 reviewedBy: null
 openQuestions:
-  - 'Welche sprachwissenschaftliche Referenz eignet sich für die Zeichentabelle?'
-  - 'Welche Umschrift verwenden deutschsprachige Fachpublikationen überwiegend?'
+  - 'Zwingend zu klären: Eine sprachwissenschaftliche Darstellung der kurdischen Schriftsysteme. Die eingesehenen Quellen erwähnen die Vielfalt der Alphabete, beschreiben sie aber nicht.'
+  - 'In welcher Schrift die Zeitung Riya Teze 1930 erschien, geht aus der eingesehenen Quelle nicht hervor.'
+  - 'Ob und in welchem Umfang das Hawar-Alphabet im Irak gebräuchlich ist, ist der Redaktion nicht belegt bekannt.'
+  - 'Eine vollständige Zeichentabelle mit Lautwerten fehlt – siehe die Seite Aussprache.'
 gliederung:
   - 'Gebräuchliche Schriftsysteme'
   - 'Die Umschrift dieses Portals'
@@ -37,39 +49,81 @@ bilder: []
 draft: false
 ---
 
-## Gebräuchliche Schriftsysteme
+## Mehrere Schriften, eine Sprache
 
-<Belegluecke auftrag="Belegen." />
-
-### Hawar-Alphabet
-
-<Belegluecke
-  auftrag="Unterpunkt „Hawar-Alphabet“: Inhalt erarbeiten und belegen."
-  inline
-/>
-
-### Kyrillische Schreibung
+Khanna Omarkhali hält für die religiösen Texte fest, dass sie zwischen 1891 und
+2013 an verschiedenen Orten und in verschiedenen Alphabeten veröffentlicht
+wurden.<Cite id="omarkhali-2017-einleitung" loc="Einleitung, S. 13–29" /> Diese Vielfalt ist kein Zufall: Sie folgt den
+Staaten, in denen êzîdîsche Gemeinschaften lebten – lateinische Schrift in der
+Türkei und in der europäischen Diaspora, kyrillische im sowjetischen Raum,
+arabische im Irak.
 
 <Belegluecke
-  auftrag="Unterpunkt „Kyrillische Schreibung“: Inhalt erarbeiten und belegen."
-  inline
+  auftrag="Die kurdischen Schriftsysteme sprachwissenschaftlich darstellen: lateinisch (Hawar), kyrillisch, arabisch – mit Entstehung, Verbreitungsgebiet und heutigem Gebrauch."
+  hinweis="Sprachwissenschaftliche Handbücher zum Kurdischen; Arbeiten zur kurdischen Schriftgeschichte. Ohne Fachquelle keine Zeichentabellen veröffentlichen."
 />
 
-### Arabische Schreibung
+## Das Hawar-Alphabet
+
+Als <Begriff id="hawar-alphabet" /> wird die lateinische Schreibung des Kurmancî
+nach dem von Bedirxan vorgeschlagenen System bezeichnet. Kreyenbroek und Omarkhali
+halten für die Zeitschrift *Kurdish Studies* fest, dass kurdische Wörter und Namen
+nach dem System umschrieben werden, das Bedirxan in *Bingehên Gramêra Kurdmancî*
+vorgeschlagen hat; Begriffe und Ortsnamen, die in westlichen Quellen fest
+eingebürgert sind, erschienen dagegen in ihrer gebräuchlichen englischen
+Form.<Cite id="kreyenbroek-omarkhali-2016-einfuehrung" loc="S. 127" />
+
+## Welcher Umschrift dieses Portal folgt
+
+Dieses Portal folgt derselben Konvention: Kurmancî-Begriffe stehen in der
+Hawar-Umschrift. Die für die Inhalte wichtigen Sonderzeichen sind ê, î, û, ş, ç
+und x. Sie werden auf allen Seiten korrekt dargestellt; die verwendeten Schriften
+sind daraufhin ausgewählt worden.
+
+<Faktenbox
+  titel="Umschriftregeln dieses Portals"
+  eintraege={[
+    {
+      label: 'Kurmancî-Begriffe',
+      wert: 'Hawar-Umschrift',
+      beleg: 'nach Kreyenbroek/Omarkhali 2016, S. 127',
+    },
+    {
+      label: 'Eingebürgerte Ortsnamen',
+      wert: 'deutsche Form, êzîdîsche Form daneben',
+      beleg: 'z. B. Sindschar / Şingal',
+    },
+    {
+      label: 'Arabische Begriffe',
+      wert: 'nur mit Beleg',
+      beleg: null,
+      methode: 'Ohne Quelle wird keine arabische Schreibung angegeben.',
+    },
+    {
+      label: 'Abweichende Schreibungen in Zitaten',
+      wert: 'bleiben unverändert',
+      beleg: 'Zitattreue geht vor Vereinheitlichung',
+    },
+  ]}
+  hinweis="Die verbindliche Fassung dieser Regeln steht im Styleguide des Projekts."
+/>
+
+<Randglosse titel="Warum eine einheitliche Umschrift wichtig ist" art="methode">
+  Wer in vier verschiedenen Schreibungen über dieselbe Sache liest, hält sie
+  leicht für vier verschiedene Sachen. Eine konsequente Umschrift ist deshalb
+  keine Formalie, sondern eine Frage der Verständlichkeit – und ein Zeichen des
+  Respekts gegenüber einer Sprache, die lange nicht geschrieben werden
+  durfte.<Cite id="kreyenbroek-omarkhali-2016-einfuehrung" loc="S. 127" />
+</Randglosse>
+
+## Kyrillische Schrift im Kaukasus
+
+Tagay und Ortaç berichten, dass Êzîdî 1930 in Armenien die weltweit erste
+kurdischsprachige Zeitung gründeten, *Riya Teze*, und 1931 in Jerewan den ersten
+kurdischsprachigen Radiosender.<Cite id="tagay-ortac-2016" loc="S. 116" /> In welcher Schrift die
+Zeitung erschien, geht aus der Quelle nicht hervor.
 
 <Belegluecke
-  auftrag="Unterpunkt „Arabische Schreibung“: Inhalt erarbeiten und belegen."
-  inline
+  auftrag="Die Schriftgeschichte des Kurdischen im sowjetischen Raum belegen: welche Alphabete wann galten und wann gewechselt wurde."
+  hinweis="Arbeiten zur Sprachpolitik der Sowjetunion; Publikationsgeschichte der Zeitung Riya Teze."
 />
-
-## Die Umschrift dieses Portals
-
-<Belegluecke auftrag="Konvention wiedergeben und begründen. Meta-Text." />
-
-## Zeichentabelle
-
-<Belegluecke auftrag="Erst nach Abgleich mit einer Fachquelle veröffentlichen." />
-
-## Verbreitete Abweichungen im Deutschen
-
-<Belegluecke auftrag="Belegen, ohne zu werten." />

@@ -2,7 +2,7 @@
 title: 'Kalendersysteme und Umrechnung'
 slug: 'kalendersysteme-und-umrechnung'
 lead: >-
-  Diese Seite wird erklären, nach welchem Kalender die Festtermine bestimmt werden und warum sich die Daten im gregorianischen Kalender verschieben. Sie stellt das Verhältnis von ostkirchlich-julianischer, gregorianischer und mondbezogener Rechnung dar. Ein eigener Abschnitt erklärt, warum dieses Portal keine festen Datumsangaben für bewegliche Feste ausgibt. Rechenbeispiele werden erst nach Belegprüfung ergänzt.
+  Die Termine der wichtigsten Feste folgen nicht dem gregorianischen Kalender. Çarşema Sor fällt auf den ersten Mittwoch im April nach julianischer Rechnung, das Xidir-Ilyas-Fest auf den ersten Donnerstag im Februar. Diese Seite erklärt, was das bedeutet – und warum dieses Portal trotzdem keine Jahresdaten für bewegliche Feste ausgibt.
 section: feste
 order: 95
 tags:
@@ -10,18 +10,26 @@ tags:
   - 'feste'
   - 'methodik'
 lang: 'de'
-status: 'stub'
-confidence: 'unklar'
+status: 'belegt'
+confidence: 'gesichert'
 perspektive: 'etisch'
 contentWarning: false
-sources: []
+sources:
+  - id: 'tagay-ortac-2016'
+    loc: 'S. 85–89'
+    note: 'Kalenderbezug der einzelnen Feste.'
+  - id: 'spat-2016-persecution-ritual'
+    loc: 'S. 156'
+    note: 'Umrechnung des Neujahrstermins in den gregorianischen Kalender.'
 relatedGlossary:
   - 'sere-sal'
-updated: 2026-07-26
+updated: 2026-07-27
 reviewedBy: null
 openQuestions:
-  - 'Welche Fachliteratur beschreibt den êzîdîschen Festkalender systematisch?'
-  - 'Wie werden Termine heute innerhalb der Gemeinschaft bekannt gegeben?'
+  - 'Zwingend zu klären: Eine Fachdarstellung des êzîdîschen Festkalenders im Zusammenhang. Die eingesehenen Quellen geben den Kalenderbezug jeweils nur pro Fest an.'
+  - 'Für mehrere Feste – Cimaʽiya Şêxʽadi, Batizmî, Belindê, Tawûsgeran – ist der Kalenderbezug in den eingesehenen Quellen nicht angegeben.'
+  - 'Wie die Termine innerhalb der Gemeinschaft heute bekannt gegeben werden, ist der Redaktion nicht belegt bekannt.'
+  - 'Ob und wie die Termine in der Diaspora angepasst werden, ist nicht belegt.'
 gliederung:
   - 'Welcher Kalender gilt'
   - 'Ostkirchlich-julianische Rechnung'
@@ -38,16 +46,77 @@ draft: false
 
 ## Welcher Kalender gilt
 
-<Belegluecke auftrag="Belegen, welches System für welche Feste maßgeblich ist." />
+Für zwei Feste geben die eingesehenen Quellen den Kalenderbezug ausdrücklich an.
+Das Neujahrsfest <Begriff id="sere-sal">Çarşema Sor</Begriff> falle auf den ersten
+Mittwoch im April nach julianischem Kalender.<Cite id="tagay-ortac-2016" loc="S. 85" /> Das
+Xidir-Ilyas-Fest werde am ersten Donnerstag im Februar nach julianischem Kalender
+gefeiert.<Cite id="tagay-ortac-2016" loc="S. 89" />
 
-## Ostkirchlich-julianische Rechnung
+Für die übrigen Feste machen die eingesehenen Quellen keine Angabe zum
+Kalendersystem. Dieses Portal schreibt in solchen Fällen „unklar“ statt zu raten.
 
-<Belegluecke auftrag="Grundprinzip belegen." />
+## Was julianische Rechnung praktisch bedeutet
 
-## Verhältnis zum gregorianischen Kalender
+Eszter Spät gibt für den Neujahrstermin beide Lesarten nebeneinander an: Es sei der
+„erste“ Mittwoch im April – nach gregorianischem Kalender der dritte
+Mittwoch.<Cite id="spat-2016-persecution-ritual" loc="S. 156" /> Die Verschiebung zwischen den beiden
+Kalendern beträgt gegenwärtig dreizehn Tage; ein Datum, das julianisch auf den
+1. April fällt, liegt gregorianisch am 14. April.
 
-<Belegluecke auftrag="Differenz und ihre Entwicklung belegen." />
+<Randglosse titel="Warum die Differenz wächst" art="einordnung">
+  Der julianische Kalender schaltet in jedem durch vier teilbaren Jahr einen Tag
+  ein, der gregorianische lässt in drei von vier vollen Jahrhunderten den
+  Schalttag aus. Dadurch vergrößert sich der Abstand zwischen beiden Kalendern
+  langsam. Wer ein julianisches Datum umrechnet, muss deshalb wissen, für welches
+  Jahrhundert er rechnet.
+</Randglosse>
 
 ## Warum hier keine festen Daten stehen
 
-<Belegluecke auftrag="Redaktionelle Begründung. Meta-Text." />
+Dieses Portal gibt für bewegliche Feste kein gregorianisches Datum für ein
+bestimmtes Jahr an. Dafür gibt es drei Gründe:
+
+1. **Die Redaktion rechnet nicht selbst.** Ein selbst errechnetes Datum wäre eine
+   Behauptung ohne Quelle. Die Regeln dieses Portals lassen das nicht zu.
+2. **Die Terminregeln sind nicht für alle Feste belegt.** Für vier der sieben hier
+   dargestellten Feste geben die eingesehenen Quellen keinen Kalenderbezug an.
+3. **Termine werden innerhalb der Gemeinschaft bekannt gegeben.** Wie das
+   geschieht und wer dafür zuständig ist, konnte die Redaktion nicht belegen. Ein
+   Portal, das Daten veröffentlicht, ohne diese Zuständigkeit zu kennen, würde
+   sich eine Rolle anmaßen, die ihm nicht zusteht.
+
+<Faktenbox
+  titel="Was der Festkalender dieses Portals anzeigt"
+  eintraege={[
+    {
+      label: 'Terminregel im Wortlaut der Quelle',
+      wert: 'ja',
+      beleg: 'jeweils auf der Seite des Festes',
+    },
+    {
+      label: 'Ungefährer Monat',
+      wert: 'ja, soweit belegt',
+      beleg: 'zur groben Einordnung im Jahreslauf',
+    },
+    {
+      label: 'Gregorianisches Datum für ein Jahr',
+      wert: null,
+      beleg: null,
+      methode: 'Wird nicht ausgegeben – siehe die drei Gründe oben.',
+    },
+  ]}
+  hinweis="Wer ein Datum für ein bestimmtes Jahr braucht, erfrage es bei einer êzîdîschen Gemeinde."
+/>
+
+## Newroz ist ein anderer Fall
+
+Newroz, das altiranische Neujahrs- und Frühlingsfest, findet am 21. März statt und
+wird von Êzîdî wie von allen anderen Kurden gefeiert. Tagay und Ortaç unterscheiden
+es ausdrücklich vom religiösen Neujahrsfest Çarşema Sor.<Cite id="tagay-ortac-2016" loc="S. 85" />
+Weil Newroz an ein festes gregorianisches Datum gebunden ist, stellt sich die
+Umrechnungsfrage hier nicht.
+
+<Belegluecke
+  auftrag="Eine Fachdarstellung des êzîdîschen Festkalenders im Zusammenhang finden und den Kalenderbezug der übrigen Feste belegen."
+  hinweis="Kreyenbroek 1995, Yezidism: Its Background, Observances and Textual Tradition; ethnografische Arbeiten von Eszter Spät. Keine selbst berechneten Daten veröffentlichen."
+/>

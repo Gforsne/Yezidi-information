@@ -203,6 +203,19 @@ for (const d of dokumente) {
         `Zeile ${nr + 1}: <${treffer[1]}> beginnt die Zeile. Inline-Komponenten an die vorige Zeile anhängen – sonst rutscht der Beleg aus dem Absatz heraus oder es entsteht eine Lücke vor der Ziffer.`,
       );
     }
+    /*
+      Die Gegenprobe: Eine Überschrift darf keine Inline-Komponente
+      enthalten. Genau das entsteht, wenn ein Reparaturlauf eine Zeile
+      unbesehen an die vorherige hängt – die Überschrift verschluckt dann
+      den nächsten Absatz.
+    */
+    const ueberschrift = /^#{1,6}\s.*<(Cite|Begriff|KurmanciBegriff|Unsicher)\b/.exec(zeile);
+    if (ueberschrift) {
+      fehle(
+        d.pfad,
+        `Zeile ${nr + 1}: Die Überschrift enthält <${ueberschrift[1]}>. Überschriften bestehen nur aus Text; der Absatz gehört in die nächste Zeile.`,
+      );
+    }
   }
 
   // 5. Glossarbezüge.

@@ -5,11 +5,11 @@
 
 ## Kurzfassung
 
-228 von 458 Abschnitten tragen mindestens einen Beleg – **Belegquote 50 %**.
-Insgesamt stehen 576 Belegstellen im Text.
-347 Stellen sind ausdrücklich als Beleglücke markiert.
+324 von 458 Abschnitten tragen mindestens einen Beleg – **Belegquote 71 %**.
+Insgesamt stehen 763 Belegstellen im Text.
+245 Stellen sind ausdrücklich als Beleglücke markiert.
 
-Die Recherche läuft: 88 von 162 Seiten (54 %) haben den Gerüst-Status verlassen.
+Die Recherche läuft: 123 von 162 Seiten (76 %) haben den Gerüst-Status verlassen.
 Eine niedrige Gesamtquote bedeutet **nicht**, dass unbelegte Behauptungen im Text stehen –
 an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, was fertig ist.
 
@@ -17,9 +17,9 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 
 | Status | Bedeutung | Seiten |
 |---|---|---:|
-| `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 74 |
+| `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 39 |
 | `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 17 |
-| `belegt` | Alle Aussagen mit Quellen belegt | 71 |
+| `belegt` | Alle Aussagen mit Quellen belegt | 106 |
 | `geprüft` | Belegt und zusätzlich gegengelesen | 0 |
 | **Summe** | | **162** |
 
@@ -30,17 +30,17 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Überblick | 4 | 4 | 27 | 109 | 8 | 20 | 100 % |
 | Religion und Glaube | 10 | 10 | 48 | 100 | 16 | 37 | 100 % |
 | Gesellschaftsordnung | 8 | 8 | 38 | 69 | 12 | 32 | 100 % |
-| Heilige Orte | 11 | 0 | 40 | 0 | 48 | 23 | 0 % |
-| Feste, Kalender und Riten | 9 | 0 | 37 | 0 | 41 | 14 | 0 % |
-| Sprache und Namen | 5 | 0 | 19 | 0 | 22 | 10 | 0 % |
+| Heilige Orte | 11 | 9 | 37 | 45 | 17 | 33 | 100 % |
+| Feste, Kalender und Riten | 9 | 9 | 39 | 75 | 5 | 32 | 100 % |
+| Sprache und Namen | 5 | 4 | 18 | 27 | 6 | 18 | 100 % |
 | Geschichte | 11 | 11 | 44 | 92 | 8 | 40 | 100 % |
 | Genozid 2014 und Verfolgung | 10 | 10 | 38 | 73 | 18 | 35 | 100 % |
 | Gegenwart und Diaspora | 8 | 8 | 26 | 48 | 15 | 31 | 100 % |
-| Missverständnisse und Desinformation | 3 | 0 | 13 | 0 | 15 | 4 | 0 % |
+| Missverständnisse und Desinformation | 3 | 3 | 15 | 19 | 3 | 9 | 100 % |
 | Kultur | 10 | 0 | 32 | 0 | 38 | 12 | 0 % |
 | Personen | 3 | 0 | 9 | 0 | 9 | 5 | 0 % |
 | Wissenschaft und Quellen | 4 | 1 | 21 | 21 | 17 | 7 | 100 % |
-| Wissen und Vermittlung | 56 | 36 | 21 | 64 | 35 | 104 | 100 % |
+| Wissen und Vermittlung | 56 | 46 | 21 | 85 | 28 | 88 | 100 % |
 | Über dieses Projekt | 10 | 0 | 45 | 0 | 45 | 7 | 0 % |
 
 ## Weitere Sammlungen
@@ -56,11 +56,11 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 
 ## Seiten mit Inhaltshinweis
 
-29 Seiten tragen einen Inhaltshinweis. Für sie gelten die
+30 Seiten tragen einen Inhaltshinweis. Für sie gelten die
 Redaktionsregeln aus Abschnitt 10 der Projektvorgabe: keine Gewaltdetails, keine identifizierbaren
 Opferfotos, keine Täterpropaganda, keine Namen Überlebender ohne dokumentierte Selbstnennung.
 
 ## Seiten ohne einen einzigen Beleg
 
-74 von 162 Seiten enthalten noch keine Belegstelle.
+39 von 162 Seiten enthalten noch keine Belegstelle.
 Alle tragen `status: stub` und zeigen das im Belegapparat sichtbar an.
