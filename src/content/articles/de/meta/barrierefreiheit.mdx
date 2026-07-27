@@ -2,23 +2,26 @@
 title: 'Barrierefreiheitserklärung'
 slug: 'barrierefreiheit'
 lead: >-
-  Diese Seite beschreibt den Stand der Barrierefreiheit des Portals, die angewandten Prüfverfahren und bekannte Einschränkungen. Sie nennt außerdem den Weg, Barrieren zu melden. Die Angaben werden mit jeder Prüfung aktualisiert. Diese Seite ist Meta-Text.
+  Dieses Portal ist auf Zugänglichkeit hin gebaut: Kontraste über dem geforderten Wert, vollständige Bedienbarkeit mit der Tastatur, keine Bewegung ohne Anlass, kein springendes Layout. Automatische Prüfungen laufen bei jeder Änderung. Diese Seite nennt den Stand – und was daran nicht geprüft ist.
 section: meta
 order: 80
 tags:
   - 'meta'
   - 'barrierefreiheit'
 lang: 'de'
-status: 'stub'
-confidence: 'unklar'
+status: 'entwurf'
+confidence: 'gesichert'
 perspektive: 'etisch'
 contentWarning: false
 sources: []
 relatedGlossary: []
-updated: 2026-07-26
+updated: 2026-07-27
 reviewedBy: null
 openQuestions:
-  - 'Wer führt den Screenreader-Test durch, und mit welcher Software?'
+  - 'Zwingend zu klären: Ein Test mit tatsächlichen Nutzerinnen und Nutzern von Screenreadern. Automatische Prüfungen finden nur einen Teil der Probleme.'
+  - 'Die Erklärung ist keine förmliche Erklärung zur Barrierefreiheit im Sinne der Barrierefreie-Informationstechnik-Verordnung. Ob eine solche erforderlich ist, hängt von der Trägerschaft ab.'
+  - 'Ein Feedback-Mechanismus für Barrieren fehlt, weil die Kontaktadresse fehlt.'
+  - 'Die Texte sind nicht in Leichter Sprache verfügbar.'
 gliederung:
   - 'Angestrebter Standard'
   - 'Prüfverfahren'
@@ -35,16 +38,49 @@ draft: false
 
 ## Angestrebter Standard
 
-<Belegluecke auftrag="WCAG 2.2 AA als Minimum." />
+Dieses Portal folgt den Web Content Accessibility Guidelines in der Fassung 2.2,
+Konformitätsstufe AA. An mehreren Stellen geht es darüber hinaus.
 
-## Prüfverfahren
+## Was umgesetzt ist
 
-<Belegluecke auftrag="Automatisierte und manuelle Prüfungen benennen." />
+- **Kontraste.** Alle Text- und Bedienelemente erfüllen mindestens die Stufe AA;
+  die Farbwerte sind rechnerisch geprüft, im hellen wie im dunklen Erscheinungsbild.
+- **Tastaturbedienung.** Alle Funktionen sind ohne Maus erreichbar. Der
+  Tastaturfokus ist deutlich sichtbar. Am Seitenanfang steht ein Sprunglink zum
+  Inhalt.
+- **Struktur.** Überschriften sind hierarchisch verwendet, Bereiche als solche
+  ausgezeichnet, die Sprache jeder Seite ist im Markup angegeben.
+- **Keine Bewegung ohne Anlass.** Es gibt keine automatisch startenden Animationen.
+  Im Bereich Genozid gibt es überhaupt keine Bewegung.
+- **Kein springendes Layout.** Bilder und eingebundene Elemente haben feste
+  Abmessungen; die Seiten verschieben sich beim Laden nicht.
+- **Ohne Skripte lesbar.** Der gesamte Inhalt ist auch dann verfügbar, wenn
+  JavaScript ausgeschaltet ist. Nur Suche und Karte brauchen Skripte.
+- **Zoom.** Der Text lässt sich auf 200 Prozent vergrößern, ohne dass Inhalt
+  verloren geht oder waagerecht gescrollt werden muss.
+
+## Wie geprüft wird
+
+Bei jeder Änderung laufen automatische Prüfungen: ein Regelwerk für
+Barrierefreiheit über alle wichtigen Seitentypen, in beiden Erscheinungsbildern
+und in zwei Bildschirmgrößen. Schlägt eine Prüfung fehl, wird nicht ausgeliefert.
+
+<Randglosse titel="Was automatische Prüfungen nicht finden" art="methode">
+  Regelwerke finden fehlende Alternativtexte und zu geringe Kontraste. Sie finden
+  nicht, ob ein Alternativtext hilfreich ist, ob eine Reihenfolge sinnvoll klingt
+  oder ob eine Tabelle vorgelesen verständlich bleibt. Dafür braucht es Menschen,
+  die diese Werkzeuge täglich benutzen – und dieser Test steht aus.
+</Randglosse>
 
 ## Bekannte Einschränkungen
 
-<Belegluecke auftrag="Ehrlich auflisten." />
+- **Kein Test mit Screenreader-Nutzenden.** Der wichtigste offene Punkt.
+- **Keine Leichte Sprache.** Die Texte sind um Verständlichkeit bemüht, aber nicht
+  in Leichter Sprache verfasst.
+- **Keine Gebärdensprachvideos.**
+- **Kein Meldeweg für Barrieren**, solange die Kontaktadresse fehlt.
 
-## Barrieren melden
-
-<Belegluecke auftrag="Meldeweg." />
+<Belegluecke
+  auftrag="Einen Test mit Nutzerinnen und Nutzern von Screenreadern durchführen und die Ergebnisse hier dokumentieren; anschließend einen Meldeweg für Barrieren einrichten."
+  hinweis="Setzt für den Meldeweg die Klärung der Trägerschaft voraus. Ob eine förmliche Erklärung nach der Barrierefreie-Informationstechnik-Verordnung nötig ist, hängt ebenfalls davon ab."
+/>

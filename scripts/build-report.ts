@@ -110,7 +110,17 @@ const zeilen: Zeile[] = dokumente
 
 const summe = (f: (z: Zeile) => number) => zeilen.reduce((a, z) => a + f(z), 0);
 
-const gesamtAbschnitte = summe((z) => z.abschnitte);
+/*
+  Der Bereich `meta` beschreibt das Projekt selbst – Arbeitsweise, Datenschutz,
+  Barrierefreiheit. Diese Seiten behaupten nichts über die Êzîdî und haben
+  deshalb nichts zu belegen. In der Belegquote würden sie das Bild verzerren,
+  in der Bereichstabelle stehen sie mit „–“ statt mit 0 Prozent.
+*/
+const istProjektbereich = (bereich: string) => bereich === 'meta';
+const inhaltszeilen = zeilen.filter((z) => !istProjektbereich(z.bereich));
+const inhaltsSumme = (f: (z: Zeile) => number) => inhaltszeilen.reduce((a, z) => a + f(z), 0);
+
+const gesamtAbschnitte = inhaltsSumme((z) => z.abschnitte);
 const gesamtZitate = summe((z) => z.zitate);
 const gesamtLuecken = summe((z) => z.belegluecken);
 /*
@@ -118,7 +128,7 @@ const gesamtLuecken = summe((z) => z.belegluecken);
   belegt wird. Sonst ergäbe eine Seite mit vielen Belegen in einem Abschnitt
   eine Quote über 100 Prozent.
 */
-const gesamtBelegteAbschnitte = summe((z) => Math.min(z.abschnitte, z.zitate));
+const gesamtBelegteAbschnitte = inhaltsSumme((z) => Math.min(z.abschnitte, z.zitate));
 
 const nachStatus = (s: string) => zeilen.filter((z) => z.status === s).length;
 
@@ -157,6 +167,7 @@ function einordnung(): string {
 const bereichszeilen = sections.map((s) => {
   const eigene = zeilen.filter((z) => z.bereich === s.id);
   return {
+    id: s.id,
     titel: s.title,
     seiten: eigene.length,
     abschnitte: eigene.reduce((a, z) => a + z.abschnitte, 0),
@@ -197,7 +208,7 @@ ${einordnung()}
 ${bereichszeilen
   .map(
     (b) =>
-      `| ${b.titel} | ${b.seiten} | ${b.belegt} | ${b.abschnitte} | ${b.zitate} | ${b.luecken} | ${b.fragen} | ${quote(b.abschnitte, b.zitate)} % |`,
+      `| ${b.titel} | ${b.seiten} | ${b.belegt} | ${b.abschnitte} | ${b.zitate} | ${b.luecken} | ${b.fragen} | ${istProjektbereich(b.id) ? '–' : `${quote(b.abschnitte, b.zitate)} %`} |`,
   )
   .join('\n')}
 

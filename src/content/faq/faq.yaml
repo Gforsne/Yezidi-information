@@ -1,71 +1,138 @@
-# Gerüst der FAQ. Antworten bleiben leer, solange sie nicht belegt sind.
+# Häufige Fragen. Jede Antwort ist belegt; wo eine Frage nicht abschließend
+# beantwortet werden kann, sagt die Antwort das und verweist auf die Seite,
+# die die offenen Punkte trägt.
 - id: wie-viele-ezidi-gibt-es
   frage: 'Wie viele Êzîdî gibt es weltweit?'
-  antwort: ''
+  antwort: >-
+    Genau weiß es niemand. Khanna Omarkhali nennt inoffizielle Schätzungen von
+    etwas über 600.000 Menschen weltweit. Amtliche Erhebungen, die êzîdîsche
+    Zugehörigkeit erfassen, sind der Redaktion nicht bekannt; kursierende
+    Zahlen lassen sich meist keiner Erhebung mit nachvollziehbarer Methode
+    zuordnen. Wer eine Zahl nennt, sollte deshalb immer sagen, woher sie stammt.
   thema: ueberblick
   lang: de
-  status: stub
-  confidence: unklar
-  sources: []
+  status: belegt
+  confidence: umstritten
+  sources:
+    - id: 'omarkhali-2017-einleitung'
+      loc: 'Einleitung, S. 13–29'
+      note: 'Schätzung von etwas über 600.000 weltweit, ausdrücklich als inoffiziell bezeichnet.'
   weiterfuehrend: ['ueberblick/verbreitung-und-bevoelkerungszahlen']
   openQuestions:
-    - 'Welche Schätzungen liegen vor, von wem, mit welchem Stichjahr und welcher Erhebungsmethode?'
-    - 'Warum weichen die Schätzungen voneinander ab?'
+    - 'Die Schätzung ist von 2017 und wird in der Quelle ausdrücklich als inoffiziell bezeichnet. Eine Erhebungsmethode wird nicht angegeben.'
+    - 'Wie sich die Zahl nach den Fluchtbewegungen ab 2014 verändert hat, ist der Redaktion nicht belegt bekannt.'
   contentWarning: false
-  updated: 2026-07-26
+  updated: 2026-07-27
 
 - id: sind-ezidi-kurden
   frage: 'Sind Êzîdî Kurdinnen und Kurden?'
-  antwort: ''
+  antwort: >-
+    Darauf gibt es keine eine Antwort, und das ist keine Ausflucht. Khanna
+    Omarkhali hält fest, dass die meisten Êzîdî eine kurdische Identität für
+    sich in Anspruch nehmen, während einige im Kaukasus und in Şingal einer
+    eigenen êzîdîschen Ethnizität anzugehören beanspruchen. Die Frage hat nach
+    dem Völkermord von 2014 an Schärfe gewonnen. Dieses Portal gibt beide
+    Positionen wieder und bewertet sie nicht.
   thema: ueberblick
   lang: de
-  status: stub
-  confidence: unklar
-  sources: []
-  weiterfuehrend: ['ueberblick/religion-ethnie-oder-beides']
+  status: belegt
+  confidence: umstritten
+  sources:
+    - id: 'omarkhali-2017-einleitung'
+      loc: 'Einleitung, S. 13–29'
+      note: 'Beide Positionen nebeneinander, ohne Wertung.'
+    - id: 'tagay-ortac-2016'
+      loc: 'S. 139'
+      note: 'Zur Verschärfung der Frage nach dem Völkermord in Şingal.'
+  weiterfuehrend: ['ueberblick/religion-ethnie-oder-beides', 'sprache/kurmanci-und-ezdiki']
   openQuestions:
-    - 'Welche Positionen vertreten Gemeinschaftsvertretungen, Forschung und politische Akteure jeweils?'
+    - 'Die Frage ist innergemeinschaftlich und politisch aufgeladen. Eine ausgewogene Darstellung müsste Selbstdarstellungen aller Dachverbände einsehen; das ist nicht geschehen.'
   contentWarning: false
-  updated: 2026-07-26
+  updated: 2026-07-27
 
 - id: warum-teufelsanbeter-falsch
   frage: 'Warum ist die Bezeichnung „Teufelsanbeter“ falsch?'
-  antwort: ''
+  antwort: >-
+    Weil sie auf einer Fehldeutung beruht. Tawûsî Melek gilt in der
+    Überlieferung als der für das Geschehen auf der Erde Verantwortliche – aus
+    menschlicher Sicht für Gutes wie für Schlechtes. Daraus ist die Vorstellung
+    entstanden, die Êzîdî verehrten das Prinzip des Bösen. Die
+    UN-Untersuchungskommission bezeichnet diese Darstellung ausdrücklich als
+    vollständig falsch. Die Zuschreibung ist über Jahrhunderte benutzt worden,
+    um Verfolgung zu rechtfertigen.
   thema: missverstaendnisse
   lang: de
-  status: stub
-  confidence: unklar
-  sources: []
-  weiterfuehrend: ['missverstaendnisse/teufelsanbetung-vorwurf']
+  status: belegt
+  confidence: gesichert
+  sources:
+    - id: 'kreyenbroek-omarkhali-2016-einfuehrung'
+      loc: 'S. 123'
+      note: 'Herkunft der Fehldeutung aus der Rolle als „Lord of this World“.'
+    - id: 'un-coi-2016-they-came-to-destroy'
+      loc: 'Abs. 19'
+      note: 'Feststellung, dass die Zuschreibung „wholly incorrect“ ist.'
+    - id: 'raa-brandenburg-2018'
+      loc: 'S. 4'
+      note: 'Von êzîdîscher Seite zurückgewiesene Behauptungen und ihre Verfolgungswirkung.'
+  weiterfuehrend:
+    - 'missverstaendnisse/teufelsanbetung-vorwurf'
+    - 'religion/tawusi-melek-und-die-sieben-engel'
   openQuestions:
-    - 'Woher stammt die Zuschreibung, und in welchen Texten ist sie zuerst nachweisbar?'
+    - 'In welchen Texten die Zuschreibung zuerst nachweisbar ist, konnte die Redaktion nicht belegen.'
   contentWarning: false
-  updated: 2026-07-26
+  updated: 2026-07-27
 
 - id: ist-2014-als-genozid-anerkannt
   frage: 'Ist der Völkermord von 2014 offiziell anerkannt?'
-  antwort: ''
+  antwort: >-
+    Ja, von mehreren Stellen – wobei „Anerkennung“ und „gerichtliche
+    Feststellung“ zwei verschiedene Dinge sind. Die Untersuchungskommission der
+    Vereinten Nationen stellte im Juni 2016 fest, dass der sogenannte Islamische
+    Staat einen Völkermord an den Êzîdî begeht. Der Deutsche Bundestag hat die
+    Verbrechen im Januar 2023 als Völkermord anerkannt. Ein Parlamentsbeschluss
+    ist eine politische Feststellung, kein Urteil.
   thema: genozid
   lang: de
-  status: stub
-  confidence: unklar
-  sources: []
-  weiterfuehrend: ['genozid/anerkennungen-als-voelkermord']
+  status: belegt
+  confidence: gesichert
+  sources:
+    - id: 'un-coi-2016-they-came-to-destroy'
+      loc: 'Abs. 1, 32'
+      note: 'Feststellung des Völkermords und der Zerstörungsabsicht.'
+    - id: 'bundestag-2023-anerkennung'
+      loc: 'S. 1'
+      note: 'Anerkennung durch den Deutschen Bundestag, Januar 2023.'
+  weiterfuehrend:
+    - 'genozid/anerkennungen-als-voelkermord'
+    - 'genozid/voelkerrechtliche-einordnung'
   openQuestions:
-    - 'Welche Parlamente und Institutionen haben wann und mit welchem Wortlaut anerkannt?'
+    - 'Eine vollständige, geprüfte Liste aller Parlamente und Institutionen mit Datum und Wortlaut liegt der Redaktion nicht vor.'
   contentWarning: true
-  updated: 2026-07-26
+  updated: 2026-07-27
 
 - id: kann-man-ezidi-werden
   frage: 'Kann man zum Êzîdîtum konvertieren?'
-  antwort: ''
+  antwort: >-
+    Nein. Die Zugehörigkeit ist an die Geburt gebunden. Khanna Omarkhali
+    beschreibt die Religion ausdrücklich als nicht missionierend. Tagay und
+    Ortaç halten fest, dass die eigentliche Initiation – bei Jungen wie bei
+    Mädchen – bereits durch die Geburt erfolgt und nicht durch einen Ritus.
   thema: gesellschaft
   lang: de
-  status: stub
-  confidence: unklar
-  sources: []
-  weiterfuehrend: ['gesellschaft/konversionsverbot-und-mischehen']
+  status: belegt
+  confidence: gesichert
+  sources:
+    - id: 'omarkhali-2017-einleitung'
+      loc: 'Einleitung, S. 13–29'
+      note: 'Einordnung als nicht missionierende Religion.'
+    - id: 'tagay-ortac-2016'
+      loc: 'S. 80'
+      note: 'Zur Initiation durch die Geburt.'
+  weiterfuehrend:
+    - 'gesellschaft/konversionsverbot-und-mischehen'
+    - 'gesellschaft/endogamie'
   openQuestions:
-    - 'Wie wird die Regel innerhalb der Gemeinschaft begründet und wie wird sie gegenwärtig diskutiert?'
+    - 'Wie die Regel innerhalb der Gemeinschaft begründet und gegenwärtig diskutiert wird, ist auf der weiterführenden Seite behandelt, aber nicht abschließend belegt.'
+    - 'Ob und unter welchen Bedingungen Menschen wieder aufgenommen werden, die zur Konversion gezwungen wurden, ist der Redaktion nicht belegt bekannt.'
   contentWarning: false
-  updated: 2026-07-26
+  updated: 2026-07-27

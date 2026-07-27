@@ -122,8 +122,13 @@ test.describe('Artikelseite', () => {
   });
 
   test('weist Gerüstseiten als solche aus', async ({ page }) => {
-    // Bewusst eine Seite, die noch nicht recherchiert ist.
-    await page.goto('/de/kultur/musik');
+    /*
+      Das Impressum bleibt ein Gerüst, bis die Trägerschaft des Projekts
+      feststeht – anders als inhaltliche Seiten lässt es sich nicht
+      wegrecherchieren. Deshalb steht der Test auf dieser Seite und muss
+      nicht bei jedem Recherchefortschritt umgehängt werden.
+    */
+    await page.goto('/de/meta/impressum');
     await expect(page.getByRole('heading', { name: 'Diese Seite ist ein Gerüst' })).toBeVisible();
   });
 

@@ -404,6 +404,67 @@ tatsächlich Belegziffern enthält.
 
 ---
 
+### D-034 — Projektseiten belegen nichts, weil sie nichts behaupten
+
+_2026-07-27_
+
+Die Seiten im Bereich `meta` beschreiben das Projekt selbst: Arbeitsweise,
+Datenschutz, Barrierefreiheit, Impressum. Sie stellen keine Behauptung
+über die Êzîdî auf und können deshalb nichts belegen. Die Belegpflicht ab
+Status „Entwurf“ gilt für sie nicht – im Zod-Schema und in
+`check:content` steht dieselbe Ausnahme, damit sie nicht auseinanderlaufen.
+
+Im Content-Report zählt der Bereich nicht in die Belegquote; in der
+Bereichstabelle steht dort „–“ statt „0 %“. Andernfalls hätte eine
+vollständig geschriebene Datenschutzerklärung die Quote des ganzen
+Portals gedrückt.
+
+Die Ausnahme ist eng gefasst: Sobald eine Projektseite doch eine
+Tatsachenbehauptung aufstellt, steht eine Quelle in `sources`, und die
+`<Cite>`-Prüfung greift wie überall.
+
+### D-035 — Überschriften dürfen keine Belege verschlucken
+
+_2026-07-27_
+
+Der Reparaturlauf, der Inline-Komponenten an die vorherige Zeile hängt,
+hatte auf einer Seite eine Überschrift mit dem folgenden Absatz
+verschmolzen. Sichtbar war das nur im gebauten HTML. `check:content`
+prüft jetzt beide Richtungen: Keine Zeile darf mit `<Cite>`, `<Begriff>`
+oder `<KurmanciBegriff>` beginnen – und keine Überschrift darf eine
+dieser Komponenten enthalten.
+
+Der Reparaturlauf selbst rührt Zeilen nach einer Überschrift oder nach
+einer Leerzeile nicht mehr an, sondern meldet sie zur Prüfung von Hand.
+
+### D-036 — Die Mediathek verzeichnet nur, was gelesen wurde
+
+_2026-07-27_
+
+In der Mediathek stehen fünf Verweise: das Themenheft von _Kurdish
+Studies_, die Hamburger Gesamtdarstellung, die Handreichung des RAA
+Brandenburg, der Bericht der UN-Untersuchungskommission und der
+Bundestagsantrag von 2023. Alle fünf sind frei zugänglich und lagen der
+Redaktion im Volltext vor; ihre Adressen stammen aus dem geprüften
+Quellenverzeichnis, nicht aus der Erinnerung.
+
+Filme, Podcasts und Tonaufnahmen fehlen. Für sie müssten Nutzungsrechte
+geklärt sein und – bei Aufnahmen von Überlebenden – die Zustimmung der
+Abgebildeten. Ein Verweis ist eine Weiterverbreitung; das gilt auch dann,
+wenn nichts eingebettet wird.
+
+### D-037 — Der Gerüst-Test hängt am Impressum
+
+_2026-07-27_
+
+Ein Rauchtest prüfte, dass Gerüstseiten als solche gekennzeichnet sind –
+an einer inhaltlichen Seite. Mit jedem Recherchefortschritt schlug er
+fehl und musste umgehängt werden. Er steht jetzt auf `/de/meta/impressum`:
+Diese Seite bleibt ein Gerüst, bis die Trägerschaft feststeht, und lässt
+sich nicht wegrecherchieren.
+
+---
+
 ## Offene Punkte, die keine Gestaltungsfrage sind
 
 Diese Punkte lassen sich nicht durch eine Entscheidung schließen; sie

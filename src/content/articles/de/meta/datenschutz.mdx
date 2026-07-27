@@ -2,7 +2,7 @@
 title: 'Datenschutzerklärung'
 slug: 'datenschutz'
 lead: >-
-  Diese Seite erklärt, welche Daten beim Besuch des Portals verarbeitet werden. Das Portal setzt keine Cookies, bindet keine externen Dienste ein und verwendet keine Analysewerkzeuge; deshalb erscheint auch kein Cookie-Banner. Beschrieben werden außerdem Server-Logdaten und die Rechte der Betroffenen. Die Angaben sind ein Platzhalter und müssen vor Veröffentlichung an den tatsächlichen Betrieb angepasst und rechtlich geprüft werden.
+  Dieses Portal setzt keine Cookies, bindet keine fremden Dienste ein und misst kein Nutzungsverhalten. Alle Bestandteile – Schriften, Suche, Karte – liegen auf demselben Server wie die Seiten selbst. Deshalb gibt es hier auch keinen Cookie-Banner. Diese Seite erklärt, was das technisch bedeutet.
 section: meta
 order: 70
 tags:
@@ -10,16 +10,18 @@ tags:
   - 'recht'
   - 'datenschutz'
 lang: 'de'
-status: 'stub'
-confidence: 'unklar'
+status: 'entwurf'
+confidence: 'gesichert'
 perspektive: 'etisch'
 contentWarning: false
 sources: []
 relatedGlossary: []
-updated: 2026-07-26
+updated: 2026-07-27
 reviewedBy: null
 openQuestions:
-  - 'Wo wird gehostet, und welche Logdaten fallen dort an?'
+  - 'Zwingend zu klären: Die verantwortliche Stelle im Sinne der Datenschutz-Grundverordnung. Ohne Trägerschaft kann dieser Abschnitt nicht ausgefüllt werden.'
+  - 'Zwingend zu klären: Ob und wie lange der Hoster Server-Logdateien speichert. Das hängt vom gewählten Hosting ab und ist hier nicht vorwegzunehmen.'
+  - 'Diese Erklärung ist keine Rechtsberatung. Vor Veröffentlichung sollte sie juristisch geprüft werden.'
 gliederung:
   - 'Warum es hier kein Cookie-Banner gibt'
   - 'Welche Daten verarbeitet werden'
@@ -35,22 +37,60 @@ bilder: []
 draft: false
 ---
 
-## Warum es hier kein Cookie-Banner gibt
+## Was dieses Portal nicht tut
 
-<Belegluecke auftrag="Sachlage beschreiben: keine Cookies, keine Tracker, keine Drittanbieter." />
+- **Keine Cookies.** Es werden keine Cookies gesetzt – weder eigene noch fremde.
+- **Keine Reichweitenmessung.** Kein Google Analytics, kein Matomo, kein Pixel,
+  kein Zählpixel irgendeiner Art.
+- **Keine eingebetteten Inhalte.** Keine Videos, Karten, Schriften oder Skripte
+  von fremden Servern. Auch nichts, was beim Laden eine Verbindung zu Dritten
+  herstellt.
+- **Keine Anmeldung, keine Konten, keine Formulare**, die Daten übertragen.
 
-## Welche Daten verarbeitet werden
+## Warum es keinen Cookie-Banner gibt
 
-<Belegluecke auftrag="Platzhalter – abhängig vom Hosting." />
+Ein Einwilligungsbanner ist dort nötig, wo auf dem Gerät der Besucherinnen und
+Besucher Informationen gespeichert oder ausgelesen werden, die für den Betrieb der
+Seite nicht erforderlich sind – typischerweise für Reichweitenmessung oder
+Werbung. Dieses Portal tut nichts davon. Es gibt daher nichts, worin einzuwilligen
+wäre.
 
-## Schriften, Karten und Suche
+<Randglosse titel="Ein Banner ist kein Datenschutz" art="methode">
+  Ein Einwilligungsbanner ist die Folge einer Entscheidung, Daten zu erheben. Wer
+  keine erhebt, braucht keinen. Die Entscheidung fällt beim Bau der Seite, nicht
+  beim Gestalten des Banners.
+</Randglosse>
 
-<Belegluecke auftrag="Lokale Auslieferung beschreiben." />
+## Wie die einzelnen Bestandteile arbeiten
 
-## Optionale Statistik
+| Bestandteil | Wo er liegt | Was er überträgt |
+| --- | --- | --- |
+| Schriften | auf diesem Server, als woff2-Dateien | nichts an Dritte |
+| Suche | Suchindex auf diesem Server, Auswertung im Browser | keine Suchbegriffe verlassen das Gerät |
+| Karte | Kartenbibliothek auf diesem Server; keine Kacheln von fremden Kartendiensten | nichts an Dritte |
+| Bilder und Grafiken | auf diesem Server | nichts an Dritte |
 
-<Belegluecke auftrag="Standardmäßig deaktiviert; Bedingungen beschreiben." />
+Die Suche funktioniert vollständig im Browser: Der Suchindex wird wie jede andere
+Datei geladen, die Eingabe wird auf dem Gerät ausgewertet. Es gibt keine
+Suchanfrage, die irgendwo ankäme.
+
+Die Karte zeigt kein Kartenbild von einem fremden Kartendienst, sondern ein
+Gradnetz und die Punkte aus dem Ortsverzeichnis dieses Portals.
+
+## Serverprotokolle
+
+Beim Abruf einer Seite entstehen technisch bedingt Verbindungsdaten – IP-Adresse,
+Zeitpunkt, abgerufene Datei. Ob und wie lange der Hoster diese speichert, hängt
+vom gewählten Hosting ab.
+
+<Belegluecke
+  auftrag="Verantwortliche Stelle, Hosting und Speicherdauer der Serverprotokolle eintragen; anschließend die Erklärung juristisch prüfen lassen."
+  hinweis="Setzt die Klärung der Trägerschaft voraus – siehe Impressum. Dieses Portal gibt keine Rechtsberatung, auch nicht in eigener Sache."
+/>
 
 ## Ihre Rechte
 
-<Belegluecke auftrag="Platzhalter – rechtlich prüfen." />
+Wo keine personenbezogenen Daten verarbeitet werden, gehen Auskunfts- und
+Löschansprüche ins Leere. Für die Verbindungsdaten des Hosters gelten die Rechte
+der Datenschutz-Grundverordnung; die zuständige Stelle ist zu benennen, sobald die
+Trägerschaft feststeht.

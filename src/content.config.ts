@@ -95,7 +95,15 @@ function verlangeQuellenAbEntwurf<T extends z.ZodType>(schema: T): T {
     überall `any`. Die Prüfung selbst läuft unverändert zur Laufzeit.
   */
   return schema.superRefine((value, ctx) => {
-    const v = value as { status?: string; sources?: unknown[] };
+    const v = value as { status?: string; sources?: unknown[]; section?: string };
+    /*
+      Ausgenommen ist allein der Bereich `meta`: Diese Seiten beschreiben das
+      Projekt selbst – Arbeitsweise, Datenschutz, Barrierefreiheit. Sie
+      behaupten nichts über die Êzîdî und können deshalb nichts belegen.
+      Wo sie doch eine Tatsachenbehauptung aufstellen, gilt die Regel wieder,
+      weil dann eine Quelle in `sources` steht und <Cite> geprüft wird.
+    */
+    if (v.section === 'meta') return;
     if (v.status && v.status !== 'stub' && (v.sources?.length ?? 0) === 0) {
       ctx.addIssue({
         code: 'custom',

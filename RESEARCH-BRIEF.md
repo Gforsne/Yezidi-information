@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **412 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **488 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -71,10 +71,10 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Rolle von Frauen (`src/content/articles/de/gesellschaft/rolle-von-frauen.mdx`)
 - **Diese Seite braucht eine Prüfung durch Angehörige der Gemeinschaft, auch zur Frage, welche Abbildungen angemessen sind.**
   - Seite: Zerstörte und beschädigte Stätten seit 2014 (`src/content/articles/de/heilige-orte/zerstoerte-staetten-seit-2014.mdx`)
-- **Wer ist Anbieter im Rechtssinne, und wer trägt die inhaltliche Verantwortung?**
-  - Seite: Impressum (`src/content/articles/de/meta/impressum.mdx`)
-- **Wer übernimmt die redaktionelle Verantwortung im Sinne des Presserechts?**
-  - Seite: Über dieses Projekt (`src/content/articles/de/meta/ueber-dieses-projekt.mdx`)
+- **Zwingend zu klären: Ob und in welcher Form Abbildungen von Heiligtümern und von Kultgegenständen aus Sicht der Gemeinschaft angemessen sind. Diese Frage ist keine Lizenzfrage.**
+  - Seite: Bildnachweise (`src/content/articles/de/meta/bildnachweise.mdx`)
+- **Zwingend zu klären: Ob und wie lange der Hoster Server-Logdateien speichert. Das hängt vom gewählten Hosting ab und ist hier nicht vorwegzunehmen.**
+  - Seite: Datenschutzerklärung (`src/content/articles/de/meta/datenschutz.mdx`)
 - **Zwingend zu klären: Welche Positionen gibt es innerhalb der Gemeinschaft zur Veröffentlichung religiöser Texte? Diese Seite zitiert deshalb bewusst keine Textstellen.**
   - Seite: Mündliche Überlieferung: Qewl, Beyt, Şehbêrî, Duʿa (`src/content/articles/de/religion/muendliche-ueberlieferung-qewl-und-beyt.mdx`)
 - **Welche Aufnahmen sind rechtlich frei zugänglich und dürfen verlinkt werden?**
@@ -85,8 +85,16 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Religion, Ethnie oder beides? (`src/content/articles/de/ueberblick/religion-ethnie-oder-beides.mdx`)
 - **Keine der hier genannten Schätzungen legt ihre Erhebungsmethode offen. Ohne Methodenangabe lässt sich nicht beurteilen, warum sie um den Faktor fünf auseinanderliegen.**
   - Seite: Verbreitung und Bevölkerungszahlen (`src/content/articles/de/ueberblick/verbreitung-und-bevoelkerungszahlen.mdx`)
-- **Welche Angebote sind dauerhaft erreichbar und nicht nur zeitlich befristet abrufbar?**
+- **Diese Seite braucht eine Prüfung durch Angehörige der Gemeinschaft und durch Beratungsstellen.**
+  - Seite: Hilfe und Anlaufstellen (`src/content/articles/de/vermittlung/hilfe-und-anlaufstellen.mdx`)
+- **Zu Tonaufnahmen religiöser Texte ist mit der Gemeinschaft zu klären, ob eine Veröffentlichung überhaupt angemessen ist.**
   - Seite: Mediathek (`src/content/articles/de/vermittlung/mediathek.mdx`)
+- **Die verzeichneten Verweise sind zum Stand 27. Juli 2026 erreichbar. Eine Routine für die regelmäßige Prüfung der Erreichbarkeit fehlt.**
+  - Seite: Mediathek (`src/content/articles/de/vermittlung/mediathek.mdx`)
+- **Als lebende Person und als Überlebende sexualisierter Gewalt wird sie hier ausschließlich über das beschrieben, was sie selbst öffentlich gemacht hat. Jede Ergänzung dieser Seite ist an diesem Maßstab zu prüfen.**
+  - Seite: Nadia Murad (`src/content/persons/de/nadia-murad.mdx`)
+- **Zwingend zu klären: Ob eine eigene Seite über eine lebende Überlebende überhaupt angemessen ist, sollte mit der Gemeinschaft und – soweit möglich – mit der Person oder ihrer Stiftung geklärt werden.**
+  - Seite: Nadia Murad (`src/content/persons/de/nadia-murad.mdx`)
 - **Zur Zahl der in der Diaspora lebenden Êzîdî liegen der Redaktion nur Schätzungen ohne dokumentierte Erhebungsmethode vor.**
   - Seite: Diaspora (`src/content/glossary/de/diaspora.mdx`)
 - **Dieser Eintrag berührt religiöse Gegenstände. Vor einer Bebilderung ist zu klären, ob und wie eine Abbildung angemessen ist.**
@@ -95,11 +103,11 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Şehbêrî (`src/content/glossary/de/sehberi.mdx`)
 - **Ob die Bundesrepublik Deutschland aus der Anerkennung konkrete Pflichten ableitet, ist eine Rechtsfrage, die dieses Portal nicht beantwortet.**
   - Seite: Völkermordkonvention (`src/content/glossary/de/voelkermordkonvention.mdx`)
-- **Welcher Quellenauszug ist rechtlich frei verwendbar und didaktisch geeignet?**
-  - Seite: Quellenauszug: Die Firman-Erinnerung (`src/content/teaching/de/quellenauszug-firman-erinnerung.mdx`)
-- **Welche Schätzungen liegen vor, von wem, mit welchem Stichjahr und welcher Erhebungsmethode?**
-  - Seite: FAQ: Wie viele Êzîdî gibt es weltweit? (`src/content/faq/faq.yaml`)
-- **Warum weichen die Schätzungen voneinander ab?**
+- **Zu klären ist außerdem, ob die Gemeinschaft die Veröffentlichung von Rezepten für Festspeisen für angemessen hält.**
+  - Seite: Platzhalter: Speise zu einem Jahresfest (`src/content/recipes/de/platzhalter-festspeise.mdx`)
+- **Ob die Kurzfassung sprachlich für die angegebene Stufe angemessen ist, sollte von Lehrkräften beurteilt werden.**
+  - Seite: Kurzfassung: Wer sind die Êzîdî? (`src/content/teaching/de/kurzfassung-wer-sind-die-ezidi.mdx`)
+- **Die Schätzung ist von 2017 und wird in der Quelle ausdrücklich als inoffiziell bezeichnet. Eine Erhebungsmethode wird nicht angegeben.**
   - Seite: FAQ: Wie viele Êzîdî gibt es weltweit? (`src/content/faq/faq.yaml`)
 
 ---
@@ -139,11 +147,11 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Der Abschnitt zur Religion streift Themen, zu denen es innerhalb der Gemeinschaft nichtöffentliche Wissensbestände gibt. Er braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **FAQ: Wie viele Êzîdî gibt es weltweit?**
-- Welche Schätzungen liegen vor, von wem, mit welchem Stichjahr und welcher Erhebungsmethode?
-- Warum weichen die Schätzungen voneinander ab?
+- Die Schätzung ist von 2017 und wird in der Quelle ausdrücklich als inoffiziell bezeichnet. Eine Erhebungsmethode wird nicht angegeben.
+- Wie sich die Zahl nach den Fluchtbewegungen ab 2014 verändert hat, ist der Redaktion nicht belegt bekannt.
 
 **FAQ: Sind Êzîdî Kurdinnen und Kurden?**
-- Welche Positionen vertreten Gemeinschaftsvertretungen, Forschung und politische Akteure jeweils?
+- Die Frage ist innergemeinschaftlich und politisch aufgeladen. Eine ausgewogene Darstellung müsste Selbstdarstellungen aller Dachverbände einsehen; das ist nicht geschehen.
 
 ### Religion und Glaube
 
@@ -208,7 +216,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Gesellschaftsordnung
 
-33 Fragen auf 9 Seiten.
+34 Fragen auf 9 Seiten.
 
 **Ämter und Institutionen**
 - Zu fast allen Ämtern liegen nur Kurzdefinitionen vor. Wie sie besetzt werden, welche Befugnisse sie haben und wie sie sich zueinander verhalten, ist nicht belegt.
@@ -259,11 +267,12 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Diese Seite berührt Geschlechterrollen in einer lebenden Gemeinschaft und die Folgen sexualisierter Gewalt. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, insbesondere durch Frauen.
 
 **FAQ: Kann man zum Êzîdîtum konvertieren?**
-- Wie wird die Regel innerhalb der Gemeinschaft begründet und wie wird sie gegenwärtig diskutiert?
+- Wie die Regel innerhalb der Gemeinschaft begründet und gegenwärtig diskutiert wird, ist auf der weiterführenden Seite behandelt, aber nicht abschließend belegt.
+- Ob und unter welchen Bedingungen Menschen wieder aufgenommen werden, die zur Konversion gezwungen wurden, ist der Redaktion nicht belegt bekannt.
 
 ### Heilige Orte
 
-33 Fragen auf 10 Seiten.
+35 Fragen auf 10 Seiten.
 
 **Heilige Orte in Armenien, Georgien und der Diaspora**
 - Zwingend zu klären: Welche Neubauten in Armenien und Georgien sind mit Baujahr, Trägerschaft und Funktion dokumentiert? Der Redaktion liegt dazu keine geprüfte Quelle vor.
@@ -288,7 +297,8 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 **Sakralarchitektur: Kegeldächer, Symbolik, Bauweise**
 - Zwingend zu klären: Eine kunsthistorische Darstellung der Bauform im Volltext. Açıkyıldız 2010, S. 131–146 gilt in der Literatur als ausführlichste Untersuchung, lag der Redaktion aber nicht vor.
 - Zu Material und Bauverfahren liegen keine belegten Angaben vor.
-- Deutungen der Kegelform – etwa als Sonnenstrahl – sind der Redaktion nur als Behauptung ohne prüfbare Quelle begegnet. Sie werden hier deshalb nicht wiedergegeben.
+- Wann der Umbau älterer Sakralbauten in die Kuppelform begann und wer ihn betrieb, geht aus der Quelle nicht hervor – sie sagt nur „in den vergangenen Jahrzehnten“.
+- Deutungen der Kegelform, etwa als Sonnenstrahl, sind der Redaktion nur als Behauptung ohne prüfbare Quelle begegnet. Sie werden hier nicht wiedergegeben.
 - Zu Restaurierungsprojekten und deren Trägerschaft liegen keine belegten Angaben vor.
 
 **Zerstörte und beschädigte Stätten seit 2014**
@@ -307,8 +317,9 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Zur Bevölkerungszusammensetzung, zur Zerstörung 2014 und zum Wiederaufbau liegen der Redaktion keine geprüften Angaben vor.
 
 **Celle**
-- Zwingend zu klären: Welche êzîdîschen Einrichtungen bestehen in Celle, seit wann, in welcher Trägerschaft? Ohne belegbare Angabe bleibt dieser Eintrag leer.
-- Ist Celle als Beispielort überhaupt sinnvoll gewählt, oder sollte stattdessen ein Ort mit dokumentierter Einrichtung aufgenommen werden?
+- Die Angabe hat den Stand 2016 und nennt keine Zahl. Wie groß die Gemeinde ist und ob sie heute noch die größte ist, ist der Redaktion nicht belegt bekannt.
+- Zu Gründungsjahr, Trägerschaft und Einrichtungen der Gemeinde liegen keine belegten Angaben vor.
+- Die Koordinaten sind ungefähr und nicht gegen einen amtlichen Geodatensatz geprüft.
 
 **Şêxan**
 - Die Koordinaten bezeichnen die Region ungefähr und sind nicht gegen einen amtlichen Geodatensatz geprüft.
@@ -530,7 +541,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Eine Tag-für-Tag-Chronologie liegt nicht vor. Die Darstellung nennt nur Daten, die die geprüften Quellen ausdrücklich angeben.
 
 **FAQ: Ist der Völkermord von 2014 offiziell anerkannt?**
-- Welche Parlamente und Institutionen haben wann und mit welchem Wortlaut anerkannt?
+- Eine vollständige, geprüfte Liste aller Parlamente und Institutionen mit Datum und Wortlaut liegt der Redaktion nicht vor.
 
 ### Gegenwart und Diaspora
 
@@ -603,69 +614,103 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Wie verbreitet die hier behandelten Behauptungen sind, ist nicht erhoben.
 
 **FAQ: Warum ist die Bezeichnung „Teufelsanbeter“ falsch?**
-- Woher stammt die Zuschreibung, und in welchen Texten ist sie zuerst nachweisbar?
+- In welchen Texten die Zuschreibung zuerst nachweisbar ist, konnte die Redaktion nicht belegen.
 
 ### Kultur
 
-12 Fragen auf 10 Seiten.
+35 Fragen auf 10 Seiten.
 
 **Handwerk, Textilien und Alltagskultur**
-- Welche Museen halten Bestände, und sind Objektdaten öffentlich?
+- Zwingend zu klären: Eine Darstellung des Handwerks – Textilherstellung, Gerät, Hausrat, Bauweise – aus einer ethnografischen oder volkskundlichen Fachquelle.
+- Zu den wirtschaftlichen Grundlagen der traditionellen Siedlungsgebiete liegen der Redaktion keine belegten Angaben vor.
+- Zum Wohnen und Bauen jenseits der Sakralbauten liegen keine belegten Angaben vor.
 
 **Kleidung und Tracht**
-- Welche Sammlungen dokumentieren êzîdîsche Trachten, und sind Abbildungen frei nutzbar?
+- Zwingend zu klären: Eine Darstellung der Trachten selbst – Schnitt, Materialien, Herstellung, regionale Unterschiede. Der Redaktion liegt dazu keine Quelle vor.
+- Die Deutungen der Farben Weiß und Dunkelblau gibt die Quelle ohne Herleitung wieder.
+- Ob und wie sich die Kleidung geistlicher Ämter von der übrigen unterscheidet, ist hier nur für den Dêzî belegt.
+- Zur Kleidung in der Gegenwart liegen keine belegten Angaben vor, die über die Feststellung hinausgehen, dass die Tabus gelockert wurden.
 
 **Küche und Speisen**
-- Welche publizierten Kochbücher oder Sammlungen sind als Quelle geeignet?
+- Zwingend zu klären: Eine publizierte Rezeptsammlung oder eine Vereinspublikation mit dokumentierten Rezepten. Ohne sie bleiben die Rezept-Einträge dieses Portals Platzhalter.
+- Zur Alltagsküche liegen der Redaktion keine belegten Angaben vor – belegt sind nur Festspeisen.
+- Regionale Unterschiede sind nur insoweit belegt, als die Feste selbst regional verschieden sind.
+- Zur Küche in der Diaspora liegen keine belegten Angaben vor.
 
 **Literatur, Erzählungen und Sprichwörter**
-- Welche deutschsprachigen Übersetzungen liegen vor?
+- Zwingend zu klären: Zur zeitgenössischen êzîdîschen Literatur – Autorinnen und Autoren, Werke, Verlage – liegen der Redaktion keine geprüften Angaben vor.
+- Zu Sprichwörtern liegen keine belegten Angaben vor.
+- Welche religiösen Texte in deutscher Übersetzung vorliegen, konnte die Redaktion nicht abschließend belegen.
+- Diese Seite berührt religiöse Texte. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, auch zu der Frage, welche Texte überhaupt wiedergegeben werden sollten.
 
 **Moderne Kunst, Film und Fotografie**
-- Welche Ausstellungen und Filme sind dokumentiert und dauerhaft auffindbar?
+- Zwingend zu klären: Zur bildenden Kunst von Êzîdî liegen der Redaktion keine geprüften Angaben vor. Namen, Werke und Ausstellungen fehlen vollständig.
+- Die Angaben zu Film, Zeitung und Radio in Armenien stammen aus einer Quelle, die ihrerseits auf Omarkhali 2013 und 2015 verweist. Diese Arbeiten lagen der Redaktion nicht vor; die Angaben sind damit nicht am Original geprüft.
+- Zu Dokumentarfilmen über den Völkermord von 2014 liegen keine geprüften Angaben vor. Eine Auswahl ohne Kriterien wäre willkürlich.
+- Zur Fotografie – wer fotografiert, mit welchem Zugang, unter welchen Bedingungen – liegen keine Angaben vor. Gerade hier wären die Fragen des Bildrechts und der Zustimmung vorab zu klären.
 
 **Musik**
-- Welche musikwissenschaftlichen Arbeiten behandeln die religiöse Musik?
-- Welche Tonarchive sind zugänglich, und unter welchen Bedingungen?
+- Zwingend zu klären: Zur weltlichen Musik – Formen, Anlässe, Interpretinnen und Interpreten – liegen der Redaktion keine geprüften Angaben vor. Die Seite behandelt deshalb fast ausschließlich religiöse Musik.
+- Die Melodien der religiösen Dichtung bezeichnet Omarkhali ausdrücklich als bislang unerforschtes Gebiet. Eine musikwissenschaftliche Untersuchung liegt der Redaktion nicht vor.
+- Zu Aufnahmen und Archiven jenseits der Materialien, die Omarkhali beschreibt, liegen keine Angaben vor.
+- Diese Seite berührt Gegenstände des Kults. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft, auch zu der Frage, welche Aufnahmen veröffentlicht werden dürfen.
 
 **Sport und Vereinsleben in der Diaspora**
-- Gibt es Untersuchungen zur Rolle von Vereinen für den Spracherhalt?
+- Alle Angaben zur Verbandslandschaft haben den Stand 2016. Ob die beschriebenen Verbände heute noch bestehen, wie viele Mitgliedsgemeinden sie haben und ob der damals in Gründung befindliche vierte Verband entstanden ist, konnte die Redaktion nicht belegen.
+- Zwingend zu klären: Zum Sport – Vereine, Ligen, Turniere – liegen der Redaktion keine Angaben vor. Der Seitentitel führt ihn, der Inhalt kann ihn nicht füllen.
+- Die Quelle beschreibt Spannungen zwischen den Verbänden. Dieses Portal gibt sie wieder und bewertet sie nicht; für eine ausgewogene Darstellung wären Selbstdarstellungen aller Verbände einzusehen.
+- Diese Seite berührt innergemeinschaftliche Auseinandersetzungen. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft aus verschiedenen Verbänden.
 
 **Tanz (Govend) und Geselligkeit**
-- Welche volkskundlichen Arbeiten beschreiben die Tanzformen?
+- Zwingend zu klären: Eine Beschreibung der Tanzform Govend aus einer ethnochoreologischen oder ethnografischen Fachquelle. Ohne sie bleibt diese Seite bei den Anlässen stehen.
+- Die eingesehenen Quellen verwenden den Begriff „Govend“ nicht; sie sprechen von gemeinsamem Tanz. Ob beides dasselbe bezeichnet, ist der Redaktion nicht belegt bekannt.
+- Zur Praxis in der Diaspora liegen keine belegten Angaben vor.
 
 **Platzhalter: Alltagsgericht**
-- Welche Alltagsgerichte sind in der volkskundlichen Literatur beschrieben?
+- Zwingend zu klären: Eine Quelle für die Alltagsküche. Den eingesehenen Quellen ist zur Alltagsküche nichts zu entnehmen; sie beschreiben ausschließlich Festspeisen.
+- Zu klären ist, ob eine êzîdîsch-spezifische Alltagsküche überhaupt sinnvoll von der regionalen Küche Nordmesopotamiens abgegrenzt werden kann.
 
 **Platzhalter: Speise zu einem Jahresfest**
-- Welche publizierten Rezeptsammlungen sind als Quelle geeignet?
-- Welche Speisen sind mit welchen Festen belegbar verbunden?
+- Zwingend zu klären: Eine publizierte Rezeptsammlung, Vereinspublikation oder ein dokumentiertes Interview als Quelle. Ohne eine solche Quelle bleibt dieser Eintrag ein Gerüst.
+- Namentlich belegt sind bislang folgende Festspeisen, ohne Zubereitungsangaben: simat (Herbstversammlung), sewik, mehîra rahb, serî û pê und herheft perçên Pîyalî (Batizmî).
+- Zu klären ist außerdem, ob die Gemeinschaft die Veröffentlichung von Rezepten für Festspeisen für angemessen hält.
 
 ### Personen
 
-5 Fragen auf 3 Seiten.
+12 Fragen auf 3 Seiten.
 
 **Khanna Omarkhali**
-- Welche Werke sind einschlägig, und wo sind die bibliografischen Angaben nachprüfbar?
+- Zu Geburtsjahr, Herkunftsort und akademischem Werdegang liegen der Redaktion keine geprüften Angaben vor. Sie werden hier nicht angegeben.
+- Die gegenwärtige Institutionszugehörigkeit ist der Redaktion nicht belegt bekannt.
+- Als lebende Person wird sie hier ausschließlich über ihr veröffentlichtes wissenschaftliches Werk beschrieben.
 
 **Nadia Murad**
-- Welche Angaben hat die Person selbst öffentlich gemacht, und wo sind sie dokumentiert?
-- Welche Auszeichnungen und Funktionen sind institutionell belegt, mit Datum?
+- Das Jahr der Verleihung des Friedensnobelpreises ist der Redaktion aus den eingesehenen Quellen nicht belegt. Der Bundestag nennt den Titel ohne Jahr; Buffon und Allison schreiben 2016 noch von einer Nominierung.
+- Zu Geburtsjahr und Herkunftsort liegen der Redaktion keine geprüften Angaben vor. Sie werden hier nicht angegeben.
+- Diese Seite gibt keine Einzelheiten der erlittenen Gewalt wieder. Das ist eine bewusste Entscheidung und macht die Darstellung unvollständig.
+- Als lebende Person und als Überlebende sexualisierter Gewalt wird sie hier ausschließlich über das beschrieben, was sie selbst öffentlich gemacht hat. Jede Ergänzung dieser Seite ist an diesem Maßstab zu prüfen.
+- Zwingend zu klären: Ob eine eigene Seite über eine lebende Überlebende überhaupt angemessen ist, sollte mit der Gemeinschaft und – soweit möglich – mit der Person oder ihrer Stiftung geklärt werden.
 
 **Şêx Adî ibn Musafir**
-- Welche zeitgenössischen Quellen erwähnen ihn, und wie werden sie datiert?
-- Welche Zuschreibungen stammen aus späterer Zeit?
+- Die Lebensdaten weichen zwischen den Quellen ab: Omarkhali gibt 1073/8–1162 an, Tagay und Ortaç 1074–1162. Die Redaktion löst das nicht auf.
+- Zum Verhältnis zwischen der historischen Person und der Gestalt der religiösen Überlieferung liegen der Redaktion keine ausreichenden Quellen im Volltext vor. Beides ist nicht dasselbe.
+- Zur Adawiyya, der von ihm ausgehenden Bruderschaft, siehe die Geschichtsseite; auch dort ist die Quellenlage dünn.
+- Diese Seite berührt eine zentrale religiöse Gestalt. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 ### Wissenschaft und Quellen
 
-7 Fragen auf 4 Seiten.
+13 Fragen auf 4 Seiten.
 
 **Forschungsüberblick**
-- Welche Forschungsüberblicke sind aktuell und deutschsprachig verfügbar?
-- An welchen Universitäten gibt es einschlägige Arbeitsstellen?
+- Ein systematischer Forschungsüberblick – wer wann worüber gearbeitet hat – liegt der Redaktion nicht vor. Diese Seite beschreibt Problemlagen, keine Forschungsgeschichte.
+- Zur Forschung in kurdischer, arabischer und russischer Sprache liegen der Redaktion keine Übersichten vor. Die Darstellung ist damit einseitig auf westliche Publikationen bezogen.
+- Zu Forschungseinrichtungen und laufenden Projekten liegen keine belegten Angaben vor.
 
 **Museen, Dokumentationszentren und Gedenkinitiativen**
-- Welche Einrichtungen bestehen in Deutschland, welche im Irak?
+- Zwingend zu klären: Welche Museen führen êzîdîsche Bestände, und sind die Bestände erschlossen und zugänglich?
+- Zwingend zu klären: Welche Dokumentationszentren erfassen die Verbrechen ab 2014, mit welchem Mandat und welcher Methode? Diese Frage betrifft auch mehrere andere Seiten dieses Portals, auf denen Zahlen fehlen.
+- Zu Gedenkorten in Deutschland und in der Herkunftsregion liegen keine geprüften Angaben vor.
+- Vor der Aufnahme von Museumsbeständen ist zu klären, ob und wie die betreffenden Objekte in die Sammlungen gelangt sind.
 
 **Offene Fragen und Kontroversen**
 - Die Ursprungsfrage ist noch nicht bearbeitet – sie gehört in den Bereich Geschichte und wird dort recherchiert.
@@ -673,22 +718,31 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Welche weiteren Kontroversen müssen aufgenommen werden, die hier noch fehlen?
 
 **Primärquellen und Archive**
-- Welche Archive erlauben Online-Zugang, und welche verlangen einen Antrag?
+- Zwingend zu klären: Wo befinden sich die Bestände heute? Zu Archiven, Sammlungen und ihrer Zugänglichkeit liegen der Redaktion keine Angaben vor.
+- Zum Erhaltungszustand der Tonträger- und Videobestände liegen keine Angaben vor. Omarkhali benennt sie als Quellengattung, nicht als gesicherten Bestand.
+- Zu Beständen, die 2014 zerstört oder verloren gegangen sind, liegen keine geprüften Angaben vor.
 
 ### Wissen und Vermittlung
 
-88 Fragen auf 56 Seiten.
+102 Fragen auf 56 Seiten.
 
 **Hilfe und Anlaufstellen**
-- Welche Angebote arbeiten in Kurmancî und Arabisch?
-- Wie oft muss diese Seite geprüft werden, und wer übernimmt das?
+- Zwingend zu klären: Eine geprüfte, gepflegte Liste von Anlaufstellen mit Adressen, Sprachen und Zuständigkeiten. Eine solche Liste braucht eine feste Aktualisierungsroutine; ohne sie wäre sie nach kurzer Zeit falsch und damit schädlich.
+- Ob und in welchem Umfang die Schutzprogramme der Länder fortbestehen, ist der Redaktion nicht belegt bekannt. Der Bundestagsantrag von 2023 nennt sie, ohne ihren Stand zu beschreiben.
+- Zur Verfügbarkeit muttersprachlicher Psychotherapie in Deutschland liegen keine belegten Angaben vor.
+- Diese Seite braucht eine Prüfung durch Angehörige der Gemeinschaft und durch Beratungsstellen.
 
 **Mediathek**
-- Welche Angebote sind dauerhaft erreichbar und nicht nur zeitlich befristet abrufbar?
+- Zwingend zu klären: Welche Filme und Tonaufnahmen sind frei zugänglich, und wie sind ihre Rechte geregelt? Bislang ist keiner verzeichnet.
+- Bei Dokumentationen über den Völkermord ist vorab zu klären, ob und wie Abgebildete und Interviewte zugestimmt haben. Eine Verlinkung ist eine Weiterverbreitung.
+- Zu Tonaufnahmen religiöser Texte ist mit der Gemeinschaft zu klären, ob eine Veröffentlichung überhaupt angemessen ist.
+- Die verzeichneten Verweise sind zum Stand 27. Juli 2026 erreichbar. Eine Routine für die regelmäßige Prüfung der Erreichbarkeit fehlt.
 
 **Material für Schule und Unterricht**
-- Welche Bildungspläne sehen das Thema vor, und in welchen Fächern?
-- Wer kann die didaktischen Hinweise fachlich prüfen?
+- Zwingend zu klären: In welchen Bundesländern gibt es êzîdîschen Religionsunterricht, auf welcher Rechtsgrundlage und in welchem Umfang? Der Redaktion liegen dazu keine geprüften Angaben vor.
+- Zu Lehrplänen und zugelassenen Schulbüchern liegen keine Angaben vor.
+- Ob und wie das Thema im allgemeinen Religions-, Geschichts- und Politikunterricht vorkommt, ist nicht belegt.
+- Die Unterrichtsmaterialien dieses Portals sind nicht von Lehrkräften erprobt worden.
 
 **Baba Şêx**
 - Wie das Amt besetzt wird, welche Befugnisse es hat und wie es sich zum Mîr und zum Meclîsa Ruhanî verhält, ist nicht belegt.
@@ -870,37 +924,75 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Zur rituellen Verwendung des Wassers fehlen belegte Angaben.
 
 **Kurzfassung: Wer sind die Êzîdî?**
-- Welche Bildungspläne sehen das Thema in Sek. I vor?
+- Dieses Material ist nicht von Lehrkräften erprobt und nicht fachdidaktisch geprüft.
+- Welche Bildungspläne das Thema in der Sekundarstufe I vorsehen, ist der Redaktion nicht bekannt.
+- Ob die Kurzfassung sprachlich für die angegebene Stufe angemessen ist, sollte von Lehrkräften beurteilt werden.
+- Diese Kurzfassung braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Quellenauszug: Die Firman-Erinnerung**
-- Welcher Quellenauszug ist rechtlich frei verwendbar und didaktisch geeignet?
+- Dieses Material ist nicht von Lehrkräften erprobt und nicht fachdidaktisch geprüft.
+- Es arbeitet mit wissenschaftlicher Sekundärliteratur, nicht mit einem Auszug aus der mündlichen Überlieferung selbst. Ein solcher Auszug wäre didaktisch reizvoll, setzt aber geklärte Rechte und die Zustimmung der Gemeinschaft voraus – beides liegt nicht vor.
+- Ob die Bearbeitung in einer Unterrichtsstunde zu schaffen ist, sollte von Lehrkräften beurteilt werden.
 
 **Unterrichtsvorschlag: Der Genozid ab 2014**
-- Wer prüft die didaktischen Hinweise fachlich?
-- Welche Materialien für den Umgang mit belastenden Themen sind einschlägig?
+- Dieses Material ist nicht von Lehrkräften erprobt und nicht fachdidaktisch geprüft. Für ein Thema dieser Art ist das ein erheblicher Vorbehalt.
+- Welche Materialien für den Umgang mit belastenden Themen fachlich einschlägig sind, konnte die Redaktion nicht belegen. Die Hinweise beruhen auf den redaktionellen Grundsätzen dieses Portals, nicht auf traumapädagogischer Fachliteratur.
+- Zwingend zu klären: Wer prüft die didaktischen Hinweise fachlich? Ohne diese Prüfung sollte der Vorschlag nur mit eigener Vorbereitung eingesetzt werden.
+- Die Angaben zur Lage haben den Stand Juli 2024 und veralten.
 
 ### Über dieses Projekt
 
-7 Fragen auf 6 Seiten.
+30 Fragen auf 10 Seiten.
 
 **Barrierefreiheitserklärung**
-- Wer führt den Screenreader-Test durch, und mit welcher Software?
+- Zwingend zu klären: Ein Test mit tatsächlichen Nutzerinnen und Nutzern von Screenreadern. Automatische Prüfungen finden nur einen Teil der Probleme.
+- Die Erklärung ist keine förmliche Erklärung zur Barrierefreiheit im Sinne der Barrierefreie-Informationstechnik-Verordnung. Ob eine solche erforderlich ist, hängt von der Trägerschaft ab.
+- Ein Feedback-Mechanismus für Barrieren fehlt, weil die Kontaktadresse fehlt.
+- Die Texte sind nicht in Leichter Sprache verfügbar.
+
+**Bildnachweise**
+- Zwingend zu klären: Ob und in welcher Form Abbildungen von Heiligtümern und von Kultgegenständen aus Sicht der Gemeinschaft angemessen sind. Diese Frage ist keine Lizenzfrage.
+- Zu klären ist außerdem, welche frei lizenzierten Aufnahmen überhaupt vorliegen und wie belastbar ihre Lizenzangaben sind.
 
 **Datenschutzerklärung**
-- Wo wird gehostet, und welche Logdaten fallen dort an?
+- Zwingend zu klären: Die verantwortliche Stelle im Sinne der Datenschutz-Grundverordnung. Ohne Trägerschaft kann dieser Abschnitt nicht ausgefüllt werden.
+- Zwingend zu klären: Ob und wie lange der Hoster Server-Logdateien speichert. Das hängt vom gewählten Hosting ab und ist hier nicht vorwegzunehmen.
+- Diese Erklärung ist keine Rechtsberatung. Vor Veröffentlichung sollte sie juristisch geprüft werden.
 
 **Impressum**
-- Wer ist Anbieter im Rechtssinne, und wer trägt die inhaltliche Verantwortung?
+- Zwingend zu klären: Wer betreibt dieses Portal – eine natürliche Person, ein Verein, eine Institution? Ohne diese Angabe kann kein Impressum entstehen.
+- Zwingend zu klären: Ladungsfähige Anschrift, Vertretungsberechtigte, Kontaktangaben und – falls einschlägig – Registereintrag und Umsatzsteuer-Identifikationsnummer.
+- Zwingend zu klären: Wer ist inhaltlich verantwortlich?
+- Diese Seite ersetzt keine Rechtsberatung. Das Impressum sollte vor Veröffentlichung juristisch geprüft werden.
+
+**Kontakt**
+- Zwingend zu klären: Trägerschaft und damit die Kontaktadresse. Bis dahin bleibt diese Seite ein Gerüst.
+- Zu klären ist außerdem, ob getrennte Wege für inhaltliche Hinweise, für Presseanfragen und für Anliegen der Gemeinschaft sinnvoll sind.
+- Ob Kontaktaufnahme in Kurmancî und Arabisch möglich sein soll, ist offen – sie wäre wünschenswert und setzt Sprachmittlung voraus.
 
 **Korrekturhinweis melden**
-- Welcher Meldeweg wird eingerichtet – E-Mail, Formular oder Repository-Issue?
+- Zwingend zu klären: Der Meldeweg selbst. Ohne Kontaktadresse ist diese Seite eine Absichtserklärung.
+- Eine Bearbeitungsfrist ist nicht festgelegt.
+- Wie mit Meldungen umgegangen wird, die sich gegenseitig widersprechen, ist nicht festgelegt.
+
+**Mitwirken und Fehler melden**
+- Zwingend zu klären: Über welchen Weg können Hinweise eingereicht werden? Solange die Trägerschaft nicht feststeht, gibt es keine Kontaktadresse.
+- Ob und wie Beiträge honoriert werden können, ist offen.
+- Ein Verfahren für die Nennung von Mitwirkenden ist nicht festgelegt.
+
+**Redaktionelle Grundsätze und Quellenprinzip**
+- Diese Grundsätze sind von der Redaktion aufgestellt und nicht mit der êzîdîschen Gemeinschaft abgestimmt. Genau das ist der nächste Schritt.
+- Die Regeln zur Bebilderung sind bislang theoretisch: Das Portal enthält noch keine Fotografien.
 
 **Über dieses Projekt**
-- Wer trägt das Projekt, und wie wird es finanziert?
-- Wer übernimmt die redaktionelle Verantwortung im Sinne des Presserechts?
+- Zwingend zu klären: Trägerschaft und Verantwortlichkeit des Projekts. Ohne diese Angaben können Impressum und Kontaktseite nicht ausgefüllt werden.
+- Zwingend zu klären: Ein Beirat oder eine feste Ansprechstelle in der êzîdîschen Gemeinschaft. Ohne gemeinschaftliche Prüfung kann keine Seite den Status „geprüft“ erhalten.
+- Die Finanzierung des Projekts ist nicht geklärt und daher hier nicht ausgewiesen.
 
 **Wie wir arbeiten: Unsicherheit, Korrekturen, Feedback**
-- Wie wird sichergestellt, dass Rückmeldungen aus der Gemeinschaft strukturiert einfließen?
+- Zwingend zu klären: Wer prüft die Inhalte aus der Gemeinschaft heraus, in welchem Verfahren, und wie wird die Prüfung dokumentiert? Bis das geklärt ist, kann keine Seite den Status „geprüft“ erhalten.
+- Ein Verfahren für den Umgang mit widersprüchlichen Rückmeldungen aus der Gemeinschaft ist nicht festgelegt.
+- Wie oft Seiten mit Angaben zur Gegenwart überprüft werden, ist nicht festgelegt.
 
 
 ---

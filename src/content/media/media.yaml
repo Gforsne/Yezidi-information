@@ -1,5 +1,101 @@
 # Mediathek – reine Verweisliste. Es wird nichts eingebettet, solange
 # die Rechte nicht dokumentiert geklärt sind (rechteGeklaert: false).
+#
+# Aufgenommen ist nur, was die Redaktion selbst aufgerufen und gelesen hat
+# und was frei zugänglich ist. Filme, Podcasts und Tonaufnahmen fehlen –
+# siehe die Seite /de/vermittlung/mediathek.
+- id: kurdish-studies-2016-yezidi-heft
+  title: 'Kurdish Studies 4 (2016), Heft 2: Themenheft zu den Êzîdî'
+  typ: buchreihe
+  urheber: 'Philip G. Kreyenbroek und Khanna Omarkhali (Hrsg.), Transnational Press London'
+  jahr: 2016
+  sprache: 'en'
+  url: 'https://kurdishstudies.net/menu-script/index.php/KS/article/view/132'
+  dauer: null
+  beschreibung: >-
+    Frei zugängliches Themenheft mit Beiträgen zu Vertreibung, Ritualleben,
+    Traumabehandlung und der medialen Darstellung von Überlebenden. Grundlage
+    für einen erheblichen Teil dieses Portals. Der Verweis führt auf die
+    Einleitung; die übrigen Aufsätze sind im Quellenverzeichnis einzeln
+    nachgewiesen.
+  thema: [wissenschaft, religion, genozid]
+  contentWarning: false
+  rechteGeklaert: false
+  status: belegt
+  updated: 2026-07-27
+
+- id: tagay-ortac-2016-hamburg
+  title: 'Die Eziden und das Ezidentum – Geschichte und Gegenwart einer vom Untergang bedrohten Religion'
+  typ: webseite
+  urheber: 'Şefik Tagay und Serhat Ortaç; Landeszentrale für politische Bildung Hamburg'
+  jahr: 2016
+  sprache: 'de'
+  url: 'https://www.hamburg.de/resource/blob/147982/c104d91902168667c2e10cb9c4f02a57/eziden-und-ezidentum-data.pdf'
+  dauer: null
+  beschreibung: >-
+    Umfassende deutschsprachige Gesamtdarstellung von zwei êzîdîschen Autoren,
+    frei als PDF verfügbar. Behandelt Glaubenssystem, Gesellschaft, Riten,
+    Feste, Migrationsgeschichte und den Völkermord in Şingal.
+  thema: [ueberblick, religion, gesellschaft, feste, gegenwart]
+  contentWarning: true
+  rechteGeklaert: false
+  status: belegt
+  updated: 2026-07-27
+
+- id: raa-brandenburg-2018-handreichung
+  title: 'Die Eziden – eine Handreichung'
+  typ: webseite
+  urheber: 'RAA Brandenburg'
+  jahr: 2018
+  sprache: 'de'
+  url: 'https://raa-brandenburg.de/Portals/4/media/UserDocs/Dokumente_2019/RAA_Fachstelle-Islam_Handreichung-Eziden.pdf'
+  dauer: null
+  beschreibung: >-
+    Kurze, eigens für Schulen geschriebene Einführung. Stellt Glauben,
+    Gesellschaft und Verfolgungsgeschichte knapp dar und benennt die
+    verbreiteten Fehldeutungen. Für den Unterricht der geeignetste Einstieg.
+  thema: [ueberblick, vermittlung, missverstaendnisse]
+  contentWarning: false
+  rechteGeklaert: false
+  status: belegt
+  updated: 2026-07-27
+
+- id: un-coi-2016-bericht
+  title: '„They came to destroy“: ISIS Crimes Against the Yazidis'
+  typ: archiv
+  urheber: 'Independent International Commission of Inquiry on the Syrian Arab Republic, A/HRC/32/CRP.2'
+  jahr: 2016
+  sprache: 'en'
+  url: 'https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/CoISyria/A_HRC_32_CRP.2_en.pdf'
+  dauer: null
+  beschreibung: >-
+    Bericht der Untersuchungskommission der Vereinten Nationen vom Juni 2016,
+    der einen Völkermord an den Êzîdî feststellt. Enthält Schilderungen von
+    Gewalt einschließlich sexualisierter Gewalt.
+  thema: [genozid, wissenschaft]
+  contentWarning: true
+  rechteGeklaert: false
+  status: belegt
+  updated: 2026-07-27
+
+- id: bundestag-2023-drucksache
+  title: 'Antrag „Den Völkermord an den Êzîdinnen und Êzîden anerkennen“, Drucksache 20/5228'
+  typ: archiv
+  urheber: 'Deutscher Bundestag'
+  jahr: 2023
+  sprache: 'de'
+  url: 'https://dserver.bundestag.de/btd/20/052/2005228.pdf'
+  dauer: null
+  beschreibung: >-
+    Der Antrag, mit dem der Deutsche Bundestag im Januar 2023 die Verbrechen ab
+    2014 als Völkermord anerkannt hat. Enthält zugleich eine kurze
+    Lagebeschreibung mit Stand Januar 2023.
+  thema: [genozid, gegenwart]
+  contentWarning: true
+  rechteGeklaert: false
+  status: belegt
+  updated: 2026-07-27
+
 - id: platzhalter-dokumentation
   title: 'Platzhalter: Dokumentarfilm'
   typ: dokumentation
@@ -11,12 +107,13 @@
   beschreibung: >-
     Platzhalter-Eintrag. Hier werden Dokumentarfilme aufgenommen, sobald
     Titel, Urheberschaft, Jahr und eine dauerhaft erreichbare Fundstelle
-    geprüft sind.
+    geprüft sind – und sobald geklärt ist, ob die Abgebildeten der
+    Veröffentlichung zugestimmt haben.
   thema: [genozid]
   contentWarning: true
   rechteGeklaert: false
   status: stub
-  updated: 2026-07-26
+  updated: 2026-07-27
 
 - id: platzhalter-podcast
   title: 'Platzhalter: Podcastreihe'
@@ -33,4 +130,4 @@
   contentWarning: false
   rechteGeklaert: false
   status: stub
-  updated: 2026-07-26
+  updated: 2026-07-27

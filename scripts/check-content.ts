@@ -156,8 +156,13 @@ for (const d of dokumente) {
     : [];
   const status = String(f['status'] ?? 'stub');
 
-  // 2. Belegpflicht ab Entwurf.
-  if (status !== 'stub' && refs.length === 0) {
+  /*
+    2. Belegpflicht ab Entwurf. Ausgenommen ist der Bereich `meta`: Diese
+    Seiten beschreiben das Projekt selbst und behaupten nichts über die
+    Êzîdî – sie haben nichts zu belegen. Dieselbe Ausnahme steht im Schema.
+  */
+  const istProjektseite = f['section'] === 'meta';
+  if (status !== 'stub' && refs.length === 0 && !istProjektseite) {
     fehle(
       d.pfad,
       `status: "${status}" ohne Quelle. Beleg nachtragen oder auf "stub" zurücksetzen.`,
