@@ -18,11 +18,24 @@ const t = useTranslations(locale);
   greift trotzdem.
 */
 }
-<button type="button" class="themenwechsler" data-themenwechsler hidden aria-live="polite">
+<button type="button" class="themenwechsler" data-themenwechsler aria-live="polite">
   <span class="symbol" aria-hidden="true"></span>
   <span class="label" data-label>{t('theme.system')}</span>
   <span class="nur-screenreader">{t('theme.toggle')}</span>
 </button>
+
+<noscript>
+  {
+    /* Ohne JavaScript hat das Bedienelement keine Wirkung.
+      Es wird deshalb hier ausgeblendet – nicht umgekehrt per
+      Skript eingeblendet, was beim Laden das Layout verschöbe. */
+  }
+  <style>
+    [data-themenwechsler] {
+      display: none !important;
+    }
+  </style>
+</noscript>
 
 <style>
   .themenwechsler {
@@ -98,7 +111,6 @@ const t = useTranslations(locale);
   }
 
   for (const knopf of document.querySelectorAll<HTMLButtonElement>('[data-themenwechsler]')) {
-    knopf.hidden = false;
     const label = knopf.querySelector<HTMLElement>('[data-label]');
     const zeige = (schema: Schema) => {
       if (label) label.textContent = beschriftungen[schema];

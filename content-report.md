@@ -1,6 +1,6 @@
 # Content-Report
 
-**Stand:** 2026-07-26
+**Stand:** 2026-07-27
 **Erzeugt von:** `npm run report:content` – diese Datei wird automatisch geschrieben und sollte nicht von Hand bearbeitet werden.
 
 ## Kurzfassung

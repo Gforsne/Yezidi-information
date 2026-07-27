@@ -17,18 +17,25 @@ const t = useTranslations(locale);
   Ohne JavaScript bleibt er unsichtbar.
 */
 }
-<div class="fortschritt" data-fortschritt hidden>
+<div class="fortschritt" data-fortschritt>
   <span class="nur-screenreader">{t('nav.readingProgress')}</span>
   <div class="balken" aria-hidden="true"><span data-fortschritt-balken></span></div>
 </div>
 
 <style>
+  /*
+    Fest am oberen Rand statt im Textfluss: Ein Element im Fluss, das
+    erst per JavaScript erscheint, verschiebt beim Laden den ganzen
+    Artikel. So bleibt das Layout unverändert, ob JavaScript läuft
+    oder nicht.
+  */
   .fortschritt {
-    position: sticky;
+    position: fixed;
     inset-block-start: 0;
+    inset-inline: 0;
     z-index: var(--z-sticky);
     block-size: 3px;
-    margin-block-end: var(--s-4);
+    pointer-events: none;
   }
 
   .balken {
@@ -57,7 +64,6 @@ const t = useTranslations(locale);
   const artikel = document.querySelector<HTMLElement>('[data-artikeltext]');
 
   if (huelle && balken && artikel) {
-    huelle.hidden = false;
     let angefordert = false;
 
     const rechne = () => {

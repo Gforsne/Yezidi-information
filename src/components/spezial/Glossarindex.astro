@@ -60,7 +60,7 @@ const vorhandeneKategorien = [...new Set(sortiert.map((e) => e.data.kategorie))]
     </ul>
   </nav>
 
-  <form class="glossar-filter" data-glossar-filter hidden>
+  <form class="glossar-filter" data-glossar-filter>
     <p class="feld">
       <label for="glossar-suche">Begriff einschränken</label>
       <input
@@ -137,6 +137,19 @@ const vorhandeneKategorien = [...new Set(sortiert.map((e) => e.data.kategorie))]
 
   <p class="leer" data-glossar-leer hidden>Keine Begriffe für diese Auswahl.</p>
 </div>
+
+<noscript>
+  {
+    /* Ohne JavaScript hat das Bedienelement keine Wirkung.
+      Es wird deshalb hier ausgeblendet – nicht umgekehrt per
+      Skript eingeblendet, was beim Laden das Layout verschöbe. */
+  }
+  <style>
+    [data-glossar-filter] {
+      display: none !important;
+    }
+  </style>
+</noscript>
 
 <style>
   .glossarindex {
@@ -356,8 +369,6 @@ const vorhandeneKategorien = [...new Set(sortiert.map((e) => e.data.kategorie))]
   const formular = wurzel?.querySelector<HTMLFormElement>('[data-glossar-filter]');
 
   if (wurzel && formular) {
-    formular.hidden = false;
-
     const eintraege = [...wurzel.querySelectorAll<HTMLLIElement>('.eintrag')];
     const gruppen = [...wurzel.querySelectorAll<HTMLElement>('[data-gruppe]')];
     const suche = formular.querySelector<HTMLInputElement>('[data-glossar-suche]');

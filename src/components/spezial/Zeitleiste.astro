@@ -47,7 +47,7 @@ const firmanAnzahl = sortiert.filter((e) => e.data.firman).length;
 <div class="zeitleiste" data-zeitleiste>
   {
     !kompakt && (
-      <form class="zeitleiste-filter" data-filter hidden>
+      <form class="zeitleiste-filter" data-filter>
         <fieldset>
           <legend>{t('timeline.filterEpoch')}</legend>
           <div class="optionen">
@@ -149,6 +149,19 @@ const firmanAnzahl = sortiert.filter((e) => e.data.firman).length;
 
   <p class="leer" data-leer hidden>{t('timeline.noEntries')}</p>
 </div>
+
+<noscript>
+  {
+    /* Ohne JavaScript hat das Bedienelement keine Wirkung.
+      Es wird deshalb hier ausgeblendet – nicht umgekehrt per
+      Skript eingeblendet, was beim Laden das Layout verschöbe. */
+  }
+  <style>
+    [data-filter] {
+      display: none !important;
+    }
+  </style>
+</noscript>
 
 <style>
   .zeitleiste {
@@ -386,8 +399,6 @@ const firmanAnzahl = sortiert.filter((e) => e.data.firman).length;
   const wurzel = document.querySelector<HTMLElement>('[data-zeitleiste]');
   const formular = wurzel?.querySelector<HTMLFormElement>('[data-filter]');
   if (wurzel && formular) {
-    formular.hidden = false;
-
     const eintraege = [...wurzel.querySelectorAll<HTMLLIElement>('.eintrag')];
     const zaehler = formular.querySelector<HTMLOutputElement>('[data-zaehler]');
     const leer = wurzel.querySelector<HTMLElement>('[data-leer]');

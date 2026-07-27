@@ -74,7 +74,7 @@ const ungeprueft = quellen.filter((q) => !q.data.verifiziert).length;
     {`${quellen.length} ${t('sources.count')}`} · {`${ungeprueft} davon mit ungeprüften Angaben`}
   </p>
 
-  <form class="filter" data-quellenfilter hidden>
+  <form class="filter" data-quellenfilter>
     <fieldset>
       <legend>{t('sources.filterType')}</legend>
       <div class="optionen">
@@ -169,6 +169,19 @@ const ungeprueft = quellen.filter((q) => !q.data.verifiziert).length;
     <a href={path(locale, 'meta', 'korrekturhinweis')}>Korrekturhinweis melden</a>.
   </p>
 </SeitenLayout>
+
+<noscript>
+  {
+    /* Ohne JavaScript hat das Bedienelement keine Wirkung.
+      Es wird deshalb hier ausgeblendet – nicht umgekehrt per
+      Skript eingeblendet, was beim Laden das Layout verschöbe. */
+  }
+  <style>
+    [data-quellenfilter] {
+      display: none !important;
+    }
+  </style>
+</noscript>
 
 <style>
   .prinzip {
@@ -343,7 +356,6 @@ const ungeprueft = quellen.filter((q) => !q.data.verifiziert).length;
 <script>
   const formular = document.querySelector<HTMLFormElement>('[data-quellenfilter]');
   if (formular) {
-    formular.hidden = false;
     const quellen = [...document.querySelectorAll<HTMLLIElement>('.quelle')];
     const zaehler = formular.querySelector<HTMLOutputElement>('[data-quellenzaehler]');
     const leer = document.querySelector<HTMLElement>('[data-quellenleer]');

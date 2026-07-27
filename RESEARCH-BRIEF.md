@@ -1,6 +1,6 @@
 # Research-Brief
 
-**Stand:** 2026-07-26
+**Stand:** 2026-07-27
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
