@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **328 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **351 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -35,8 +35,16 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Versklavung und sexualisierte Gewalt (`src/content/articles/de/genozid/versklavung-und-sexualisierte-gewalt.mdx`)
 - **Welche Beratungsstellen in Deutschland sind für Betroffene zuständig und aktuell erreichbar?**
   - Seite: Versklavung und sexualisierte Gewalt (`src/content/articles/de/genozid/versklavung-und-sexualisierte-gewalt.mdx`)
-- **Welche Opferzahlen nennen UN-Stellen, irakische Behörden und Menschenrechtsorganisationen jeweils?**
+- **Die Opferzahlen stammen sämtlich aus zeitgenössischen Berichten europäischer Reisender, Konsuln und Militärs. Wie sie erhoben wurden, ist nicht bekannt; eine kritische Prüfung dieser Zahlen ist der Redaktion nicht bekannt.**
+  - Seite: 19. Jahrhundert: Feldzüge gegen Şingal und Şêxan (`src/content/articles/de/geschichte/19-jahrhundert-feldzuege.mdx`)
+- **Zwingend zu klären: Welche Opferzahlen nennen UN-Stellen, irakische Behörden und Menschenrechtsorganisationen jeweils, und mit welcher Erhebungsmethode? Der Redaktion liegen nur zwei Sekundärangaben vor.**
   - Seite: Die Anschläge von 2007 (`src/content/articles/de/geschichte/anschlaege-2007.mdx`)
+- **Welche rechtliche Stellung die Êzîdî im Königreich Irak hatten, ist ungeklärt – für die Frage nach Kollektivrechten wäre das erheblich.**
+  - Seite: Britisches Mandat und Königreich Irak (`src/content/articles/de/geschichte/britisches-mandat-und-koenigreich-irak.mdx`)
+- **Die Opferzahl der Anschläge von 2007 wird unterschiedlich angegeben: mehr als 500 Getötete (Tagay/Ortaç, nach einem Zeitungsbericht) gegenüber mehr als 700 (bpb 2024, ohne Zuschreibung).**
+  - Seite: Nach 2003: neue Lage im Irak (`src/content/articles/de/geschichte/nach-2003.mdx`)
+- **Die Opferzahlen des 19. Jahrhunderts stammen aus zeitgenössischen Berichten von Reisenden und Konsuln. Wie sie zustande kamen, ist nicht bekannt.**
+  - Seite: Osmanische Zeit (`src/content/articles/de/geschichte/osmanische-zeit.mdx`)
 - **Welche Erklärungen des Geistlichen Rats zu Heiratsregeln liegen im Wortlaut vor, aus welchen Jahren? Der Redaktion liegt keine vor.**
   - Seite: Endogamie: Regeln, Begründungen, Debatten (`src/content/articles/de/gesellschaft/endogamie.mdx`)
 - **Zwingend zu klären: Welche Erklärungen des Geistlichen Rats liegen im Wortlaut vor, aus welchen Jahren? Der Redaktion liegt keine einzige im Original vor.**
@@ -346,46 +354,69 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Geschichte
 
-17 Fragen auf 11 Seiten.
+40 Fragen auf 11 Seiten.
 
 **19. Jahrhundert: Feldzüge gegen Şingal und Şêxan**
-- Welche Datierungen der einzelnen Feldzüge sind in der Forschung unstrittig?
+- Die Opferzahlen stammen sämtlich aus zeitgenössischen Berichten europäischer Reisender, Konsuln und Militärs. Wie sie erhoben wurden, ist nicht bekannt; eine kritische Prüfung dieser Zahlen ist der Redaktion nicht bekannt.
+- Die Primärquellen – Menant 1892, Layard 1850, Badger 1852 – lagen der Redaktion nicht vor. Alle Angaben sind über Tagay/Ortaç referiert.
+- Wie sich diese Ereignisse in der êzîdîschen Erinnerung als Firman niederschlagen, ist ungeklärt.
 
 **Die Anschläge von 2007**
-- Welche Opferzahlen nennen UN-Stellen, irakische Behörden und Menschenrechtsorganisationen jeweils?
-- Wie werden die Anschläge in der Erinnerungskultur der Gemeinschaft eingeordnet?
+- Zwingend zu klären: Welche Opferzahlen nennen UN-Stellen, irakische Behörden und Menschenrechtsorganisationen jeweils, und mit welcher Erhebungsmethode? Der Redaktion liegen nur zwei Sekundärangaben vor.
+- Die Zurechnung zu al-Qaida ist in der vorliegenden Quelle ausdrücklich eine Mutmaßung. Ob es eine gerichtliche oder ermittlungsbehördliche Feststellung gibt, ist ungeklärt.
+- Zum Ablauf, zur Zahl der Sprengsätze und zu den Folgen für die betroffenen Orte liegen keine belegten Einzelheiten vor.
+- Diese Seite berührt einen Anschlag mit vielen Opfern. Sie nennt keine Namen und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Baath-Zeit: Arabisierung und Zwangsumsiedlung**
-- Welche Menschenrechtsberichte dokumentieren die Umsiedlungen zeitgenössisch?
-- Wie viele Kollektivsiedlungen wurden errichtet, und sind Namen und Lage dokumentiert?
+- Zur Zahl der Betroffenen liegen keine Angaben vor – belegt ist die Zahl der Dörfer, nicht die der Menschen.
+- Wie viele Êzîdî den Anfāl-Feldzügen zum Opfer fielen, ist der Redaktion nicht belegt bekannt. Dulz verweist auf ihre eigene Untersuchung von 2001, die nicht vorlag.
+- Die Aussage, in der Türkei habe seit 1923 keine religiös motivierte staatliche Verfolgungspolitik stattgefunden, steht in Spannung zu der ebenfalls genannten Feststellung deutscher Gerichte über eine staatlich geduldete Gruppenverfolgung. Beide Angaben stammen aus derselben Quelle.
+- Diese Seite berührt Vertreibung und Enteignung. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Britisches Mandat und Königreich Irak**
-- Welche britischen Mandatsakten sind ausgewertet und zugänglich?
+- Zum britischen Mandat und zum Königreich Irak liegen der Redaktion praktisch keine belegten Angaben vor. Die geprüften Quellen überspringen diese Zeit.
+- Welche rechtliche Stellung die Êzîdî im Königreich Irak hatten, ist ungeklärt – für die Frage nach Kollektivrechten wäre das erheblich.
+- Die Rolle êzîdîscher Verbände in den Auseinandersetzungen der Zwischenkriegszeit ist nicht belegt.
 
 **Die Zählung der 73 Firman**
-- Seit wann ist die Zahl 73 belegt, und in welchen Quellen?
-- Wie ordnet die Forschung das Verhältnis von Erinnerungsfigur und Ereignisgeschichte ein?
+- Die Zahl wird unterschiedlich angegeben: 72 Firman bei Tagay/Ortaç, 74 Vorfälle bei Kizilhan 2015 (referiert bei Dulz). Ob es sich um dieselbe Zählung mit anderem Endpunkt handelt, ist ungeklärt.
+- Welche der Firman sich historisch einzeln nachweisen lassen, ist offen. Tagay/Ortaç behaupten eine Faktengrundlage, führen sie an dieser Stelle aber nicht aus.
+- Ob und wie sich die Zählung im Lauf der Zeit verändert hat, ist nicht untersucht.
+- Diese Seite beschreibt eine Erinnerungsform der Gemeinschaft. Sie braucht eine Prüfung durch deren Angehörige.
 
 **Erster Weltkrieg und Flucht in den Kaukasus**
-- Welche Arbeiten behandeln die êzîdîsche Flucht in den Kaukasus eigenständig?
-- Welche Bevölkerungszahlen für Armenien und Georgien sind für die 1920er Jahre belegt?
+- Die Zahl der ab den 1830er Jahren Geflüchteten ist nur als „mehrere zehntausend“ belegt, ohne Erhebungsgrundlage.
+- Die Angabe von etwa 20.000 aufgenommenen Verfolgten 1915/16 ist über zwei Sekundärquellen referiert, die der Redaktion nicht vorlagen.
+- Wie sich die religiöse Praxis im Kaukasus konkret unterscheidet, ist nur an einem Beispiel belegt (Beschneidung).
+- Diese Seite berührt die Geschichte einer bestehenden Gemeinschaft und braucht eine Prüfung durch deren Angehörige.
 
 **Mittelalter und Frühe Neuzeit**
-- Welche Standardwerke behandeln diese Zeit für die Region?
+- Die Darstellung stützt sich auf eine einzige Quelle, die ihrerseits Guest 1993 referiert. Guest lag der Redaktion nicht im Volltext vor.
+- Die genannten Ursachen des Konflikts sind Deutungen der Autoren, nicht Quellenbefunde. Sie sind als solche gekennzeichnet.
+- Zur Zahl und Verbreitung der einflussreichen êzîdîschen Stämme dieser Zeit fehlen belegte Angaben.
 
 **Nach 2003: neue Lage im Irak**
-- Welche Berichte dokumentieren die Sicherheitslage zwischen 2003 und 2014 systematisch?
+- Die Opferzahl der Anschläge von 2007 wird unterschiedlich angegeben: mehr als 500 Getötete (Tagay/Ortaç, nach einem Zeitungsbericht) gegenüber mehr als 700 (bpb 2024, ohne Zuschreibung).
+- Zur Lage zwischen 2003 und 2014 liegen der Redaktion keine systematischen Darstellungen vor – nur zusammenfassende Angaben zweier Überblicksquellen.
+- Welche Rolle die umstrittenen Gebiete zwischen Zentralregierung und Kurdischer Regionalregierung für die Sicherheitslage spielten, ist nur angedeutet.
+- Diese Seite berührt Anschläge mit vielen Opfern. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Osmanische Zeit**
-- Welche Arbeiten werten osmanische Archivquellen zu den Êzîdî aus?
-- Wie ist die Rechtsstellung in osmanischen Rechtsgutachten dokumentiert?
+- Alle Angaben dieser Seite stammen aus einer einzigen Darstellung, die ihrerseits ältere Quellen referiert. Die genannten Primärquellen – Menant 1892, Layard 1850, Badger 1852, Gölbaşı 2008 – lagen der Redaktion nicht vor.
+- Die Opferzahlen des 19. Jahrhunderts stammen aus zeitgenössischen Berichten von Reisenden und Konsuln. Wie sie zustande kamen, ist nicht bekannt.
+- Ob und wie sich diese Ereignisse zur êzîdîschen Firman-Zählung verhalten, ist ungeklärt.
 
 **Şêx Adî ibn Musafir und die Adawiyya**
-- Welche zeitgenössischen arabischen Quellen erwähnen Şêx Adî, und wie werden sie datiert?
-- Wie beschreibt die Forschung den Übergang vom Sufi-Orden zur eigenständigen Gemeinschaft?
+- Die Datierung der Geburt geht auseinander: „um 1074“ (Tagay/Ortaç) gegenüber „um 1075“ (RAA). Auch der Geburtsort wird unterschiedlich angegeben: Baalbek gegenüber einem Dorf namens Bayt Far.
+- Die vier Schriften Şêx Adîs sind hier nur über eine Sekundärquelle von 1911 (Frank) belegt. Die Titel sind am Original zu prüfen.
+- Ob der Adawiya-Orden als Ursprung der êzîdîschen Gemeinschaft gelten kann, ist in der Forschung umstritten und wird hier nicht entschieden.
+- Der Abschnitt zur Offenbarung durch Tawûsî Melek gibt eine Überlieferung wieder, keine historische Aussage. Er braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Vorgeschichte und Ursprungsdebatte**
-- Welche schriftlichen Quellen aus der Zeit vor dem 12. Jahrhundert werden angeführt?
+- Die einschlägigen Einzeluntersuchungen – Kreyenbroek 1995 zur Hintergrundfrage, Spät 2010 zu spätantiken Motiven – lagen der Redaktion nicht im Volltext vor. Diese Seite kann die Positionen deshalb nur benennen.
+- Welche archäologischen oder textlichen Belege werden für die einzelnen Ursprungsthesen angeführt? Ungeklärt.
+- Die Angabe, die Wurzeln reichten mehrere tausend Jahre zurück, ist eine Selbstdarstellung, für die die Quelle selbst keinen Beleg anführt.
+- Diese Seite berührt eine Frage, die für Identitätsansprüche in Anspruch genommen wird. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 ### Genozid 2014 und Verfolgung
 

@@ -5,10 +5,10 @@
 
 ## Kurzfassung
 
-363 von 466 Abschnitten tragen einen Beleg – **Belegquote 78 %**.
-447 Stellen sind ausdrücklich als Beleglücke markiert.
+455 von 468 Abschnitten tragen einen Beleg – **Belegquote 97 %**.
+403 Stellen sind ausdrücklich als Beleglücke markiert.
 
-Die Recherche läuft: 59 von 162 Seiten (36 %) haben den Gerüst-Status verlassen.
+Die Recherche läuft: 70 von 162 Seiten (43 %) haben den Gerüst-Status verlassen.
 Eine niedrige Gesamtquote bedeutet **nicht**, dass unbelegte Behauptungen im Text stehen –
 an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, was fertig ist.
 
@@ -16,9 +16,9 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 
 | Status | Bedeutung | Seiten |
 |---|---|---:|
-| `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 103 |
-| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 5 |
-| `belegt` | Alle Aussagen mit Quellen belegt | 54 |
+| `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 92 |
+| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 9 |
+| `belegt` | Alle Aussagen mit Quellen belegt | 61 |
 | `geprüft` | Belegt und zusätzlich gegengelesen | 0 |
 | **Summe** | | **162** |
 
@@ -32,7 +32,7 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Heilige Orte | 11 | 0 | 40 | 0 | 48 | 23 | 0 % |
 | Feste, Kalender und Riten | 9 | 0 | 37 | 0 | 41 | 14 | 0 % |
 | Sprache und Namen | 5 | 0 | 19 | 0 | 22 | 10 | 0 % |
-| Geschichte | 11 | 0 | 42 | 0 | 52 | 17 | 0 % |
+| Geschichte | 11 | 11 | 44 | 92 | 8 | 40 | 100 % |
 | Genozid 2014 und Verfolgung | 10 | 0 | 41 | 0 | 50 | 19 | 0 % |
 | Gegenwart und Diaspora | 8 | 0 | 33 | 0 | 39 | 11 | 0 % |
 | Missverständnisse und Desinformation | 3 | 0 | 13 | 0 | 15 | 4 | 0 % |
@@ -47,7 +47,7 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Sammlung | Einträge | Anmerkung |
 |---|---:|---|
 | Quellen | 19 | 12 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
-| Zeitleiste | 5 | 2 als Firman-Erinnerung markiert |
+| Zeitleiste | 15 | 6 als Firman-Erinnerung markiert |
 | Häufige Fragen | 5 | 0 beantwortet |
 | Glossar | 50 | Begriffe |
 | Personen | 3 | 2 lebende Personen (erhöhte Zurückhaltung) |
@@ -61,5 +61,5 @@ Opferfotos, keine Täterpropaganda, keine Namen Überlebender ohne dokumentierte
 
 ## Seiten ohne einen einzigen Beleg
 
-103 von 162 Seiten enthalten noch keine Belegstelle.
+92 von 162 Seiten enthalten noch keine Belegstelle.
 Alle tragen `status: stub` und zeigen das im Belegapparat sichtbar an.

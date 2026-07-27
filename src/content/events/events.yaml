@@ -1,112 +1,383 @@
 # =====================================================================
 # ZEITLEISTE
 # ---------------------------------------------------------------------
-# Gerüst. Jeder Eintrag trägt `status: stub`, solange Datierung und
-# Sachverhalt nicht belegt sind. `zusammenfassung` beschreibt, was der
-# Eintrag später darstellen wird – sie behauptet noch nichts.
+# Jeder Eintrag nennt seine Quelle. Einträge ohne Beleg tragen
+# `status: stub`; ihre `zusammenfassung` beschreibt, was der Eintrag
+# später darstellen wird, und behauptet nichts.
 #
 # `firman: true` markiert Ereignisse, die in der êzîdîschen Erinnerung
 # als Firman überliefert sind. Ob und wie sich diese Erinnerung auf
 # datierbare Ereignisse abbilden lässt, ist selbst Gegenstand der
 # Forschung (siehe /de/geschichte/die-73-firman).
+#
+# Die Datierungen des 19. Jahrhunderts stammen aus einer
+# Überblicksdarstellung, die ältere Berichte referiert. Wo die
+# Erhebungsgrundlage unbekannt ist, steht das in der Zusammenfassung.
 # =====================================================================
 
 - id: schaikh-adi-12-jh
   title: 'Wirken des Şêx Adî ibn Musafir in Laliş'
-  datum: '12. Jahrhundert'
-  jahr: 1150
-  jahrBis: null
+  datum: 'um 1111 bis um 1162'
+  jahr: 1111
+  jahrBis: 1162
   datierungUnsicher: true
   epoche: mittelalter
   thema: [religion, gesellschaft]
   firman: false
   zusammenfassung: >-
-    Platzhalter: Wirkungszeit des Şêx Adî und Entstehung der Adawiyya.
-    Datierung, Herkunft und die Frage, wie sich daraus die Gemeinschaft
-    herausbildete, sind zu belegen.
+    Şêx Adî lässt sich um 1111 mit seinen Schülern in den kurdischen Bergen
+    nieder und gründet in Laliş den Adawiya-Orden. Die Forschung hält ihn für
+    identisch mit dem Sufi-Gelehrten Adî bin Musafir al-Hakkari; von
+    êzîdîscher Seite wird diese Zuordnung zurückgewiesen. Mit ihm setzt die
+    schriftliche Überlieferung über die Gemeinschaft ein.
   ort: 'Laliş'
   artikel: 'geschichte/sex-adi-und-die-adawiyya'
-  sources: []
-  confidence: unklar
-  status: stub
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 44–47'
+  confidence: umstritten
+  status: belegt
   contentWarning: false
 
-- id: osmanische-feldzuege-19-jh
-  title: 'Feldzüge gegen Şingal und Şêxan'
-  datum: '19. Jahrhundert'
-  jahr: 1830
-  jahrBis: 1900
+- id: trennung-13-15-jh
+  title: 'Konflikte und Trennung von den muslimischen Nachbarn'
+  datum: '13. bis 15. Jahrhundert'
+  jahr: 1250
+  jahrBis: 1500
   datierungUnsicher: true
-  epoche: 19-jahrhundert
+  epoche: mittelalter
+  thema: [verfolgung, gesellschaft]
+  firman: false
+  zusammenfassung: >-
+    Ab dem 13. Jahrhundert kommt es zu schwerwiegenden Konflikten mit den
+    benachbarten muslimischen Gemeinschaften, die spätestens im
+    15. Jahrhundert in eine dauerhafte Trennung münden. Die Darstellung
+    referiert Guest 1993; die genannten Ursachen sind Deutung der Autoren,
+    nicht Quellenbefund.
+  ort: 'Nordmesopotamien'
+  artikel: 'geschichte/mittelalter-und-fruehe-neuzeit'
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 47'
+  confidence: unklar
+  status: belegt
+  contentWarning: false
+
+- id: safawiden-osmanen-16-17-jh
+  title: 'Zwischen Safawiden und Osmanen: Rückgang der êzîdîschen Stämme'
+  datum: '16. und 17. Jahrhundert'
+  jahr: 1501
+  jahrBis: 1700
+  datierungUnsicher: true
+  epoche: fruehe-neuzeit
   thema: [verfolgung, politik]
+  firman: false
+  zusammenfassung: >-
+    Die Êzîdî geraten in den Sog der Auseinandersetzung zwischen dem
+    safawidischen und dem osmanischen Reich; osmanische Verwaltungsreformen
+    drängen die Autonomie lokaler Stämme zurück. Viele Stämme konvertieren
+    unter wirtschaftlichem und politischem Druck, die einstige
+    Vormachtstellung um Şêxan und Şingal geht verloren.
+  ort: 'Şêxan, Şingal'
+  artikel: 'geschichte/mittelalter-und-fruehe-neuzeit'
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 48'
+  confidence: gesichert
+  status: belegt
+  contentWarning: false
+
+- id: feldzug-bedirxan-1832
+  title: 'Feldzug Bedirxan Begs gegen Şêxan'
+  datum: '1832'
+  jahr: 1832
+  jahrBis: null
+  datierungUnsicher: false
+  epoche: 19-jahrhundert
+  thema: [verfolgung]
   firman: true
   zusammenfassung: >-
-    Platzhalter: Militärische Feldzüge des 19. Jahrhunderts gegen die
-    Siedlungsgebiete. Anzahl, Datierung und Verlauf sind einzeln zu
-    belegen; die Zuordnung zur Firman-Erinnerung ist zu prüfen.
-  ort: 'Şingal, Şêxan'
+    Soldaten Bedirxan Begs, des Emirs von Botan, dringen in Şêxan ein. Wer
+    fliehen konnte, wird vor Mosul vom ansteigenden Tigris aufgehalten; etwa
+    12.000 am Ufer Zurückgebliebene werden getötet. Der Mîr Ali Beg wird nach
+    Rewandûz gebracht und dort zu Tode gefoltert, weil er die Konversion
+    verweigert. Die Zahl stammt aus Berichten des 19. Jahrhunderts, deren
+    Erhebungsgrundlage nicht bekannt ist.
+  ort: 'Şêxan, Mosul, Rewandûz'
   artikel: 'geschichte/19-jahrhundert-feldzuege'
-  sources: []
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 50'
   confidence: unklar
-  status: stub
+  status: belegt
   contentWarning: true
 
+- id: massaker-hafiz-pasha-1837
+  title: 'Massaker Hafiz Pashas in Şingal'
+  datum: '1837 bis 1838'
+  jahr: 1837
+  jahrBis: 1838
+  datierungUnsicher: false
+  epoche: 19-jahrhundert
+  thema: [verfolgung]
+  firman: true
+  zusammenfassung: >-
+    Der Gouverneur von Diyarbakır richtet eine Serie von Massakern unter den
+    Êzîdî in Şingal an. Helmuth von Moltke, damals militärischer Berater des
+    Sultans, berichtet in seinen Briefen davon. Layard gibt an, die êzîdîsche
+    Bevölkerung Şingals sei zwischen 1832 und 1838 um drei Viertel verringert
+    worden – eine Angabe ohne bekannte Erhebungsgrundlage.
+  ort: 'Şingal'
+  artikel: 'geschichte/19-jahrhundert-feldzuege'
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 50–51'
+  confidence: unklar
+  status: belegt
+  contentWarning: true
+
+- id: tur-abdin-1844
+  title: 'Angriff Bedirxan Begs auf den Tur Abdin'
+  datum: '1844'
+  jahr: 1844
+  jahrBis: null
+  datierungUnsicher: false
+  epoche: 19-jahrhundert
+  thema: [verfolgung, religion]
+  firman: true
+  zusammenfassung: >-
+    Bedirxan Beg greift die Êzîdî im Tur Abdin an, um sie zwangsweise zum
+    Islam zu bekehren. Viele werden inhaftiert oder getötet, weil sie die
+    Konversion verweigern; sieben Dörfer unterwerfen sich.
+  ort: 'Tur Abdin'
+  artikel: 'geschichte/19-jahrhundert-feldzuege'
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 51'
+  confidence: unklar
+  status: belegt
+  contentWarning: true
+
+- id: ultimatum-omar-vahbi-1892
+  title: 'Ultimatum Omar Vahbi Pashas an den Mîr'
+  datum: '1892'
+  jahr: 1892
+  jahrBis: null
+  datierungUnsicher: false
+  epoche: 19-jahrhundert
+  thema: [verfolgung, religion]
+  firman: true
+  zusammenfassung: >-
+    General Omar Vahbi Pasha stellt dem Mîr die Wahl zwischen Vernichtung und
+    der Annahme einer vom Koran erlaubten Religion. Nach der Ablehnung dringt
+    er in Şingal und Şêxan ein. Berichtet werden 14.000 Zwangskonversionen;
+    Laliş wird geplündert und dort für zwölf Jahre eine muslimische
+    Lehranstalt eingerichtet.
+  ort: 'Şingal, Şêxan, Laliş'
+  artikel: 'geschichte/19-jahrhundert-feldzuege'
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 51'
+  confidence: unklar
+  status: belegt
+  contentWarning: true
+
+- id: aufnahme-verfolgter-1915
+  title: 'Şingal nimmt Verfolgte des Genozids an den Armeniern auf'
+  datum: '1915 bis 1916'
+  jahr: 1915
+  jahrBis: 1916
+  datierungUnsicher: false
+  epoche: weltkriege
+  thema: [migration, gesellschaft]
+  firman: false
+  zusammenfassung: >-
+    Die Bewohnerinnen und Bewohner von Şingal nehmen etwa 20.000 Verfolgte
+    auf – Armenierinnen und Armenier sowie Aramäer, Assyrer und
+    Chaldo-Assyrer – und weigern sich, sie den osmanischen Behörden
+    auszuliefern.
+  ort: 'Şingal'
+  artikel: 'geschichte/erster-weltkrieg-und-flucht-in-den-kaukasus'
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 51–52'
+  confidence: unklar
+  status: belegt
+  contentWarning: false
+
 - id: erster-weltkrieg-flucht-kaukasus
-  title: 'Flucht in den Kaukasus'
-  datum: '1914–1918'
-  jahr: 1914
-  jahrBis: 1918
+  title: 'Strafexpedition 1918 und die Fluchtbewegung in den Kaukasus'
+  datum: 'ab den 1830er Jahren; Strafexpedition Februar 1918'
+  jahr: 1918
+  jahrBis: null
   datierungUnsicher: false
   epoche: weltkriege
   thema: [verfolgung, migration]
-  firman: true
+  firman: false
   zusammenfassung: >-
-    Platzhalter: Fluchtbewegungen während des Ersten Weltkriegs in
-    Richtung Armenien und Georgien, im Zusammenhang mit den Verfolgungen
-    im Osmanischen Reich. Umfang und Verlauf sind zu belegen.
-  ort: 'Südkaukasus'
+    Wegen anhaltender Verfolgung fliehen ab den 1830er Jahren mehrere
+    zehntausend Êzîdî nach Armenien und Georgien. Im Februar 1918 wird eine
+    türkische Heeresabteilung ausgesandt, um die Weigerung zu bestrafen, die
+    aufgenommenen Verfolgten auszuliefern; die Êzîdî müssen ins Gebirge
+    fliehen, bis britische Truppen eintreffen.
+  ort: 'Şingal, Südkaukasus'
   artikel: 'geschichte/erster-weltkrieg-und-flucht-in-den-kaukasus'
-  sources: []
-  confidence: unklar
-  status: stub
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 50, 52'
+  confidence: gesichert
+  status: belegt
   contentWarning: true
 
+- id: arabisierung-1965-1987
+  title: 'Arabisierung und Zwangsumsiedlung in Kollektivdörfer'
+  datum: '1965, 1973–1975 und 1986–1987'
+  jahr: 1965
+  jahrBis: 1987
+  datierungUnsicher: false
+  epoche: baath
+  thema: [verfolgung, migration, politik]
+  firman: false
+  zusammenfassung: >-
+    Şingal wird in mehreren Wellen entvölkert: Die Bewohnerinnen und Bewohner
+    von etwa 400 êzîdîschen Dörfern müssen in Kollektivdörfer (mujammaʽāt)
+    umziehen, in ihren Dörfern werden Araber angesiedelt. Şêxan wird 1975 in
+    gleicher Weise „arabisiert“. Die êzîdîsche Minderheit wird nach Dulz vor
+    allem wegen ihrer Zuordnung als ethnische Kurden verfolgt und fällt den
+    Anfāl-Feldzügen zum Opfer.
+  ort: 'Şingal, Şêxan'
+  artikel: 'geschichte/baath-zeit-arabisierung-und-umsiedlung'
+  sources:
+    - id: dulz-2016-vertreibung
+      loc: 'S. 135–136'
+    - id: tagay-ortac-2016
+      loc: 'S. 53'
+  confidence: gesichert
+  status: belegt
+  contentWarning: true
+
+- id: flucht-aus-der-tuerkei-1980er
+  title: 'Flucht fast aller Êzîdî aus der Türkei nach Europa'
+  datum: '1980er Jahre'
+  jahr: 1980
+  jahrBis: 1990
+  datierungUnsicher: true
+  epoche: baath
+  thema: [migration, verfolgung, recht]
+  firman: false
+  zusammenfassung: >-
+    Nach dem Militärputsch von 1980 und dem Beginn der Auseinandersetzungen
+    zwischen Staat und PKK fliehen in den 1980er Jahren fast alle Êzîdî aus
+    der Türkei nach Europa. Die meisten erhalten in Deutschland Asyl, nachdem
+    deutsche Gerichte eine religiös motivierte und staatlich geduldete
+    Gruppenverfolgung festgestellt haben.
+  ort: 'Türkei, Bundesrepublik Deutschland'
+  artikel: 'geschichte/baath-zeit-arabisierung-und-umsiedlung'
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 53'
+  confidence: gesichert
+  status: belegt
+  contentWarning: false
+
 - id: anschlaege-2007
-  title: 'Anschläge in Til Ezêr und Girê Zêr'
+  title: 'Bombenanschläge auf al-Qahtaniya und al-Adnaniya'
   datum: '14. August 2007'
   jahr: 2007
   jahrBis: null
   datierungUnsicher: false
   epoche: nach-2003
   thema: [verfolgung]
-  firman: false
+  firman: true
   zusammenfassung: >-
-    Platzhalter: Sprengstoffanschläge auf zwei êzîdîsche Ortschaften.
-    Opferzahlen liegen in unterschiedlichen Angaben vor und sind mit
-    Herkunft, Stichjahr und Erhebungsmethode nebeneinanderzustellen.
+    Vier mutmaßlich von al-Qaida verübte Bombenanschläge treffen die in der
+    Region Şingal liegenden Dörfer al-Qahtaniya und al-Adnaniya. Die
+    Opferzahlen gehen auseinander: mehr als 500 Getötete und 1.500 Verletzte
+    nach Tagay/Ortaç, mehr als 700 Getötete nach der bpb. Keine der beiden
+    Quellen legt ihre Erhebung offen.
   ort: 'Til Ezêr (Siba Şêx Xidir), Girê Zêr (Qahtaniyya)'
   artikel: 'geschichte/anschlaege-2007'
-  sources: []
-  confidence: unklar
-  status: stub
+  sources:
+    - id: tagay-ortac-2016
+      loc: 'S. 54'
+    - id: bpb-2024-voelkermord
+  confidence: umstritten
+  status: belegt
   contentWarning: true
 
 - id: singal-august-2014
-  title: 'Angriff auf Şingal'
+  title: 'Angriff des sogenannten Islamischen Staates auf Şingal'
   datum: '3. August 2014'
   jahr: 2014
   jahrBis: null
   datierungUnsicher: false
   epoche: genozid-2014
   thema: [verfolgung, recht]
-  firman: false
+  firman: true
   zusammenfassung: >-
-    Platzhalter: Beginn des Angriffs des sogenannten Islamischen Staates
-    auf die Region Şingal. Chronologie, Zahlen und völkerrechtliche
-    Einordnung werden im Bereich Genozid belegt dargestellt.
+    Der sogenannte Islamische Staat überfällt die Siedlungsgebiete in Şingal.
+    Nach dem Angriff verbleiben laut UN-Untersuchungskommission keine freien
+    Êzîdî in der Region; die dort lebende Gemeinschaft von 400.000 Menschen
+    ist vollständig vertrieben, verschleppt oder getötet. Der Bereich Genozid
+    ist noch nicht recherchiert – dieser Eintrag gibt nur wieder, was in den
+    bereits geprüften Quellen steht.
   ort: 'Şingal (Sindschar)'
   artikel: 'genozid/vorgeschichte-und-chronologie-august-2014'
-  sources: []
-  confidence: unklar
-  status: stub
+  sources:
+    - id: un-coi-2016-they-came-to-destroy
+      loc: 'Abs. 175'
+    - id: bpb-2024-voelkermord
+  confidence: gesichert
+  status: belegt
   contentWarning: true
+
+- id: un-feststellung-voelkermord-2016
+  title: 'UN-Untersuchungskommission stellt Völkermord fest'
+  datum: '15. Juni 2016'
+  jahr: 2016
+  jahrBis: null
+  datierungUnsicher: false
+  epoche: gegenwart
+  thema: [recht]
+  firman: false
+  zusammenfassung: >-
+    Die Independent International Commission of Inquiry on the Syrian Arab
+    Republic legt den Bericht „They came to destroy“ vor und stellt fest,
+    dass der IS an den Êzîdî den Tatbestand des Völkermordes verwirklicht
+    hat, dazu Verbrechen gegen die Menschlichkeit und Kriegsverbrechen. Der
+    Bericht stützt sich auf 45 Interviews und behandelt die in Syrien
+    begangenen Verletzungen.
+  ort: 'Genf'
+  artikel: 'genozid/anerkennungen-als-voelkermord'
+  sources:
+    - id: un-coi-2016-they-came-to-destroy
+      loc: 'Zusammenfassung'
+  confidence: gesichert
+  status: belegt
+  contentWarning: false
+
+- id: bundestag-anerkennung-2023
+  title: 'Der Deutsche Bundestag erkennt den Völkermord an'
+  datum: 'Januar 2023'
+  jahr: 2023
+  jahrBis: null
+  datierungUnsicher: true
+  epoche: gegenwart
+  thema: [recht, politik]
+  firman: false
+  zusammenfassung: >-
+    Der Deutsche Bundestag erkennt die Verbrechen des sogenannten Islamischen
+    Staates an der êzîdîschen Gemeinschaft als Völkermord an und folgt dabei
+    der rechtlichen Bewertung des UN-Sonderermittlungsteams UNITAD. Der
+    Antrag datiert vom 18. Januar 2023; die bpb nennt Januar 2023 als
+    Zeitpunkt der Anerkennung. Das genaue Beschlussdatum ist der Redaktion
+    noch nicht am Plenarprotokoll geprüft.
+  ort: 'Berlin'
+  artikel: 'genozid/anerkennungen-als-voelkermord'
+  sources:
+    - id: bundestag-2023-anerkennung
+      loc: 'S. 1'
+    - id: bpb-2024-voelkermord
+  confidence: gesichert
+  status: belegt
+  contentWarning: false
