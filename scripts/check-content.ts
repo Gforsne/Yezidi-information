@@ -196,10 +196,11 @@ for (const d of dokumente) {
     im gebauten HTML – deshalb prüft der Build es hier.
   */
   for (const [nr, zeile] of d.rumpf.split('\n').entries()) {
-    if (/^<(Cite|Begriff|KurmanciBegriff)\b/.test(zeile)) {
+    const treffer = /^\s*<(Cite|Begriff|KurmanciBegriff)\b/.exec(zeile);
+    if (treffer) {
       fehle(
         d.pfad,
-        `Zeile ${nr + 1}: <${zeile.slice(1).split(/[\s/>]/)[0]}> steht am Zeilenanfang. Inline-Komponenten an die vorige Zeile anhängen, sonst zerreißt der Absatz.`,
+        `Zeile ${nr + 1}: <${treffer[1]}> beginnt die Zeile. Inline-Komponenten an die vorige Zeile anhängen – sonst rutscht der Beleg aus dem Absatz heraus oder es entsteht eine Lücke vor der Ziffer.`,
       );
     }
   }

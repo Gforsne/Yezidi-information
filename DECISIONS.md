@@ -362,6 +362,46 @@ Sollzustand. Das stimmte, solange nichts recherchiert war; sobald erste
 Bereiche fertig sind, wäre derselbe Satz eine Beschönigung. Der
 Einordnungssatz wird jetzt aus dem Bearbeitungsstand erzeugt.
 
+### D-032 — Prettier fasst die Inhalte nicht mehr an
+
+_2026-07-27_
+
+In MDX gilt ein JSX-Element am Zeilenanfang als Block, nicht als Teil des
+Absatzes. Prettier bricht Zeilen um und schiebt dabei `<Cite>` an den
+Zeilenanfang. Die Folge ist im Quelltext unsichtbar und im gebauten HTML
+eindeutig: Der Beleg rutscht aus dem `<p>` heraus, die Belegziffer steht
+allein hinter dem Absatz, und vor ihr klafft eine Lücke. Innerhalb von
+Komponenten-Kindern hilft auch `proseWrap: "preserve"` nicht.
+
+`src/content/**/*.mdx` steht deshalb in `.prettierignore`. Für Fließtext
+war der Gewinn ohnehin gering. Die strukturelle Prüfung übernimmt
+`check:content`: Beginnt eine Zeile mit `<Cite>`, `<Begriff>` oder
+`<KurmanciBegriff>`, bricht der Build ab.
+
+Die übrigen Dateitypen – Astro, TypeScript, YAML, Markdown ohne JSX –
+formatiert Prettier unverändert.
+
+### D-033 — Zwei Barrierefreiheitsfehler, die erst mit Inhalt sichtbar wurden
+
+_2026-07-27_
+
+Solange alle Artikel Gerüste waren, enthielt keine geprüfte Route einen
+Beleg oder einen Glossarverweis. Mit den ersten belegten Seiten meldete
+axe zwei echte Verstöße:
+
+- `<Begriff id="…" />` ohne Kindtext erzeugte einen Link ohne
+  zugänglichen Namen. Die Komponente setzt jetzt den Titel des
+  Glossareintrags ein, wenn kein Kindtext angegeben ist. Das ist zugleich
+  die bequemere Schreibweise im Fließtext.
+- Die Belegziffern unterschieden sich allein durch ihre Farbe vom
+  Fließtext (WCAG 1.4.1). Sie tragen jetzt eine feine Unterstreichung –
+  am Linkelement selbst, nicht am `<sup>`, weil Prüfwerkzeuge die
+  Auszeichnung des Links lesen.
+
+Beides zeigt, wie wenig eine Prüfung wert ist, die auf leeren Seiten
+läuft. Der Rauchtest prüft jetzt zusätzlich, dass eine Artikelseite
+tatsächlich Belegziffern enthält.
+
 ---
 
 ## Offene Punkte, die keine Gestaltungsfrage sind

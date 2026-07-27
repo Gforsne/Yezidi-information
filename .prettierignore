@@ -7,3 +7,12 @@ public/fonts
 content-report.md
 RESEARCH-BRIEF.md
 package-lock.json
+
+# Inhalte: Prettier formatiert MDX-Dateien nicht mehr.
+#
+# In MDX gilt ein JSX-Element am Zeilenanfang als Block. Prettier bricht
+# Zeilen innerhalb von Komponenten-Kindern um und schiebt dabei <Cite> an
+# den Zeilenanfang – der Beleg rutscht aus dem Absatz heraus, im gebauten
+# HTML entsteht ein eigener Absatz. Siehe DECISIONS.md, D-032.
+# Die strukturelle Prüfung übernimmt `npm run check:content`.
+src/content/**/*.mdx
