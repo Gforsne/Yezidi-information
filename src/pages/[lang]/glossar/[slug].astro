@@ -50,7 +50,10 @@ const jsonLd = [
   title={d.title}
   eyebrow={t('glossary.title')}
   intro={d.kurzdefinition}
-  trail={[{ label: t('glossary.title'), slug: 'glossar' }, { label: d.title, slug: d.slug }]}
+  trail={[
+    { label: t('glossary.title'), slug: 'glossar' },
+    { label: d.title, slug: d.slug },
+  ]}
   jsonLd={jsonLd}
 >
   <div class="glossarseite">

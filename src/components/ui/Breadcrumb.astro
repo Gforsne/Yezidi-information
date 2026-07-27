@@ -17,11 +17,7 @@ const t = useTranslations(locale);
     {
       crumbs.map((c, i) => (
         <li>
-          {c.href ? (
-            <a href={c.href}>{c.label}</a>
-          ) : (
-            <span aria-current="page">{c.label}</span>
-          )}
+          {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
           {i < crumbs.length - 1 && (
             <span class="trenner" aria-hidden="true">
               /

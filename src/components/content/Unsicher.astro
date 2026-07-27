@@ -17,19 +17,23 @@ const ziel =
   (kontroverse ? `#${kontroverse}` : '');
 ---
 
-{/*
+{
+  /*
   Markiert eine strittige Aussage direkt im Satz. Die Markierung ist
   nicht nur farbig, sondern auch durch die Wellenlinie und den
   vorangestellten Marker erkennbar – Farbe allein wäre kein zulässiges
   Unterscheidungsmerkmal.
-*/}
+*/
+}
 <span class="unsicher">
   <span class="marker" aria-hidden="true">±</span><span class="inhalt"><slot /></span><a
     class="verweis"
     href={ziel}
     title={grund}
   >
-    <span class="nur-screenreader">{t('apparat.uncertain')}: {grund}. {t('apparat.toControversies')}</span>
+    <span class="nur-screenreader"
+      >{t('apparat.uncertain')}: {grund}. {t('apparat.toControversies')}</span
+    >
     <span aria-hidden="true">{t('apparat.uncertain')}</span>
   </a>
 </span>

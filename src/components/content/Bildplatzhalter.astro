@@ -22,11 +22,13 @@ const {
 const t = useTranslations(locale);
 ---
 
-{/*
+{
+  /*
   Gestaltete Leerfläche statt eines beliebigen oder KI-erzeugten Bildes
   (Leitplanke 10.7). Das feste Seitenverhältnis verhindert Layoutsprünge,
   sobald später ein echtes Bild eingesetzt wird.
-*/}
+*/
+}
 <figure class="bildplatzhalter" style={`--verhaeltnis:${verhaeltnis}`}>
   <div class="flaeche" role="img" aria-label={`${t('image.missing')} ${gesucht}`}>
     <svg viewBox="0 0 120 80" aria-hidden="true" focusable="false" preserveAspectRatio="none">

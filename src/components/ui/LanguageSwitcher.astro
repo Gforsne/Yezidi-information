@@ -22,11 +22,13 @@ const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const vorhanden = new Set<Locale>(sprachen ?? []);
 ---
 
-{/*
+{
+  /*
   Bewusst ohne JavaScript: ein <details>-Element wäre ohne JS nicht
   tastaturvollständig zu schließen, eine Liste sichtbarer Links dagegen
   funktioniert immer. Die aktuelle Sprache ist mit aria-current markiert.
-*/}
+*/
+}
 <nav class="sprachumschalter" aria-label={t('lang.switch')}>
   <span class="nur-screenreader">{t('lang.switch')}</span>
   <ul>
@@ -40,9 +42,7 @@ const vorhanden = new Set<Locale>(sprachen ?? []);
           <li>
             <a
               href={ziel}
-              lang={meta.bcp47}
               hreflang={meta.bcp47}
-              dir={meta.dir}
               aria-current={aktiv ? 'true' : undefined}
               class:list={['sprache', { aktiv }]}
               data-status={meta.status}
@@ -56,7 +56,7 @@ const vorhanden = new Set<Locale>(sprachen ?? []);
               }
             >
               <span class="kuerzel">{code.toUpperCase()}</span>
-              <span class="nur-screenreader">
+              <span class="nur-screenreader" lang={meta.bcp47} dir={meta.dir}>
                 {meta.endonym}
                 {!uebersetzt && ` – ${t('lang.notTranslated')}`}
               </span>

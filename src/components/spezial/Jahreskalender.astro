@@ -39,12 +39,14 @@ const ohneTermin = feste.filter((f) => f.data.monatGregorianisch === null);
 ---
 
 <div class="jahreskalender">
-  {/*
+  {
+    /*
     Der Kalender ordnet Feste nur grob einem gregorianischen Monat zu.
     Genaue Daten wären eine Scheingenauigkeit: Die Termine folgen einem
     anderen Kalendersystem und verschieben sich. Deshalb steht bei jedem
     Fest das Bezugssystem und die Terminregel statt eines Datums.
-  */}
+  */
+  }
   <ol class="monatsband">
     {
       monate.map((monat, i) => {
@@ -68,9 +70,7 @@ const ohneTermin = feste.filter((f) => f.data.monatGregorianisch === null);
                       <span class="fest-name" lang="ku">
                         {f.data.nameKurmanci}
                       </span>
-                      {f.data.nameDeutsch && (
-                        <span class="fest-deutsch">{f.data.nameDeutsch}</span>
-                      )}
+                      {f.data.nameDeutsch && <span class="fest-deutsch">{f.data.nameDeutsch}</span>}
                     </a>
                     <p class="fest-meta">
                       <span class="system">

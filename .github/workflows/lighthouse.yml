@@ -1,0 +1,35 @@
+name: Lighthouse
+
+# Läuft nicht bei jedem Push: Der Lauf dauert und schwankt auf geteilten
+# Runnern. Wöchentlich und auf Anforderung genügt, um Regressionen zu
+# erkennen.
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    name: Lighthouse auf den Kernrouten
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Vorschau starten
+        run: npx astro preview --port 4321 --host 127.0.0.1 &
+      - name: Auf den Server warten
+        run: npx wait-on http://127.0.0.1:4321/de --timeout 60000
+      - name: Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://127.0.0.1:4321/de
+            http://127.0.0.1:4321/de/religion/tawusi-melek-und-die-sieben-engel
+            http://127.0.0.1:4321/de/zeitleiste
+          configPath: ./.lighthouserc.json
+          uploadArtifacts: true

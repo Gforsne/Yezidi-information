@@ -15,7 +15,8 @@ const daten = eintrag?.data;
 const ziel = path(locale, 'glossar', id);
 ---
 
-{/*
+{
+  /*
   Glossarverweis im Fließtext.
 
   Umsetzung ohne JavaScript: ein Link mit nativem `title` und einem
@@ -24,7 +25,8 @@ const ziel = path(locale, 'glossar', id);
   Fokus. Fehlt der Glossareintrag, wird das sichtbar gemacht, statt
   stillschweigend einen toten Link zu erzeugen – check:content bricht
   in dem Fall ohnehin ab.
-*/}
+*/
+}
 {
   daten ? (
     <span class="begriff-huelle">

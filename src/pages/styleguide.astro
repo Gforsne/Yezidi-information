@@ -44,7 +44,11 @@ const typoStufen = [
   { token: '--t-xl', rolle: 'H2', beispiel: 'Die Zählung der 73 Firman' },
   { token: '--t-lg', rolle: 'H3', beispiel: 'Rolle in der Überlieferung' },
   { token: '--t-md', rolle: 'Lead', beispiel: 'Şêx, Pîr und Mirîd – Çarşema Sor' },
-  { token: '--t-base', rolle: 'Fließtext', beispiel: 'Der Fließtext läuft in 62–75 Zeichen Breite.' },
+  {
+    token: '--t-base',
+    rolle: 'Fließtext',
+    beispiel: 'Der Fließtext läuft in 62–75 Zeichen Breite.',
+  },
   { token: '--t-sm', rolle: 'Marginalien', beispiel: 'Belegspalte, Tabellen, Navigation' },
   { token: '--t-xs', rolle: 'Bildunterschrift', beispiel: 'Bildnachweis, Statusangaben' },
   { token: '--t-2xs', rolle: 'Eyebrow', beispiel: 'BEREICH · QUELLEN · STAND' },
@@ -64,9 +68,9 @@ const typoStufen = [
       <p class="eyebrow">Intern · nicht indexiert</p>
       <h1>Styleguide</h1>
       <p class="intro">
-        Lebende Übersicht aller Design-Tokens und Komponenten. Diese Seite dient der Kontrolle:
-        Jede Komponente wird hier in ihren Zuständen gezeigt, damit Abweichungen auffallen. Sie ist
-        von der Indexierung ausgenommen und nicht Teil der Sitemap.
+        Lebende Übersicht aller Design-Tokens und Komponenten. Diese Seite dient der Kontrolle: Jede
+        Komponente wird hier in ihren Zuständen gezeigt, damit Abweichungen auffallen. Sie ist von
+        der Indexierung ausgenommen und nicht Teil der Sitemap.
       </p>
       <nav class="sg-nav" aria-label="Abschnitte des Styleguides">
         <ul>
@@ -107,15 +111,17 @@ const typoStufen = [
       <h2>Typografie</h2>
       <p class="sg-hinweis">
         Drei Familien mit klaren Rollen: <strong>Newsreader</strong> (Display),
-        <strong>Source Serif 4</strong> (Fließtext), <strong>IBM Plex Sans</strong> (Utility). Für
-        die arabische Route <strong>IBM Plex Sans Arabic</strong>. Alle lokal gehostet, alle mit
+        <strong>Source Serif 4</strong> (Fließtext), <strong>IBM Plex Sans</strong> (Utility). Für die
+        arabische Route <strong>IBM Plex Sans Arabic</strong>. Alle lokal gehostet, alle mit
         geprüfter Abdeckung für ê î û ş ç.
       </p>
       <dl class="typoliste">
         {
           typoStufen.map((s) => (
             <div>
-              <dt><code>{s.token}</code> <span class="rolle">{s.rolle}</span></dt>
+              <dt>
+                <code>{s.token}</code> <span class="rolle">{s.rolle}</span>
+              </dt>
               <dd style={`font-size: var(${s.token})`}>{s.beispiel}</dd>
             </div>
           ))
@@ -135,7 +141,9 @@ const typoStufen = [
 
     <section id="raum" class="sg-block">
       <h2>Raum und Zeilenlänge</h2>
-      <p class="sg-hinweis">Abstände folgen einer festen Leiter; die Zeilenlänge liegt bei 68 Zeichen.</p>
+      <p class="sg-hinweis">
+        Abstände folgen einer festen Leiter; die Zeilenlänge liegt bei 68 Zeichen.
+      </p>
       <ul class="raumliste">
         {
           ['--s-1', '--s-2', '--s-3', '--s-4', '--s-5', '--s-6', '--s-7', '--s-8'].map((s) => (
@@ -269,7 +277,10 @@ const typoStufen = [
 
       <h3>Unsicher</h3>
       <p>
-        <Unsicher grund="Die Datierung wird in der Forschung unterschiedlich angesetzt." locale={locale}>
+        <Unsicher
+          grund="Die Datierung wird in der Forschung unterschiedlich angesetzt."
+          locale={locale}
+        >
           Eine Aussage, über die sich die Forschung nicht einig ist,
         </Unsicher>
         wird im Satz markiert und verweist auf die Kontroversen-Seite.

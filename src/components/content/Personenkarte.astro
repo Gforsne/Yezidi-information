@@ -56,7 +56,13 @@ const kategorien: Record<string, string> = {
     <a href={path(locale, 'personen', slug)}>{name}</a>
   </h3>
 
-  {nameUmschrift !== name && <p class="umschrift" lang="ku">{nameUmschrift}</p>}
+  {
+    nameUmschrift !== name && (
+      <p class="umschrift" lang="ku">
+        {nameUmschrift}
+      </p>
+    )
+  }
 
   <p class="rolle">{rolle}</p>
 

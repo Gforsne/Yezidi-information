@@ -31,11 +31,7 @@ const sortiert = [...eintraege].sort((a, b) =>
 );
 
 function anfangsbuchstabe(titel: string): string {
-  const erster = titel
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .charAt(0)
-    .toUpperCase();
+  const erster = titel.normalize('NFD').replace(/[̀-ͯ]/g, '').charAt(0).toUpperCase();
   return /[A-Z]/.test(erster) ? erster : '#';
 }
 
@@ -368,11 +364,7 @@ const vorhandeneKategorien = [...new Set(sortiert.map((e) => e.data.kategorie))]
     const zaehler = formular.querySelector<HTMLOutputElement>('[data-glossar-zaehler]');
     const leer = wurzel.querySelector<HTMLElement>('[data-glossar-leer]');
 
-    const normalisiere = (s: string) =>
-      s
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[̀-ͯ]/g, '');
+    const normalisiere = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
     const anwenden = () => {
       const q = normalisiere(suche?.value.trim() ?? '');

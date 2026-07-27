@@ -30,7 +30,13 @@ export interface LocaleMeta {
 }
 
 export const localeMeta: Record<Locale, LocaleMeta> = {
-  de: { endonym: 'Deutsch', deutsch: 'Deutsch', dir: 'ltr', bcp47: 'de-DE', status: 'vollstaendig' },
+  de: {
+    endonym: 'Deutsch',
+    deutsch: 'Deutsch',
+    dir: 'ltr',
+    bcp47: 'de-DE',
+    status: 'vollstaendig',
+  },
   en: { endonym: 'English', deutsch: 'Englisch', dir: 'ltr', bcp47: 'en', status: 'gerüst' },
   ku: { endonym: 'Kurmancî', deutsch: 'Kurmancî', dir: 'ltr', bcp47: 'ku', status: 'stub' },
   ar: { endonym: 'العربية', deutsch: 'Arabisch', dir: 'rtl', bcp47: 'ar', status: 'stub' },

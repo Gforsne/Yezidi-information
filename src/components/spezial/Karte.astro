@@ -75,10 +75,12 @@ const geojson = {
     <p class="noscript-hinweis">{t('map.noJs')}</p>
   </noscript>
 
-  {/*
+  {
+    /*
     Die Liste ist nicht nur Notbehelf: Sie ist die zugängliche und
     druckbare Fassung derselben Daten und steht deshalb immer da.
-  */}
+  */
+  }
   <details class="ortsliste" open>
     <summary>{t('map.listFallback')} ({orte.length})</summary>
     <div class="tabellen-scroll" tabindex="0" role="region" aria-label={t('map.listFallback')}>

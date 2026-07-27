@@ -50,7 +50,7 @@ const stufen: Record<string, string> = {
       material.map((m) => (
         <li>
           <p class="typ utility">
-            {typen[m.data.materialtyp] ?? m.data.materialtyp}
+            <span>{typen[m.data.materialtyp] ?? m.data.materialtyp}</span>
             {m.data.contentWarning && <span class="cw">Inhaltshinweis</span>}
           </p>
           <h2>

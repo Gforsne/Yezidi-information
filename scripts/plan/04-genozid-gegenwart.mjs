@@ -24,11 +24,19 @@ export const genozid = [
     auftrag:
       'Chronologie tagesgenau aus institutionellen Quellen belegen. Keine Gewaltdetails, keine Täterpropaganda, keine Bilder von Opfern. Widersprüche zwischen Quellen ausweisen.',
     gl: [
-      ['Lage vor dem 3. August 2014', ['Sicherheitsvorkehrungen', 'Warnungen'], 'Belegen, was vorher dokumentiert war.'],
+      [
+        'Lage vor dem 3. August 2014',
+        ['Sicherheitsvorkehrungen', 'Warnungen'],
+        'Belegen, was vorher dokumentiert war.',
+      ],
       ['Der 3. August 2014', [], 'Ablauf nach institutionellen Quellen, ohne Gewaltdetails.'],
       ['Die folgenden Tage und Wochen', [], 'Chronologisch belegen.'],
       ['Akteure', [], 'Sachlich benennen; keine Wiedergabe von Selbstdarstellungen der Täter.'],
-      ['Widersprüche in der Überlieferung des Ablaufs', [], 'Benennen und Quellen gegenüberstellen.'],
+      [
+        'Widersprüche in der Überlieferung des Ablaufs',
+        [],
+        'Benennen und Quellen gegenüberstellen.',
+      ],
     ],
     q: [
       'Welche institutionellen Berichte enthalten eine belastbare Chronologie?',
@@ -49,9 +57,21 @@ export const genozid = [
     auftrag:
       'Zahlen ausschließlich aus institutionellen Erhebungen übernehmen, mit Stand-Datum. Keine Gewaltdetails, keine Opferfotos, keine Namen ohne dokumentierte Selbstnennung.',
     gl: [
-      ['Erhebungen und ihre Methodik', [], 'Belegen, wer wie zählt und welche Definitionen gelten.'],
-      ['Massengräber', ['Auffindung und Exhumierung', 'Identifizierung'], 'Stand mit Datum belegen.'],
-      ['Vermisste', [], 'Zahlen mit Stand-Datum und Quelle; Veränderungen über die Zeit darstellen.'],
+      [
+        'Erhebungen und ihre Methodik',
+        [],
+        'Belegen, wer wie zählt und welche Definitionen gelten.',
+      ],
+      [
+        'Massengräber',
+        ['Auffindung und Exhumierung', 'Identifizierung'],
+        'Stand mit Datum belegen.',
+      ],
+      [
+        'Vermisste',
+        [],
+        'Zahlen mit Stand-Datum und Quelle; Veränderungen über die Zeit darstellen.',
+      ],
       ['Grenzen der Dokumentation', [], 'Lücken und methodische Probleme benennen.'],
     ],
     q: [
@@ -74,9 +94,17 @@ export const genozid = [
       'Ausschließlich institutionelle Quellen verwenden. Keine Gewaltdetails, keine Einzelfallschilderungen, keine Namen ohne dokumentierte Selbstnennung, keine Bilder. Am Seitenende auf Hilfsangebote verweisen.',
     gl: [
       ['Was dokumentiert ist', [], 'Sachliche Darstellung des Systems, ohne Details der Taten.'],
-      ['Völkerrechtliche Einordnung dieser Taten', [], 'Auf die Einordnungsseite verweisen; hier nur die einschlägigen Tatbestände.'],
+      [
+        'Völkerrechtliche Einordnung dieser Taten',
+        [],
+        'Auf die Einordnungsseite verweisen; hier nur die einschlägigen Tatbestände.',
+      ],
       ['Befreiungen und weiterhin Vermisste', [], 'Zahlen mit Stand und Quelle.'],
-      ['Hilfs- und Beratungsangebote', [], 'Verweis auf qualifizierte Stellen; keine eigene Beratung.'],
+      [
+        'Hilfs- und Beratungsangebote',
+        [],
+        'Verweis auf qualifizierte Stellen; keine eigene Beratung.',
+      ],
     ],
     q: [
       'Welche Zahlen zu Befreiten und weiterhin Vermissten sind institutionell belegt, mit welchem Stand?',
@@ -99,7 +127,11 @@ export const genozid = [
     gl: [
       ['Dokumentiertes Vorgehen', [], 'Sachlich, ohne Details.'],
       ['Völkerrechtliche Einordnung', [], 'Einschlägige Tatbestände benennen.'],
-      ['Rückkehr und Reintegration', [], 'Stand mit Quelle; auf die Seite zum Umgang mit Überlebenden verweisen.'],
+      [
+        'Rückkehr und Reintegration',
+        [],
+        'Stand mit Quelle; auf die Seite zum Umgang mit Überlebenden verweisen.',
+      ],
     ],
     q: ['Welche Zahlen zu verschleppten Kindern sind belegt, und wie werden sie erhoben?'],
   },
@@ -143,7 +175,11 @@ export const genozid = [
     gl: [
       ['Die Genozid-Definition', [], 'Wortlaut und Tatbestandsmerkmale belegen.'],
       ['Untersuchungen und ihre Feststellungen', [], 'Mit Dokumentnummer und Datum.'],
-      ['Strafverfahren', ['Verfahren in Deutschland', 'Verfahren anderswo'], 'Nur rechtskräftig oder öffentlich dokumentiert; Angeklagte nur nach Maßgabe der Persönlichkeitsrechte.'],
+      [
+        'Strafverfahren',
+        ['Verfahren in Deutschland', 'Verfahren anderswo'],
+        'Nur rechtskräftig oder öffentlich dokumentiert; Angeklagte nur nach Maßgabe der Persönlichkeitsrechte.',
+      ],
       ['Politische Anerkennung und gerichtliche Feststellung', [], 'Unterschied erklären.'],
     ],
     q: [
@@ -190,7 +226,11 @@ export const genozid = [
       'Zahlen mit Stand-Datum belegen. Das Şingal-Abkommen inhaltlich referieren, ohne die Positionen der Akteure zu bewerten.',
     gl: [
       ['Rückkehr', [], 'Zahlen mit Stand und Quelle.'],
-      ['Wiederaufbau', ['Wohnraum', 'Infrastruktur', 'Religiöse Stätten'], 'Belegen; Trägerschaft nennen.'],
+      [
+        'Wiederaufbau',
+        ['Wohnraum', 'Infrastruktur', 'Religiöse Stätten'],
+        'Belegen; Trägerschaft nennen.',
+      ],
       ['Verwaltung und Sicherheit', [], 'Akteure benennen, Positionen referieren.'],
       ['Das Şingal-Abkommen', [], 'Inhalt, Datum, Beteiligte, Umsetzungsstand – jeweils belegt.'],
     ],
@@ -281,7 +321,10 @@ export const gegenwart = [
     tags: ['gegenwart', 'diaspora', 'kaukasus'],
     p: 'etisch',
     g: ['diaspora'],
-    w: ['ueberblick/verbreitung-und-bevoelkerungszahlen', 'heilige-orte/heilige-orte-in-armenien-georgien-und-der-diaspora'],
+    w: [
+      'ueberblick/verbreitung-und-bevoelkerungszahlen',
+      'heilige-orte/heilige-orte-in-armenien-georgien-und-der-diaspora',
+    ],
     auftrag: 'Je Land mindestens eine institutionelle Quelle mit Stichjahr.',
     gl: [
       ['Syrien', [], 'Belegen.'],
@@ -305,8 +348,16 @@ export const gegenwart = [
     auftrag:
       'Zuwanderungsgeschichte anhand von Fachliteratur und amtlichen Quellen belegen. Vereinslandschaft nur mit überprüfbaren Angaben; keine vollständige Vereinsliste ohne Pflegekonzept.',
     gl: [
-      ['Zuwanderungsgeschichte', ['1960er und 1970er Jahre', '1980er und 1990er Jahre', 'Nach 2014'], 'Phasen belegen.'],
-      ['Regionale Schwerpunkte', ['Niedersachsen', 'Nordrhein-Westfalen', 'Weitere Länder'], 'Belegen; Zahlen mit Stichjahr.'],
+      [
+        'Zuwanderungsgeschichte',
+        ['1960er und 1970er Jahre', '1980er und 1990er Jahre', 'Nach 2014'],
+        'Phasen belegen.',
+      ],
+      [
+        'Regionale Schwerpunkte',
+        ['Niedersachsen', 'Nordrhein-Westfalen', 'Weitere Länder'],
+        'Belegen; Zahlen mit Stichjahr.',
+      ],
       ['Gemeinden und Zentren', [], 'Belegen; in die places-Collection übernehmen.'],
       ['Dachverbände und Vereinslandschaft', [], 'Belegen; Gründungsjahre und Selbstbeschreibung.'],
       ['Generationenfolge', [], 'Auf die Identitätsseite verweisen.'],
@@ -399,7 +450,9 @@ export const gegenwart = [
       ['Selbstverständnis', [], 'Studienergebnisse referieren.'],
       ['Debatten zwischen Tradition und Reform', [], 'Positionen datiert referieren.'],
     ],
-    q: ['Welche qualitativen Studien zur zweiten und dritten Generation in Deutschland liegen vor?'],
+    q: [
+      'Welche qualitativen Studien zur zweiten und dritten Generation in Deutschland liegen vor?',
+    ],
   },
   {
     s: 'gegenwart',

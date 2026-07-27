@@ -312,8 +312,16 @@ async function glossareintrag([slug, titel, kurmanci, kategorie, varianten]) {
 
 async function person(e) {
   const gl = [
-    ['Leben', [], 'Lebensdaten und Stationen ausschließlich aus belegten, öffentlich zugänglichen Quellen.'],
-    ['Wirken', [], 'Öffentlich relevantes Wirken belegen. Keine Privatdetails, keine sinngemäßen Zitate.'],
+    [
+      'Leben',
+      [],
+      'Lebensdaten und Stationen ausschließlich aus belegten, öffentlich zugänglichen Quellen.',
+    ],
+    [
+      'Wirken',
+      [],
+      'Öffentlich relevantes Wirken belegen. Keine Privatdetails, keine sinngemäßen Zitate.',
+    ],
     ['Rezeption', [], 'Einordnung in Forschung oder Öffentlichkeit belegen.'],
   ];
 
@@ -428,7 +436,11 @@ async function material(e) {
   const gl = [
     ['Lernziele', [], 'Lernziele nach fachlicher Prüfung festlegen.'],
     ['Material', [], 'Material erarbeiten, sobald die Bezugsseiten belegt sind.'],
-    ['Hinweise für Lehrkräfte', [], 'Didaktische Hinweise erarbeiten, für belastende Themen mit Fachberatung.'],
+    [
+      'Hinweise für Lehrkräfte',
+      [],
+      'Didaktische Hinweise erarbeiten, für belastende Themen mit Fachberatung.',
+    ],
   ];
 
   const frontmatter = [
@@ -543,7 +555,7 @@ await englischerStub('genozid', 'The 2014 genocide and persecution');
 const zusammenfassung = {
   Artikel: alleArtikel.length,
   Feste: festeCollection.length,
-  'Missverständnisse': missverstaendnisse.length,
+  Missverständnisse: missverstaendnisse.length,
   Glossar: glossar.length,
   Personen: personen.length,
   Orte: orte.length,

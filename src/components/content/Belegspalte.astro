@@ -53,7 +53,8 @@ const meldePfad =
   `?seite=${encodeURIComponent(Astro.url.pathname)}&betreff=${encodeURIComponent('Korrekturhinweis: ' + seitentitel)}`;
 ---
 
-{/*
+{
+  /*
   SIGNATURE-ELEMENT: die mitlaufende Belegspalte.
 
   Sie macht den Beleg- und Unsicherheitszustand einer Seite dauerhaft
@@ -61,7 +62,8 @@ const meldePfad =
   neben dem Text, worauf er sich stützt – und woran es fehlt.
   Auf schmalen Schirmen läuft sie unter dem Text weiter (siehe
   .lesegitter in global.css). Sie enthält kein JavaScript.
-*/}
+*/
+}
 <aside class="belegspalte-inhalt" aria-labelledby="belegspalte-titel">
   <h2 class="ueberschrift" id="belegspalte-titel">{t('apparat.title')}</h2>
   <p class="hilfe">{t('apparat.help')}</p>
@@ -102,9 +104,7 @@ const meldePfad =
       <div class="quote">
         <div class="quote-zeile">
           <span class="quote-zahl">{quote}&thinsp;%</span>
-          <span class="quote-label">
-            der {abschnitte} Abschnitte tragen einen Beleg
-          </span>
+          <span class="quote-label">der {abschnitte} Abschnitte tragen einen Beleg</span>
         </div>
         <div
           class="balken"
@@ -115,7 +115,9 @@ const meldePfad =
         </div>
         <ul class="zaehler">
           <li>{zitate} Belegstellen</li>
-          <li class:list={{ warn: belegluecken > 0 }}>{belegluecken} {t('apparat.gap')}n</li>
+          <li class:list={{ warn: belegluecken > 0 }}>
+            {belegluecken} {t('apparat.gap')}n
+          </li>
         </ul>
       </div>
     )
@@ -242,6 +244,9 @@ const meldePfad =
   }
 
   .quote-zahl {
+    /* Zahl und Prozentzeichen gehören zusammen und dürfen nicht
+       auf zwei Zeilen fallen. */
+    white-space: nowrap;
     font-family: var(--f-display);
     font-size: var(--t-xl);
     font-weight: var(--w-semibold);

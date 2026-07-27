@@ -55,9 +55,14 @@ const ungeprueft = quellen.filter((q) => !q.data.verifiziert).length;
     <h2>{t('sources.principle')}</h2>
     <ol>
       <li>Wissenschaftliche Fachliteratur und Peer-Review</li>
-      <li>Institutionelle Berichte (UN, staatliche Stellen, etablierte Nichtregierungsorganisationen)</li>
+      <li>
+        Institutionelle Berichte (UN, staatliche Stellen, etablierte Nichtregierungsorganisationen)
+      </li>
       <li>Seriöser Journalismus</li>
-      <li>Selbstdarstellungen der Gemeinschaft – wertvoll für die emische Perspektive, als solche gekennzeichnet</li>
+      <li>
+        Selbstdarstellungen der Gemeinschaft – wertvoll für die emische Perspektive, als solche
+        gekennzeichnet
+      </li>
     </ol>
     <p>
       Wikipedia ist keine zitierfähige Quelle. Sie wird allenfalls benutzt, um Primär- und
@@ -66,7 +71,7 @@ const ungeprueft = quellen.filter((q) => !q.data.verifiziert).length;
   </div>
 
   <p class="bilanz utility">
-    {quellen.length} {t('sources.count')} · {ungeprueft} davon mit ungeprüften Angaben
+    {`${quellen.length} ${t('sources.count')}`} · {`${ungeprueft} davon mit ungeprüften Angaben`}
   </p>
 
   <form class="filter" data-quellenfilter hidden>
@@ -136,16 +141,19 @@ const ungeprueft = quellen.filter((q) => !q.data.verifiziert).length;
             <span class="id">
               <code>{q.data.id}</code>
             </span>
-            <span class="zitiert">
-              {verwendung.get(q.data.id) ?? 0}× zitiert
-            </span>
+            <span class="zitiert">{verwendung.get(q.data.id) ?? 0}× zitiert</span>
           </p>
           {q.data.url && (
             <p class="url utility">
               <a href={q.data.url} rel="noopener nofollow">
                 {q.data.url}
               </a>
-              {q.data.accessed && <span> ({t('cite.accessed')} {formatDate(q.data.accessed, locale)})</span>}
+              {q.data.accessed && (
+                <span>
+                  {' '}
+                  ({t('cite.accessed')} {formatDate(q.data.accessed, locale)})
+                </span>
+              )}
             </p>
           )}
           {q.data.note && <p class="note">{q.data.note}</p>}

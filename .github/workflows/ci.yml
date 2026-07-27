@@ -1,0 +1,104 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+# Läuft nur einmal je Branch – ältere Läufe werden abgebrochen.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '22'
+
+jobs:
+  inhalte:
+    name: Inhalte prüfen
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      # Zuerst das Inhalts-Gate: Es läuft ohne Bau und meldet
+      # Belegprobleme, bevor irgendetwas anderes Zeit kostet.
+      - name: Build-Gate für Inhalte
+        run: npm run check:content
+
+  qualitaet:
+    name: Typen, Lint, Format, Unit-Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: Typprüfung
+        run: npm run check
+      - name: ESLint
+        run: npm run lint
+      - name: Prettier
+        run: npm run format:check
+      - name: Unit-Tests
+        run: npm test
+
+  bau:
+    name: Bau, Links und Berichte
+    runs-on: ubuntu-latest
+    needs: [inhalte]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: Bauen (mit Suchindex und Berichten)
+        run: npm run build
+      - name: Interne Links prüfen
+        run: npm run check:links
+      # Die Berichte werden bei jedem Bau neu erzeugt. Weichen sie vom
+      # eingecheckten Stand ab, wurde vor dem Commit nicht gebaut.
+      - name: Berichte sind aktuell
+        run: |
+          if ! git diff --quiet -- content-report.md RESEARCH-BRIEF.md; then
+            echo "::warning::content-report.md oder RESEARCH-BRIEF.md sind veraltet."
+            echo "Bitte 'npm run build' ausführen und die Berichte mit committen."
+            git --no-pager diff --stat -- content-report.md RESEARCH-BRIEF.md
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  barrierefreiheit:
+    name: Rauchtests und Barrierefreiheit
+    runs-on: ubuntu-latest
+    needs: [inhalte]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: Browser installieren
+        run: npx playwright install --with-deps chromium
+      - name: Bauen
+        run: npm run build
+      - name: Playwright (Rauchtests und axe-core)
+        run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 7

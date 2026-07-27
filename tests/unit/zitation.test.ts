@@ -73,10 +73,7 @@ describe('Belegapparat', () => {
   const quellen = new Map<string, Quelle>([['beispiel-1999', buch]]);
 
   it('nummeriert in der Reihenfolge des Frontmatters', () => {
-    const positionen = belegapparat(
-      [{ id: 'beispiel-1999' }, { id: 'zweite-quelle' }],
-      quellen,
-    );
+    const positionen = belegapparat([{ id: 'beispiel-1999' }, { id: 'zweite-quelle' }], quellen);
     expect(positionen.map((p) => p.nr)).toEqual([1, 2]);
   });
 

@@ -10,8 +10,10 @@ interface Props {
 const { titel, offen = false, kennzeichnung } = Astro.props;
 ---
 
-{/* <details> statt eigenem Widget: ohne JavaScript bedienbar, korrekt
-    angekündigt, druckbar. */}
+{
+  /* <details> statt eigenem Widget: ohne JavaScript bedienbar, korrekt
+    angekündigt, druckbar. */
+}
 <details class="aufklappbox" open={offen}>
   <summary>
     <span class="titel">{titel}</span>

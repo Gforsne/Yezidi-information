@@ -212,7 +212,8 @@ const places = defineCollection({
       koordinaten: z.tuple([z.number().min(-180).max(180), z.number().min(-90).max(90)]).nullable(),
       /** Genauigkeit der Verortung; „ungefähr“ wird auf der Karte gekennzeichnet. */
       koordinatenGenauigkeit: z.enum(['exakt', 'ungefähr', 'unbekannt']).default('unbekannt'),
-      zustand: z.enum(['erhalten', 'beschädigt', 'zerstört', 'wiederaufgebaut', 'unbekannt'])
+      zustand: z
+        .enum(['erhalten', 'beschädigt', 'zerstört', 'wiederaufgebaut', 'unbekannt'])
         .default('unbekannt'),
       kartenebene: z
         .array(z.enum(['siedlungsgebiete', 'heilige-orte', 'fluchtrouten', 'diaspora', 'gedenken']))
@@ -236,7 +237,8 @@ const festivals = defineCollection({
       nameDeutsch: z.string().nullable().optional(),
       nameVarianten: z.array(z.string()).default([]),
       /** Bezugssystem des Termins – zentrale Information, oft missverstanden. */
-      kalendersystem: z.enum(['ostkirchlich-julianisch', 'gregorianisch', 'mondbezogen', 'unklar'])
+      kalendersystem: z
+        .enum(['ostkirchlich-julianisch', 'gregorianisch', 'mondbezogen', 'unklar'])
         .default('unklar'),
       /** Beschreibung der Terminregel, KEIN erfundenes Datum. */
       terminregel: z.string().nullable().optional(),

@@ -13,11 +13,13 @@ const t = useTranslations(locale);
 const hinweis = text ?? t('cw.genocide');
 ---
 
-{/*
+{
+  /*
   Dezenter, immer sichtbarer Inhaltshinweis – bewusst KEINE Verdeckung
   des Textes und kein Aufklapp-Zwang: Wer diesen Bereich aufruft, sucht
   die Information. Der Hinweis rahmt sie, statt sie zu inszenieren.
-*/}
+*/
+}
 <aside class="inhaltshinweis" role="note" aria-labelledby="cw-titel">
   <p class="titel" id="cw-titel">
     <span class="zeichen" aria-hidden="true">!</span>

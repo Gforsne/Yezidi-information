@@ -11,12 +11,17 @@ export const feste = [
     p: 'gemischt',
     g: ['mor-kirin', 'bisk', 'kiriv'],
     w: ['gesellschaft/kiriv-und-soziale-buendnisse', 'gesellschaft/jenseitsgeschwister'],
-    auftrag: 'Riten einzeln belegen; für jeden Ritus die Quellenlage und regionale Varianz angeben.',
+    auftrag:
+      'Riten einzeln belegen; für jeden Ritus die Quellenlage und regionale Varianz angeben.',
     gl: [
       ['Geburt und frühe Riten', ['Mor kirin', 'Bisk'], 'Nach ethnografischer Literatur belegen.'],
       ['Beschneidung und Kirîv', [], 'Belegen; auf die Kirîv-Seite verweisen.'],
       ['Hochzeit', ['Ablauf', 'Regionale Unterschiede'], 'Belegen.'],
-      ['Tod, Trauer und Bestattung', [], 'Belegen; auf Bestattungsfragen in Deutschland verweisen.'],
+      [
+        'Tod, Trauer und Bestattung',
+        [],
+        'Belegen; auf Bestattungsfragen in Deutschland verweisen.',
+      ],
       ['Veränderungen in der Diaspora', [], 'Belegen oder als offene Frage führen.'],
     ],
     q: [
@@ -88,7 +93,11 @@ export const sprache = [
     auftrag:
       'Schriftsysteme belegen. Die Zeichentabelle mit einer sprachwissenschaftlichen Quelle abgleichen, bevor sie veröffentlicht wird.',
     gl: [
-      ['Gebräuchliche Schriftsysteme', ['Hawar-Alphabet', 'Kyrillische Schreibung', 'Arabische Schreibung'], 'Belegen.'],
+      [
+        'Gebräuchliche Schriftsysteme',
+        ['Hawar-Alphabet', 'Kyrillische Schreibung', 'Arabische Schreibung'],
+        'Belegen.',
+      ],
       ['Die Umschrift dieses Portals', [], 'Konvention wiedergeben und begründen. Meta-Text.'],
       ['Zeichentabelle', [], 'Erst nach Abgleich mit einer Fachquelle veröffentlichen.'],
       ['Verbreitete Abweichungen im Deutschen', [], 'Belegen, ohne zu werten.'],
@@ -134,7 +143,11 @@ export const sprache = [
       'Namenkundliche Angaben belegen. Keine Aussagen über lebende Familien; keine Listen, die Einzelne identifizierbar machen.',
     gl: [
       ['Namensbildung', [], 'Belegen.'],
-      ['Verbreitete Vornamen', [], 'Nur mit Quelle; Bedeutungen nur mit sprachwissenschaftlichem Beleg.'],
+      [
+        'Verbreitete Vornamen',
+        [],
+        'Nur mit Quelle; Bedeutungen nur mit sprachwissenschaftlichem Beleg.',
+      ],
       ['Eşîret-Bezeichnungen', [], 'Belegen; historische Einordnung.'],
       ['Namensänderungen durch Behörden', [], 'Belegen, sofern dokumentiert.'],
     ],
@@ -182,7 +195,11 @@ export const geschichte = [
     auftrag: 'Quellenlage darstellen und Hypothesen mit Vertretungen belegen; keine Festlegung.',
     gl: [
       ['Was die Quellenlage hergibt', [], 'Belegen, welche Quellen für welche Zeit existieren.'],
-      ['Hypothesen zur Entstehung', [], 'Auf die Religionsseite verweisen, hier historische Perspektive.'],
+      [
+        'Hypothesen zur Entstehung',
+        [],
+        'Auf die Religionsseite verweisen, hier historische Perspektive.',
+      ],
       ['Erinnerungserzählungen der Gemeinschaft', [], 'Emisch kennzeichnen.'],
     ],
     q: ['Welche schriftlichen Quellen aus der Zeit vor dem 12. Jahrhundert werden angeführt?'],
@@ -200,7 +217,11 @@ export const geschichte = [
     auftrag:
       'Historischen Befund und Überlieferung getrennt darstellen. Datierungen mit Quelle; unsichere Datierungen kennzeichnen.',
     gl: [
-      ['Historischer Befund', ['Herkunft', 'Wirken in Laliş'], 'Nach historischen Quellen belegen.'],
+      [
+        'Historischer Befund',
+        ['Herkunft', 'Wirken in Laliş'],
+        'Nach historischen Quellen belegen.',
+      ],
       ['Die Adawiyya', [], 'Ordensgeschichte belegen.'],
       ['Herausbildung der Gemeinschaft', [], 'Forschungspositionen darstellen.'],
       ['Bedeutung in der Überlieferung', [], 'Emisch kennzeichnen.'],
@@ -269,7 +290,11 @@ export const geschichte = [
     gl: [
       ['Begriff und Wortherkunft', [], 'Belegen.'],
       ['Die Zahl 73', [], 'Herkunft der Zahl belegen; als Erinnerungsfigur einordnen.'],
-      ['Historische Zuordnung einzelner Ereignisse', [], 'Nur belegte Zuordnungen; `Unsicher` verwenden.'],
+      [
+        'Historische Zuordnung einzelner Ereignisse',
+        [],
+        'Nur belegte Zuordnungen; `Unsicher` verwenden.',
+      ],
       ['Rolle in der Erinnerungskultur', [], 'Emisch kennzeichnen.'],
       ['Der Genozid ab 2014 in dieser Zählung', [], 'Positionen referieren, nicht entscheiden.'],
     ],
@@ -307,7 +332,10 @@ export const geschichte = [
     p: 'etisch',
     cw: true,
     g: ['diaspora'],
-    w: ['gegenwart/syrien-tuerkei-kaukasus-russland', 'heilige-orte/heilige-orte-in-armenien-georgien-und-der-diaspora'],
+    w: [
+      'gegenwart/syrien-tuerkei-kaukasus-russland',
+      'heilige-orte/heilige-orte-in-armenien-georgien-und-der-diaspora',
+    ],
     auftrag:
       'Fluchtbewegungen und Ansiedlung belegen. Verhältnis zum Sayfo-Kontext präzise und ohne Gleichsetzung darstellen.',
     gl: [
@@ -354,7 +382,11 @@ export const geschichte = [
       'Maßnahmen und Zahlen belegen. Kollektivsiedlungen namentlich erfassen und in die places-Collection übernehmen.',
     gl: [
       ['Arabisierungspolitik', [], 'Belegen.'],
-      ['Zwangsumsiedlung in Kollektivsiedlungen', ['Mujammaʿat', 'Folgen für Landbesitz'], 'Belegen.'],
+      [
+        'Zwangsumsiedlung in Kollektivsiedlungen',
+        ['Mujammaʿat', 'Folgen für Landbesitz'],
+        'Belegen.',
+      ],
       ['Zensus- und Registrierungspolitik', [], 'Belegen.'],
       ['Langfristige Folgen', [], 'Belegen; Bezug zur Lage nach 2014 herstellen.'],
     ],
@@ -374,7 +406,8 @@ export const geschichte = [
     cw: true,
     g: ['singal', 'sexan'],
     w: ['geschichte/anschlaege-2007', 'genozid/vorgeschichte-und-chronologie-august-2014'],
-    auftrag: 'Entwicklung belegt darstellen; Zuständigkeitsstreit um die Siedlungsgebiete neutral referieren.',
+    auftrag:
+      'Entwicklung belegt darstellen; Zuständigkeitsstreit um die Siedlungsgebiete neutral referieren.',
     gl: [
       ['Politische Vertretung', [], 'Belegen.'],
       ['Verwaltungszugehörigkeit der Siedlungsgebiete', [], 'Positionen der Akteure referieren.'],

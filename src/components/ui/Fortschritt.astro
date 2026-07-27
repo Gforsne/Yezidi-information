@@ -10,11 +10,13 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-{/*
+{
+  /*
   Lesefortschritt. Rein dekorativ-orientierend, deshalb aria-hidden und
   ohne Bewegung: Der Balken springt auf den Wert, statt zu animieren.
   Ohne JavaScript bleibt er unsichtbar.
-*/}
+*/
+}
 <div class="fortschritt" data-fortschritt hidden>
   <span class="nur-screenreader">{t('nav.readingProgress')}</span>
   <div class="balken" aria-hidden="true"><span data-fortschritt-balken></span></div>

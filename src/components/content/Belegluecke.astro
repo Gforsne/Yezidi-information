@@ -14,11 +14,13 @@ interface Props {
 const { auftrag, hinweis, inline = false } = Astro.props;
 ---
 
-{/*
+{
+  /*
   Sichtbare Beleglücke. Sie ersetzt keinen Text, sondern zeigt an, dass
   hier noch keiner steht. remark-zitate zählt die Vorkommen; der
   Content-Report weist sie als offene Belegstellen aus.
-*/}
+*/
+}
 {
   inline ? (
     <mark class="luecke-inline" title={auftrag}>

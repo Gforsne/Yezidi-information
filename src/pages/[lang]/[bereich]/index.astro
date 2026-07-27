@@ -82,8 +82,9 @@ const jsonLd = [
       <p class="intro">{bereich.intro}</p>
 
       <p class="bilanz utility">
-        {seiten.length}
-        {t('general.pages')} · {stubs} davon noch Gerüst · {offeneFragen.length} offene Recherchefragen
+        {`${seiten.length} ${t('general.pages')}`} · {`${stubs} davon noch Gerüst`} · {
+          `${offeneFragen.length} offene Recherchefragen`
+        }
       </p>
     </header>
 

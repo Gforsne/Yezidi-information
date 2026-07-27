@@ -94,8 +94,10 @@ const firmanAnzahl = sortiert.filter((e) => e.data.firman).length;
     )
   }
 
-  {/* Ohne diese Ebene spränge die Gliederung von der Seitenüberschrift
-      direkt auf die h3 der Einträge. */}
+  {
+    /* Ohne diese Ebene spränge die Gliederung von der Seitenüberschrift
+      direkt auf die h3 der Einträge. */
+  }
   <h2 class="nur-screenreader">{t('timeline.entries')}</h2>
 
   <ol class="spur">
@@ -132,9 +134,7 @@ const firmanAnzahl = sortiert.filter((e) => e.data.firman).length;
             <p class="zusammenfassung">{e.data.zusammenfassung}</p>
 
             <p class="meta">
-              {e.data.firman && (
-                <span class="firman-marke">{t('timeline.firmanMark')}</span>
-              )}
+              {e.data.firman && <span class="firman-marke">{t('timeline.firmanMark')}</span>}
               {e.data.thema.map((th) => (
                 <span class="thema">{themen[th] ?? th}</span>
               ))}
@@ -266,11 +266,7 @@ const firmanAnzahl = sortiert.filter((e) => e.data.firman).length;
     inset-block: 0;
     inset-inline-start: 0.75rem;
     inline-size: 2px;
-    background: repeating-linear-gradient(
-      to bottom,
-      var(--c-border) 0 6px,
-      transparent 6px 10px
-    );
+    background: repeating-linear-gradient(to bottom, var(--c-border) 0 6px, transparent 6px 10px);
   }
 
   .eintrag:first-child::before {

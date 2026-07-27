@@ -66,7 +66,11 @@ const jsonLdOrt = d.koordinaten
   belegluecken={k._belegluecken ?? 0}
   abschnitte={k._abschnitte ?? 0}
 >
-  {jsonLdOrt && <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrt)} is:inline />}
+  {
+    jsonLdOrt && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrt)} is:inline />
+    )
+  }
 
   <dl class="ortsdaten">
     <div>

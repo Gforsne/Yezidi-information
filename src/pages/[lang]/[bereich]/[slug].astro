@@ -6,9 +6,7 @@ import { locales, type Locale } from '../../../i18n/config';
 import { sectionById, type SectionId } from '../../../lib/sections';
 
 type Eintrag =
-  | CollectionEntry<'articles'>
-  | CollectionEntry<'festivals'>
-  | CollectionEntry<'misconceptions'>;
+  CollectionEntry<'articles'> | CollectionEntry<'festivals'> | CollectionEntry<'misconceptions'>;
 
 export async function getStaticPaths() {
   const [artikel, feste, missverstaendnisse] = await Promise.all([

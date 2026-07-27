@@ -12,8 +12,7 @@ import { create as fontkitCreate, type Font } from 'fontkit';
  */
 
 const SCHRIFTEN = join(process.cwd(), 'public', 'fonts');
-const oeffne = (datei: string) =>
-  fontkitCreate(readFileSync(join(SCHRIFTEN, datei))) as Font;
+const oeffne = (datei: string) => fontkitCreate(readFileSync(join(SCHRIFTEN, datei))) as Font;
 
 const KURMANCI = [...'êîûşçÊÎÛŞÇ'];
 const ARABISCH = [...'ابتثجحخدذرزسشصضطظعغفقكلمنهوي'];

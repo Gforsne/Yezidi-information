@@ -98,7 +98,10 @@ function istAktiv(href: string): boolean {
                             über der Seitenüberschrift liegt. Die Bereiche sind
                             stattdessen als benannte Abschnitte ausgezeichnet. */}
                         <p class="panel-titel">
-                          <a href={bereich.href} aria-current={istAktiv(bereich.href) ? 'page' : undefined}>
+                          <a
+                            href={bereich.href}
+                            aria-current={istAktiv(bereich.href) ? 'page' : undefined}
+                          >
                             {bereich.title}
                           </a>
                         </p>
@@ -113,7 +116,11 @@ function istAktiv(href: string): boolean {
                                 >
                                   {seite.title}
                                   {seite.contentWarning && (
-                                    <span class="cw-punkt" title={t('cw.title')} aria-hidden="true" />
+                                    <span
+                                      class="cw-punkt"
+                                      title={t('cw.title')}
+                                      aria-hidden="true"
+                                    />
                                   )}
                                 </a>
                               </li>
@@ -136,7 +143,10 @@ function istAktiv(href: string): boolean {
                         <ul class="panel-liste">
                           {werkzeuge.map((w) => (
                             <li>
-                              <a href={w.href} aria-current={aktuell === w.href ? 'page' : undefined}>
+                              <a
+                                href={w.href}
+                                aria-current={aktuell === w.href ? 'page' : undefined}
+                              >
                                 {w.title}
                               </a>
                             </li>

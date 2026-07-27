@@ -201,7 +201,11 @@ export const wissenschaft = [
       'Bestände mit Trägerschaft und Zugänglichkeit erfassen. Reiseberichte quellenkritisch einordnen.',
     gl: [
       ['Verwaltungsakten', ['Osmanische Bestände', 'Britische Mandatsakten'], 'Belegen.'],
-      ['Reise- und Missionsberichte', [], 'Quellenkritisch einordnen; als Außenperspektive kennzeichnen.'],
+      [
+        'Reise- und Missionsberichte',
+        [],
+        'Quellenkritisch einordnen; als Außenperspektive kennzeichnen.',
+      ],
       ['Tonarchive der mündlichen Überlieferung', [], 'Trägerschaft und Zugang erfassen.'],
       ['Berichte von UN-Stellen und NGOs', [], 'Mit Dokumentnummer erfassen.'],
     ],
@@ -384,7 +388,9 @@ export const meta = [
       ['Ablauf einer Korrektur', [], 'Meta-Text; Verantwortlichkeiten ergänzen.'],
       ['Community-Feedback', [], 'Verfahren beschreiben, sobald festgelegt.'],
     ],
-    q: ['Wie wird sichergestellt, dass Rückmeldungen aus der Gemeinschaft strukturiert einfließen?'],
+    q: [
+      'Wie wird sichergestellt, dass Rückmeldungen aus der Gemeinschaft strukturiert einfließen?',
+    ],
   },
   {
     s: 'meta',
@@ -415,7 +421,8 @@ export const meta = [
     p: 'etisch',
     g: [],
     w: ['meta/wie-wir-arbeiten', 'meta/mitwirken'],
-    auftrag: 'Meldeweg (E-Mail-Adresse oder Formular) eintragen, sobald die Trägerschaft geklärt ist.',
+    auftrag:
+      'Meldeweg (E-Mail-Adresse oder Formular) eintragen, sobald die Trägerschaft geklärt ist.',
     gl: [
       ['So melden Sie einen Fehler', [], 'Meta-Text.'],
       ['Was ein hilfreicher Hinweis enthält', [], 'Meta-Text.'],
@@ -457,7 +464,11 @@ export const meta = [
     auftrag:
       'ZWINGEND vor Veröffentlichung: Hosting, Logdaten, Aufbewahrungsfristen und Verantwortlichkeit eintragen; rechtlich prüfen lassen.',
     gl: [
-      ['Warum es hier kein Cookie-Banner gibt', [], 'Sachlage beschreiben: keine Cookies, keine Tracker, keine Drittanbieter.'],
+      [
+        'Warum es hier kein Cookie-Banner gibt',
+        [],
+        'Sachlage beschreiben: keine Cookies, keine Tracker, keine Drittanbieter.',
+      ],
       ['Welche Daten verarbeitet werden', [], 'Platzhalter – abhängig vom Hosting.'],
       ['Schriften, Karten und Suche', [], 'Lokale Auslieferung beschreiben.'],
       ['Optionale Statistik', [], 'Standardmäßig deaktiviert; Bedingungen beschreiben.'],

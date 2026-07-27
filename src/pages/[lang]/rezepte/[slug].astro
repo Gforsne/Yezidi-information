@@ -21,7 +21,11 @@ const locale = Astro.params.lang as Locale;
 const { eintrag } = Astro.props as { eintrag: CollectionEntry<'recipes'> };
 const { Content, headings, remarkPluginFrontmatter } = await render(eintrag);
 const d = eintrag.data;
-const k = remarkPluginFrontmatter as { _zitate?: number; _belegluecken?: number; _abschnitte?: number };
+const k = remarkPluginFrontmatter as {
+  _zitate?: number;
+  _belegluecken?: number;
+  _abschnitte?: number;
+};
 ---
 
 <ArtikelLayout

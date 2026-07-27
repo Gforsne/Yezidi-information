@@ -111,7 +111,9 @@ export interface Kennzahlen {
  */
 export function werteRumpfAus(rumpf: string): Kennzahlen {
   const zitate = [...rumpf.matchAll(/<Cite\s[^>]*id=["']([^"']+)["']/g)].map((m) => m[1] ?? '');
-  const begriffe = [...rumpf.matchAll(/<Begriff\s[^>]*id=["']([^"']+)["']/g)].map((m) => m[1] ?? '');
+  const begriffe = [...rumpf.matchAll(/<Begriff\s[^>]*id=["']([^"']+)["']/g)].map(
+    (m) => m[1] ?? '',
+  );
   const belegluecken = [...rumpf.matchAll(/<Belegluecke[\s/>]/g)].length;
   const unsicher = [...rumpf.matchAll(/<Unsicher[\s/>]/g)].length;
   const abschnitte = [...rumpf.matchAll(/^##\s+\S/gm)].length;

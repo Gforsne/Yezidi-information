@@ -10,12 +10,14 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-{/*
+{
+  /*
   Der Umschalter ist ein echtes <button> mit aria-pressed-freier,
   dreiwertiger Logik (System → hell → dunkel). Ohne JavaScript wird er
   ausgeblendet, weil er dann nichts bewirken könnte; die Systemeinstellung
   greift trotzdem.
-*/}
+*/
+}
 <button type="button" class="themenwechsler" data-themenwechsler hidden aria-live="polite">
   <span class="symbol" aria-hidden="true"></span>
   <span class="label" data-label>{t('theme.system')}</span>

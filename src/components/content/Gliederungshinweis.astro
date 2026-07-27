@@ -12,26 +12,32 @@ const { gliederung, auftrag, locale = 'de' } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-{/*
+{
+  /*
   Erscheint nur auf Seiten mit `status: stub`.
 
   Der Sinn: Wer hier landet, soll sofort erkennen, dass noch kein Inhalt
   vorliegt – und trotzdem sehen, was die Seite abdecken wird und was
   konkret zu recherchieren ist. Das ist ehrlicher als ein halbfertiger
   Text, der wie Wissen aussieht.
-*/}
+*/
+}
 <section class="gliederungshinweis" aria-labelledby="gh-titel">
   <h2 class="titel" id="gh-titel">Diese Seite ist ein Gerüst</h2>
 
   <p class="erklaerung">
-    {t('status.stub.help')} Unten stehen die vorgesehenen Abschnitte. Jeder Abschnitt trägt den
-    Rechercheauftrag, der ihn füllen soll. Es steht bewusst kein vorläufiger Text hier, der wie
-    gesichertes Wissen aussehen könnte.
+    {t('status.stub.help')} Unten stehen die vorgesehenen Abschnitte. Jeder Abschnitt trägt den Rechercheauftrag,
+    der ihn füllen soll. Es steht bewusst kein vorläufiger Text hier, der wie gesichertes Wissen aussehen
+    könnte.
   </p>
 
-  {auftrag && (
-    <p class="auftrag"><strong>Rechercheauftrag der Seite:</strong> {auftrag}</p>
-  )}
+  {
+    auftrag && (
+      <p class="auftrag">
+        <strong>Rechercheauftrag der Seite:</strong> {auftrag}
+      </p>
+    )
+  }
 
   {
     gliederung.length > 0 && (

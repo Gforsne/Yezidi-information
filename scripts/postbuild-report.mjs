@@ -47,9 +47,10 @@ const groessen = await Promise.all(
 groessen.sort((a, b) => b.bytes - a.bytes);
 
 const gesamtJs = groessen.reduce((a, g) => a + g.bytes, 0);
-const gesamtCss = (
-  await Promise.all(stile.map(async (s) => (await stat(s)).size))
-).reduce((a, b) => a + b, 0);
+const gesamtCss = (await Promise.all(stile.map(async (s) => (await stat(s)).size))).reduce(
+  (a, b) => a + b,
+  0,
+);
 
 const kb = (b) => `${(b / 1024).toFixed(1)} kB`;
 

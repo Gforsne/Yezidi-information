@@ -162,7 +162,11 @@ export const missverstaendnisse = [
     gl: [
       ['Die Behauptung', [], 'Neutral referieren.'],
       ['Faktenlage', [], 'Mit Verweis auf die Religionsseiten belegen.'],
-      ['Herkunft der Zuschreibung', ['Frühe Belege', 'Verbreitung durch Reiseberichte'], 'Textlich belegen.'],
+      [
+        'Herkunft der Zuschreibung',
+        ['Frühe Belege', 'Verbreitung durch Reiseberichte'],
+        'Textlich belegen.',
+      ],
       ['Wirkung als Verfolgungslegitimation', [], 'Historisch belegen.'],
       ['Gegenwärtige Verbreitung', [], 'Mit Stand-Datum belegen.'],
     ],
@@ -181,7 +185,10 @@ export const missverstaendnisse = [
     verbreitung: 'beides',
     cw: false,
     g: [],
-    w: ['missverstaendnisse/teufelsanbetung-vorwurf', 'missverstaendnisse/hassrede-und-verschwoerungserzaehlungen'],
+    w: [
+      'missverstaendnisse/teufelsanbetung-vorwurf',
+      'missverstaendnisse/hassrede-und-verschwoerungserzaehlungen',
+    ],
     auftrag:
       'Behauptungen sammeln, deren Verbreitung belegbar ist. Für jede Behauptung Faktenlage, Quelle und Entstehungszusammenhang erarbeiten.',
     gl: [
@@ -190,7 +197,9 @@ export const missverstaendnisse = [
       ['Behauptungen zur religiösen Praxis', [], 'Einträge erarbeiten.'],
       ['Behauptungen zur Gesellschaftsordnung', [], 'Einträge erarbeiten.'],
     ],
-    q: ['Welche Falschbehauptungen sind in deutschsprachigen Medien und im Netz nachweisbar verbreitet?'],
+    q: [
+      'Welche Falschbehauptungen sind in deutschsprachigen Medien und im Netz nachweisbar verbreitet?',
+    ],
   },
   {
     slug: 'hassrede-und-verschwoerungserzaehlungen',
@@ -228,7 +237,13 @@ export const glossar = [
   ['sehberi', 'Şehbêrî', 'Şehbêrî', 'religion', []],
   ['dua', 'Duʿa', 'Duʿa', 'religion', ['Dua']],
   ['mishefa-res', 'Mishefa Reş', 'Mishefa Reş', 'religion', ['Meshefa Rêş', 'Schwarzes Buch']],
-  ['kiteba-cilwe', 'Kitêba Cilwe', 'Kitêba Cilwe', 'religion', ['Kitab al-Jilwa', 'Buch der Offenbarung']],
+  [
+    'kiteba-cilwe',
+    'Kitêba Cilwe',
+    'Kitêba Cilwe',
+    'religion',
+    ['Kitab al-Jilwa', 'Buch der Offenbarung'],
+  ],
   ['roj', 'Roj', 'Roj', 'religion', []],
   ['mirid', 'Mirîd', 'Mirîd', 'gesellschaft', ['Murid']],
   ['sex', 'Şêx', 'Şêx', 'gesellschaft', ['Scheich', 'Sheikh']],
@@ -241,7 +256,13 @@ export const glossar = [
   ['kocek', 'Koçek', 'Koçek', 'gesellschaft', ['Kochek']],
   ['mijewir', 'Mijêwir', 'Mijêwir', 'gesellschaft', ['Micêwir']],
   ['meclisa-ruhani', 'Meclisa Ruhanî', 'Meclisa Ruhanî', 'gesellschaft', ['Geistlicher Rat']],
-  ['birayeaxrete', 'Birayê/Xwişka Axretê', 'Birayê Axretê', 'gesellschaft', ['Jenseitsbruder', 'Jenseitsschwester']],
+  [
+    'birayeaxrete',
+    'Birayê/Xwişka Axretê',
+    'Birayê Axretê',
+    'gesellschaft',
+    ['Jenseitsbruder', 'Jenseitsschwester'],
+  ],
   ['kiriv', 'Kirîv', 'Kirîv', 'gesellschaft', ['Kreve', 'Kirv']],
   ['esiret', 'Eşîret', 'Eşîret', 'gesellschaft', ['Aschiret', 'Stamm']],
   ['lalis', 'Laliş', 'Laliş', 'orte', ['Lalisch', 'Lalish']],
@@ -471,7 +492,10 @@ export const unterricht = [
       'Die völkerrechtliche Einordnung nachvollziehen',
       'Den Unterschied zwischen politischer Anerkennung und gerichtlicher Feststellung erklären',
     ],
-    bezug: ['genozid/vorgeschichte-und-chronologie-august-2014', 'genozid/voelkerrechtliche-einordnung'],
+    bezug: [
+      'genozid/vorgeschichte-und-chronologie-august-2014',
+      'genozid/voelkerrechtliche-einordnung',
+    ],
     q: [
       'Wer prüft die didaktischen Hinweise fachlich?',
       'Welche Materialien für den Umgang mit belastenden Themen sind einschlägig?',

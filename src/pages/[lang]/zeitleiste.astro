@@ -30,7 +30,9 @@ const firman = eintraege.filter((e) => e.data.firman).length;
       text="Die Zeitleiste enthält Einträge zu Verfolgung und Massengewalt. Sie verzichtet auf Gewaltdetails und auf Bilder."
     />
     <p class="bilanz utility">
-      {eintraege.length} {t('timeline.entries')} · {firman} davon als {t('timeline.firmanMark')} markiert
+      {`${eintraege.length} ${t('timeline.entries')}`} · {
+        `${firman} davon als ${t('timeline.firmanMark')} markiert`
+      }
     </p>
   </div>
 

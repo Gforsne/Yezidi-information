@@ -53,7 +53,9 @@ export function switchLocalePath(pathname: string, target: Locale): string {
 }
 
 /** Alle Sprachvarianten eines Pfades – Grundlage für `hreflang`. */
-export function alternateLinks(pathname: string): { locale: Locale; href: string; bcp47: string }[] {
+export function alternateLinks(
+  pathname: string,
+): { locale: Locale; href: string; bcp47: string }[] {
   return locales.map((locale) => ({
     locale,
     href: switchLocalePath(pathname, locale),

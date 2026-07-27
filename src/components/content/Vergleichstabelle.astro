@@ -17,18 +17,26 @@ const { titel, spalten, zeilen, fussnote, locale = 'de' } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-{/*
+{
+  /*
   Vergleichstabellen dienen hier vor allem dazu, konkurrierende Positionen
   nebeneinanderzustellen (Leitplanke 10.3) – nicht dazu, eine Position als
   richtig zu markieren. Deshalb keine Häkchen-Spalten und keine Wertung.
-*/}
+*/
+}
 <figure class="vergleich">
   <figcaption class="titel">{titel}</figcaption>
   <div class="tabellen-scroll" tabindex="0" role="region" aria-label={titel}>
     <table>
       <thead>
         <tr>
-          {spalten.map((s, i) => <th scope="col" class:list={{ merkmal: i === 0 }}>{s}</th>)}
+          {
+            spalten.map((s, i) => (
+              <th scope="col" class:list={{ merkmal: i === 0 }}>
+                {s}
+              </th>
+            ))
+          }
         </tr>
       </thead>
       <tbody>

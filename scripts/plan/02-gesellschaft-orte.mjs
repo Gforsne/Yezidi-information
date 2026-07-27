@@ -18,7 +18,11 @@ export const gesellschaft = [
       ['Mirîd', [], 'Funktion und Zugehörigkeit belegen.'],
       ['Şêx', ['Untergliederungen'], 'Funktion, Zugehörigkeit und Untergliederungen belegen.'],
       ['Pîr', ['Untergliederungen'], 'Funktion, Zugehörigkeit und Untergliederungen belegen.'],
-      ['Beziehungen zwischen den Ständen', [], 'Religiöse Betreuungsverhältnisse belegt darstellen.'],
+      [
+        'Beziehungen zwischen den Ständen',
+        [],
+        'Religiöse Betreuungsverhältnisse belegt darstellen.',
+      ],
       ['Praxis in der Gegenwart', [], 'Veränderungen in der Diaspora mit Quelle belegen.'],
     ],
     q: [
@@ -36,15 +40,26 @@ export const gesellschaft = [
     p: 'gemischt',
     conf: 'umstritten',
     g: ['mirid', 'sex', 'pir'],
-    w: ['gesellschaft/konversionsverbot-und-mischehen', 'gegenwart/generationenwandel-und-identitaet'],
+    w: [
+      'gesellschaft/konversionsverbot-und-mischehen',
+      'gegenwart/generationenwandel-und-identitaet',
+    ],
     auftrag:
       'Regeln belegen und die innergemeinschaftliche Debatte mit datierten Quellen abbilden. Keine Bewertung der Regeln durch das Portal.',
     gl: [
       ['Die Regel', [], 'Belegen, wie die Regel formuliert wird und von wem.'],
       ['Begründungen aus der Gemeinschaft', [], 'Emisch kennzeichnen und mit Quelle versehen.'],
       ['Folgen für Einzelne und Familien', [], 'Nur belegte, nicht personalisierte Darstellungen.'],
-      ['Debatten in der Diaspora', ['Positionen für Beibehaltung', 'Positionen für Veränderung'], 'Beide Seiten mit datierten Quellen.'],
-      ['Rechtliche Berührungspunkte in Deutschland', [], 'Nur Grundinformation, Verweis auf Beratungsstellen.'],
+      [
+        'Debatten in der Diaspora',
+        ['Positionen für Beibehaltung', 'Positionen für Veränderung'],
+        'Beide Seiten mit datierten Quellen.',
+      ],
+      [
+        'Rechtliche Berührungspunkte in Deutschland',
+        [],
+        'Nur Grundinformation, Verweis auf Beratungsstellen.',
+      ],
     ],
     q: [
       'Welche schriftlichen Stellungnahmen religiöser Institutionen liegen vor, und aus welchen Jahren?',
@@ -91,10 +106,18 @@ export const gesellschaft = [
     auftrag:
       'Aufbau und Zuständigkeit belegen. Jede Angabe zur aktuellen Zusammensetzung mit Datum und Quelle versehen und regelmäßig prüfen.',
     gl: [
-      ['Entstehung und rechtliche Stellung', [], 'Belegen, seit wann das Gremium in heutiger Form besteht.'],
+      [
+        'Entstehung und rechtliche Stellung',
+        [],
+        'Belegen, seit wann das Gremium in heutiger Form besteht.',
+      ],
       ['Zusammensetzung', [], 'Mit Stand-Datum; ohne Quelle keine Namensnennung.'],
       ['Zuständigkeiten', [], 'Reichweite der Entscheidungen belegen.'],
-      ['Bekannte Entscheidungen', [], 'Nur dokumentierte Entscheidungen mit Datum; neutral referieren.'],
+      [
+        'Bekannte Entscheidungen',
+        [],
+        'Nur dokumentierte Entscheidungen mit Datum; neutral referieren.',
+      ],
     ],
     q: [
       'Welche Entscheidungen des Rats sind schriftlich dokumentiert und wo?',
@@ -163,7 +186,11 @@ export const gesellschaft = [
       ['Gesellschaftliche Stellung im historischen Verlauf', [], 'Mit Quelle und Epochenbezug.'],
       ['Bildung, Erwerbsarbeit, Öffentlichkeit', [], 'Empirische Angaben mit Stichjahr.'],
       ['Debatten innerhalb der Gemeinschaft', [], 'Positionen datiert referieren.'],
-      ['Situation nach 2014', [], 'Ohne Gewaltdetails, ohne Namen ohne dokumentierte Selbstnennung.'],
+      [
+        'Situation nach 2014',
+        [],
+        'Ohne Gewaltdetails, ohne Namen ohne dokumentierte Selbstnennung.',
+      ],
     ],
     q: [
       'Welche Studien untersuchen Bildungs- und Erwerbsbeteiligung in der Diaspora?',
@@ -185,7 +212,11 @@ export const gesellschaft = [
       'Regel und Begründungen belegen. Dokumentierte Ausnahmen oder Entscheidungen mit Datum und Quelle darstellen.',
     gl: [
       ['Die Regel und ihre Begründung', [], 'Emische Begründungen gekennzeichnet wiedergeben.'],
-      ['Folgen für Ehen mit Nicht-Êzîdî', [], 'Belegen; keine Einzelfalldarstellung ohne Zustimmung.'],
+      [
+        'Folgen für Ehen mit Nicht-Êzîdî',
+        [],
+        'Belegen; keine Einzelfalldarstellung ohne Zustimmung.',
+      ],
       ['Stellung der Nachkommen', [], 'Belegen; unterschiedliche Auffassungen benennen.'],
       ['Dokumentierte Entscheidungen religiöser Institutionen', [], 'Nur mit Datum und Quelle.'],
       ['Debatten in der Diaspora', [], 'Positionen datiert referieren.'],
@@ -207,15 +238,35 @@ export const heiligeOrte = [
     tags: ['heiligtum', 'lalis', 'pilgerfahrt'],
     p: 'gemischt',
     g: ['lalis', 'kaniya-sipi', 'zimzim', 'sex-adi'],
-    w: ['heilige-orte/sakralarchitektur', 'feste/cejna-cemaiye', 'geschichte/sex-adi-und-die-adawiyya'],
+    w: [
+      'heilige-orte/sakralarchitektur',
+      'feste/cejna-cemaiye',
+      'geschichte/sex-adi-und-die-adawiyya',
+    ],
     auftrag:
       'Bauliche Anlage und Pilgerpraxis anhand von Fachliteratur und Selbstdarstellungen belegen. Verhaltenshinweise ausschließlich aus Quellen der Gemeinschaft übernehmen und als solche kennzeichnen.',
     gl: [
-      ['Lage und Zugang', [], 'Geografische Angaben mit Quelle; Koordinaten in die places-Collection.'],
-      ['Die bauliche Anlage', ['Grab des Şêx Adî', 'Höfe und Nebengebäude'], 'Nach Fachliteratur belegen.'],
+      [
+        'Lage und Zugang',
+        [],
+        'Geografische Angaben mit Quelle; Koordinaten in die places-Collection.',
+      ],
+      [
+        'Die bauliche Anlage',
+        ['Grab des Şêx Adî', 'Höfe und Nebengebäude'],
+        'Nach Fachliteratur belegen.',
+      ],
       ['Kaniya Sipî und Zimzim', [], 'Belegen; Bedeutung nur nach veröffentlichten Quellen.'],
-      ['Die Pilgerfahrt', ['Ablauf', 'Zeitpunkte'], 'Nur veröffentlichte Beschreibungen; auf Cejna Cemaiyê verweisen.'],
-      ['Verhaltenshinweise für Besuchende', [], 'Aus Quellen der Gemeinschaft; als emisch kennzeichnen.'],
+      [
+        'Die Pilgerfahrt',
+        ['Ablauf', 'Zeitpunkte'],
+        'Nur veröffentlichte Beschreibungen; auf Cejna Cemaiyê verweisen.',
+      ],
+      [
+        'Verhaltenshinweise für Besuchende',
+        [],
+        'Aus Quellen der Gemeinschaft; als emisch kennzeichnen.',
+      ],
       ['Erhaltungszustand und Verwaltung', [], 'Mit Stand-Datum belegen.'],
     ],
     q: [
@@ -262,7 +313,11 @@ export const heiligeOrte = [
     gl: [
       ['Die Bauform', ['Grundriss', 'Kegeldach und Rippen'], 'Nach Fachliteratur belegen.'],
       ['Material und Bauverfahren', [], 'Belegen.'],
-      ['Deutungen der Form', [], 'Als Deutungen kennzeichnen, Urheber nennen, `Unsicher` verwenden.'],
+      [
+        'Deutungen der Form',
+        [],
+        'Als Deutungen kennzeichnen, Urheber nennen, `Unsicher` verwenden.',
+      ],
       ['Erhaltung und Restaurierung', [], 'Mit Stand-Datum belegen.'],
     ],
     q: [

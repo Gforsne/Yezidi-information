@@ -94,7 +94,11 @@ export const ueberblick = [
       ],
       [
         'Herleitungen des Namens',
-        ['Bezug auf Sultan Êzî', 'Bezug auf altiranische Wortwurzeln', 'Bezug auf den Kalifen Yazīd'],
+        [
+          'Bezug auf Sultan Êzî',
+          'Bezug auf altiranische Wortwurzeln',
+          'Bezug auf den Kalifen Yazīd',
+        ],
         'Die konkurrierenden Herleitungen jeweils mit Vertreterinnen und Vertretern sowie Kritik darstellen. Keine als gesichert ausgeben; `confidence: umstritten` setzen.',
       ],
       [
@@ -130,7 +134,10 @@ export const ueberblick = [
     cw: false,
     conf: 'umstritten',
     g: ['ezidi', 'esiret'],
-    w: ['gegenwart/generationenwandel-und-identitaet', 'wissenschaft/offene-fragen-und-kontroversen'],
+    w: [
+      'gegenwart/generationenwandel-und-identitaet',
+      'wissenschaft/offene-fragen-und-kontroversen',
+    ],
     auftrag:
       'Mindestens drei Positionen mit benannten Vertreterinnen und Vertretern darstellen, jeweils mit Quelle. Die politische Aufladung der Frage benennen, ohne Partei zu ergreifen.',
     gl: [
@@ -141,7 +148,11 @@ export const ueberblick = [
       ],
       [
         'Positionen innerhalb der Gemeinschaft',
-        ['Positionen von Dachverbänden', 'Positionen religiöser Institutionen', 'Unterschiede in der Diaspora'],
+        [
+          'Positionen von Dachverbänden',
+          'Positionen religiöser Institutionen',
+          'Unterschiede in der Diaspora',
+        ],
         'Emische Positionen mit Quelle und Datum wiedergeben, ausdrücklich als Selbstdarstellung gekennzeichnet.',
       ],
       [
@@ -195,8 +206,16 @@ export const ueberblick = [
         [],
         'Für jedes Land mindestens eine institutionelle Quelle mit Stichjahr suchen.',
       ],
-      ['Europa', ['Deutschland', 'Weitere europäische Länder'], 'Siehe Bereich Gegenwart; hier nur Zahlen mit Herkunft.'],
-      ['Nordamerika, Australien und weitere', [], 'Schätzungen belegen oder als unbelegt kennzeichnen.'],
+      [
+        'Europa',
+        ['Deutschland', 'Weitere europäische Länder'],
+        'Siehe Bereich Gegenwart; hier nur Zahlen mit Herkunft.',
+      ],
+      [
+        'Nordamerika, Australien und weitere',
+        [],
+        'Schätzungen belegen oder als unbelegt kennzeichnen.',
+      ],
       [
         'Wie die Zahlen zu lesen sind',
         [],
@@ -225,8 +244,16 @@ export const religion = [
     auftrag:
       'Das Gottesbild anhand religionswissenschaftlicher Standardliteratur und veröffentlichter Selbstdarstellungen belegen. Keine Ableitungen aus nicht veröffentlichten religiösen Texten.',
     gl: [
-      ['Bezeichnungen für Gott', ['Xwedê', 'Weitere Bezeichnungen'], 'Belegte Bezeichnungen mit Umschrift und Bedeutung erfassen.'],
-      ['Gott und Schöpfung', [], 'Darstellung belegen; Verhältnis zur Kosmologie-Seite klären, um Dopplungen zu vermeiden.'],
+      [
+        'Bezeichnungen für Gott',
+        ['Xwedê', 'Weitere Bezeichnungen'],
+        'Belegte Bezeichnungen mit Umschrift und Bedeutung erfassen.',
+      ],
+      [
+        'Gott und Schöpfung',
+        [],
+        'Darstellung belegen; Verhältnis zur Kosmologie-Seite klären, um Dopplungen zu vermeiden.',
+      ],
       [
         'Die Frage des Monotheismus',
         ['Emische Darstellung', 'Religionswissenschaftliche Einordnung'],
@@ -267,7 +294,11 @@ export const religion = [
         ['Verhältnis zu Gott', 'Verhältnis zu den weiteren Engeln'],
         'Ausschließlich anhand veröffentlichter Quellen darstellen.',
       ],
-      ['Die sieben Engel (Heft Sirr)', [], 'Benennungen und Zuordnungen belegen; Abweichungen zwischen Quellen benennen.'],
+      [
+        'Die sieben Engel (Heft Sirr)',
+        [],
+        'Benennungen und Zuordnungen belegen; Abweichungen zwischen Quellen benennen.',
+      ],
       [
         'Ikonografie und Sancak',
         ['Darstellungsformen', 'Verwendung im Ritus'],
@@ -298,9 +329,21 @@ export const religion = [
     auftrag:
       'Schöpfungsvorstellungen anhand veröffentlichter Qewl-Übersetzungen und Sekundärliteratur belegen. Varianten dokumentieren.',
     gl: [
-      ['Überlieferte Schöpfungserzählungen', ['Varianten der Überlieferung'], 'Mindestens zwei Fassungen mit Quelle gegenüberstellen.'],
-      ['Weltbild und Ordnung der Welt', [], 'Nur belegte Angaben; keine Systematisierung, die die Quellen nicht hergeben.'],
-      ['Zeitvorstellungen', [], 'Belegen, sofern Quellen vorliegen; sonst als offene Frage führen.'],
+      [
+        'Überlieferte Schöpfungserzählungen',
+        ['Varianten der Überlieferung'],
+        'Mindestens zwei Fassungen mit Quelle gegenüberstellen.',
+      ],
+      [
+        'Weltbild und Ordnung der Welt',
+        [],
+        'Nur belegte Angaben; keine Systematisierung, die die Quellen nicht hergeben.',
+      ],
+      [
+        'Zeitvorstellungen',
+        [],
+        'Belegen, sofern Quellen vorliegen; sonst als offene Frage führen.',
+      ],
       ['Forschungsstand', [], 'Kontroversen benennen und auf die Kontroversen-Seite verweisen.'],
     ],
     q: [
@@ -323,7 +366,11 @@ export const religion = [
     gl: [
       ['Vorstellungen von der Seele', [], 'Begriffe und Konzepte mit Quelle belegen.'],
       ['Tod und Bestattung', [], 'Kurz halten und auf die Riten-Seite verweisen.'],
-      ['Weiterexistenz und Wiedergeburt', ['Darstellung in der Überlieferung', 'Forschungsdiskussion'], 'Emische und etische Ebene trennen.'],
+      [
+        'Weiterexistenz und Wiedergeburt',
+        ['Darstellung in der Überlieferung', 'Forschungsdiskussion'],
+        'Emische und etische Ebene trennen.',
+      ],
       ['Jenseitsgeschwister', [], 'Auf die eigene Seite im Gesellschaftsbereich verweisen.'],
     ],
     q: [
@@ -348,7 +395,11 @@ export const religion = [
       ['Beyt', [], 'Abgrenzung zum Qewl belegen.'],
       ['Şehbêrî und weitere Gattungen', [], 'Belegen oder als offene Frage führen.'],
       ['Duʿa und Segensformeln', [], 'Nur veröffentlichte Formeln behandeln.'],
-      ['Trägerinnen und Träger der Überlieferung', ['Qewwal', 'Weitere Rollen'], 'Auf die Ämterseite verweisen; hier nur der Bezug zur Überlieferung.'],
+      [
+        'Trägerinnen und Träger der Überlieferung',
+        ['Qewwal', 'Weitere Rollen'],
+        'Auf die Ämterseite verweisen; hier nur der Bezug zur Überlieferung.',
+      ],
       [
         'Aufzeichnung und Verschriftlichung',
         ['Sammlungsprojekte', 'Debatten um Veröffentlichung'],
@@ -371,11 +422,18 @@ export const religion = [
     p: 'etisch',
     conf: 'umstritten',
     g: ['mishefa-res', 'kiteba-cilwe'],
-    w: ['wissenschaft/offene-fragen-und-kontroversen', 'religion/muendliche-ueberlieferung-qewl-und-beyt'],
+    w: [
+      'wissenschaft/offene-fragen-und-kontroversen',
+      'religion/muendliche-ueberlieferung-qewl-und-beyt',
+    ],
     auftrag:
       'Die Echtheitsdebatte mit benannten Positionen, Argumenten und Gegenargumenten darstellen. Keine Entscheidung treffen. `confidence: umstritten` beibehalten.',
     gl: [
-      ['Was die Texte sind', ['Mishefa Reş', 'Kitêba Cilwe'], 'Inhaltliche Grundzüge nur nach publizierten Editionen.'],
+      [
+        'Was die Texte sind',
+        ['Mishefa Reş', 'Kitêba Cilwe'],
+        'Inhaltliche Grundzüge nur nach publizierten Editionen.',
+      ],
       [
         'Überlieferungsgeschichte',
         ['Erste bekannte Handschriften', 'Publikationsgeschichte'],
@@ -383,10 +441,18 @@ export const religion = [
       ],
       [
         'Die Echtheitsdebatte',
-        ['Argumente für Authentizität', 'Argumente für spätere Entstehung', 'Vermittelnde Positionen'],
+        [
+          'Argumente für Authentizität',
+          'Argumente für spätere Entstehung',
+          'Vermittelnde Positionen',
+        ],
         'Jede Position mit mindestens einer namentlich zugeordneten Quelle belegen.',
       ],
-      ['Bedeutung in der Gemeinschaft', [], 'Emische Einschätzungen mit Quelle und als solche gekennzeichnet.'],
+      [
+        'Bedeutung in der Gemeinschaft',
+        [],
+        'Emische Einschätzungen mit Quelle und als solche gekennzeichnet.',
+      ],
     ],
     q: [
       'Welche Editionen und Übersetzungen gelten als maßgeblich?',
@@ -407,9 +473,17 @@ export const religion = [
     auftrag:
       'Praxis anhand von Feldforschungsliteratur und Selbstdarstellungen belegen. Unterschiede zwischen Regionen ausdrücklich benennen.',
     gl: [
-      ['Gebet', ['Gebetszeiten', 'Gebetsrichtung'], 'Belegen; Abweichungen zwischen Quellen benennen.'],
+      [
+        'Gebet',
+        ['Gebetszeiten', 'Gebetsrichtung'],
+        'Belegen; Abweichungen zwischen Quellen benennen.',
+      ],
       ['Reinheitsvorstellungen', [], 'Sachlich und ohne Wertung darstellen; nur belegte Angaben.'],
-      ['Segensformeln und Anrufungen', [], 'Nur veröffentlichte Formeln, mit Umschrift und Übersetzung.'],
+      [
+        'Segensformeln und Anrufungen',
+        [],
+        'Nur veröffentlichte Formeln, mit Umschrift und Übersetzung.',
+      ],
       ['Praxis in der Diaspora', [], 'Veränderungen belegen, etwa durch qualitative Studien.'],
     ],
     q: [
@@ -430,8 +504,16 @@ export const religion = [
     auftrag:
       'Regeln belegen und die Verbindlichkeit differenziert darstellen. Zuschreibungen von außen klar von belegter Praxis trennen.',
     gl: [
-      ['Speiseregeln', ['Regional unterschiedliche Praxis'], 'Belegen; keine Verallgemeinerung ohne Quelle.'],
-      ['Verhaltensregeln und Tabus', [], 'Nur belegte Angaben; Begründungen aus der Gemeinschaft als emisch kennzeichnen.'],
+      [
+        'Speiseregeln',
+        ['Regional unterschiedliche Praxis'],
+        'Belegen; keine Verallgemeinerung ohne Quelle.',
+      ],
+      [
+        'Verhaltensregeln und Tabus',
+        [],
+        'Nur belegte Angaben; Begründungen aus der Gemeinschaft als emisch kennzeichnen.',
+      ],
       ['Begründungen in der Überlieferung', [], 'Nach veröffentlichten Quellen darstellen.'],
       ['Umgang in der Gegenwart', [], 'Veränderungen und Debatten mit Quelle belegen.'],
       ['Zuschreibungen von außen', [], 'Auf den Bereich Missverständnisse verweisen.'],
@@ -454,8 +536,16 @@ export const religion = [
     auftrag:
       'Beziehungen historisch differenziert und belegt darstellen. Keine pauschalen Aussagen über Religionsgemeinschaften.',
     gl: [
-      ['Rechtliche Stellung unter islamischer Herrschaft', [], 'Belegen; auf die Geschichtsseiten verweisen.'],
-      ['Berührungspunkte in der religiösen Praxis', [], 'Nur belegte Beispiele; keine Ableitung von Abhängigkeiten.'],
+      [
+        'Rechtliche Stellung unter islamischer Herrschaft',
+        [],
+        'Belegen; auf die Geschichtsseiten verweisen.',
+      ],
+      [
+        'Berührungspunkte in der religiösen Praxis',
+        [],
+        'Nur belegte Beispiele; keine Ableitung von Abhängigkeiten.',
+      ],
       ['Christliche Gemeinschaften der Region', [], 'Historische Beziehungen belegen.'],
       ['Gegenwärtige Beziehungen', [], 'Mit Stand-Datum belegen.'],
     ],
@@ -474,14 +564,25 @@ export const religion = [
     p: 'etisch',
     conf: 'umstritten',
     g: [],
-    w: ['geschichte/vorgeschichte-und-ursprungsdebatte', 'wissenschaft/offene-fragen-und-kontroversen'],
+    w: [
+      'geschichte/vorgeschichte-und-ursprungsdebatte',
+      'wissenschaft/offene-fragen-und-kontroversen',
+    ],
     auftrag:
       'Mindestens drei Hypothesen mit namentlich zugeordneten Vertretungen und Kritik darstellen. Methodische Grenzen der Ursprungsforschung benennen.',
     gl: [
-      ['Warum die Frage methodisch schwierig ist', [], 'Quellenlage und Methodenprobleme belegt darstellen.'],
+      [
+        'Warum die Frage methodisch schwierig ist',
+        [],
+        'Quellenlage und Methodenprobleme belegt darstellen.',
+      ],
       ['Altiranische Bezüge', ['Argumente', 'Kritik'], 'Vertretungen namentlich benennen.'],
       ['Mesopotamische Bezüge', ['Argumente', 'Kritik'], 'Vertretungen namentlich benennen.'],
-      ['Sufische Bezüge und die Adawiyya', ['Argumente', 'Kritik'], 'Bezug zur Geschichtsseite herstellen.'],
+      [
+        'Sufische Bezüge und die Adawiyya',
+        ['Argumente', 'Kritik'],
+        'Bezug zur Geschichtsseite herstellen.',
+      ],
       ['Positionen aus der Gemeinschaft', [], 'Emische Positionen gesondert und gekennzeichnet.'],
     ],
     q: [

@@ -281,8 +281,9 @@ const werkzeuge = getToolLinks(locale);
     };
 
     const escape = (s: string) =>
-      s.replace(/[&<>"']/g, (c) =>
-        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] ?? c,
+      s.replace(
+        /[&<>"']/g,
+        (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] ?? c,
       );
 
     const suche = async (begriff: string) => {

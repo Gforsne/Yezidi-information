@@ -1,7 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { ui } from '../../src/i18n/ui';
 import { defaultLocale, dirOf, isLocale, localeMeta, locales } from '../../src/i18n/config';
-import { alternateLinks, formatDate, isoDate, path, switchLocalePath, t } from '../../src/i18n/utils';
+import {
+  alternateLinks,
+  formatDate,
+  isoDate,
+  path,
+  switchLocalePath,
+  t,
+} from '../../src/i18n/utils';
 
 describe('Sprachkonfiguration', () => {
   it('kennt genau die vier vorgesehenen Sprachen', () => {

@@ -52,7 +52,8 @@ export const ui = {
     'search.noResults': 'Keine Treffer.',
     'search.noJs':
       'Die Volltextsuche benötigt JavaScript. Ohne JavaScript führen das Glossar, die Bereichsübersicht und die Sitemap zum Ziel.',
-    'search.hint': 'Die Suche läuft vollständig im Browser. Es werden keine Suchbegriffe übertragen.',
+    'search.hint':
+      'Die Suche läuft vollständig im Browser. Es werden keine Suchbegriffe übertragen.',
 
     'status.stub': 'Gerüst',
     'status.entwurf': 'Entwurf',

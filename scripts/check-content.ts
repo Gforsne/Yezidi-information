@@ -147,7 +147,10 @@ for (const d of dokumente) {
 
   // 2. Belegpflicht ab Entwurf.
   if (status !== 'stub' && refs.length === 0) {
-    fehle(d.pfad, `status: "${status}" ohne Quelle. Beleg nachtragen oder auf "stub" zurücksetzen.`);
+    fehle(
+      d.pfad,
+      `status: "${status}" ohne Quelle. Beleg nachtragen oder auf "stub" zurücksetzen.`,
+    );
   }
 
   // 3./4. Zitate prüfen.
@@ -270,7 +273,10 @@ for (const e of ereignisse.eintraege) {
   const refs = Array.isArray(e['sources']) ? (e['sources'] as { id?: string }[]) : [];
   for (const r of refs) {
     if (!quellenIds.has(String(r?.id))) {
-      fehle(ereignisse.pfad, `Ereignis "${String(e['id'])}": unbekannte Quelle "${String(r?.id)}".`);
+      fehle(
+        ereignisse.pfad,
+        `Ereignis "${String(e['id'])}": unbekannte Quelle "${String(r?.id)}".`,
+      );
     }
   }
 }

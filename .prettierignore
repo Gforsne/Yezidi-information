@@ -5,4 +5,5 @@ playwright-report
 test-results
 public/fonts
 content-report.md
+RESEARCH-BRIEF.md
 package-lock.json

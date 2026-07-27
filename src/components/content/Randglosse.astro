@@ -16,12 +16,14 @@ const marken: Record<NonNullable<Props['art']>, string> = {
 };
 ---
 
-{/*
+{
+  /*
   Randglosse: kurze Anmerkung neben dem Text. Sie steht im Quelltext an
   der Stelle, auf die sie sich bezieht, und wird auf breiten Schirmen in
   den Rand gesetzt – ohne absolute Positionierung, damit sie nicht mit
   Nachbarelementen kollidiert.
-*/}
+*/
+}
 <aside class:list={['randglosse', `art-${art}`]} role="note">
   <p class="marke">{titel ?? marken[art]}</p>
   <div class="text"><slot /></div>

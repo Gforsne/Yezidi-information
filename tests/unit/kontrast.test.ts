@@ -79,7 +79,9 @@ describe('Farbkontraste (dunkles Schema)', () => {
   });
 
   it('Bedienelement-Grenzen und Fokus erreichen mindestens 3:1', () => {
-    expect(verhaeltnis(hexWert('--c-border-strong', dunkelBlock), flaeche)).toBeGreaterThanOrEqual(3);
+    expect(verhaeltnis(hexWert('--c-border-strong', dunkelBlock), flaeche)).toBeGreaterThanOrEqual(
+      3,
+    );
     expect(verhaeltnis(hexWert('--c-focus', dunkelBlock), flaeche)).toBeGreaterThanOrEqual(3);
   });
 
