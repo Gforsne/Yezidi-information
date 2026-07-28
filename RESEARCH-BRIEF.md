@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **493 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **497 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -421,7 +421,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Geschichte
 
-39 Fragen auf 11 Seiten.
+43 Fragen auf 12 Seiten.
 
 **19. Jahrhundert: Feldzüge gegen Şingal und Şêxan**
 - Die Opferzahlen stammen sämtlich aus zeitgenössischen Berichten europäischer Reisender, Konsuln und Militärs. Wie sie erhoben wurden, ist nicht bekannt; eine kritische Prüfung dieser Zahlen ist der Redaktion nicht bekannt.
@@ -446,6 +446,8 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Die Rolle êzîdîscher Verbände in den Auseinandersetzungen der Zwischenkriegszeit ist nicht belegt.
 
 **Die Zählung der 73 Firman**
+- Eine Liste der 72, 73 oder 74 einzeln gezählten Firman liegt der Redaktion nicht vor und ließ sich aus der eingesehenen Literatur nicht herstellen. Belegt sind sechs einzelne Ereignisse; die übrigen sind der Redaktion nicht als datierte Vorgänge bekannt.
+- Ob innerhalb der Gemeinschaft überhaupt eine einheitliche Zählung besteht oder ob sie regional abweicht, ist ungeklärt.
 - Die Zahl wird unterschiedlich angegeben: 72 Firman bei Tagay/Ortaç, 74 Vorfälle bei Kizilhan 2015 (referiert bei Dulz). Ob es sich um dieselbe Zählung mit anderem Endpunkt handelt, ist ungeklärt.
 - Welche der Firman sich historisch einzeln nachweisen lassen, ist offen. Tagay/Ortaç behaupten eine Faktengrundlage, führen sie an dieser Stelle aber nicht aus.
 - Ob und wie sich die Zählung im Lauf der Zeit verändert hat, ist nicht untersucht.
@@ -483,6 +485,10 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Welche archäologischen oder textlichen Belege werden für die einzelnen Ursprungsthesen angeführt? Ungeklärt.
 - Die Angabe, die Wurzeln reichten mehrere tausend Jahre zurück, ist eine Selbstdarstellung, für die die Quelle selbst keinen Beleg anführt.
 - Diese Seite berührt eine Frage, die für Identitätsansprüche in Anspruch genommen wird. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
+
+**FAQ: Gibt es eine Liste aller 74 Firman?**
+- Ob der Angriff von 2014 als 73. oder als 74. Firman gilt, hängt davon ab, ob der Anschlag von 2007 mitgezählt wird. Die Quellen handhaben das unterschiedlich.
+- Ob innerhalb der Gemeinschaft eine einheitliche Zählung besteht, ist ungeklärt.
 
 ### Genozid 2014 und Verfolgung
 

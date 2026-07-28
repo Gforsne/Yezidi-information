@@ -136,3 +136,32 @@
     - 'Ob und unter welchen Bedingungen Menschen wieder aufgenommen werden, die zur Konversion gezwungen wurden, ist der Redaktion nicht belegt bekannt.'
   contentWarning: false
   updated: 2026-07-27
+
+- id: liste-der-74-firman
+  frage: 'Gibt es eine Liste aller 74 Firman?'
+  antwort: >-
+    Nein, jedenfalls keine belegte. Die Zahl ist symbolisch gemeint: In der
+    Überlieferung stehen ihr „72 Völker“ und „72 Söhne und Töchter Adams und
+    Evas“ zur Seite. Auch die ausführlichste deutschsprachige Darstellung, von
+    zwei êzîdîschen Autoren, zählt die Ereignisse ausdrücklich nicht auf,
+    sondern beschränkt sich auf einige wenige einschneidende. Und schon die
+    Endzahl schwankt zwischen 72, 73 und 74. Einzeln belegt sind sechs als
+    Firman gezählte Ereignisse: 1832, 1837–1838, 1844, 1892, 2007 und 2014.
+  thema: geschichte
+  lang: de
+  status: belegt
+  confidence: umstritten
+  sources:
+    - id: 'tagay-ortac-2016'
+      loc: 'S. 49, 174'
+      note: 'Symbolik der Zahl; ausdrücklicher Verzicht auf eine vollständige Aufzählung.'
+    - id: 'dulz-2016-vertreibung'
+      loc: 'S. 136'
+      note: 'Abweichende Angabe von 74 erinnerten Vorfällen.'
+  weiterfuehrend:
+    - 'geschichte/die-73-firman'
+  openQuestions:
+    - 'Ob der Angriff von 2014 als 73. oder als 74. Firman gilt, hängt davon ab, ob der Anschlag von 2007 mitgezählt wird. Die Quellen handhaben das unterschiedlich.'
+    - 'Ob innerhalb der Gemeinschaft eine einheitliche Zählung besteht, ist ungeklärt.'
+  contentWarning: true
+  updated: 2026-07-28

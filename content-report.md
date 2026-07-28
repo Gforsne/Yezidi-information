@@ -5,9 +5,9 @@
 
 ## Kurzfassung
 
-423 von 440 Abschnitten tragen mindestens einen Beleg – **Belegquote 96 %**.
-Insgesamt stehen 933 Belegstellen im Text.
-138 Stellen sind ausdrücklich als Beleglücke markiert.
+426 von 443 Abschnitten tragen mindestens einen Beleg – **Belegquote 96 %**.
+Insgesamt stehen 940 Belegstellen im Text.
+139 Stellen sind ausdrücklich als Beleglücke markiert.
 
 Die Recherche läuft: 151 von 162 Seiten (93 %) haben den Gerüst-Status verlassen.
 Eine niedrige Gesamtquote bedeutet **nicht**, dass unbelegte Behauptungen im Text stehen –
@@ -33,7 +33,7 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Heilige Orte | 11 | 10 | 39 | 50 | 16 | 35 | 100 % |
 | Feste, Kalender und Riten | 9 | 9 | 39 | 75 | 5 | 32 | 100 % |
 | Sprache und Namen | 5 | 4 | 18 | 27 | 6 | 18 | 100 % |
-| Geschichte | 11 | 11 | 44 | 93 | 8 | 39 | 100 % |
+| Geschichte | 11 | 11 | 47 | 100 | 9 | 41 | 100 % |
 | Genozid 2014 und Verfolgung | 10 | 10 | 44 | 86 | 16 | 37 | 100 % |
 | Gegenwart und Diaspora | 8 | 8 | 32 | 66 | 12 | 33 | 100 % |
 | Missverständnisse und Desinformation | 3 | 3 | 15 | 19 | 3 | 9 | 100 % |
@@ -49,7 +49,7 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 |---|---:|---|
 | Quellen | 26 | 19 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
 | Zeitleiste | 17 | 6 als Firman-Erinnerung markiert |
-| Häufige Fragen | 5 | 5 beantwortet |
+| Häufige Fragen | 6 | 6 beantwortet |
 | Glossar | 50 | Begriffe |
 | Personen | 3 | 2 lebende Personen (erhöhte Zurückhaltung) |
 | Orte | 6 | Koordinaten durchgehend als „ungefähr“ gekennzeichnet |
