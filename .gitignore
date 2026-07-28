@@ -42,3 +42,7 @@ public/vendor/
 # Heruntergeladene Quellen-PDFs (scripts/quelle-lesen.mjs) – fremdes
 # Material mit eigenen Lizenzbedingungen, gehoert nicht ins Repository.
 quellen/
+
+# Direkt hochgeladene Quellendateien landen leicht im Wurzelverzeichnis.
+# Ihr Platz ist quellen/ – siehe DECISIONS.md, D-042.
+/*.pdf

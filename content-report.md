@@ -5,8 +5,8 @@
 
 ## Kurzfassung
 
-426 von 443 Abschnitten tragen mindestens einen Beleg – **Belegquote 96 %**.
-Insgesamt stehen 940 Belegstellen im Text.
+428 von 445 Abschnitten tragen mindestens einen Beleg – **Belegquote 96 %**.
+Insgesamt stehen 952 Belegstellen im Text.
 139 Stellen sind ausdrücklich als Beleglücke markiert.
 
 Die Recherche läuft: 151 von 162 Seiten (93 %) haben den Gerüst-Status verlassen.
@@ -28,18 +28,18 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Bereich | Seiten | belegt | Abschnitte | Belegstellen | Beleglücken | offene Fragen | Quote |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Überblick | 4 | 4 | 27 | 109 | 8 | 20 | 100 % |
-| Religion und Glaube | 10 | 10 | 52 | 109 | 15 | 39 | 100 % |
+| Religion und Glaube | 10 | 10 | 53 | 116 | 15 | 41 | 100 % |
 | Gesellschaftsordnung | 8 | 8 | 40 | 75 | 12 | 32 | 100 % |
 | Heilige Orte | 11 | 10 | 39 | 50 | 16 | 35 | 100 % |
 | Feste, Kalender und Riten | 9 | 9 | 39 | 75 | 5 | 32 | 100 % |
 | Sprache und Namen | 5 | 4 | 18 | 27 | 6 | 18 | 100 % |
-| Geschichte | 11 | 11 | 47 | 100 | 9 | 41 | 100 % |
+| Geschichte | 11 | 11 | 47 | 102 | 9 | 41 | 100 % |
 | Genozid 2014 und Verfolgung | 10 | 10 | 44 | 86 | 16 | 37 | 100 % |
 | Gegenwart und Diaspora | 8 | 8 | 32 | 66 | 12 | 33 | 100 % |
 | Missverständnisse und Desinformation | 3 | 3 | 15 | 19 | 3 | 9 | 100 % |
 | Kultur | 10 | 8 | 35 | 54 | 10 | 35 | 100 % |
 | Personen | 3 | 3 | 12 | 25 | 1 | 12 | 100 % |
-| Wissenschaft und Quellen | 4 | 3 | 21 | 37 | 7 | 13 | 100 % |
+| Wissenschaft und Quellen | 4 | 3 | 22 | 40 | 7 | 13 | 100 % |
 | Wissen und Vermittlung | 56 | 52 | 22 | 108 | 11 | 102 | 100 % |
 | Über dieses Projekt | 10 | 8 | 42 | 0 | 8 | 30 | – |
 
@@ -47,7 +47,7 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 
 | Sammlung | Einträge | Anmerkung |
 |---|---:|---|
-| Quellen | 26 | 19 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
+| Quellen | 27 | 20 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
 | Zeitleiste | 17 | 6 als Firman-Erinnerung markiert |
 | Häufige Fragen | 6 | 6 beantwortet |
 | Glossar | 50 | Begriffe |

@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **497 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **499 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -157,7 +157,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Religion und Glaube
 
-39 Fragen auf 10 Seiten.
+41 Fragen auf 10 Seiten.
 
 **Gottesbild und Monotheismus**
 - Die Belege stammen aus der Einleitung von Omarkhali 2017 und einem Rezensionsaufsatz. Die einschlägigen Kapitel (Omarkhali 2017, Kap. III; Kreyenbroek 1995, Kap. 2) lagen der Redaktion nicht vor.
@@ -167,8 +167,10 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 **Mishefa Reş und Kitêba Cilwe**
 - Wer die Texte wann und mit welchen Argumenten als Fälschungen erwiesen hat, ist der Redaktion nicht im Original belegt. Der Nachweis steht laut Kreyenbroek/Omarkhali in Kreyenbroek 1995, S. 10–16.
-- Welche Rolle die Texte innerhalb der Gemeinschaft heute spielen, ist ungeklärt und muss getrennt von der Echtheitsfrage behandelt werden.
+- Welche Rolle die Texte innerhalb der Gemeinschaft heute spielen, ist ungeklärt und muss getrennt von der Echtheitsfrage behandelt werden. Der Abdruck in einer einzelnen Sammlung belegt eine Verwendung, nicht die Haltung der Gemeinschaft.
 - Die deutschsprachige Quelle formuliert deutlich vorsichtiger („nicht allesamt authentisch“) als die Fachliteratur („unecht“). Der Unterschied ist hier stehen gelassen, nicht aufgelöst.
+- Ob die Sammlung von 2020 die Echtheitsdebatte an anderer Stelle behandelt – etwa im russischsprachigen Vorwort –, hat die Redaktion nicht geprüft. Geprüft ist nur der Abdruck selbst.
+- Worauf sich die Zuschreibung an Şêx Hesen in der Fußnote jener Sammlung stützt, ist nicht ersichtlich; als Herkunft nennt sie ein Internetforum.
 
 **Mündliche Überlieferung: Qewl, Beyt, Şehbêrî, Duʿa**
 - Die Gattung Şehbêrî ist in den vorliegenden Quellen nicht belegt. Omarkhali führt Qewl, Beyt, Qesîde, Duʿa/Diroz(g)e und Pişt Perde; Şehbêrî erscheint dort nicht. Ob es sich um eine regionale Bezeichnung oder um eine weitere Gattung handelt, ist zu klären.
@@ -446,7 +448,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Die Rolle êzîdîscher Verbände in den Auseinandersetzungen der Zwischenkriegszeit ist nicht belegt.
 
 **Die Zählung der 73 Firman**
-- Eine Liste der 72, 73 oder 74 einzeln gezählten Firman liegt der Redaktion nicht vor und ließ sich aus der eingesehenen Literatur nicht herstellen. Belegt sind sechs einzelne Ereignisse; die übrigen sind der Redaktion nicht als datierte Vorgänge bekannt.
+- Eine Liste der 72, 73 oder 74 einzeln gezählten Firman liegt der Redaktion nicht vor und ließ sich aus der eingesehenen Literatur nicht herstellen. Belegt sind sechs einzelne Ereignisse; die übrigen sind der Redaktion nicht als datierte Vorgänge bekannt. Drei unabhängige Quellen nennen die Endzahl, keine zählt auf.
 - Ob innerhalb der Gemeinschaft überhaupt eine einheitliche Zählung besteht oder ob sie regional abweicht, ist ungeklärt.
 - Die Zahl wird unterschiedlich angegeben: 72 Firman bei Tagay/Ortaç, 74 Vorfälle bei Kizilhan 2015 (referiert bei Dulz). Ob es sich um dieselbe Zählung mit anderem Endpunkt handelt, ist ungeklärt.
 - Welche der Firman sich historisch einzeln nachweisen lassen, ist offen. Tagay/Ortaç behaupten eine Faktengrundlage, führen sie an dieser Stelle aber nicht aus.

@@ -493,6 +493,61 @@
     baden-württembergischen Sonderkontingents.
 
 # ---------------------------------------------------------------------
+# Quellen der Gemeinschaft – Volltext geprüft
+# ---------------------------------------------------------------------
+
+- id: avdoev-2020-newse
+  type: buch
+  authors:
+    - "T'êmûrê Meso (Teimuraz Avdoev)"
+  title: >-
+    Newşe Dînê Êzîdiyan / Езидское священнословие / The Yezidi Holy Hymns
+  container: null
+  year: 2020
+  publisher: null
+  isbn: null
+  doi: null
+  url: null
+  accessed: 2026-07-28
+  language: ku
+  reliability: community
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Sammlung êzîdîscher heiliger Texte in lateinischer Umschrift, 975 Seiten,
+    mit russischsprachigem Vorwort. Vierzehn Teile: 148 Qewl, dazu Beyt',
+    Jandil, Qesîda, Dua' û Diroza, Şehda Dînî, Xizêmok, Payîzok, Ȓobarîn,
+    Niyaz, K'itêba Celwe, Meshefa Ȓeş und ein Anhang mit Vergleichstexten.
+
+    KEINE kritische Edition, sondern eine Zusammenstellung. Der Herausgeber
+    legt im Vorwort offen, was er am Textbestand verändert hat: einheitliche
+    lateinische Schrift, Transkription, Korrektur von Grammatik, Orthographie
+    und Zeichensetzung, eine eigene Gattungsklassifikation, Nummerierung in
+    Verse und Zeilen – und die Vereinheitlichung der Dialekte „soweit
+    möglich“. Gerade der letzte Eingriff tilgt die regionale Varianz, die die
+    Fachliteratur als wesentlich beschreibt. Er benennt seinen Zweck selbst:
+    Gebetbuch für Geistliche und Familien, ergänzende Wissensquelle für die
+    Forschung.
+
+    Das Quellenverzeichnis (S. 966) führt 49 Titel, darunter
+    Kreyenbroek/Rashow 2005, Kreyenbroek 1995 und drei Arbeiten Omarkhalis,
+    daneben aber auch Forenbeiträge und Gemeindewebseiten. Eine Zuordnung
+    einzelner Texte zu einzelnen Vorlagen ist nicht ersichtlich.
+
+    Deshalb `reliability: community`: als Selbstzeugnis der Gemeinschaft
+    hochwertig, als Textzeuge nicht mit einer kritischen Edition zu
+    verwechseln. Aussagen über den Inhalt einzelner Qewl werden aus dieser
+    Quelle nicht abgeleitet.
+
+    Autor, Titel und Jahr stehen auf dem Titelblatt und sind dort geprüft.
+    Verlag, Ort, ISBN und Katalognummern fehlen: Das Werk enthält kein
+    Impressum – weder ISBN noch УДК/ББК noch Verlagsangabe. Es ist also
+    offenbar im Selbstverlag oder über die Gemeinschaft erschienen. Die
+    Dateimetadaten nennen zudem einen Weiterverbreiter („RePack by Diakov“),
+    nicht einen Verlag; die vorliegende Datei ist damit nicht nachweislich
+    die Fassung des Herausgebers.
+
+# ---------------------------------------------------------------------
 # Literaturhinweise: bibliografisch geprüft, Volltext lag NICHT vor.
 # Diese Titel dürfen nicht mit <Cite> belegen (check:content bricht ab).
 # Sie stehen hier, weil das Portal offenlegt, welche Standardliteratur

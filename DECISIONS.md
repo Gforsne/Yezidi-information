@@ -536,6 +536,57 @@ Bearbeitungen ihn nicht übersehen.
 
 ---
 
+### D-041 — Eine Sammlung aus der Gemeinschaft ist eine Quelle eigener Art
+
+_2026-07-28_
+
+Der Redaktion wurde ein 975-seitiger Band zur Verfügung gestellt: T'êmûrê Meso
+(Teimuraz Avdoev), _Newşe Dînê Êzîdiyan_, 2020, eine dreisprachig betitelte
+Zusammenstellung êzîdîscher heiliger Texte in vierzehn Teilen. Er ist im
+Volltext gelesen und als `avdoev-2020-newse` aufgenommen worden. Drei
+Entscheidungen dazu:
+
+**`reliability: community`, nicht `wissenschaftlich`.** Der Band ist keine
+kritische Edition. Er nennt kein Herausgeberkollegium, keinen textkritischen
+Apparat und keine Aufnahmeprotokolle; sein Vorwort beschreibt ausdrücklich eine
+Vereinheitlichung der Dialekte „soweit möglich“. Gerade dieser Eingriff tilgt
+die regionale Varianz, die die Forschung als Merkmal der mündlichen
+Überlieferung behandelt. Das macht den Band nicht wertlos – es macht ihn zu
+einer anderen Art von Zeugnis.
+
+**`verifiziert: true` trotz fehlender Verlagsangaben.** Autor, Titel und Jahr
+stehen auf dem Titelblatt und sind dort geprüft. Verlag, Ort und ISBN fehlen,
+weil der Band kein Impressum enthält – nicht, weil sie ungeprüft wären. Sie
+bleiben deshalb `null`, wie es der Kopf von `sources.yaml` vorsieht. Der Hinweis
+auf einen Weiterverbreiter in den Dateimetadaten steht in der Quellennotiz.
+
+**Was der Band belegt und was nicht.** Belegfähig ist, was er selbst bezeugt:
+dass diese Texte in dieser Form gesammelt und gedruckt wurden, und was sein
+Vorwort über die Entstehung sagt. Daraus stammt die Auskunft, die dieses Portal
+an mehreren Stellen als offene Frage geführt hat – wer das Schreibverbot wann
+aufhob (Mîr Tahsin Beg und der Geistliche Rat, 1980er Jahre). Nicht belegfähig
+ist der Inhalt der Texte als Aussage über die Lehre: Die Kitêba Celwe und die
+Meshefa Reş stehen als Teile XII und XIII im Band, obwohl die Forschung sie als
+unecht erwiesen hat. Die Seite dazu hält beides nebeneinander und löst es nicht
+auf. Ein Abdruck belegt einen Gebrauch, keine Haltung – und schon gar nicht die
+Haltung „der Gemeinschaft“, die aus einem einzelnen Band nicht folgt.
+
+### D-042 — Hochgeladene Quellendateien gehören nicht ins Repository
+
+_2026-07-28_
+
+Der Band kam als PDF im Repository selbst an. Fremdes Material mit eigenen
+Lizenzbedingungen gehört dort nicht hin; dafür gibt es das ignorierte
+Verzeichnis `quellen/`. Die Datei ist aus der Versionierung entfernt worden,
+die Arbeitskopie liegt in `quellen/avdoev-2020-newse.pdf`. Damit sich das nicht
+wiederholt, ignoriert `.gitignore` jetzt PDF-Dateien im Wurzelverzeichnis.
+
+Das gilt nur für die Versionierung, nicht für den Weg: Eine Datei ins
+Repository zu legen ist ein völlig brauchbarer Weg, der Redaktion eine Quelle
+zu übergeben.
+
+---
+
 ## Offene Punkte, die keine Gestaltungsfrage sind
 
 Diese Punkte lassen sich nicht durch eine Entscheidung schließen; sie
