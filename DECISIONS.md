@@ -494,6 +494,48 @@ erfüllt jetzt der Sprachhinweis auf jeder betroffenen Seite.
 
 ---
 
+### D-039 — Sieben neue Volltexte, und was sie klären
+
+_2026-07-28_
+
+Beschafft und im Volltext gelesen: das Plenarprotokoll der Bundestagssitzung
+vom 19. Januar 2023, die Entschließung des Europäischen Parlaments vom 4. Februar 2016, der sechste und siebte UNITAD-Bericht an den
+Sicherheitsrat, zwei Antworten der Bundesregierung auf Kleine Anfragen zur
+Asylstatistik und ein Gesetzentwurf zum Aufenthaltsrecht.
+
+Damit ließen sich sieben Entwurfsseiten schließen und zwei Fehler beheben:
+
+- Das Beschlussdatum des Bundestages war bislang mit dem Datum der
+  Drucksache angegeben. Beschlossen wurde am **19.** Januar 2023, und zwar
+  einstimmig – belegt im Wortlaut der Sitzungsleitung.
+- Auf der Seite zu den Anschlägen von 2007 stand die Gleichsetzung von
+  al-Qahtaniya und Gire Zer als Tatsache, während der zugehörige
+  Glossareintrag festhielt, dass sie unbelegt ist. Beide Seiten sagen jetzt
+  dasselbe.
+
+Eine Feststellung ist ausdrücklich **nicht** übernommen worden: Der sechste
+UNITAD-Bericht enthält keine förmliche Völkermordfeststellung, sondern
+beschreibt das Falldossier. Die Feststellung steht im siebten Bericht. Das
+Portal belegt deshalb mit dem siebten – auch wenn der sechste in
+Zusammenfassungen häufig dafür angeführt wird.
+
+### D-040 — Parteiliche Dokumente werden zugeschrieben, nicht referiert
+
+_2026-07-28_
+
+Ein Gesetzentwurf einer Fraktion ist eine gute Quelle für die Position der
+Antragsteller und für Tatsachen, die sie belegen können – und keine
+Fachdarstellung. Die Zahlen daraus (Schutzquote 2023, Bilanz des
+baden-württembergischen Sonderkontingents, Abschiebestopps einzelner Länder)
+stehen im Portal ausdrücklich als Angaben der antragstellenden Fraktion.
+
+Dasselbe gilt innerhalb der Antworten auf Kleine Anfragen: Belegfähig sind
+die Antworten der Bundesregierung, nicht die Vorbemerkung der Fragesteller.
+Der Unterschied ist in den Quellennotizen festgehalten, damit spätere
+Bearbeitungen ihn nicht übersehen.
+
+---
+
 ## Offene Punkte, die keine Gestaltungsfrage sind
 
 Diese Punkte lassen sich nicht durch eine Entscheidung schließen; sie

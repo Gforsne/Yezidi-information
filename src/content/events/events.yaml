@@ -356,28 +356,81 @@
   status: belegt
   contentWarning: false
 
-- id: bundestag-anerkennung-2023
-  title: 'Der Deutsche Bundestag erkennt den Völkermord an'
-  datum: 'Januar 2023'
-  jahr: 2023
+- id: europarl-entschliessung-2016
+  title: 'Das Europäische Parlament stellt Völkermord fest'
+  datum: '4. Februar 2016'
+  jahr: 2016
   jahrBis: null
-  datierungUnsicher: true
+  datierungUnsicher: false
   epoche: gegenwart
   thema: [recht, politik]
   firman: false
   zusammenfassung: >-
-    Der Deutsche Bundestag erkennt die Verbrechen des sogenannten Islamischen
-    Staates an der êzîdîschen Gemeinschaft als Völkermord an und folgt dabei
-    der rechtlichen Bewertung des UN-Sonderermittlungsteams UNITAD. Der
-    Antrag datiert vom 18. Januar 2023; die bpb nennt Januar 2023 als
-    Zeitpunkt der Anerkennung. Das genaue Beschlussdatum ist der Redaktion
-    noch nicht am Plenarprotokoll geprüft.
+    Das Europäische Parlament nimmt eine Entschließung zum vom sogenannten IS
+    verübten systematischen Massenmord an religiösen Minderheiten an. Ziffer 2
+    stellt fest, dass der IS an Christen, Êzîdî und anderen Minderheiten
+    Völkermord verübt hat und dass daraus Maßnahmen nach der
+    Völkermordkonvention von 1948 folgen müssen. Ziffer 1 fordert zugleich,
+    darauf hinzuwirken, dass der UN-Sicherheitsrat die Taten zu Völkermord
+    erklärt.
+  ort: 'Straßburg'
+  artikel: 'genozid/anerkennungen-als-voelkermord'
+  sources:
+    - id: europarl-2016-entschliessung
+      loc: 'Ziffer 1–2'
+  confidence: gesichert
+  status: belegt
+  contentWarning: false
+
+- id: unitad-feststellung-2021
+  title: 'UNITAD bekräftigt die Völkermordfeststellung'
+  datum: '24. November 2021'
+  jahr: 2021
+  jahrBis: null
+  datierungUnsicher: false
+  epoche: gegenwart
+  thema: [recht]
+  firman: false
+  zusammenfassung: >-
+    Das UN-Ermittlungsteam UNITAD hält in seinem siebten Bericht an den
+    Sicherheitsrat fest, dass zusätzlich gesammelte Beweise seine anfänglichen
+    Feststellungen bestärkt hätten, wonach die Angriffe auf die êzîdîsche
+    Gemeinschaft in Şingal Kriegsverbrechen, Verbrechen gegen die
+    Menschlichkeit und Völkermord darstellten. Die Zahl der ermittelten
+    Tatverdächtigen ist zu diesem Zeitpunkt auf 1.743 gestiegen. Auf diese
+    Bewertung stützt sich der Deutsche Bundestag 2023 ausdrücklich.
+  ort: 'New York'
+  artikel: 'genozid/aufarbeitung-und-erinnerung'
+  sources:
+    - id: unitad-2021-s-974
+      loc: 'Abs. 35–36'
+  confidence: gesichert
+  status: belegt
+  contentWarning: false
+
+- id: bundestag-anerkennung-2023
+  title: 'Der Deutsche Bundestag erkennt den Völkermord an'
+  datum: '19. Januar 2023'
+  jahr: 2023
+  jahrBis: null
+  datierungUnsicher: false
+  epoche: gegenwart
+  thema: [recht, politik]
+  firman: false
+  zusammenfassung: >-
+    In der 79. Sitzung der 20. Wahlperiode nimmt der Deutsche Bundestag den
+    Antrag „Anerkennung und Gedenken an den Völkermord an den Êzîdinnen und
+    Êzîden 2014“ einstimmig an. Er folgt dabei der rechtlichen Bewertung des
+    UN-Sonderermittlungsteams UNITAD. Der Antrag selbst datiert vom
+    18. Januar 2023; beschlossen wurde am 19. Januar. Der Debatte wohnte
+    Hazim Tahsin Saied Beg bei, das weltliche Oberhaupt der Gemeinschaft.
   ort: 'Berlin'
   artikel: 'genozid/anerkennungen-als-voelkermord'
   sources:
+    - id: bundestag-2023-plenarprotokoll-79
+      loc: 'Plenarprotokoll 20/79, S. 9428'
     - id: bundestag-2023-anerkennung
       loc: 'S. 1'
-    - id: bpb-2024-voelkermord
   confidence: gesichert
   status: belegt
   contentWarning: false

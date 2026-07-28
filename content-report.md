@@ -1,13 +1,13 @@
 # Content-Report
 
-**Stand:** 2026-07-27
+**Stand:** 2026-07-28
 **Erzeugt von:** `npm run report:content` – diese Datei wird automatisch geschrieben und sollte nicht von Hand bearbeitet werden.
 
 ## Kurzfassung
 
-409 von 428 Abschnitten tragen mindestens einen Beleg – **Belegquote 96 %**.
-Insgesamt stehen 901 Belegstellen im Text.
-143 Stellen sind ausdrücklich als Beleglücke markiert.
+423 von 440 Abschnitten tragen mindestens einen Beleg – **Belegquote 96 %**.
+Insgesamt stehen 933 Belegstellen im Text.
+138 Stellen sind ausdrücklich als Beleglücke markiert.
 
 Die Recherche läuft: 151 von 162 Seiten (93 %) haben den Gerüst-Status verlassen.
 Eine niedrige Gesamtquote bedeutet **nicht**, dass unbelegte Behauptungen im Text stehen –
@@ -18,8 +18,8 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Status | Bedeutung | Seiten |
 |---|---|---:|
 | `stub` | Gerüst: Gliederung und Rechercheauftrag stehen, Inhalt fehlt | 11 |
-| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 23 |
-| `belegt` | Alle Aussagen mit Quellen belegt | 128 |
+| `entwurf` | Entwurfsfassung, noch nicht vollständig belegt | 16 |
+| `belegt` | Alle Aussagen mit Quellen belegt | 135 |
 | `geprüft` | Belegt und zusätzlich gegengelesen | 0 |
 | **Summe** | | **162** |
 
@@ -33,9 +33,9 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Heilige Orte | 11 | 10 | 39 | 50 | 16 | 35 | 100 % |
 | Feste, Kalender und Riten | 9 | 9 | 39 | 75 | 5 | 32 | 100 % |
 | Sprache und Namen | 5 | 4 | 18 | 27 | 6 | 18 | 100 % |
-| Geschichte | 11 | 11 | 44 | 92 | 8 | 40 | 100 % |
-| Genozid 2014 und Verfolgung | 10 | 10 | 38 | 73 | 18 | 35 | 100 % |
-| Gegenwart und Diaspora | 8 | 8 | 26 | 48 | 15 | 31 | 100 % |
+| Geschichte | 11 | 11 | 44 | 93 | 8 | 39 | 100 % |
+| Genozid 2014 und Verfolgung | 10 | 10 | 44 | 86 | 16 | 37 | 100 % |
+| Gegenwart und Diaspora | 8 | 8 | 32 | 66 | 12 | 33 | 100 % |
 | Missverständnisse und Desinformation | 3 | 3 | 15 | 19 | 3 | 9 | 100 % |
 | Kultur | 10 | 8 | 35 | 54 | 10 | 35 | 100 % |
 | Personen | 3 | 3 | 12 | 25 | 1 | 12 | 100 % |
@@ -47,8 +47,8 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 
 | Sammlung | Einträge | Anmerkung |
 |---|---:|---|
-| Quellen | 19 | 12 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
-| Zeitleiste | 15 | 6 als Firman-Erinnerung markiert |
+| Quellen | 26 | 19 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
+| Zeitleiste | 17 | 6 als Firman-Erinnerung markiert |
 | Häufige Fragen | 5 | 5 beantwortet |
 | Glossar | 50 | Begriffe |
 | Personen | 3 | 2 lebende Personen (erhöhte Zurückhaltung) |

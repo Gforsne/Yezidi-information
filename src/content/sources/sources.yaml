@@ -319,6 +319,179 @@
     Zuschreibung (UN-Menschenrechtsrat, Pro Asyl). Kein Fachaufsatz,
     sondern Bildungsjournalismus einer Bundesbehörde.
 
+- id: bundestag-2023-plenarprotokoll-79
+  type: primärquelle
+  authors:
+    - 'Deutscher Bundestag'
+  title: 'Stenografischer Bericht, 79. Sitzung'
+  container: 'Plenarprotokoll 20/79, Berlin, Donnerstag, den 19. Januar 2023'
+  year: 2023
+  publisher: 'Deutscher Bundestag'
+  isbn: null
+  doi: null
+  url: 'https://dserver.bundestag.de/btp/20/20079.pdf'
+  accessed: 2026-07-28
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Wortprotokoll der Sitzung, in der Drucksache 20/5228 angenommen wurde.
+    Belegt Datum und Abstimmungsergebnis im Wortlaut der Sitzungsleitung –
+    das ist die Fundstelle für „einstimmig“ und für den 19. Januar 2023.
+
+- id: europarl-2016-entschliessung
+  type: primärquelle
+  authors:
+    - 'Europäisches Parlament'
+  title: >-
+    Entschließung zu dem vom sogenannten IS verübten systematischen
+    Massenmord an religiösen Minderheiten
+  container: 'Angenommene Texte, P8_TA(2016)0051 – Verfahren 2016/2529(RSP)'
+  year: 2016
+  publisher: 'Europäisches Parlament'
+  isbn: null
+  doi: null
+  url: 'https://www.europarl.europa.eu/RegData/seance_pleniere/textes_adoptes/definitif/2016/02-04/0051/P8_TA(2016)0051_DE.pdf'
+  accessed: 2026-07-28
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Entschließung vom 4. Februar 2016. Ziffer 2 stellt fest, dass der
+    sogenannte IS Völkermord verübt hat. Politisches Dokument eines
+    Parlaments, keine gerichtliche Feststellung; die Zahlen in Erwägung G
+    stehen ohne Erhebungsmethode.
+
+- id: unitad-2021-s-974
+  type: bericht
+  authors:
+    - 'United Nations Investigative Team to Promote Accountability for Crimes Committed by Daʼesh/ISIL (UNITAD)'
+  title: >-
+    Seventh report of the Special Adviser and Head of the United Nations
+    Investigative Team to Promote Accountability for Crimes Committed by
+    Daʼesh/Islamic State in Iraq and the Levant
+  container: 'UN-Dokument S/2021/974'
+  year: 2021
+  publisher: 'Vereinte Nationen, Sicherheitsrat'
+  isbn: null
+  doi: null
+  url: 'https://documents.un.org/api/symbol/access?s=S/2021/974&l=en&t=pdf'
+  accessed: 2026-07-28
+  language: en
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Bericht vom 24. November 2021. Absatz 35 hält fest, dass zusätzliche
+    Beweise die anfänglichen Feststellungen des Teams bestärkt hätten,
+    wonach die Angriffe auf die êzîdîsche Gemeinschaft in Şingal
+    Kriegsverbrechen, Verbrechen gegen die Menschlichkeit und Völkermord
+    darstellten.
+
+- id: unitad-2021-s-419
+  type: bericht
+  authors:
+    - 'United Nations Investigative Team to Promote Accountability for Crimes Committed by Daʼesh/ISIL (UNITAD)'
+  title: >-
+    Sixth report of the Special Adviser and Head of the United Nations
+    Investigative Team to Promote Accountability for Crimes Committed by
+    Daʼesh/Islamic State in Iraq and the Levant
+  container: 'UN-Dokument S/2021/419'
+  year: 2021
+  publisher: 'Vereinte Nationen, Sicherheitsrat'
+  isbn: null
+  doi: null
+  url: 'https://documents.un.org/api/symbol/access?s=S/2021/419&l=en&t=pdf'
+  accessed: 2026-07-28
+  language: en
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Bericht vom 3. Mai 2021. Beschreibt den abgeschlossenen Falldossier zur
+    rechtlichen Einordnung der Verbrechen an der êzîdîschen Gemeinschaft
+    sowie die Rückgabe der Überreste von 103 Êzîdî aus neun Massengräbern
+    in Koço. Enthält selbst keine förmliche Völkermordfeststellung – die
+    steht im siebten Bericht.
+
+- id: bundestag-2023-20-8592
+  type: primärquelle
+  authors:
+    - 'Deutscher Bundestag'
+  title: >-
+    Antwort der Bundesregierung auf die Kleine Anfrage – Ergänzende
+    Informationen zur Asylstatistik für das erste Halbjahr 2023,
+    Schwerpunktfragen zu Widerrufsverfahren
+  container: 'Drucksache 20/8592'
+  year: 2023
+  publisher: 'Deutscher Bundestag'
+  isbn: null
+  doi: null
+  url: 'https://dserver.bundestag.de/btd/20/085/2008592.pdf'
+  accessed: 2026-07-28
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Antwort der Bundesregierung. Enthält die Darstellung der
+    Verwaltungspraxis zu § 73 Absatz 3 Asylgesetz für Êzîdî aus dem Irak
+    und die Angabe, wann das BAMF seine Weisungslage geändert hat. Die
+    Fragen stammen von einer Oppositionsfraktion; belegfähig sind die
+    Antworten der Bundesregierung, nicht die Vorbemerkung der Fragesteller.
+
+- id: bundestag-2025-20-15142
+  type: primärquelle
+  authors:
+    - 'Deutscher Bundestag'
+  title: >-
+    Antwort der Bundesregierung auf die Kleine Anfrage – Ergänzende
+    Informationen zur Asylstatistik für die Jahre 2023 und 2024,
+    Schwerpunktfragen zu Widerrufsverfahren
+  container: 'Drucksache 20/15142'
+  year: 2025
+  publisher: 'Deutscher Bundestag'
+  isbn: null
+  doi: null
+  url: 'https://dserver.bundestag.de/btd/20/151/2015142.pdf'
+  accessed: 2026-07-28
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Antwort vom 21. März 2025 mit BAMF-Zahlen zu Widerrufsverfahren
+    gegenüber Êzîdî aus Irak und Syrien für 2023 und 2024. Belegfähig sind
+    die Antworten der Bundesregierung, nicht die Vorbemerkung der
+    Fragesteller.
+
+- id: bundestag-2025-21-795
+  type: primärquelle
+  authors:
+    - 'Fraktion BÜNDNIS 90/DIE GRÜNEN im Deutschen Bundestag'
+  title: >-
+    Entwurf eines Gesetzes zur Änderung des Aufenthaltsgesetzes –
+    Aufenthaltsrecht für Jesidinnen und Jesiden
+  container: 'Drucksache 21/795'
+  year: 2025
+  publisher: 'Deutscher Bundestag'
+  isbn: null
+  doi: null
+  url: 'https://dserver.bundestag.de/btd/21/007/2100795.pdf'
+  accessed: 2026-07-28
+  language: de
+  reliability: institutionell
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    Gesetzentwurf einer Fraktion vom 8. Juli 2025 – ein Antrag, kein
+    geltendes Recht und keine Fachdarstellung. Jede Angabe daraus ist als
+    Position der antragstellenden Fraktion wiederzugeben. Belegt die
+    Abschiebestopps einzelner Länder und die Bilanz des
+    baden-württembergischen Sonderkontingents.
+
 # ---------------------------------------------------------------------
 # Literaturhinweise: bibliografisch geprüft, Volltext lag NICHT vor.
 # Diese Titel dürfen nicht mit <Cite> belegen (check:content bricht ab).

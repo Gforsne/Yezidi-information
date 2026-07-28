@@ -1,10 +1,10 @@
 # Research-Brief
 
-**Stand:** 2026-07-27
+**Stand:** 2026-07-28
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **490 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **493 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -15,22 +15,24 @@ Persönlichkeitsrechte berühren oder Falschinformation erzeugen würde. Sie sin
 anderen zu beantworten – notfalls durch Rückfrage bei Fachleuten oder bei
 Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
-- **Zwingend zu klären: Welche Beratungsstellen sind bundesweit und in den Schwerpunktländern zuständig, und sind sie aktuell erreichbar? Ohne geprüfte Angaben verweist diese Seite auf nichts.**
+- **Zwingend zu klären: eine geprüfte Liste zuständiger Beratungsstellen mit Aktualisierungsroutine.**
   - Seite: Asyl und Aufenthalt: Grundinformationen (`src/content/articles/de/gegenwart/asyl-und-aufenthalt.mdx`)
 - **Zu Bildung, Erwerbstätigkeit und rechtlichem Status liegen keine belegten Angaben vor.**
   - Seite: Diaspora in Deutschland (`src/content/articles/de/gegenwart/diaspora-in-deutschland.mdx`)
 - **Zwingend zu klären: Welche Stelle veröffentlicht regelmäßig aktualisierte Zahlen zu Binnenvertriebenen, mit welcher Methode und welchem Stand?**
   - Seite: Lage im Irak (`src/content/articles/de/gegenwart/lage-im-irak.mdx`)
-- **Welchen rechtlichen Status hat die Gemeinschaft in Deutschland derzeit? Ist sie als Religionsgemeinschaft anerkannt, in welchen Ländern, und mit welchen Folgen?**
-  - Seite: Rechtlicher Status in Deutschland (`src/content/articles/de/gegenwart/rechtlicher-status-in-deutschland.mdx`)
-- **Wie ist der Stand der angestrebten Anerkennung als Religionsgesellschaft?**
-  - Seite: Rechtlicher Status in Deutschland (`src/content/articles/de/gegenwart/rechtlicher-status-in-deutschland.mdx`)
-- **Der aufenthaltsrechtliche Status der Aufgenommenen ist nicht belegt.**
+- **Diese Seite berührt Überlebende sexualisierter Gewalt. Sie nennt keine Namen und keine Einzelheiten und braucht eine Prüfung durch Angehörige der Gemeinschaft.**
   - Seite: Sonderaufnahmeprogramme (`src/content/articles/de/gegenwart/sonderaufnahmeprogramme.mdx`)
-- **Zwingend zu klären: Welche Parlamente haben wann beschlossen – und liegt jeweils der Beschlusstext vor? Ohne Beschlusstext nimmt diese Seite keine Anerkennung auf.**
+- **Eine vollständige Liste aller Parlamente und Institutionen, die anerkannt haben, liegt der Redaktion nicht vor. Diese Seite verzeichnet nur, wozu ihr der Beschlusstext vorlag.**
   - Seite: Anerkennungen als Völkermord (`src/content/articles/de/genozid/anerkennungen-als-voelkermord.mdx`)
-- **Zwingend zu klären: Welche Anerkennungen werden in Medien genannt, ohne dass eine Fundstelle auffindbar ist? Diese Fälle sind ausdrücklich zu benennen.**
+- **Der sechste UNITAD-Bericht vom Mai 2021 beschreibt das Falldossier zur rechtlichen Einordnung, enthält aber selbst keine Völkermordfeststellung. Die Feststellung steht im siebten Bericht vom November 2021. Die Redaktion belegt deshalb mit dem siebten.**
   - Seite: Anerkennungen als Völkermord (`src/content/articles/de/genozid/anerkennungen-als-voelkermord.mdx`)
+- **Diese Seite unterscheidet politische Anerkennung von gerichtlicher Feststellung. Zu Strafverfahren siehe die Seite Aufarbeitung und Erinnerung.**
+  - Seite: Anerkennungen als Völkermord (`src/content/articles/de/genozid/anerkennungen-als-voelkermord.mdx`)
+- **Zur Umsetzung des irakischen Gesetzes zugunsten überlebender Frauen liegen keine Angaben vor – belegt ist nur seine Verabschiedung.**
+  - Seite: Aufarbeitung, Beweissicherung und Erinnerung (`src/content/articles/de/genozid/aufarbeitung-und-erinnerung.mdx`)
+- **Diese Seite berührt Überlebende und Massengräber. Sie nennt keine Namen und keine Einzelheiten und braucht eine Prüfung durch Angehörige der Gemeinschaft.**
+  - Seite: Aufarbeitung, Beweissicherung und Erinnerung (`src/content/articles/de/genozid/aufarbeitung-und-erinnerung.mdx`)
 - **Zwingend zu klären: Welche Schätzungen zur Zahl der Eingeschlossenen liegen vor, und von wem? Die geprüften Quellen nennen keine.**
   - Seite: Flucht auf den Berg Şingal (`src/content/articles/de/genozid/flucht-auf-den-berg-singal.mdx`)
 - **Zwingend zu klären: Welche Zahlen zu verschleppten Kindern sind belegt, und wie werden sie erhoben? Der Redaktion liegt keine belastbare Zahl vor.**
@@ -51,11 +53,11 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
   - Seite: Versklavung und sexualisierte Gewalt (`src/content/articles/de/genozid/versklavung-und-sexualisierte-gewalt.mdx`)
 - **Die Opferzahlen stammen sämtlich aus zeitgenössischen Berichten europäischer Reisender, Konsuln und Militärs. Wie sie erhoben wurden, ist nicht bekannt; eine kritische Prüfung dieser Zahlen ist der Redaktion nicht bekannt.**
   - Seite: 19. Jahrhundert: Feldzüge gegen Şingal und Şêxan (`src/content/articles/de/geschichte/19-jahrhundert-feldzuege.mdx`)
-- **Zwingend zu klären: Welche Opferzahlen nennen UN-Stellen, irakische Behörden und Menschenrechtsorganisationen jeweils, und mit welcher Erhebungsmethode? Der Redaktion liegen nur zwei Sekundärangaben vor.**
+- **Die Opferzahlen der beiden eingesehenen Quellen weichen um mehr als ein Drittel voneinander ab und stimmen auch in der Zahl der Sprengsätze nicht überein. Keine legt ihre Erhebung offen; die Redaktion entscheidet nicht.**
   - Seite: Die Anschläge von 2007 (`src/content/articles/de/geschichte/anschlaege-2007.mdx`)
 - **Welche rechtliche Stellung die Êzîdî im Königreich Irak hatten, ist ungeklärt – für die Frage nach Kollektivrechten wäre das erheblich.**
   - Seite: Britisches Mandat und Königreich Irak (`src/content/articles/de/geschichte/britisches-mandat-und-koenigreich-irak.mdx`)
-- **Die Opferzahl der Anschläge von 2007 wird unterschiedlich angegeben: mehr als 500 Getötete (Tagay/Ortaç, nach einem Zeitungsbericht) gegenüber mehr als 700 (bpb 2024, ohne Zuschreibung).**
+- **Die Opferzahlen des Anschlags von 2007 weichen zwischen den Quellen erheblich ab. Die Redaktion gibt beide wieder und entscheidet nicht.**
   - Seite: Nach 2003: neue Lage im Irak (`src/content/articles/de/geschichte/nach-2003.mdx`)
 - **Die Opferzahlen des 19. Jahrhunderts stammen aus zeitgenössischen Berichten von Reisenden und Konsuln. Wie sie zustande kamen, ist nicht bekannt.**
   - Seite: Osmanische Zeit (`src/content/articles/de/geschichte/osmanische-zeit.mdx`)
@@ -419,7 +421,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Geschichte
 
-40 Fragen auf 11 Seiten.
+39 Fragen auf 11 Seiten.
 
 **19. Jahrhundert: Feldzüge gegen Şingal und Şêxan**
 - Die Opferzahlen stammen sämtlich aus zeitgenössischen Berichten europäischer Reisender, Konsuln und Militärs. Wie sie erhoben wurden, ist nicht bekannt; eine kritische Prüfung dieser Zahlen ist der Redaktion nicht bekannt.
@@ -427,10 +429,10 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Wie sich diese Ereignisse in der êzîdîschen Erinnerung als Firman niederschlagen, ist ungeklärt.
 
 **Die Anschläge von 2007**
-- Zwingend zu klären: Welche Opferzahlen nennen UN-Stellen, irakische Behörden und Menschenrechtsorganisationen jeweils, und mit welcher Erhebungsmethode? Der Redaktion liegen nur zwei Sekundärangaben vor.
-- Die Zurechnung zu al-Qaida ist in der vorliegenden Quelle ausdrücklich eine Mutmaßung. Ob es eine gerichtliche oder ermittlungsbehördliche Feststellung gibt, ist ungeklärt.
-- Zum Ablauf, zur Zahl der Sprengsätze und zu den Folgen für die betroffenen Orte liegen keine belegten Einzelheiten vor.
-- Diese Seite berührt einen Anschlag mit vielen Opfern. Sie nennt keine Namen und braucht eine Prüfung durch Angehörige der Gemeinschaft.
+- Die Opferzahlen der beiden eingesehenen Quellen weichen um mehr als ein Drittel voneinander ab und stimmen auch in der Zahl der Sprengsätze nicht überein. Keine legt ihre Erhebung offen; die Redaktion entscheidet nicht.
+- Die Gleichsetzung des Ortsnamens al-Qahtaniya mit dem kurmancî Namen Gire Zer ist der Redaktion nicht belegt bekannt.
+- Ob es Ermittlungen zu dem Anschlag gab und mit welchem Ergebnis, ist nicht belegt. Die Zurechnung an al-Qaida gibt die Quelle als Mutmaßung wieder.
+- Wie die Gemeinschaft des Anschlags gedenkt, ist nicht belegt.
 
 **Baath-Zeit: Arabisierung und Zwangsumsiedlung**
 - Zur Zahl der Betroffenen liegen keine Angaben vor – belegt ist die Zahl der Dörfer, nicht die der Menschen.
@@ -461,10 +463,9 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Zur Zahl und Verbreitung der einflussreichen êzîdîschen Stämme dieser Zeit fehlen belegte Angaben.
 
 **Nach 2003: neue Lage im Irak**
-- Die Opferzahl der Anschläge von 2007 wird unterschiedlich angegeben: mehr als 500 Getötete (Tagay/Ortaç, nach einem Zeitungsbericht) gegenüber mehr als 700 (bpb 2024, ohne Zuschreibung).
-- Zur Lage zwischen 2003 und 2014 liegen der Redaktion keine systematischen Darstellungen vor – nur zusammenfassende Angaben zweier Überblicksquellen.
-- Welche Rolle die umstrittenen Gebiete zwischen Zentralregierung und Kurdischer Regionalregierung für die Sicherheitslage spielten, ist nur angedeutet.
-- Diese Seite berührt Anschläge mit vielen Opfern. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
+- Die Opferzahlen des Anschlags von 2007 weichen zwischen den Quellen erheblich ab. Die Redaktion gibt beide wieder und entscheidet nicht.
+- Zur Entwicklung zwischen 2007 und 2014 liegen der Redaktion nur allgemeine Angaben vor, keine datierten Ereignisse.
+- Zur Rolle der verschiedenen bewaffneten Akteure in den umstrittenen Gebieten bezieht dieses Portal keine Position; belegte Darstellungen einzelner Positionen liegen nicht vor.
 
 **Osmanische Zeit**
 - Alle Angaben dieser Seite stammen aus einer einzigen Darstellung, die ihrerseits ältere Quellen referiert. Die genannten Primärquellen – Menant 1892, Layard 1850, Badger 1852, Gölbaşı 2008 – lagen der Redaktion nicht vor.
@@ -485,18 +486,20 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Genozid 2014 und Verfolgung
 
-36 Fragen auf 11 Seiten.
+38 Fragen auf 11 Seiten.
 
 **Anerkennungen als Völkermord**
-- Zwingend zu klären: Welche Parlamente haben wann beschlossen – und liegt jeweils der Beschlusstext vor? Ohne Beschlusstext nimmt diese Seite keine Anerkennung auf.
-- Zwingend zu klären: Welche Anerkennungen werden in Medien genannt, ohne dass eine Fundstelle auffindbar ist? Diese Fälle sind ausdrücklich zu benennen.
-- Das genaue Beschlussdatum des Deutschen Bundestages ist der Redaktion nicht am Plenarprotokoll geprüft; belegt ist das Datum des Antrags.
+- Eine vollständige Liste aller Parlamente und Institutionen, die anerkannt haben, liegt der Redaktion nicht vor. Diese Seite verzeichnet nur, wozu ihr der Beschlusstext vorlag.
+- Der sechste UNITAD-Bericht vom Mai 2021 beschreibt das Falldossier zur rechtlichen Einordnung, enthält aber selbst keine Völkermordfeststellung. Die Feststellung steht im siebten Bericht vom November 2021. Die Redaktion belegt deshalb mit dem siebten.
+- Ob und wann der UN-Sicherheitsrat die Lage an die internationale Strafjustiz überwiesen hat, ist der Redaktion nicht belegt bekannt.
+- Diese Seite unterscheidet politische Anerkennung von gerichtlicher Feststellung. Zu Strafverfahren siehe die Seite Aufarbeitung und Erinnerung.
 
 **Aufarbeitung, Beweissicherung und Erinnerung**
-- Zur Arbeit von UNITAD liegen der Redaktion keine Originalquellen vor – nur der Verweis des Bundestages darauf.
-- Zu nationalen Strafverfahren, insbesondere in Deutschland, liegen keine belegten Angaben vor.
-- Zur Erinnerungsarbeit der Gemeinschaft – Gedenktage, Denkmäler, Dokumentationsstellen – fehlen belegte Angaben fast vollständig.
-- Diese Seite berührt die Erinnerung an einen Völkermord. Sie braucht eine Prüfung durch Angehörige der Gemeinschaft.
+- Zum Mandatsende von UNITAD und zum Verbleib der gesicherten Beweismittel liegen der Redaktion keine geprüften Angaben vor. Die eingesehenen Berichte stammen aus 2021.
+- Die Angaben zu Verfahren in Deutschland stammen aus einem UN-Bericht von Mai 2021 und nennen keine Aktenzeichen. Der Ausgang der dort erwähnten laufenden Verfahren ist der Redaktion nicht belegt bekannt.
+- Zur Umsetzung des irakischen Gesetzes zugunsten überlebender Frauen liegen keine Angaben vor – belegt ist nur seine Verabschiedung.
+- Zu Gedenkorten und Gedenktagen in Deutschland und in der Herkunftsregion liegen keine geprüften Angaben vor.
+- Diese Seite berührt Überlebende und Massengräber. Sie nennt keine Namen und keine Einzelheiten und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Flucht auf den Berg Şingal**
 - Zwingend zu klären: Welche Schätzungen zur Zahl der Eingeschlossenen liegen vor, und von wem? Die geprüften Quellen nennen keine.
@@ -547,13 +550,14 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Gegenwart und Diaspora
 
-31 Fragen auf 8 Seiten.
+33 Fragen auf 8 Seiten.
 
 **Asyl und Aufenthalt: Grundinformationen**
-- Zwingend zu klären: Welche Beratungsstellen sind bundesweit und in den Schwerpunktländern zuständig, und sind sie aktuell erreichbar? Ohne geprüfte Angaben verweist diese Seite auf nichts.
-- Auf welche Zeiträume und welche Antragsarten sich die genannte Ablehnungsquote bezieht, ist der Quelle nicht zu entnehmen.
-- Wie die aktuelle Entscheidungspraxis des Bundesamts für Migration und Flüchtlinge aussieht, ist unbelegt.
-- Rechtsstände veralten schnell. Diese Seite braucht eine feste Aktualisierungsroutine und einen sichtbaren Stand.
+- Diese Seite beschreibt Verwaltungspraxis, keine Ansprüche im Einzelfall. Wer einen Antrag stellt oder einen Widerruf erhält, braucht anwaltliche oder anerkannte Verfahrensberatung.
+- Die Entscheidungsgründe im Aufhebungsverfahren werden nach Angabe der Bundesregierung statistisch nicht erfasst. Warum es trotz der grundsätzlichen Annahme zu Widerrufen kommt, lässt sich aus den Zahlen deshalb nicht beantworten.
+- Zur Rechtsprechung der Verwaltungsgerichte liegen der Redaktion keine ausgewerteten Entscheidungen vor.
+- Die jüngste geprüfte Zahlenangabe betrifft 2023. Für 2024 und später liegen der Redaktion keine geprüften Angaben vor.
+- Zwingend zu klären: eine geprüfte Liste zuständiger Beratungsstellen mit Aktualisierungsroutine.
 
 **Diaspora in Deutschland**
 - Drei Quellen nennen drei Zahlen für Deutschland, keine legt ihre Methode offen. Ob es sich um Wachstum durch Fluchtmigration oder um unterschiedliche Zählweisen handelt, ist ungeklärt.
@@ -579,16 +583,17 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - Die Sicherheitslage wird von verschiedenen Akteuren unterschiedlich dargestellt. Das Portal gibt Positionen wieder und bewertet sie nicht.
 
 **Rechtlicher Status in Deutschland**
-- Welchen rechtlichen Status hat die Gemeinschaft in Deutschland derzeit? Ist sie als Religionsgemeinschaft anerkannt, in welchen Ländern, und mit welchen Folgen?
-- Welche Entscheidungen deutscher Gerichte zur Gruppenverfolgung gibt es, mit welchen Aktenzeichen und aus welchen Jahren?
-- Wie ist der Stand der angestrebten Anerkennung als Religionsgesellschaft?
-- Diese Seite berührt Rechtsfragen. Sie gibt keine Rechtsberatung und darf ohne belastbare Quellen nichts behaupten.
+- Zwingend zu klären: Ist die Gemeinschaft in einem Bundesland als Religionsgemeinschaft anerkannt – in welcher Form, mit welchen Folgen für Religionsunterricht, Seelsorge und Feiertage? Der Redaktion liegen dazu keine belegten Angaben vor.
+- Welche Entscheidungen deutscher Gerichte zur Gruppenverfolgung von Êzîdî ergangen sind, ist nicht erhoben. Die Quelle nennt nur, dass es solche Entscheidungen gab.
+- Diese Seite beschreibt Rechtslage und Verwaltungspraxis in Grundzügen. Sie ist keine Rechtsberatung.
+- Die Angaben zur Umsetzung des Schutzauftrags stammen zu einem Teil aus einem Gesetzentwurf einer Fraktion. Sie sind als Position wiedergegeben, nicht als Feststellung.
 
 **Sonderaufnahmeprogramme**
-- Zur tatsächlichen Umsetzung des Programms – wie viele Menschen kamen, wie lange lief es, mit welchem Ergebnis – liegen der Redaktion keine Angaben vor.
-- Ob weitere Bundesländer oder der Bund vergleichbare Programme aufgelegt haben, ist unbelegt.
-- Der aufenthaltsrechtliche Status der Aufgenommenen ist nicht belegt.
-- Diese Seite berührt Persönlichkeitsrechte besonders belasteter Personen. Sie nennt keine Namen und braucht eine Prüfung durch Angehörige der Gemeinschaft.
+- Die Zahlen weichen ab: Kizilhan spricht 2016 von der Entscheidung, bis zu 1.000 Menschen einfliegen zu lassen; ein Bundestagsantrag von 2025 nennt 1.100 tatsächlich aufgenommene Frauen und Kinder. Beides ist wiedergegeben, keines gegen das andere abgewogen.
+- Zur Rechtsgrundlage der Aufnahme und zum Aufenthaltsstatus der Aufgenommenen liegen der Redaktion keine belegten Angaben vor.
+- Zur wissenschaftlichen Auswertung der Programme liegen keine geprüften Angaben vor. Eine Begleitforschung wird in der Literatur erwähnt, lag aber nicht vor.
+- Zu den Programmen in Niedersachsen, Schleswig-Holstein, Berlin und Brandenburg liegen über die bloße Nennung hinaus keine Angaben vor.
+- Diese Seite berührt Überlebende sexualisierter Gewalt. Sie nennt keine Namen und keine Einzelheiten und braucht eine Prüfung durch Angehörige der Gemeinschaft.
 
 **Syrien, Türkei, Armenien, Georgien und Russland**
 - Alle Angaben stammen aus 2016 oder früher. Für Syrien ist das nach mehr als einem Jahrzehnt Krieg praktisch wertlos; die Quelle sagt das selbst.
