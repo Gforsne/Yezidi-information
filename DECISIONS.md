@@ -587,6 +587,58 @@ zu übergeben.
 
 ---
 
+### D-043 — Eine neue Quellenkategorie: Gegenstand, nicht Beleg
+
+_2026-07-28_
+
+Geprüft wurde ein frei zugänglicher arabischsprachiger Band: Azad Seîd Semo,
+_al-Yazidiyya min khilal nususiha al-muqaddasa_ („Die Yezidiyya anhand ihrer
+heiligen Texte“), Beirut 2001, 336 Seiten, ursprünglich eine 1999 vorgelegte
+Magisterarbeit.
+
+Der Band setzt Tawûsî Melek in der Kapitelüberschrift und im eigenen Fazit mit
+Iblis gleich – und referiert in derselben Einleitung, dass die Êzîdî zwischen
+beiden unterscheiden. Er stützt sich durchgehend auf die Kitêba Cilwe und die
+Mishefa Reş, obwohl er selbst feststellt, die umlaufenden Fassungen gäben den
+ursprünglichen Text nicht wieder.
+
+Damit stand die Redaktion vor einer Frage, die das Quellenverzeichnis bisher
+nicht abbilden konnte. Der Band ist bibliografisch einwandfrei prüfbar und im
+Volltext gelesen – nach den bisherigen Regeln also belegfähig. Über seinen
+Gegenstand belegt er aber nichts. `sources.yaml` hat deshalb einen vierten
+Abschnitt bekommen: **Gegenstand der Darstellung, nicht Beleg über die Êzîdî.**
+Titel dort tragen `reliability: unklar` bei `verifiziert: true`. Die Einstufung
+bewertet die Belegkraft für den Gegenstand des Portals, nicht die Sorgfalt der
+Titelaufnahme.
+
+Verwendet ist der Band an genau einer Stelle, im Abschnitt „Gegenwärtige
+Verbreitung“ der Seite zum Teufelsanbetungs-Vorwurf, und für genau eine
+Aussage: dass die Zuschreibung 2001 in gedruckter, zitierfähig aussehender und
+heute frei herunterladbarer Form erhoben wurde. Der Rechercheauftrag jener
+Seite – „Keine Wiedergabe polemischer Wortlaute“ – bleibt eingehalten: Genannt
+ist die Gleichsetzung, nicht ihre Begründung.
+
+Drei Grenzen sind ausdrücklich mitgeschrieben:
+
+- **Kein Schluss auf ein Schrifttum.** Ein Titel ist keine Erhebung. Die
+  arabischsprachige Literatur über die Êzîdî ist nicht gesichtet; ob dieser
+  Band typisch oder ein Einzelfall ist, sagt das Portal nicht.
+- **Kein Schluss auf eine Institution oder Religionsgemeinschaft.** Die
+  bibliografischen Angaben stehen im Quellenverzeichnis, wo die Angaben jeder
+  Quelle stehen. Im Fließtext steht die Zuschreibung, nicht ihre Herkunft aus
+  einem bestimmten Haus.
+- **Keine Seitenzahlen.** Das Digitalisat ist ein OCR-Scan mit unsicher
+  erkannter Seitenzählung. Belegstellen verweisen auf Kapitel und Abschnitt.
+  Erfundene Seitenzahlen wären der bequemere Weg gewesen und sind nicht
+  gegangen worden.
+
+Nicht übernommen sind zwei Dinge, die verlockend waren: die im Band
+wiedergegebenen Interviews mit êzîdîschen Gesprächspartnern – eine emische
+Stimme durch einen feindseligen Mittler ist keine belastbare Bezeugung – und
+seine Darstellung der Entstehungsgeschichte der Gemeinschaft.
+
+---
+
 ## Offene Punkte, die keine Gestaltungsfrage sind
 
 Diese Punkte lassen sich nicht durch eine Entscheidung schließen; sie

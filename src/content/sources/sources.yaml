@@ -548,6 +548,66 @@
     die Fassung des Herausgebers.
 
 # ---------------------------------------------------------------------
+# Gegenstand der Darstellung, NICHT Beleg über die Êzîdî
+# ---------------------------------------------------------------------
+# Diese Titel sind im Volltext geprüft, aber sie belegen nichts darüber,
+# was Êzîdî glauben, tun oder sind. Sie belegen ausschließlich, dass eine
+# bestimmte Zuschreibung an einem bestimmten Ort zu einem bestimmten
+# Zeitpunkt erhoben wurde. Wer sie anders verwendet, verwendet sie falsch.
+# Sie tragen deshalb reliability: unklar, obwohl ihre bibliografischen
+# Angaben geprüft sind – die Einstufung bewertet hier die Belegkraft für
+# den Gegenstand des Portals, nicht die Sorgfalt der Titelaufnahme.
+# ---------------------------------------------------------------------
+
+- id: sammo-2001-yazidiya
+  type: buch
+  authors:
+    - 'Semo, Azad Seîd (آزاد سعيد سمّو)'
+  title: 'اليزيدية من خلال نصوصها المقدسة'
+  container: null
+  year: 2001
+  publisher: 'al-Maktab al-Islami, Beirut/Damaskus/Amman'
+  isbn: null
+  doi: null
+  url: 'https://archive.org/details/20220306_20220306_1706'
+  accessed: 2026-07-28
+  language: ar
+  reliability: unklar
+  verifiziert: true
+  volltextGeprueft: true
+  note: >-
+    „Die Yezidiyya anhand ihrer heiligen Texte“. 1. Auflage 1422 h. /
+    2001, 336 Seiten. Nach der Angabe im Vorspann war der Text
+    ursprünglich eine Magisterarbeit, die der Verfasser 1999 der Imam
+    al-Awzaʿi-Hochschule für Islamische Studien in Beirut vorlegte.
+
+    Der Band ist eine konfessionelle Darstellung einer fremden Religion,
+    kein religionswissenschaftliches Werk. Er ordnet Tawûsî Melek in
+    Kapitelüberschrift und eigenem Fazit mit Iblis gleich – und hält
+    zugleich in der Einleitung fest, dass die Êzîdî selbst zwischen
+    beiden unterscheiden. Genau diese Zuschreibung bezeichnet die
+    UN-Untersuchungskommission als vollständig falsch
+    (`un-coi-2016-they-came-to-destroy`, Abs. 19).
+
+    Belegfähig ist deshalb ausschließlich, was der Band über sich selbst
+    bezeugt: dass er diese Gleichsetzung erhebt, wann, wo und in welcher
+    Form. Für Aussagen über êzîdîschen Glauben, Geschichte oder
+    Gesellschaft ist er nicht verwendbar. Polemische Wortlaute gibt das
+    Portal nicht wieder (siehe den Rechercheauftrag der Seite
+    `missverstaendnisse/teufelsanbetung-vorwurf`).
+
+    Der Band stützt sich durchgehend auf die Kitêba Cilwe und die Mishefa
+    Reş, obwohl er selbst feststellt, die umlaufenden Fassungen gäben den
+    ursprünglichen Text nicht wieder – dasselbe Zirkelargument, das
+    Kreyenbroek und Omarkhali an anderen Darstellungen kritisieren.
+
+    Seitenzahlen sind nicht angegeben: Die vorliegende Fassung ist ein
+    OCR-Digitalisat, dessen Seitenzählung nicht verlässlich erkannt ist.
+    Belegstellen verweisen deshalb auf Kapitel und Abschnitt. Die Datei
+    steht seit dem 6. März 2022 bei archive.org
+    (Kennung `20220306_20220306_1706`).
+
+# ---------------------------------------------------------------------
 # Literaturhinweise: bibliografisch geprüft, Volltext lag NICHT vor.
 # Diese Titel dürfen nicht mit <Cite> belegen (check:content bricht ab).
 # Sie stehen hier, weil das Portal offenlegt, welche Standardliteratur

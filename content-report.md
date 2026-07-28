@@ -6,7 +6,7 @@
 ## Kurzfassung
 
 428 von 445 Abschnitten tragen mindestens einen Beleg – **Belegquote 96 %**.
-Insgesamt stehen 952 Belegstellen im Text.
+Insgesamt stehen 956 Belegstellen im Text.
 139 Stellen sind ausdrücklich als Beleglücke markiert.
 
 Die Recherche läuft: 151 von 162 Seiten (93 %) haben den Gerüst-Status verlassen.
@@ -36,7 +36,7 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 | Geschichte | 11 | 11 | 47 | 102 | 9 | 41 | 100 % |
 | Genozid 2014 und Verfolgung | 10 | 10 | 44 | 86 | 16 | 37 | 100 % |
 | Gegenwart und Diaspora | 8 | 8 | 32 | 66 | 12 | 33 | 100 % |
-| Missverständnisse und Desinformation | 3 | 3 | 15 | 19 | 3 | 9 | 100 % |
+| Missverständnisse und Desinformation | 3 | 3 | 15 | 23 | 3 | 11 | 100 % |
 | Kultur | 10 | 8 | 35 | 54 | 10 | 35 | 100 % |
 | Personen | 3 | 3 | 12 | 25 | 1 | 12 | 100 % |
 | Wissenschaft und Quellen | 4 | 3 | 22 | 40 | 7 | 13 | 100 % |
@@ -47,7 +47,7 @@ an ihrer Stelle stehen sichtbare Rechercheaufträge. Die Bereichstabelle zeigt, 
 
 | Sammlung | Einträge | Anmerkung |
 |---|---:|---|
-| Quellen | 27 | 20 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
+| Quellen | 28 | 21 im Volltext geprüft und damit belegfähig; 0 mit ungeprüften bibliografischen Angaben |
 | Zeitleiste | 17 | 6 als Firman-Erinnerung markiert |
 | Häufige Fragen | 6 | 6 beantwortet |
 | Glossar | 50 | Begriffe |

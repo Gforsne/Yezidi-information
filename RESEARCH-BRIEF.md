@@ -4,7 +4,7 @@
 **Erzeugt von:** `npm run report:content` – automatisch aus den `openQuestions` aller Inhalte.
 Diese Datei nicht von Hand bearbeiten; Fragen gehören in das Frontmatter der jeweiligen Seite.
 
-Insgesamt **499 offene Recherchefragen** auf 162 Seiten.
+Insgesamt **501 offene Recherchefragen** auf 162 Seiten.
 
 ---
 
@@ -611,7 +611,7 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 
 ### Missverständnisse und Desinformation
 
-10 Fragen auf 4 Seiten.
+12 Fragen auf 4 Seiten.
 
 **Hassrede und Verschwörungserzählungen online**
 - Zwingend zu klären: Gibt es Erhebungen zu Hassrede gegen Êzîdî im deutschsprachigen Raum? Der Redaktion ist keine bekannt.
@@ -622,6 +622,8 @@ Vertretungen der Gemeinschaft, nicht durch eine Schätzung.
 - In welchen Texten die Zuschreibung zuerst nachweisbar ist, konnte die Redaktion nicht belegen. Die eingesehenen Quellen benennen die Fehldeutung, aber nicht ihren ersten Beleg.
 - Zur Wirkungsgeschichte in europäischen Reiseberichten des 19. Jahrhunderts liegen der Redaktion keine geprüften Quellen vor.
 - Zur gegenwärtigen Verbreitung der Zuschreibung im deutschsprachigen Raum liegen keine Erhebungen vor.
+- Der eine nachgewiesene Band von 2001 ist ein Einzelfund, keine Auswertung. Ob die arabischsprachige Literatur über die Êzîdî überwiegend so verfährt, ist ungeprüft und wird hier ausdrücklich nicht behauptet.
+- Die Seitenzählung jenes Bandes ist im vorliegenden OCR-Digitalisat nicht verlässlich erkennbar. Belegstellen verweisen deshalb auf Kapitel und Abschnitt und wären an einem gedruckten Exemplar zu präzisieren.
 
 **Weitere verbreitete Falschbehauptungen**
 - Die Richtigstellungen stützen sich weitgehend auf eine einzige Quelle, die von êzîdîschen Autoren verfasst ist. Für die Abgrenzung emisch/etisch wäre eine zweite, religionswissenschaftliche Quelle wünschenswert.
